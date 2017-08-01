@@ -10,7 +10,7 @@ fi
 
 if ([ "${TRAVIS_BRANCH}" == "master" ])
 then
-  cf zero-downtime-push $CF_APP -f ./manifest_prod.yml
+  cf zero-downtime-push $CF_APP -f ./manifest.yml
   exit 0
 fi
 
