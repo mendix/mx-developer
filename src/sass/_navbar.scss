@@ -1,0 +1,69 @@
+@include element('navbar') {
+  @include element('header') {
+    @extend %clearfix;
+    margin-right: $default-margin;
+    float: left;
+    @include transition(margin-left 150ms ease-in-out)
+    @include mq(sm, max) {
+      margin-left: 3 * $default-margin;
+    }
+  }
+  @include element('brand') {
+    display: block;
+    min-height: $height-top-bar-inside;
+    float: left;
+    padding: 0;
+    line-height: $height-top-bar-inside;
+    img {
+      height: $top-row-height;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: -4px;
+    }
+  }
+  @include element('nav') {
+    float: left;
+    margin: 0;
+    @include mq(sm, max) {
+      width: 100%;
+    };
+  }
+  @include element('item') {
+    display: block;
+    float: left;
+    @include mq(sm, max) {
+      width: 100%;
+      &:last-child {
+        & > .mx-developer__headerlink {
+          @include box-shadow(2px 3px 3px rgba(0, 0, 0, 0.08));
+          border-bottom-width: 2px;
+        }
+      }
+    }
+  }
+  @include element('collapse') {
+    @include mq(sm, max) {
+      @include transition(opacity 250ms ease-in-out, visibility 250ms ease-in-out, max-height 250ms ease-out);
+      position: absolute;
+      z-index: 3;
+      top: 84px;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
+      float: none;
+      width: 100%;
+      margin-top: 0;
+      border-top: 1px solid #d7d7d7;
+      background: #fff;
+    };
+    @include modifier('mobile') {
+      visibility: visible;
+      max-height: 600px;
+      opacity: 1;
+      @include transition(max-height 250ms ease-in);
+    }
+  }
+}

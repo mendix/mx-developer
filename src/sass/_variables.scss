@@ -1,0 +1,40 @@
+// Colors
+$color-mx-blue: #1897df;
+$color-bottom-blue: #475b7b;
+$color-white: #FFF;
+$color-font-grey: #888;
+$color-font-darker-grey: #555;
+$color-bottom-light-blue: #6d7c96;
+$color-bottom-light-blue-second: #808da3;
+
+// Colors specific
+$color-top-background: $color-white;
+$color-top-border: $color-mx-blue;
+
+$color-sub-background: #ededed;
+$color-submenu-border: #d2d2d2;
+
+$color-bottom-background: $color-bottom-blue;
+$color-bottom-font: #A4ACBB;
+
+$color-button-green: #76ca02;
+$color-button-grey: #f0f0ee;
+$color-button-green-hover: #4ba303;
+$color-button-grey-hover: #d4d4d2;
+
+// Measurements
+$top-row-height: 40px;
+$width-desktop: 1200px;
+$width-row: 1170px;
+$topbar-border-width: 5px;
+
+$height-top-bar: 89px;
+$height-top-bar-inside: $height-top-bar - $topbar-border-width;
+
+$default-margin: 15px;
+
+// Font
+$font-size: 14px;
+$font-family: "Open Sans", sans-serif;
+
+$opacity-footer-icon: 0.506;

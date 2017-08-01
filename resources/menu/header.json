@@ -1,0 +1,43 @@
+[
+  {
+    "title" : "Documentation",
+    "url": "https://docs.mendix.com",
+    "sub": [
+      { "title": "Reference Guide", "url": "https://docs.mendix.com/refguide/" },
+      { "title": "How-to's", "url": "https://docs.mendix.com/howto/" },
+      { "title": "Release Notes", "url": "https://docs.mendix.com/releasenotes/" },
+      { "title": "API & SDK", "url": "https://docs.mendix.com/apidocs-mxsdk/" }
+    ]
+  },
+  {
+    "title" : "Training",
+    "url": false,
+    "sub": [
+      { "title": "Online & Classroom Training", "url": "https://developers.mendix.com/training/" },
+      { "title": "Mendix Essential", "url": "https://developers.mendix.com/training/mendix-essentials/" },
+      { "title": "Certification", "url": "https://developers.mendix.com/training/certification/" },
+      { "title": "On-Demand Webinars", "url": "https://developers.mendix.com/training/webinars/" }
+    ]
+  },
+  {
+    "title" : "Community",
+    "url": false,
+    "sub": [
+      { "title": "Overview", "url": "https://developers.mendix.com/community/" },
+      { "title": "Jobs", "url": "https://developers.mendix.com/jobs/" },
+      { "title": "Forum", "url": "https://forum.mendixcloud.com/" },
+      { "title": "MVP Program", "url": "https://developers.mendix.com/mvp-program/" },
+      { "title": "Model Share", "url": "http://modelshare.mendix.com" },
+      { "title": "App Store", "url": "http://appstore.mendix.com" },
+      { "title": "Developer Blog", "url": "http://appstore.mendix.com" },
+      { "title": "Community Blog", "url": "https://developers.mendix.com/spotlight/" },
+      { "title": "Developer Tools", "url": "https://developers.mendix.com/community/#devtools" },
+      { "title": "Our Community", "url": "https://developer.mendixcloud.com/link/community" }
+    ]
+  },
+  {
+    "title" : "Support",
+    "url": "https://support.mendix.com/",
+    "sub": []
+  }
+]

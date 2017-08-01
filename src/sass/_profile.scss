@@ -1,0 +1,137 @@
+@mixin topbutton() {
+  $pad: ($height-top-bar-inside - $font-size) / 2;
+  @include border-radius($top-row-height / 2);
+  padding: 13px 10px;
+  margin: 22px 0 0;
+  text-decoration: none;
+  text-align: center;
+  font-size: $font-size;
+  font-weight: normal;
+  line-height: $font-size;
+  white-space: nowrap;
+  @include transition(background-color 250ms ease);
+  margin-left: 10px;
+}
+
+@include element('profile') {
+  line-height: $height-top-bar-inside;
+  float: right;
+  @include modifier('loading') {
+    visibility: none;
+  }
+
+  @include element('start-button') {
+    @include topbutton();
+    float: left;
+    &, &:active, &:visited {
+      background: $color-button-green;
+      color: #fff;
+    }
+    &:hover {
+      background: $color-button-green-hover;
+    }
+
+    display: none;
+    @include modifier('shown') {
+      display: inline-block;
+    }
+  }
+
+  @include element('login-button') {
+    @include topbutton();
+    padding-top: 12px;
+    padding-bottom: 12px;
+    float: left;
+    &, &:active, &:visited {
+      border: 1px solid $color-font-grey;
+      background: $color-white;
+      color: $color-font-grey;
+    }
+    &:hover {
+      background: $color-font-grey;
+      color: $color-white;
+    }
+
+    display: none;
+    @include modifier('shown') {
+      display: inline-block;
+    }
+  }
+
+  @include element('avatar') {
+    cursor: pointer;
+    display: block;
+    height: $height-top-bar-inside;
+    img {
+      width: 40px;
+      height: 40px;
+      display: block;
+      float: left;
+      margin: 22px 0 0;
+      border-radius: 50%;
+    }
+    &:hover {
+      &:after {
+        background: url('../../resources/img/header/blue-down.svg') 6px 0 no-repeat;
+      }
+    }
+    &:after {
+      display: inline-block;
+      width: 20px;
+      height: 10px;
+      content: "";
+      background: url('../../resources/img/header/gray-down.svg') 6px 0 no-repeat;
+      right: 15px;
+      top: 45px;
+    }
+  }
+
+  @include element('submenu') {
+    @include border-radius(4px);
+    // @include speech-bubble(top, left);
+    @include transition(opacity 200ms ease-in-out, visibility 200ms ease-in-out);
+    @include box-shadow(2px 3px 3px rgba(0, 0, 0, 0.08));
+    @include opacity(0);
+    visibility: hidden;
+    border: 1px solid $color-submenu-border;
+    width: 200px;
+    min-height: 100px;
+    position: absolute;
+    background: #FFF;
+    margin-top: 70px;
+    padding: 1em;
+    right: 15px;
+    line-height: $font-size;
+    font-size: $font-size;
+    z-index: 10000;
+
+    @include modifier('open') {
+      visibility: visible;
+      @include opacity(1);
+    }
+
+    @include element('link') {
+      display: block;
+      margin: 1em 0 0;
+      text-align: center;
+      &:last-child {
+        margin: 1.5em 0 0;
+      }
+      &, &:active, &:visited {
+        text-decoration: none;
+        color: $color-font-darker-grey;
+      }
+      &:hover {
+        text-decoration: underline;
+        color: $color-mx-blue;
+      }
+    }
+  }
+
+  @include element('display-name') {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: 1.5em;
+  }
+}

@@ -1,0 +1,33 @@
+@include element('link-block') {
+  $root: &;
+  line-height: 19px;
+  font-size: 14px;
+  @include element('title') {
+    display: inline-block;
+    margin: 0 0 1em;
+    color: $color-bottom-light-blue-second;
+    font-weight: 600;
+    line-height: 1;
+  }
+  @include element('links') {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include modifier('no-title') {
+      padding-top: calc(1rem + 1em);
+    }
+  }
+  @include element('link') {
+    line-height: 32px;
+    a {
+      text-decoration: none;
+      &, &:active, &:visited {
+        font-weight: 100;
+        color: $color-white;
+      }
+      &:hover {
+        color: $color-bottom-font;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@include element('header') {
+  &, * {
+    @include box-sizing(border-box);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-stroke: 0.45px rgba(0,0,0,0.1);
+    font-family: $font-family;
+  }
+  @include box-shadow(0px 1px 2px 0px rgba(0, 0, 0, 0.1));
+  border-top: $topbar-border-width solid $color-top-border;
+  background: $color-top-background;
+  min-height: $height-top-bar;
+  height: $height-top-bar;
+  max-height: $height-top-bar;
+  position: relative;
+  z-index: 100;
+}

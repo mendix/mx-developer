@@ -1,0 +1,133 @@
+@include element('headerlink') {
+  font-size: 14px;
+  padding: 0 17px;
+  line-height: $height-top-bar-inside;
+  color: $color-font-darker-grey;
+  vertical-align: middle;
+  position: relative;
+  @include mq(sm, max) {
+    line-height: $font-size;
+    padding: 0 0 0 20px;
+    border-bottom: 1px solid $color-submenu-border;
+  }
+  @include element('head') {
+    $root:&;
+    position: relative;
+    &, &:active, &:visited {
+      text-decoration: none;
+      color: $color-font-darker-grey;
+      @include transition(color 0.15s);
+      outline: 0;
+      font-size: $font-size;
+      cursor: pointer;
+    }
+    @include modifier('has-sub') {
+      @include mq(sm, min) {
+        &:after {
+          line-height: 1;
+          position: absolute;
+          top: 2px;
+          right: 0 - $font-size;
+          content: url('../../resources/img/header/gray-down.svg');
+        }
+      }
+    }
+    @include mq(sm, max) {
+      padding: 21px 20px 21px 0;
+      display: block;
+    }
+    @include modifier('on') {
+      &, &:active, &:visited, &:hover {
+        color: $color-mx-blue;
+      }
+      @include mq(sm, min) {
+        &.mx-developer__headerlink__head--has-sub:after {
+          content: url('../../resources/img/header/blue-down.svg');
+        }
+      }
+      @include mq(sm, max) {
+        padding-bottom: 0;
+      }
+    }
+  }
+  @include element('submenu') {
+    @include mq(sm, max) {
+      visibility: hidden;
+      height: 0;
+      @include modifier('on') {
+        margin: 1em 0;
+        padding-left: 1em;
+        height: auto;
+      }
+    }
+    @include mq(sm, min) {
+      @include border-radius(4px);
+      @include speech-bubble(top, left);
+      @include transition(opacity 150ms ease-in-out, visibility 150ms ease-in-out);
+      @include box-shadow(2px 3px 3px rgba(0, 0, 0, 0.08));
+      @include opacity(0);
+      visibility: hidden;
+      border: 1px solid $color-submenu-border;
+      width: 200px;
+      min-height: 50px;
+      position: absolute;
+      background: $color-white;
+      margin-top: -18px;
+      padding: 1em;
+      z-index: 9999;
+    }
+
+    @include modifier('on') {
+      visibility: visible;
+      @include opacity(1);
+    }
+  }
+  @include element('linkblock') {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  @include element('link') {
+    line-height: 24px;
+    a {
+      &, &:active, a:visited {
+        text-decoration: none;
+        outline: 0;
+        color: $color-font-darker-grey;
+      }
+      &:hover {
+        color: $color-mx-blue;
+      }
+    }
+    @include mq(sm, max) {
+      margin-bottom: 0.5em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  @include element('expand') {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 21px;
+    cursor: pointer;
+    @include mq(sm, max) {
+      display: block;
+    }
+  }
+  @include element('expand-icon') {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: url('../../resources/img/header/gray-down.svg') 2px 6px no-repeat;
+    &:hover {
+      background: url('../../resources/img/header/blue-down.svg') 2px 6px no-repeat;
+    }
+    @include modifier('active') {
+      background: url('../../resources/img/header/blue-down.svg') 2px 6px no-repeat;
+      transform: rotate(180deg) translate(0, 0);
+    }
+  }
+}

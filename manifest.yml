@@ -1,0 +1,12 @@
+---
+applications:
+- name: mx-developer
+  path: ./dist/
+  memory: 16M
+  buildpack: staticfile_buildpack
+  disk_quota: 8M
+  instances: 2
+  domain: mendix.com
+  host: developer-static
+  env:
+    FORCE_HTTPS: true
