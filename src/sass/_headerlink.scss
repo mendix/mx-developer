@@ -23,6 +23,7 @@
       cursor: pointer;
       display: block;
       height: $height-top-bar-inside;
+      position: relative;
       @include mq(md, max) {
         height: auto;
       }
@@ -32,10 +33,13 @@
         &:after {
           line-height: 1;
           position: absolute;
-          top: 33px;
-          right: 0 - $font-size;
+          top: 40px;
+          right: -16px;
           display: block;
-          content: url('../../resources/img/header/gray-down.svg');
+          width: 14px;
+          height: 10px;
+          content: "";
+          background: url('../../resources/img/header/gray-down.svg') 0 0 no-repeat;
         }
       }
     }
