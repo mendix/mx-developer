@@ -2,6 +2,7 @@
   <div :class="b({'loading': !loaded })">
     <a href="https://developers.mendix.com/start-for-free/" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
     <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })">Log in</a>
+    <span id="mendix-search-button" :class="b('search-button')" />
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
       <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName">
       <div :class="b('submenu', { open })">
@@ -33,9 +34,7 @@ export default {
     }
   },
   created() {
-    fetchJsonp(url, {
-        jsonpCallbackFunction: '__mx_id_callback_func'
-      })
+    fetchJsonp(url)
       .then(response => {
         return response.json()
       }).then(json => {

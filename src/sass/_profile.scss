@@ -62,6 +62,7 @@
     cursor: pointer;
     display: block;
     height: $height-top-bar-inside;
+    float: left;
     img {
       width: 40px;
       height: 40px;
@@ -133,5 +134,21 @@
     width: 100%;
     display: block;
     margin-bottom: 1.5em;
+  }
+
+  @include element('search-button') {
+    $picture-height: 24px;
+    $offset: (($height-top-bar-inside - $picture-height) / 2);
+    display: none;
+    width: 36px;
+    height: $height-top-bar-inside;
+    float: left;
+    margin: 0 10px;
+    background: url('../../resources/img/header/search.svg') 7px $offset no-repeat;
+    @include opacity(0.6);
+    cursor: pointer;
+    &:hover {
+      @include opacity(1);
+    }
   }
 }
