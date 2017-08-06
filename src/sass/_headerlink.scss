@@ -1,5 +1,5 @@
 @include element('headerlink') {
-  font-size: 14px;
+  font-size: $font-size;
   padding: 0 17px;
   line-height: $height-top-bar-inside;
   color: $color-font-darker-grey;
@@ -9,6 +9,7 @@
     line-height: $font-size;
     padding: 0 0 0 20px;
     border-bottom: 1px solid $color-submenu-border;
+    z-index: 9999;
   }
   @include element('head') {
     $root:&;
@@ -20,14 +21,20 @@
       outline: 0;
       font-size: $font-size;
       cursor: pointer;
+      display: block;
+      height: $height-top-bar-inside;
+      @include mq(md, max) {
+        height: auto;
+      }
     }
     @include modifier('has-sub') {
       @include mq(sm, min) {
         &:after {
           line-height: 1;
           position: absolute;
-          top: 2px;
+          top: 33px;
           right: 0 - $font-size;
+          display: block;
           content: url('../../resources/img/header/gray-down.svg');
         }
       }

@@ -63,6 +63,7 @@
     display: block;
     height: $height-top-bar-inside;
     float: left;
+    position: relative;
     img {
       width: 40px;
       height: 40px;
@@ -82,8 +83,12 @@
       height: 10px;
       content: "";
       background: url('../../resources/img/header/gray-down.svg') 6px 0 no-repeat;
-      right: 15px;
-      top: 45px;
+      right: -20px;
+      top: 40px;
+      position: absolute;
+      @include mq(md, max) {
+        display: none;
+      }
     }
   }
 
