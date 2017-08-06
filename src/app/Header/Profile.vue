@@ -2,7 +2,7 @@
   <div :class="b({'loading': !loaded })">
     <a href="https://developers.mendix.com/start-for-free/" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
     <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })">Log in</a>
-    <span id="mendix-search-button" :class="b('search-button')" />
+    <span id="mendix-search-button" class="mx-developer__profile__search-button"></span>
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
       <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName">
       <div :class="b('submenu', { open })">
