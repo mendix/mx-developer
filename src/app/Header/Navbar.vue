@@ -10,6 +10,7 @@
         <div :class="b('item')" v-for="(link, index) in links">
           <header-link :link="link" :mob="mob"></header-link>
         </div>
+        <div :class="b('bottom')" />
       </div>
     </div>
     <profile />

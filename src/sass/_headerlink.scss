@@ -53,7 +53,7 @@
       }
       @include mq(sm, min) {
         &.mx-developer__headerlink__head--has-sub:after {
-          content: url('../../resources/img/header/blue-down.svg');
+          background: url('../../resources/img/header/blue-down.svg') 0 0 no-repeat;
         }
       }
       @include mq(sm, max) {
@@ -79,7 +79,7 @@
       @include opacity(0);
       visibility: hidden;
       border: 1px solid $color-submenu-border;
-      width: 200px;
+      min-width: 200px;
       min-height: 50px;
       position: absolute;
       background: $color-white;
@@ -100,6 +100,9 @@
   }
   @include element('link') {
     line-height: 24px;
+    @include mq(sm, min) {
+      white-space: nowrap;
+    }
     a {
       &, &:active, a:visited {
         text-decoration: none;

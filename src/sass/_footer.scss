@@ -9,19 +9,22 @@
   color: $color-bottom-font;
   width: 100%;
   font-family: $font-family;
-  padding: 3rem 0 0.5rem 0;
+  padding: 3rem 0 0 0;
   @include mq(sm, max) {
-    padding-top: 0.5rem;
+    padding-top: 0;
   }
   @include element('row') {
     @extend %clearfix;
     margin-bottom: 1rem;
     &:last-child {
-      padding-top: 3rem;
-      margin-bottom: 2rem;
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
+      margin-bottom: 0;
+      background: $color-bottom-blue-secondary;
       @include mq(sm, max) {
-        padding-top: 0;
-        margin-bottom: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+
       }
     }
     @include modifier('links') {

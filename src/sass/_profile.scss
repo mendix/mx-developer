@@ -1,3 +1,4 @@
+$menu-width: 200px;
 @mixin topbutton() {
   $pad: ($height-top-bar-inside - $font-size) / 2;
   @include border-radius($top-row-height / 2);
@@ -39,22 +40,20 @@
 
   @include element('login-button') {
     @include topbutton();
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding:0;
     float: left;
-    &, &:active, &:visited {
-      border: 1px solid $color-font-grey;
-      background: $color-white;
-      color: $color-font-grey;
-    }
-    &:hover {
-      background: $color-font-grey;
-      color: $color-white;
-    }
 
     display: none;
     @include modifier('shown') {
       display: inline-block;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      display: block;
+      float: right;
+      margin: 0;
+      border-radius: 50%;
     }
   }
 
@@ -64,11 +63,12 @@
     height: $height-top-bar-inside;
     float: left;
     position: relative;
+    width: $menu-width;
     img {
       width: 40px;
       height: 40px;
       display: block;
-      float: left;
+      float: right;
       margin: 22px 0 0;
       border-radius: 50%;
     }
@@ -94,22 +94,45 @@
 
   @include element('submenu') {
     @include border-radius(4px);
-    // @include speech-bubble(top, left);
+    @include speech-bubble(top, right);
     @include transition(opacity 200ms ease-in-out, visibility 200ms ease-in-out);
     @include box-shadow(2px 3px 3px rgba(0, 0, 0, 0.08));
     @include opacity(0);
     visibility: hidden;
     border: 1px solid $color-submenu-border;
-    width: 200px;
+    width: $menu-width;
     min-height: 100px;
     position: absolute;
     background: #FFF;
-    margin-top: 70px;
+    margin-top: 75px;
     padding: 1em;
-    right: 15px;
+    right: -15px;
     line-height: $font-size;
     font-size: $font-size;
     z-index: 10000;
+
+    $offset: 26px;
+    &:before {
+      right: $offset;
+    }
+
+    &:after {
+      right: ($offset + 2);
+    }
+
+    @include mq(md, max) {
+      right: 0px;
+      $offset: 12px;
+      &:before {
+        right: $offset;
+      }
+
+      &:after {
+        right: ($offset + 2);
+      }
+    }
+
+
 
     @include modifier('open') {
       visibility: visible;

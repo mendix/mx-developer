@@ -86,7 +86,11 @@ module.exports = {
         NODE_ENV: JSON.stringify('development')
       }
     }),
-    new ExtractTextPlugin('mx-header.css'),
+    new ExtractTextPlugin({
+      filename: 'mx-header.css',
+      allChunks: true,
+      disable: true
+    }),
     new webpack.ProvidePlugin({
       Promise: 'es6-promise'
     }),

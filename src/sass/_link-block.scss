@@ -2,6 +2,9 @@
   $root: &;
   line-height: 19px;
   font-size: 14px;
+  @include modifier('footer') {
+    padding-bottom: 2rem;
+  }
   @include element('title') {
     display: inline-block;
     margin: 0 0 1em;

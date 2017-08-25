@@ -33,12 +33,16 @@
     float: left;
     @include mq(sm, max) {
       width: 100%;
-      &:last-child {
-        & > .mx-developer__headerlink {
-          @include box-shadow(2px 3px 3px rgba(0, 0, 0, 0.08));
-          border-bottom-width: 2px;
-        }
-      }
+    }
+  }
+  @include element('bottom') {
+    display: none;
+    @include mq(sm, max) {
+      display: block;
+      width: 100%;
+      height: 10px;
+      float: left;
+      @include box-shadow(0 6px 10px -6px rgba(0,0,0,0.5), true);
     }
   }
   @include element('collapse') {

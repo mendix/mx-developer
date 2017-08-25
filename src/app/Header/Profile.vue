@@ -1,7 +1,9 @@
 <template>
   <div :class="b({'loading': !loaded })">
     <a href="https://developers.mendix.com/start-for-free/" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
-    <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })">Log in</a>
+    <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })" title="Click here to login">
+      <img :src="profilePic" alt="Click here to login">
+    </a>
     <span id="mendix-search-button" class="mx-developer__profile__search-button"></span>
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
       <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName">
