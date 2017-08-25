@@ -28,7 +28,7 @@
       }
     }
     @include modifier('links') {
-      display: flex;
+      display: table;
       @include mq(sm, max) {
         display: none;
       };
