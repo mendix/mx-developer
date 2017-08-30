@@ -4,7 +4,7 @@
     <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })" title="Click here to login">
       <img :src="profilePic" alt="Click here to login">
     </a>
-    <span id="mendix-search-button" class="mx-developer__profile__search-button"></span>
+    <!-- <span id="mendix-search-button" class="mx-developer__profile__search-button"></span> -->
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
       <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName">
       <div :class="b('submenu', { open })">
