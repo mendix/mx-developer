@@ -46,6 +46,7 @@ $hamburger-hover-transition-timing-function: linear !default;
     position: absolute;
     top: 18px;
     left: -35px;
+    line-height: 1;
   }
 
   @include element('hamburger-box') {
