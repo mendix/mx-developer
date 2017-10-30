@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+main.has-header {
+  padding-top: $height-top-bar-inside;
+}
+
+#mxHeader {
+  @extend .mx-developer__header;
+}

@@ -1,5 +1,5 @@
 <template>
-  <div :class="b()">
+  <div :class="b({'shown': init})">
     <div :class="b('header')">
       <span :class="b('brand')">
         <img :src="img" alt="Logo">
@@ -7,7 +7,7 @@
     </div>
     <div :class="b('collapse', { 'mobile': mob })">
       <div :class="b('nav')">
-        <div :class="b('item')" v-for="(link, index) in links">
+        <div :class="b('item')" v-for="(link, index) in links" :key="index">
           <header-link :link="link" :mob="mob"></header-link>
         </div>
         <div :class="b('bottom')" />
@@ -24,7 +24,10 @@ import profile from './Profile.vue';
 
 export default {
   name: 'navbar',
-  props: ['mob'],
+  props: [
+    'mob',
+    'init'
+  ],
   data () {
     return {
       imgLink: constants.headerImgUrl,

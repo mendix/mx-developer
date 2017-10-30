@@ -6,7 +6,7 @@
           <span :class="b('hamburger-inner', { 'active': mob })"></span>
         </span>
       </button>
-      <nav-bar :mob="mob" />
+      <nav-bar :mob="mob" :init="init" />
       <resize-observer @notify="handleResize" />
     </div>
   </div>
@@ -23,7 +23,8 @@ export default {
   name: 'header',
   data() {
     return {
-      mob: false
+      mob: false,
+      init: false
     }
   },
   components: {

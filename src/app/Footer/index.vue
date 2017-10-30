@@ -1,7 +1,7 @@
 <template>
   <div :class="b()">
     <div :class="b('row', { 'links': true })" class="mx-developer__row">
-      <div :class="b('link-col')" v-for="(link, index) in links">
+      <div :class="b('link-col')" v-for="(link, index) in links" :key="index">
         <linkBlock :link="link"></linkBlock>
       </div>
     </div>
