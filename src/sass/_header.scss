@@ -12,7 +12,7 @@
   min-height: $height-top-bar;
   height: $height-top-bar;
   max-height: $height-top-bar;
-  position: fixed;
+  position: relative;
   z-index: 1000;
   width: 100%;
 }
