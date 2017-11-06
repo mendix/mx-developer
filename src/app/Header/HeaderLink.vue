@@ -8,7 +8,7 @@
     <div :class="b('submenu', { on })" v-if="link.sub && link.sub.length > 0">
       <ul :class="b('linkblock')">
         <li :class="b('link')" v-for="(sub, index) in link.sub" :key="index">
-          <a :href="sub.url" title="sub.title">{{ sub.title }}</a>
+          <a :href="sub.url" :title="sub.title">{{ sub.title }}</a>
         </li>
       </ul>
     </div>
