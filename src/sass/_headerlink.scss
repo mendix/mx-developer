@@ -97,9 +97,16 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    :first-child {
+      margin-top: 0;
+    }
+    :last-child {
+      margin-bottom: 0;
+    }
   }
   @include element('link') {
     line-height: 24px;
+    margin: 10px 0;
     @include mq(sm, min) {
       white-space: nowrap;
     }
