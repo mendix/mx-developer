@@ -49,16 +49,10 @@
     ]
   },
   {
-    "title" : "Support",
-    "url": false,
-    "sub": [
-      { "title": "Support Resources", "url": "https://support.mendix.com/" }
-    ]
-  },
-  {
     "title" : false,
     "url": false,
     "sub": [
+      { "title": "Support", "url": "https://support.mendix.com/" },
       { "title": "Start for Free", "url": "https://developers.mendix.com/start-for-free/" },
       { "title": "Contact Us", "url": "http://ww2.mendix.com/contact-us.html" }
     ]
