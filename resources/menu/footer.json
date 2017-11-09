@@ -47,7 +47,7 @@
       { "title": "App Store", "url": "http://appstore.mendix.com" },
       { "title": "Model Share", "url": "http://modelshare.mendix.com" }
     ]
-  }
+  },
   {
     "title" : "Support",
     "url": false,
