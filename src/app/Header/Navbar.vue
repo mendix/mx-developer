@@ -1,9 +1,9 @@
 <template>
   <div :class="b({'shown': init})">
     <div :class="b('header')">
-      <span :class="b('brand')">
+      <a target="_self" href="https://developers.mendix.com" :class="b('brand')">
         <img :src="img" alt="Logo">
-      </span>
+      </a>
     </div>
     <div :class="b('collapse', { 'mobile': mob })">
       <div :class="b('nav')">

@@ -14,12 +14,16 @@
     float: left;
     padding: 0;
     line-height: $height-top-bar-inside;
+    border-width: 0;
+    outline: none;
     img {
       height: $top-row-height;
       width: auto;
       display: inline-block;
       //margin-top: 21px;
       vertical-align: middle;
+      border-width: 0;
+      outline: none;
     }
   }
   @include element('nav') {
