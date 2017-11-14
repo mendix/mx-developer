@@ -19,6 +19,20 @@ const urls = {
 
 const isSmallViewport = () => window.innerWidth <= 992;
 
+const waitForElementIdCb = (id, func, num = 200) => {
+  const el = document.getElementById(id);
+  if (el !== null) {
+    func(el, num);
+    return;
+  }
+  if (num <= 0) {
+    return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
+  }
+  setTimeout(() => {
+    waitForElementIdCb(id, func, num - 1);
+  }, 10);
+};
+
 const waitForElementId = (id, vueComponent, num = 200) => {
   const el = document.getElementById(id);
   if (el !== null) {
@@ -58,5 +72,6 @@ export {
   isSmallViewport,
   constants,
   waitForElementId,
+  waitForElementIdCb,
   waitForElementClass
 };
