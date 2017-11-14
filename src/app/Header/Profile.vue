@@ -1,6 +1,6 @@
 <template>
   <div :class="b({'loading': !loaded })">
-    <a href="https://developers.mendix.com/start-for-free/" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
+    <a href="https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
     <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })" title="Click here to login">
       <img :src="profilePic" alt="Click here to login">
     </a>
