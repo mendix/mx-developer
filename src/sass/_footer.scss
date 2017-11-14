@@ -4,6 +4,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-stroke: 0.45px rgba(0,0,0,0.1);
+    .mx-focus, :focus {
+      outline: none;
+      text-decoration: none;
+    }
   }
   background: $color-bottom-background;
   color: $color-bottom-font;

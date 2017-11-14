@@ -109,7 +109,7 @@ $menu-width: 200px;
     position: absolute;
     background: #FFF;
     margin-top: 75px;
-    padding: 1em;
+    padding-bottom: 1em;
     right: -15px;
     line-height: $font-size;
     font-size: $font-size;
@@ -122,6 +122,7 @@ $menu-width: 200px;
 
     &:after {
       right: ($offset + 2);
+      border-bottom-color: $color-profile-menu-second-bg;
     }
 
     @include mq(md, max) {
@@ -146,10 +147,7 @@ $menu-width: 200px;
     @include element('link') {
       display: block;
       margin: 1em 0 0;
-      text-align: center;
-      &:last-child {
-        margin: 1.5em 0 0;
-      }
+      padding: 0 0.5em;
       &, &:active, &:visited {
         text-decoration: none;
         color: $color-font-darker-grey;
@@ -158,6 +156,11 @@ $menu-width: 200px;
         text-decoration: underline;
         color: $color-mx-blue;
       }
+      @include modifier('logout') {
+        text-align: center;
+        padding: 0.5em 1em;
+        background: $color-profile-menu-second-bg;
+      }
     }
   }
 
@@ -165,7 +168,8 @@ $menu-width: 200px;
     text-align: center;
     width: 100%;
     display: block;
-    margin-bottom: 1.5em;
+    padding: 1em;
+    background: $color-profile-menu-second-bg;
   }
 
   @include element('search-button') {
