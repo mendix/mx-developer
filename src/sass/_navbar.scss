@@ -3,7 +3,7 @@
     @extend %clearfix;
     margin-right: $default-margin;
     float: left;
-    @include transition(margin-left 150ms ease-in-out)
+    @include transition(margin-left 150ms ease-in-out);
     @include mq(sm, max) {
       margin-left: 3 * $default-margin;
     }

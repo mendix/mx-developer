@@ -10,8 +10,8 @@
       <div :class="b('submenu', { open })">
         <span :class="b('display-name')">Welcome, {{ profile && profile.displayName }}</span>
         <a :class="b('submenu__link')" :href="urls.platform">Mendix App Platform</a>
-        <a :class="b('submenu__link')" :href="urls.developer" v-if="profile">My profile</a>
-        <a :class="b('submenu__link')" :href="urls.community" v-if="profile">My Community profile</a>
+        <a :class="b('submenu__link')" :href="urls.community" v-if="profile">My Profile</a>
+        <a :class="b('submenu__link')" :href="urls.developer" v-if="profile">Account Settings</a>
         <a :class="b('submenu__link')" :href="profile.logoutUrl" v-if="profile && profile.logoutUrl">Log out</a>
       </div>
     </div>
@@ -32,7 +32,7 @@ export default {
       profile: false,
       urls: urls,
       profilePic: require('Resources/img/header/avatar.svg'),
-      open: false
+      open: true
     }
   },
   created() {
