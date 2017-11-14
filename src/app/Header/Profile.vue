@@ -32,7 +32,7 @@ export default {
       profile: false,
       urls: urls,
       profilePic: require('Resources/img/header/avatar.svg'),
-      open: true
+      open: false
     }
   },
   created() {
