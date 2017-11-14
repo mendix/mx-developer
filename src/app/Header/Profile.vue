@@ -6,7 +6,7 @@
     </a>
     <!-- <span id="mendix-search-button" class="mx-developer__profile__search-button"></span> -->
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
-      <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName">
+      <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName" @mouseenter="mouseenter">
       <div :class="b('submenu', { open })">
         <span :class="b('display-name')">Welcome, {{ profile && profile.displayName }}</span>
         <a :class="b('submenu__link')" :href="urls.platform">Mendix App Platform</a>
@@ -54,6 +54,9 @@ export default {
   methods: {
     mouseleave(e) {
       this.open = false;
+    },
+    mouseenter(e) {
+      this.open = true;
     },
     menu(e) {
       this.open = !this.open;
