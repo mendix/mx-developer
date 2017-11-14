@@ -6,12 +6,11 @@
     <defs></defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
         <g id="sprintr" stroke="#48B0F7">
-            <g id="Group-1444" transform="translate(8.000000, 14.000000)">
-                <path d="M7.66666667,0 L7.66666667,6" id="Stroke-2500"></path>
-                <path d="M15.6666667,3 L9.66666667,3" id="Stroke-2501"></path>
-                <polyline id="Stroke-2502" points="13.6666667 5 15.6666667 3 13.6666667 1"></polyline>
-                <path d="M0.333333333,3 L5.66666667,3" id="Stroke-2503"></path>
-                <polyline id="Stroke-2504" points="2.33333333 5 0.333333333 3 2.33333333 1"></polyline>
+            <g id="Group-228" transform="translate(8.000000, 9.000000)">
+                <polyline id="Stroke-5185" points="3.4995 8.5 3.4995 13.5 12.4995 13.5 12.4995 8.5"></polyline>
+                <polyline id="Stroke-5186" points="0.4995 7 7.9995 0.5 15.4995 7"></polyline>
+                <polyline id="Stroke-5187" points="10.9995 0.5 13.4995 0.5 13.4995 3"></polyline>
+                <polygon id="Stroke-5191" points="6.499 13.5 9.499 13.5 9.499 9.5 6.499 9.5"></polygon>
             </g>
         </g>
     </g>
