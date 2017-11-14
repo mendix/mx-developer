@@ -21,8 +21,15 @@ if (process.env.NODE_ENV === 'production') {
 
 import Header from './app/Header/index.vue';
 import Footer from './app/Footer/index.vue';
+import {waitForElementId, waitForElementClass} from 'Resources/helpers';
 
 import './sass/mx-header.scss';
+// 500 * 10ms timeout = 5s timeout
+
+waitForElementId('mxHeader', Header, 500);
+waitForElementClass('mxHeader', Header, 500);
+waitForElementId('mxFooter', Footer, 500);
+waitForElementClass('mxFooter', Footer, 500);
 
 const load = () => {
   let elementHeaderSelector = null;
@@ -59,8 +66,6 @@ const load = () => {
     });
   }
 };
-
-load();
 
 window._headerObserver = new Observer(debounce(load, 100));
 

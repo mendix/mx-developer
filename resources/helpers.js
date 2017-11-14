@@ -19,7 +19,7 @@ const urls = {
 
 const isSmallViewport = () => window.innerWidth <= 992;
 
-const waitForElement = (id, vueComponent, num = 200) => {
+const waitForElementId = (id, vueComponent, num = 200) => {
   const el = document.getElementById(id);
   if (el !== null) {
     const ignoredElement = new Vue({
@@ -29,10 +29,27 @@ const waitForElement = (id, vueComponent, num = 200) => {
     return;
   }
   if (num <= 0) {
-    return console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
+    return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
   }
   setTimeout(() => {
-    waitForElement(id, vueComponent, num - 1);
+    waitForElementId(id, vueComponent, num - 1);
+  }, 10);
+};
+
+const waitForElementClass = (className, vueComponent, num = 200) => {
+  const el = document.getElementsByClassName(className);
+  if (el.length === 1) {
+    const ignoredElement = new Vue({
+      el: `#${className}`,
+      render: h => h(vueComponent)
+    });
+    return;
+  }
+  if (num <= 0) {
+    return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
+  }
+  setTimeout(() => {
+    waitForElementClass(className, vueComponent, num - 1);
   }, 10);
 };
 
@@ -40,5 +57,6 @@ export {
   urls,
   isSmallViewport,
   constants,
-  waitForElement
+  waitForElementId,
+  waitForElementClass
 };
