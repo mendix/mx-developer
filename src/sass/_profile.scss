@@ -4,7 +4,7 @@ $menu-width: 200px;
   @include border-radius($top-row-height / 2);
   padding: 13px 10px;
   margin: 22px 0 0;
-  text-decoration: none;
+  @include no-text-decoration();
   text-align: center;
   font-size: $font-size;
   font-weight: normal;
@@ -145,18 +145,17 @@ $menu-width: 200px;
     @include element('link') {
       display: block;
       margin: 0 0 0 0.5em;
-      padding: 0 1em 0 $profile-link-height;
+      padding: 0 1.5em 0 42px;
       height: $profile-link-height;
       line-height: $profile-link-height;
       background-position: left center;
       background-repeat: no-repeat;
       &, &:active, &:visited {
-        text-decoration: none;
-        text-decoration-line: none!important;
+        @include no-text-decoration();
         color: $color-font-darker-grey;
       }
       &:hover {
-        text-decoration: underline;
+        @include no-text-decoration();
         color: $color-mx-blue;
       }
       @include modifier('type-platform') {

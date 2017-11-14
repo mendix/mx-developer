@@ -23,7 +23,7 @@
   @include element('link') {
     line-height: 32px;
     a {
-      text-decoration: none;
+      @include no-text-decoration();
       &, &:active, &:visited {
         font-weight: 100;
         color: $color-white;

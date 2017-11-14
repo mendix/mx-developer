@@ -6,7 +6,7 @@
     -webkit-text-stroke: 0.45px rgba(0,0,0,0.1);
     .mx-focus, :focus {
       outline: none;
-      text-decoration: none;
+      @include no-text-decoration();
     }
   }
   background: $color-bottom-background;

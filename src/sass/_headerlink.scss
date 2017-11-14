@@ -15,8 +15,7 @@
     $root:&;
     position: relative;
     &, &:active, &:visited {
-      text-decoration: none;
-      text-decoration-line: none!important;
+      @include no-text-decoration();
       color: $color-font-darker-grey;
       @include transition(color 0.15s);
       outline: 0;
@@ -113,8 +112,7 @@
     }
     a {
       &, &:active, a:visited {
-        text-decoration: none;
-        text-decoration-line: none!important;
+        @include no-text-decoration();
         outline: 0;
         color: $color-font-darker-grey;
       }

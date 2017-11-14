@@ -228,3 +228,9 @@ $breakpoints: (
 
   @return $opposite-direction;
 }
+
+@mixin no-text-decoration() {
+  text-decoration: none;
+  @include prefix('text-decoration-line', 'none!important', webkit moz);
+}
+
