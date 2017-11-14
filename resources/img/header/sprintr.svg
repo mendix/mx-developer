@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>sprintr</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="sprintr" stroke="#48B0F7">
+            <g id="Group-1444" transform="translate(8.000000, 14.000000)">
+                <path d="M7.66666667,0 L7.66666667,6" id="Stroke-2500"></path>
+                <path d="M15.6666667,3 L9.66666667,3" id="Stroke-2501"></path>
+                <polyline id="Stroke-2502" points="13.6666667 5 15.6666667 3 13.6666667 1"></polyline>
+                <path d="M0.333333333,3 L5.66666667,3" id="Stroke-2503"></path>
+                <polyline id="Stroke-2504" points="2.33333333 5 0.333333333 3 2.33333333 1"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

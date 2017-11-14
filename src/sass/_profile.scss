@@ -137,8 +137,6 @@ $menu-width: 200px;
       }
     }
 
-
-
     @include modifier('open') {
       visibility: visible;
       @include opacity(1);
@@ -146,20 +144,32 @@ $menu-width: 200px;
 
     @include element('link') {
       display: block;
-      margin: 1em 0 0;
-      padding: 0 0.5em;
+      margin: 0 0 0 0.5em;
+      padding: 0 1em 0 $profile-link-height;
+      height: $profile-link-height;
+      line-height: $profile-link-height;
+      background-position: left center;
+      background-repeat: no-repeat;
       &, &:active, &:visited {
         text-decoration: none;
+        text-decoration-line: none!important;
         color: $color-font-darker-grey;
       }
       &:hover {
         text-decoration: underline;
         color: $color-mx-blue;
       }
-      @include modifier('logout') {
-        text-align: center;
-        padding: 0.5em 1em;
-        background: $color-profile-menu-second-bg;
+      @include modifier('type-platform') {
+        background-image: url('../../resources/img/header/sprintr.svg');
+      }
+      @include modifier('type-community') {
+        background-image: url('../../resources/img/header/my_profile.svg');
+      }
+      @include modifier('type-developer') {
+        background-image: url('../../resources/img/header/acc_settings.svg');
+      }
+      @include modifier('type-logout') {
+        background-image: url('../../resources/img/header/logout.svg');
       }
     }
   }
@@ -172,6 +182,7 @@ $menu-width: 200px;
     padding: 1em;
     background: $color-profile-menu-second-bg;
     @include border-radius(4px 4px 0 0);
+    margin-bottom: 1em;
   }
 
   @include element('search-button') {

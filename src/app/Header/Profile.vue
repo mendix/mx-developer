@@ -9,10 +9,10 @@
       <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName" @mouseenter="mouseenter">
       <div :class="b('submenu', { open })">
         <span :class="b('display-name')">Welcome, {{ profile && profile.displayName }}</span>
-        <a :class="b('submenu__link')" :href="urls.platform">Mendix App Platform</a>
-        <a :class="b('submenu__link')" :href="urls.community" v-if="profile">My Profile</a>
-        <a :class="b('submenu__link')" :href="urls.developer" v-if="profile">Account Settings</a>
-        <a :class="b('submenu__link')" :href="profile.logoutUrl" v-if="profile && profile.logoutUrl">Log out</a>
+        <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform">Mendix App Platform</a>
+        <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile">My Profile</a>
+        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" v-if="profile">Account Settings</a>
+        <a :class="b('submenu__link', { 'type': 'logout' })" :href="profile.logoutUrl" v-if="profile && profile.logoutUrl">Log out</a>
       </div>
     </div>
   </div>
