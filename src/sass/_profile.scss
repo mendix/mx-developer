@@ -67,7 +67,7 @@ $menu-width: 200px;
     height: $height-top-bar-inside;
     float: left;
     position: relative;
-    width: $menu-width;
+    min-width: $menu-width;
     img {
       width: 40px;
       height: 40px;
@@ -104,7 +104,7 @@ $menu-width: 200px;
     @include opacity(0);
     visibility: hidden;
     border: 1px solid $color-submenu-border;
-    width: $menu-width;
+    min-width: $menu-width;
     min-height: 100px;
     position: absolute;
     background: #FFF;
@@ -167,9 +167,11 @@ $menu-width: 200px;
   @include element('display-name') {
     text-align: center;
     width: 100%;
+    white-space: nowrap;
     display: block;
     padding: 1em;
     background: $color-profile-menu-second-bg;
+    @include border-radius(4px 4px 0 0);
   }
 
   @include element('search-button') {
