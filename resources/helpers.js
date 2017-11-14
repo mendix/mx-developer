@@ -40,7 +40,7 @@ const waitForElementClass = (className, vueComponent, num = 200) => {
   const el = document.getElementsByClassName(className);
   if (el.length === 1) {
     const ignoredElement = new Vue({
-      el: `#${className}`,
+      el: `.${className}`,
       render: h => h(vueComponent)
     });
     return;
