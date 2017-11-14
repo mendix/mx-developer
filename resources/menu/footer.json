@@ -53,7 +53,7 @@
     "url": false,
     "sub": [
       { "title": "Support", "url": "https://support.mendix.com/" },
-      { "title": "Start for Free", "url": "https://developers.mendix.com/start-for-free/" },
+      { "title": "Start for Free", "url": "https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup" },
       { "title": "Contact Us", "url": "http://ww2.mendix.com/contact-us.html" }
     ]
   }
