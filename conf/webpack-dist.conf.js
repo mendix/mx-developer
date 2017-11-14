@@ -10,6 +10,7 @@ const HashOutput = require('webpack-plugin-hash-output');
 const AssetsPlugin = require('assets-webpack-plugin');
 
 const thisYear = (new Date()).getFullYear();
+const buildDate = (new Date()).toString();
 
 module.exports = {
   module: {
@@ -89,7 +90,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
     }),
-    new webpack.BannerPlugin(`Copyright ${thisYear} Mendix. Author: J.W. Lagendijk <jelte.lagendijk@mendix.com>. Released under the MIT license.`),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -101,8 +101,20 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin({
       // output: {comments: false},
-      compress: {unused: true, dead_code: true, warnings: false} // eslint-disable-line camelcase
+      compress: {unused: true, dead_code: true, warnings: false}, // eslint-disable-line camelcase
+      output: {
+        comments: false
+      }
     }),
+    new webpack.BannerPlugin(`Copyright ${thisYear} Mendix. Author: J.W. Lagendijk <jelte.lagendijk@mendix.com>. Released under the MIT license.
+
+Build date: ${buildDate}, [[https://travis-ci.org/mendix/mx-developer]]
+Source: https://github.com/mendix/mx-developer.
+Report issues to: https://github.com/mendix/mx-developer/issues.
+
+You like looking at source code? Javascript? Typescript? Come work for Mendix! Join a world-class team that's disrupting the status quo. (And may I suggest a position at the Community Team?)
+
+https://www.mendix.com/careers/`),
     new ExtractTextPlugin('mx-header-[contenthash].css'),
     // new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.LoaderOptionsPlugin({
