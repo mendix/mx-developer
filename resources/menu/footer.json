@@ -24,7 +24,9 @@
     "sub": [
       { "title": "Learning Paths", "url": "https://gettingstarted.mendixcloud.com/link/path" },
       { "title": "Modules", "url": "https://gettingstarted.mendixcloud.com/link/module" },
-      { "title": "Webinars", "url": "https://gettingstarted.mendixcloud.com/link/webinar" }
+      { "title": "Webinars", "url": "https://gettingstarted.mendixcloud.com/link/webinar" },
+      { "title": "Classroom", "url": "https://gettingstarted.mendixcloud.com/link/classroom" },
+      { "title": "Certifications", "url": "https://gettingstarted.mendixcloud.com/link/certification" }
     ]
   },
   {
