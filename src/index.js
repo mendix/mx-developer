@@ -21,12 +21,8 @@ if (process.env.NODE_ENV === 'production') {
 
 import Header from './app/Header/index.vue';
 import Footer from './app/Footer/index.vue';
-import {waitForElement} from 'Resources/helpers';
 
 import './sass/mx-header.scss';
-
-waitForElement('mxHeader', Header, 500); // 500 * 10ms timeout = 5s timeout
-waitForElement('mxFooter', Footer, 500); // 500 * 10ms timeout = 5s timeout
 
 window._headerObserver = new Observer(debounce(() => {
   let elementHeaderSelector = null;
