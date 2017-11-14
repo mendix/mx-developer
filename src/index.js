@@ -1,8 +1,11 @@
 /*! Copyright 2017 Mendix. Author: J.W. Lagendijk <jelte.lagendijk@mendix.com>. Released under the MIT license. */
 /* eslint camelcase: ["error",{properties: "never"}] */
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
 import 'es6-promise';
 import Vue from 'vue';
 import vueBemCn from 'Resources/vendor/bem';
+import Observer from 'mutation-observer';
+import debounce from 'tiny-debounce';
 
 Vue.use(vueBemCn, {
   ns: 'mx-developer__', // namespace
@@ -24,3 +27,48 @@ import './sass/mx-header.scss';
 
 waitForElement('mxHeader', Header, 500); // 500 * 10ms timeout = 5s timeout
 waitForElement('mxFooter', Footer, 500); // 500 * 10ms timeout = 5s timeout
+
+window._headerObserver = new Observer(debounce(() => {
+  let elementHeaderSelector = null;
+  const headerEl = document.getElementById('mxHeader');
+  if (headerEl === null) {
+    if (document.getElementsByClassName('mxHeader').length > 0) {
+      elementHeaderSelector = '.mxHeader';
+    }
+  } else {
+    elementHeaderSelector = '#mxHeader';
+  }
+
+  let elementFooterSelector = null;
+  const footerEl = document.getElementById('mxFooter');
+  if (footerEl === null) {
+    if (document.getElementsByClassName('mxFooter').length > 0) {
+      elementFooterSelector = '.mxFooter';
+    }
+  } else {
+    elementFooterSelector = '#mxFooter';
+  }
+
+  if (elementHeaderSelector !== null) {
+    const ignoredElement = new Vue({
+      el: elementHeaderSelector,
+      render: h => h(Header)
+    });
+  }
+
+  if (elementFooterSelector !== null) {
+    const ignoredElement = new Vue({
+      el: elementFooterSelector,
+      render: h => h(Footer)
+    });
+  }
+}, 100));
+
+window._headerObserver.observe(document, {
+  subtree: true,
+  childList: true,
+  attributes: false,
+  characterData: false,
+  attributeOldValue: false,
+  characterDataOldValue: false
+});
