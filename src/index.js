@@ -24,7 +24,7 @@ import Footer from './app/Footer/index.vue';
 
 import './sass/mx-header.scss';
 
-window._headerObserver = new Observer(debounce(() => {
+const load = () => {
   let elementHeaderSelector = null;
   const headerEl = document.getElementById('mxHeader');
   if (headerEl === null) {
@@ -58,7 +58,11 @@ window._headerObserver = new Observer(debounce(() => {
       render: h => h(Footer)
     });
   }
-}, 100));
+};
+
+load();
+
+window._headerObserver = new Observer(debounce(load, 100));
 
 window._headerObserver.observe(document, {
   subtree: true,
