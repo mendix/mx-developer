@@ -1,60 +1,129 @@
-[
-  {
-    "title" : "Community",
+[{
+    "title": "Community",
     "url": false,
     "sub": [
-      { "title": "Our Community", "url": "https://developer.mendixcloud.com/link/community" },
-      { "title": "Our Partners", "url": "https://developer.mendixcloud.com/link/partneroverview" },
-      { "title": "MVP Program", "url": "https://developer.mendixcloud.com/link/mvp" }
+      {
+        "title": "Our Community",
+        "url": "https://developer.mendixcloud.com/link/community"
+      },
+      {
+        "title": "Our Partners",
+        "url": "https://developer.mendixcloud.com/link/partneroverview"
+      },
+      {
+        "title": "MVP Program",
+        "url": "https://developer.mendixcloud.com/link/mvp"
+      }
     ]
   },
   {
-    "title" : "Documentation",
+    "title": "Documentation",
     "url": "https://docs.mendix.com",
     "sub": [
-      { "title": "Reference Guide", "url": "https://docs.mendix.com/refguide/" },
-      { "title": "How-to's", "url": "https://docs.mendix.com/howto/" },
-      { "title": "Release Notes", "url": "https://docs.mendix.com/releasenotes/" },
-      { "title": "API & SDK", "url": "https://docs.mendix.com/apidocs-mxsdk/" }
+      {
+        "title": "Reference Guide",
+        "url": "https://docs.mendix.com/refguide/"
+      },
+      {
+        "title": "How-to's",
+        "url": "https://docs.mendix.com/howto/"
+      },
+      {
+        "title": "Release Notes",
+        "url": "https://docs.mendix.com/releasenotes/"
+      },
+      {
+        "title": "API & SDK",
+        "url": "https://docs.mendix.com/apidocs-mxsdk/"
+      }
     ]
   },
   {
-    "title" : "Learn",
+    "title": "Learn",
     "url": "https://gettingstarted.mendixcloud.com/index3.html",
     "sub": [
-      { "title": "Learning Paths", "url": "https://gettingstarted.mendixcloud.com/link/path" },
-      { "title": "Modules", "url": "https://gettingstarted.mendixcloud.com/link/module" },
-      { "title": "Webinars", "url": "https://gettingstarted.mendixcloud.com/link/webinar" },
-      { "title": "Classroom", "url": "https://gettingstarted.mendixcloud.com/link/classroom" },
-      { "title": "Certifications", "url": "https://gettingstarted.mendixcloud.com/link/certification" }
+      {
+        "title": "Learning Paths",
+        "url": "https://gettingstarted.mendixcloud.com/link/path"
+      },
+      {
+        "title": "Modules",
+        "url": "https://gettingstarted.mendixcloud.com/link/module"
+      },
+      {
+        "title": "Webinars",
+        "url": "https://gettingstarted.mendixcloud.com/link/webinar"
+      },
+      {
+        "title": "Classroom",
+        "url": "https://gettingstarted.mendixcloud.com/link/classroom"
+      },
+      {
+        "title": "Certifications",
+        "url": "https://gettingstarted.mendixcloud.com/link/certification"
+      }
     ]
   },
   {
-    "title" : "Resources",
+    "title": "Resources",
     "url": false,
     "sub": [
-      { "title": "Mendix Developer Blog", "url": "https://www.mendix.com/tag/developers/" },
-      { "title": "Community Blog", "url": "https://developers.mendix.com/spotlight/" },
-      { "title": "Jobs", "url": "https://developers.mendix.com/jobs/" },
-      { "title": "Wallpapers", "url": "https://design.mendix.com/p/wallpapers" }
-    ]
-  },
-    {
-    "title" : "Tools",
-    "url": false,
-    "sub": [
-      { "title": "Forum", "url": "https://forum.mendixcloud.com/index4.html" },
-      { "title": "App Store", "url": "http://appstore.mendix.com" },
-      { "title": "Model Share", "url": "http://modelshare.mendix.com" }
+      {
+        "title": "Mendix Developer Blog",
+        "url": "https://www.mendix.com/tag/developers/",
+        "external": true
+      },
+      {
+        "title": "Community Blog",
+        "url": "https://developers.mendix.com/spotlight/"
+      },
+      {
+        "title": "Jobs",
+        "url": "https://developers.mendix.com/jobs/"
+      },
+      {
+        "title": "Wallpapers",
+        "url": "https://design.mendix.com/p/wallpapers",
+        "external": true
+      }
     ]
   },
   {
-    "title" : false,
+    "title": "Tools",
     "url": false,
     "sub": [
-      { "title": "Support", "url": "https://support.mendix.com/" },
-      { "title": "Start for Free", "url": "https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup" },
-      { "title": "Contact Us", "url": "http://ww2.mendix.com/contact-us.html" }
+      {
+        "title": "Forum",
+        "url": "https://forum.mendixcloud.com/index4.html"
+      },
+      {
+        "title": "App Store",
+        "url": "http://appstore.mendix.com"
+      },
+      {
+        "title": "Model Share",
+        "url": "http://modelshare.mendix.com"
+      }
+    ]
+  },
+  {
+    "title": false,
+    "url": false,
+    "sub": [
+      {
+        "title": "Support",
+        "url": "https://support.mendix.com/"
+      },
+      {
+        "title": "Start for Free",
+        "url": "https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup",
+        "external": true
+      },
+      {
+        "title": "Contact Us",
+        "url": "http://ww2.mendix.com/contact-us.html",
+        "external": true
+      }
     ]
   }
 ]
