@@ -1,6 +1,6 @@
 <template>
-  <div :class="b()" @mouseenter="mouseenter" @mouseleave="mouseleave" @click="menu">
-    <a :class="b('head', { on, 'has-sub': link.sub && link.sub.length > 0 })" v-if="link.url" :href="link.url">{{ link.title }}</a>
+  <div :class="b()" @mouseenter="mouseenter" @mouseleave="mouseleave">
+    <a :class="b('head', { on, 'has-sub': link.sub && link.sub.length > 0 })" v-if="link.url" :href="link.url" @click="topmenu">{{ link.title }}</a>
     <a :class="b('head', { on, 'has-sub': link.sub && link.sub.length > 0 })" v-else href="#" @click.stop.prevent="menu">{{ link.title }}</a>
     <span :class="b('expand')" v-if="link.sub && link.sub.length > 0" @click.stop.prevent="menu">
       <span :class="b('expand-icon', { 'active': on })"></span>
@@ -29,6 +29,14 @@ export default {
     menu() {
       if (this.mob) {
         this.on = !this.on;
+      }
+    },
+    topmenu(evt) {
+      if (this.mob) {
+        if (!this.on) {
+          evt.preventDefault();
+          this.on = true;
+        }
       }
     },
     mouseenter() {

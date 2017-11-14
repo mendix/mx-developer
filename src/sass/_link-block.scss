@@ -1,5 +1,4 @@
 @include element('link-block') {
-  $root: &;
   line-height: 19px;
   font-size: 14px;
   @include modifier('footer') {

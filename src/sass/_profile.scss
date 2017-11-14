@@ -55,7 +55,7 @@ $menu-width: 200px;
       display: block;
       float: right;
       margin: 0;
-      border-radius: 50%;
+      @include border-radius(50%);
       border-width: 0;
       outline: none;
     }
@@ -74,7 +74,7 @@ $menu-width: 200px;
       display: block;
       float: right;
       margin: 22px 0 0;
-      border-radius: 50%;
+      @include border-radius(50%);
     }
     &:hover {
       &:after {
@@ -150,6 +150,7 @@ $menu-width: 200px;
       line-height: $profile-link-height;
       background-position: left center;
       background-repeat: no-repeat;
+      white-space: nowrap;
       &, &:active, &:visited {
         @include no-text-decoration();
         color: $color-font-darker-grey;

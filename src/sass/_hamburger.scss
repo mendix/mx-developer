@@ -15,9 +15,9 @@ $hamburger-hover-transition-timing-function: linear !default;
     display: inline-block;
     cursor: pointer;
 
-    transition-property: opacity, filter;
-    transition-duration: $hamburger-hover-transition-duration;
-    transition-timing-function: $hamburger-hover-transition-timing-function;
+    @include prefix(transition-property, 'opacity, filter', moz webkit o);
+    @include prefix(transition-duration, $hamburger-hover-transition-duration, moz webkit o);
+    @include prefix(transition-timing-function, $hamburger-hover-transition-timing-function, moz webkit o);
 
     // Normalize (<button>)
     font: inherit;
@@ -32,7 +32,7 @@ $hamburger-hover-transition-timing-function: linear !default;
     }
 
     &:hover {
-      opacity: $hamburger-hover-opacity;
+      @include opacity($hamburger-hover-opacity);
     }
 
     visibility: hidden;
@@ -66,11 +66,11 @@ $hamburger-hover-transition-timing-function: linear !default;
       width: $hamburger-layer-width;
       height: $hamburger-layer-height;
       background-color: $hamburger-layer-color;
-      border-radius: $hamburger-layer-border-radius;
+      @include border-radius($hamburger-layer-border-radius);
       position: absolute;
-      transition-property: transform;
-      transition-duration: 0.15s;
-      transition-timing-function: ease;
+      @include prefix(transition-property, transform, moz webkit o);
+      @include prefix(transition-duration, 0.15s, moz webkit o);
+      @include prefix(transition-timing-function, ease, moz webkit o);
     }
 
     &::before,
