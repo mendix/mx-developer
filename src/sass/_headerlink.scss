@@ -2,7 +2,7 @@
   font-size: $font-size;
   padding: 0 17px;
   line-height: $height-top-bar-inside;
-  color: $color-font-darker-grey;
+  color: $color-font-darker-grey!important;
   vertical-align: middle;
   position: relative;
   @include mq(sm, max) {
@@ -49,7 +49,7 @@
     }
     @include modifier('on') {
       &, &:active, &:visited, &:hover {
-        color: $color-mx-blue;
+        color: $color-mx-blue!important;
       }
       @include mq(sm, min) {
         &.mx-developer__headerlink__head--has-sub:after {
