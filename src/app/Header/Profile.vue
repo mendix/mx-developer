@@ -6,7 +6,8 @@
     </a>
     <!-- <span id="mendix-search-button" class="mx-developer__profile__search-button"></span> -->
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
-      <img :src="profile && profile.avatarUrl || profilePic" :alt="profile && profile.displayName" @mouseenter="mouseenter">
+      <img v-if="profile && profile.avatarUrl && !imgError" :src="profile.avatarUrl" :alt="profile && profile.displayName" @mouseenter="mouseenter" @error="imgLoadError">
+      <img v-if="!(profile && profile.avatarUrl) || imgError" :src="profilePic" :alt="profile && profile.displayName" @mouseenter="mouseenter">
       <div :class="b('submenu', { open })">
         <span :class="b('display-name')">Welcome, {{ profile && profile.displayName }}</span>
         <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform">Mendix App Platform</a>
@@ -32,7 +33,8 @@ export default {
       profile: false,
       urls: urls,
       profilePic: require('Resources/img/header/avatar.svg'),
-      open: false
+      open: false,
+      imgError: false
     }
   },
   created() {
@@ -60,6 +62,10 @@ export default {
     },
     menu(e) {
       this.open = !this.open;
+    },
+    imgLoadError(e) {
+      console.warn(`MX Header: Failed to load profile image: "${e.target.src}", disabling img`);
+      this.imgError = true;
     }
   }
 };

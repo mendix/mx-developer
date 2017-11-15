@@ -24,7 +24,7 @@
     a {
       @include no-text-decoration();
       &, &:active, &:visited {
-        font-weight: 100;
+        font-weight: 400;
         color: $color-white;
       }
       &:hover {
