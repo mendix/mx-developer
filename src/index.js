@@ -6,6 +6,7 @@ import Vue from 'vue';
 import vueBemCn from 'Resources/vendor/bem';
 import Observer from 'mutation-observer';
 import debounce from 'tiny-debounce';
+import 'js-polyfills/dom'; // IE element.append polyfills (fix =< IE11)
 
 Vue.use(vueBemCn, {
   ns: 'mx-developer__', // namespace

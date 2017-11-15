@@ -12,6 +12,7 @@
     "bem-cn-lite": "^3.0.0",
     "es6-promise": "^4.1.1",
     "fetch-jsonp": "^1.1.1",
+    "js-polyfills": "^0.1.41",
     "mutation-observer": "^1.0.3",
     "tiny-debounce": "^0.1.1",
     "vue": "^2.5.2"
