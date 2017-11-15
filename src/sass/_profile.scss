@@ -77,17 +77,17 @@ $menu-width: 200px;
       @include border-radius(50%);
     }
     &:hover {
-      &:after {
+      &:before {
         background: url('../../resources/img/header/blue-down.svg') 6px 0 no-repeat;
       }
     }
-    &:after {
+    &:before {
       display: inline-block;
       width: 20px;
       height: 10px;
       content: "";
       background: url('../../resources/img/header/gray-down.svg') 6px 0 no-repeat;
-      right: -20px;
+      right: 40px;
       top: 40px;
       position: absolute;
       @include mq(md, max) {
