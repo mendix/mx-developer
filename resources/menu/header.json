@@ -80,11 +80,6 @@
       {
         "title": "Jobs",
         "url": "https://developers.mendix.com/jobs/"
-      },
-      {
-        "title": "Wallpapers",
-        "url": "https://design.mendix.com/p/wallpapers",
-        "external": true
       }
     ]
   },
