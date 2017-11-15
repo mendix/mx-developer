@@ -16,7 +16,7 @@
     position: relative;
     &, &:active, &:visited {
       @include no-text-decoration();
-      color: $color-font-darker-grey;
+      color: $color-font-darker-grey!important;
       @include transition(color 0.15s);
       outline: 0;
       font-size: $font-size;
