@@ -104,7 +104,8 @@
   {
     "title": "App Store",
     "url": "http://appstore.mendix.com",
-    "sub": []
+    "sub": [],
+    "external": true
   },
   {
     "title": "Support",
