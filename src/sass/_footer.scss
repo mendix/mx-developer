@@ -53,6 +53,7 @@
         display: inline;
         @include mq('tablet-small', max) {
           display: block;
+          margin-bottom: 7px;
         }
       }
       @include element('delimiter') {
