@@ -1,7 +1,7 @@
 {
   "name": "mx-header",
   "version": "1.0.0",
-  "description": "Header and footer for Mendix developer sites",
+  "description": "Header and footer for Mendix developer sites.",
   "private": true,
   "author": {
     "name": "Mendix B.V.",
