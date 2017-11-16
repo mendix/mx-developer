@@ -31,5 +31,13 @@
         color: $color-bottom-font;
       }
     }
+    @include modifier('type-button') {
+      // margin-bottom: 5px;
+      // a {
+      //   border: 1px solid $color-bottom-font;
+      //   @include border-radius(3px);
+      //   padding: 5px;
+      // }
+    }
   }
 }

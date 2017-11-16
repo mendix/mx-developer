@@ -88,8 +88,12 @@
     "url": false,
     "sub": [
       {
-        "title": "Forum",
-        "url": "https://forum.mendixcloud.com/index4.html"
+        "title": "Forum Questions",
+        "url": "https://forum.mendixcloud.com/link/questions"
+      },
+      {
+        "title": "Forum Ideas",
+        "url": "https://forum.mendixcloud.com/link/ideas"
       },
       {
         "title": "App Store",
@@ -112,12 +116,14 @@
       {
         "title": "Start for Free",
         "url": "https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup",
-        "external": true
+        "external": true,
+        "type": "button"
       },
       {
         "title": "Contact Us",
         "url": "http://ww2.mendix.com/contact-us.html",
-        "external": true
+        "external": true,
+        "type": "button"
       }
     ]
   }

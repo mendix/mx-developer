@@ -80,26 +80,31 @@
       {
         "title": "Jobs",
         "url": "https://developers.mendix.com/jobs/"
-      }
-    ]
-  },
-  {
-    "title": "Tools",
-    "url": false,
-    "sub": [
-      {
-        "title": "Forum",
-        "url": "https://forum.mendixcloud.com/index4.html"
-      },
-      {
-        "title": "App Store",
-        "url": "http://appstore.mendix.com"
       },
       {
         "title": "Model Share",
         "url": "http://modelshare.mendix.com"
       }
     ]
+  },
+  {
+    "title": "Forum",
+    "url": "https://forum.mendixcloud.com/index4.html",
+    "sub": [
+      {
+        "title": "Questions",
+        "url": "https://forum.mendixcloud.com/link/questions"
+      },
+      {
+        "title": "Ideas",
+        "url": "https://forum.mendixcloud.com/link/ideas"
+      }
+    ]
+  },
+  {
+    "title": "App Store",
+    "url": "http://appstore.mendix.com",
+    "sub": []
   },
   {
     "title": "Support",
