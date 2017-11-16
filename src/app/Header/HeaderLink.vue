@@ -18,6 +18,8 @@
 import Vue from 'vue';
 import toplink from './TopLink.vue';
 
+let timeout = null;
+
 export default {
   name: 'headerlink',
   props: ['link', 'mob'],
@@ -57,10 +59,20 @@ export default {
       }
     },
     mouseenter() {
-      this.on = !this.mob ? true : this.on;
+      if (!this.mob) {
+        if (timeout) {
+          clearTimeout(timeout)
+        }
+        timeout = setTimeout(() => {
+          this.on = true;
+        }, 250);
+      }
     },
     mouseleave() {
       if (!this.mob) {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
         this.on = false;
       }
     }

@@ -21,7 +21,7 @@
     @extend %clearfix;
     margin-bottom: 1rem;
     &:last-child {
-      padding-top: 1.5rem;
+      padding-top: 2rem;
       padding-bottom: 3rem;
       margin-bottom: 0;
       background: $color-bottom-blue-secondary;
@@ -40,7 +40,7 @@
   @include element('bottom-links') {
     color: $color-bottom-light-blue-second;
     font-size: $font-size;
-    a {
+    a, div {
       &, &:active, &:visited {
         text-decoration: none;
         color: $color-bottom-light-blue-second;
@@ -48,9 +48,23 @@
         font-size: $font-size;
       }
     }
+    .copyright {
+      @include element('block') {
+        display: inline;
+        @include mq('tablet-small', max) {
+          display: block;
+        }
+      }
+      @include element('delimiter') {
+        display: inline;
+        @include mq('tablet-small', max) {
+          display: none;
+        }
+      }
+    }
     @include mq(sm, max) {
       text-align: center;
-      margin-bottom: 2em;
+      margin-bottom: 1rem;
     };
   }
   @include element('col') {
