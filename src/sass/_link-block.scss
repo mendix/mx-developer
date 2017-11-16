@@ -7,11 +7,11 @@
   @include element('title') {
     display: inline-block;
     margin: 0 0 1em;
-    color: $color-bottom-light-blue-second;
     font-weight: 600;
     line-height: 1;
     &, &:active, &:visited {
       @include no-text-decoration();
+      color: $color-bottom-light-blue-second!important;
     }
   }
   @include element('links') {
