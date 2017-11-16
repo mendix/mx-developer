@@ -16,7 +16,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import toplink from './Toplink.vue';
+import toplink from './TopLink.vue';
 
 export default {
   name: 'headerlink',
