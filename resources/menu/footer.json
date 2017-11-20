@@ -1,43 +1,4 @@
-[{
-    "title": "Community",
-    "url": false,
-    "sub": [
-      {
-        "title": "Our Community",
-        "url": "https://developer.mendixcloud.com/link/community"
-      },
-      {
-        "title": "Our Partners",
-        "url": "https://developer.mendixcloud.com/link/partneroverview"
-      },
-      {
-        "title": "MVP Program",
-        "url": "https://developer.mendixcloud.com/link/mvp"
-      }
-    ]
-  },
-  {
-    "title": "Documentation",
-    "url": "https://docs.mendix.com",
-    "sub": [
-      {
-        "title": "Reference Guide",
-        "url": "https://docs.mendix.com/refguide/"
-      },
-      {
-        "title": "How-to's",
-        "url": "https://docs.mendix.com/howto/"
-      },
-      {
-        "title": "Release Notes",
-        "url": "https://docs.mendix.com/releasenotes/"
-      },
-      {
-        "title": "API & SDK",
-        "url": "https://docs.mendix.com/apidocs-mxsdk/"
-      }
-    ]
-  },
+[
   {
     "title": "Learn",
     "url": "https://gettingstarted.mendixcloud.com/index3.html",
@@ -64,6 +25,61 @@
       }
     ]
   },
+  {
+    "title": "Documentation",
+    "url": "https://docs.mendix.com",
+    "sub": [
+      {
+        "title": "Reference Guide",
+        "url": "https://docs.mendix.com/refguide/"
+      },
+      {
+        "title": "How-to's",
+        "url": "https://docs.mendix.com/howto/"
+      },
+      {
+        "title": "Release Notes",
+        "url": "https://docs.mendix.com/releasenotes/"
+      },
+      {
+        "title": "API & SDK",
+        "url": "https://docs.mendix.com/apidocs-mxsdk/"
+      }
+    ]
+  },
+  {
+    "title": "Forum",
+    "url": "https://forum.mendixcloud.com/index4.html",
+    "sub": [
+      {
+        "title": "Forum Questions",
+        "url": "https://forum.mendixcloud.com/link/questions"
+      },
+      {
+        "title": "Forum Ideas",
+        "url": "https://forum.mendixcloud.com/link/ideas"
+      }
+    ]
+  },
+  {
+    "title": "Community",
+    "url": false,
+    "sub": [
+      {
+        "title": "Our Community",
+        "url": "https://developer.mendixcloud.com/link/community"
+      },
+      {
+        "title": "Our Partners",
+        "url": "https://developer.mendixcloud.com/link/partneroverview"
+      },
+      {
+        "title": "MVP Program",
+        "url": "https://developer.mendixcloud.com/link/mvp"
+      }
+    ]
+  },
+
   {
     "title": "Resources",
     "url": false,
@@ -92,20 +108,7 @@
       }
     ]
   },
-  {
-    "title": "Forum",
-    "url": "https://forum.mendixcloud.com/index4.html",
-    "sub": [
-      {
-        "title": "Forum Questions",
-        "url": "https://forum.mendixcloud.com/link/questions"
-      },
-      {
-        "title": "Forum Ideas",
-        "url": "https://forum.mendixcloud.com/link/ideas"
-      }
-    ]
-  },
+
   {
     "title": false,
     "url": false,
