@@ -32,7 +32,7 @@ export default {
     return {
       imgLink: constants.headerImgUrl,
       links: require('Resources/menu/header.json'),
-      img: require('Resources/img/mx_logo.png'),
+      img: require('Resources/img/mx_community_logo.png'),
       useProfile: true
     }
   },

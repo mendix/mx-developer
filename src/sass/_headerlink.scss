@@ -2,7 +2,15 @@
   $headerlink:&;
   font-size: $font-size;
   padding: 0 17px;
-  line-height: $height-top-bar-inside;
+  // @include mq(sm, min) {
+  //   padding: 0 10px;
+  // }
+  // @include mq(lg, min) {
+  //   padding: 0 17px;
+  // }
+
+  line-height: $height-top-bar-inside + $logo-text-correction;
+  height: $height-top-bar-inside;
   color: $color-font-darker-grey!important;
   vertical-align: middle;
   position: relative;
@@ -11,6 +19,7 @@
     padding: 0 0 0 20px;
     border-bottom: 1px solid $color-submenu-border;
     z-index: 9999;
+    height: auto;
   }
   @include element('head') {
     $root:&;
@@ -21,13 +30,16 @@
       @include transition(color 0.15s);
       outline: 0;
       font-size: $font-size;
-      cursor: pointer;
+      cursor: default;
       display: block;
       height: $height-top-bar-inside;
       position: relative;
-      @include mq(md, max) {
+      @include mq(sm, max) {
         height: auto;
       }
+    }
+    @include modifier('is-link') {
+      cursor: pointer;
     }
     @include modifier('has-sub') {
       @include mq(md, max) {
@@ -37,7 +49,7 @@
         &:after {
           line-height: 1;
           position: absolute;
-          top: 40px;
+          top: 43px;
           right: -16px;
           display: block;
           width: 14px;
@@ -88,7 +100,7 @@
       min-height: 50px;
       position: absolute;
       background: $color-white;
-      margin-top: -18px;
+      margin-top: -9px;
       padding: 1em;
       z-index: 9999;
     }
