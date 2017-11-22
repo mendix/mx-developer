@@ -33,6 +33,7 @@
       cursor: default;
       display: block;
       height: $height-top-bar-inside;
+      line-height: $height-top-bar-inside + $logo-text-correction;
       position: relative;
       @include mq(sm, max) {
         height: auto;
