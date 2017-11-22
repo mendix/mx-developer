@@ -1,9 +1,12 @@
 @include element('navbar') {
   @include element('header') {
     @extend %clearfix;
-    margin-right: $default-margin;
+    margin-right: 40px;
     float: left;
     @include transition(margin-left 150ms ease-in-out);
+    @include mq(md, max) {
+      margin-right: 20px;
+    }
     @include mq(sm, max) {
       margin-left: 3 * $default-margin;
     }
@@ -16,6 +19,7 @@
     line-height: $height-top-bar-inside;
     border-width: 0;
     outline: none;
+    // width: 158px;
     img {
       height: $top-row-height;
       width: auto;
