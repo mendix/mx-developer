@@ -1,13 +1,20 @@
 @include element('headerlink') {
   $headerlink:&;
   font-size: $font-size;
-  padding: 0 17px;
+  padding: 0;
   // @include mq(sm, min) {
   //   padding: 0 10px;
   // }
-  // @include mq(lg, min) {
+  // @include mq(md, min) {
   //   padding: 0 17px;
   // }
+  @include mq(sm, min) {
+    padding: 0 13px;
+  }
+  @include mq(md, min) {
+    padding: 0 17px;
+  }
+
 
   line-height: $height-top-bar-inside + $logo-text-correction;
   height: $height-top-bar-inside;

@@ -3,7 +3,7 @@ $menu-width: 200px;
   $pad: ($height-top-bar-inside - $font-size) / 2;
   @include border-radius($top-row-height / 2);
   padding: 13px 10px;
-  margin: 22px 0 0;
+  margin: 24px 0 0;
   @include no-text-decoration();
   text-align: center;
   font-size: $font-size;
@@ -35,6 +35,9 @@ $menu-width: 200px;
     display: none;
     @include modifier('shown') {
       display: inline-block;
+      @include mq(md, max) {
+        margin-left: 0;
+      }
     }
   }
 
@@ -48,6 +51,9 @@ $menu-width: 200px;
     display: none;
     @include modifier('shown') {
       display: inline-block;
+      @include mq(sm, max) {
+        margin-left: 5px;
+      }
     }
     img {
       width: 40px;
@@ -76,7 +82,7 @@ $menu-width: 200px;
       height: 40px;
       display: block;
       float: right;
-      margin: 22px 0 0;
+      margin: 24px 0 0;
       @include border-radius(50%);
     }
     &:hover {
