@@ -23,7 +23,7 @@ $menu-width: 200px;
 
   @include element('start-button') {
     @include topbutton();
-    float: left;
+    float: right;
     &, &:active, &:visited {
       background: $color-button-green;
       color: #fff;
@@ -39,12 +39,16 @@ $menu-width: 200px;
         margin-left: 0;
       }
     }
+    @include mq(phablet, max) {
+      font-size: 11px;
+      padding: 13px 5px;
+    }
   }
 
   @include element('login-button') {
     @include topbutton();
+    float: right;
     padding:0;
-    float: left;
     border:none;
     outline:none;
 
@@ -73,10 +77,10 @@ $menu-width: 200px;
     height: $height-top-bar-inside;
     float: left;
     position: relative;
-    min-width: 95px;
-    @include mq(md, min) {
-      min-width: 200px;
-    }
+    min-width: 55px;
+    // @include mq(md, min) {
+    //   min-width: 200px;
+    // }
     img {
       width: 40px;
       height: 40px;
@@ -85,24 +89,24 @@ $menu-width: 200px;
       margin: 24px 0 0;
       @include border-radius(50%);
     }
-    &:hover {
-      &:before {
-        background: url('../../resources/img/header/blue-down.svg') 6px 0 no-repeat;
-      }
-    }
-    &:before {
-      display: inline-block;
-      width: 20px;
-      height: 10px;
-      content: "";
-      background: url('../../resources/img/header/gray-down.svg') 6px 0 no-repeat;
-      right: 40px;
-      top: 40px;
-      position: absolute;
-      @include mq(md, max) {
-        display: none;
-      }
-    }
+    // &:hover {
+    //   &:before {
+    //     background: url('../../resources/img/header/blue-down.svg') 6px 0 no-repeat;
+    //   }
+    // }
+    // &:before {
+    //   display: inline-block;
+    //   width: 20px;
+    //   height: 10px;
+    //   content: "";
+    //   background: url('../../resources/img/header/gray-down.svg') 6px 0 no-repeat;
+    //   right: 40px;
+    //   top: 40px;
+    //   position: absolute;
+    //   @include mq(md, max) {
+    //     display: none;
+    //   }
+    // }
   }
 
   @include element('submenu') {
@@ -197,16 +201,22 @@ $menu-width: 200px;
   @include element('search-button') {
     $picture-height: 24px;
     $offset: (($height-top-bar-inside - $picture-height) / 2);
-    display: none;
+    display: inline;
     width: 36px;
     height: $height-top-bar-inside;
     float: left;
     margin: 0 10px;
-    background: url('../../resources/img/header/search.svg') 7px $offset no-repeat;
-    @include opacity(0.6);
+    background: url('../../resources/img/header/tonav_search.svg') 7px 32px no-repeat;
+    //@include opacity(0.6);
     cursor: pointer;
     &:hover {
       @include opacity(1);
+    }
+    @include mq(phablet, max) {
+      margin: 0 3px 0 0;
+    }
+    &.hidden {
+      display: none;
     }
   }
 }

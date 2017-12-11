@@ -18,6 +18,7 @@ const urls = {
 };
 
 const isSmallViewport = () => window.innerWidth <= 992;
+const isPhoneViewport = () => window.innerWidth <= 480;
 
 const waitForElementIdCb = (id, func, num = 200) => {
   const el = document.getElementById(id);
@@ -70,6 +71,7 @@ const waitForElementClass = (className, vueComponent, num = 200) => {
 export {
   urls,
   isSmallViewport,
+  isPhoneViewport,
   constants,
   waitForElementId,
   waitForElementIdCb,

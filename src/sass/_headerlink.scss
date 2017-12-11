@@ -55,17 +55,17 @@
         max-width: 300px;
       }
       @include mq(sm, min) {
-        &:after {
-          line-height: 1;
-          position: absolute;
-          top: 43px;
-          right: -16px;
-          display: block;
-          width: 14px;
-          height: 10px;
-          content: "";
-          background: url('../../resources/img/header/gray-down.svg') 0 0 no-repeat;
-        }
+        // &:after {
+        //   line-height: 1;
+        //   position: absolute;
+        //   top: 43px;
+        //   right: -16px;
+        //   display: block;
+        //   width: 14px;
+        //   height: 10px;
+        //   content: "";
+        //   background: url('../../resources/img/header/gray-down.svg') 0 0 no-repeat;
+        // }
       }
     }
     @include mq(sm, max) {
