@@ -76,6 +76,10 @@
       {
         "title": "MVP Program",
         "url": "https://developer.mendixcloud.com/link/mvp"
+      },
+      {
+        "title": "Our Partners’ Projects",
+        "url": "https://developer.mendixcloud.com/link/customers"
       }
     ]
   },
@@ -105,6 +109,10 @@
       {
         "title": "Model Share",
         "url": "http://modelshare.mendix.com"
+      },
+      {
+        "title": "Wallpapers",
+        "url": "https://developer.mendixcloud.com/link/wallpapers"
       }
     ]
   },

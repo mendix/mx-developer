@@ -1,0 +1,74 @@
+@include element('supportmenu') {
+  display: inline-block;
+  position: relative;
+  float: left;
+  @include element('icon') {
+    //display: none;
+    width: 36px;
+    height: $height-top-bar-inside;
+    float: left;
+    margin: 0 10px;
+    background: url('../../resources/img/header/tonav_support.svg') 7px 31px no-repeat; //@include opacity(0.6);
+    cursor: pointer;
+    &:hover {
+      @include opacity(1);
+    }
+    @include mq(phablet, max) {
+        margin: 0 3px 0 0;
+    }
+  }
+  @include element('submenu') {
+    @include border-radius(4px);
+    @include speech-bubble(top, right);
+    @include transition(opacity 200ms ease-in-out, visibility 200ms ease-in-out);
+    @include box-shadow(2px 3px 3px rgba(0, 0, 0, 0.08));
+    @include opacity(0);
+    visibility: hidden;
+    border: 1px solid $color-submenu-border;
+    min-width: $menu-width;
+    min-height: 100px;
+    position: absolute;
+    background: #FFF;
+    margin-top: 75px;
+    padding: 1em 0;
+    right: -7px;
+    @include mq(phablet, max) {
+        right: -15px;
+    }
+    line-height: $font-size;
+    font-size: $font-size;
+    z-index: 10000;
+    $offset: 26px;
+    &:before {
+      right: $offset;
+    }
+    &:after {
+      right: ($offset + 2);
+      border-bottom-color: $color-profile-menu-second-bg;
+    }
+    @include modifier('open') {
+      visibility: visible;
+      @include opacity(1);
+    }
+    @include element('link') {
+      display: block;
+      margin: 0 0 0 0.5em;
+      padding: 0 1.5em 0;
+      height: $profile-link-height;
+      line-height: $profile-link-height;
+      background-position: left center;
+      background-repeat: no-repeat;
+      white-space: nowrap;
+      &,
+      &:active,
+      &:visited {
+        @include no-text-decoration();
+        color: $color-font-darker-grey;
+      }
+      &:hover {
+        @include no-text-decoration();
+        color: $color-mx-blue;
+      }
+    }
+  }
+}

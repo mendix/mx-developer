@@ -1,10 +1,13 @@
 <template>
   <div :class="b({'loading': !loaded })">
-    <a href="https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
     <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })" title="Click here to login">
       <img :src="profilePic" alt="Click here to login">
     </a>
-    <!-- <span id="mendix-search-button" class="mx-developer__profile__search-button"></span> -->
+    <a href="https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
+
+    <span id="mendix-header-search-button" class="mx-developer__profile__search-button hidden"></span>
+    <support-menu />
+
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
       <img v-if="profile && profile.avatarUrl && !imgError" :src="profile.avatarUrl" :alt="profile && profile.displayName" @mouseenter="mouseenter" @error="imgLoadError">
       <img v-if="!(profile && profile.avatarUrl) || imgError" :src="profilePic" :alt="profile && profile.displayName" @mouseenter="mouseenter">
@@ -21,6 +24,7 @@
 <script>
 import Vue from 'vue';
 import fetchJsonp from 'fetch-jsonp';
+import SupportMenu from './SupportMenu.vue';
 import { urls } from 'Resources/helpers';
 
 const url = `https://home.mendix.com/mxid/appbar2?q=${+(new Date())}`;
@@ -67,6 +71,9 @@ export default {
       console.warn(`MX Header: Failed to load profile image: "${e.target.src}", disabling img`);
       this.imgError = true;
     }
+  },
+  components: {
+    'support-menu': SupportMenu
   }
 };
 </script>

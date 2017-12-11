@@ -2,7 +2,8 @@
   <div :class="b({'shown': init})" ref="navbar">
     <div :class="b('header')" ref="header">
       <a target="_self" href="https://developers.mendix.com" :class="b('brand')">
-        <img :src="img" alt="Logo">
+        <img :src="img" alt="Logo" v-if="!phone">
+        <img :src="img_small" alt="Logo" v-if="phone">
       </a>
     </div>
     <div :class="b('collapse', { 'mobile': mob })">
@@ -26,6 +27,7 @@ export default {
   name: 'navbar',
   props: [
     'mob',
+    'phone',
     'init'
   ],
   data () {
@@ -33,6 +35,7 @@ export default {
       imgLink: constants.headerImgUrl,
       links: require('Resources/menu/header.json'),
       img: require('Resources/img/mx_community_logo.png'),
+      img_small: require('Resources/img/mx_logo.png'),
       useProfile: true
     }
   },

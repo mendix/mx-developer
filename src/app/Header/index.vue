@@ -6,7 +6,7 @@
           <span :class="b('hamburger-inner', { 'active': mob })"></span>
         </span>
       </button>
-      <nav-bar :mob="mob" :init="init" />
+      <nav-bar :mob="mob" :phone="phone" :init="init" />
       <resize-observer @notify="handleResize" />
     </div>
   </div>
@@ -14,7 +14,7 @@
 <script>
 import Vue from 'vue';
 import { ResizeObserver } from 'Resources/vendor/vue-resize';
-import { isSmallViewport } from 'Resources/helpers';
+import { isSmallViewport, isPhoneViewport } from 'Resources/helpers';
 import NavBar from './Navbar.vue';
 
 let timeout = null;
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       mob: false,
+      phone: false,
       init: false
     }
   },
@@ -43,6 +44,7 @@ export default {
         if (!isSmallViewport()) {
           this.mob = false;
         }
+        this.phone = isPhoneViewport();
       }, 50);
     }
   }
