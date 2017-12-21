@@ -3,8 +3,10 @@ $notification-offset: 10px;
 @include element('notification') {
   display: block;
   width: 100%;
-  padding-bottom: 20px;
   overflow: hidden;
+  @include modifier('open') {
+    padding-bottom: 20px;
+  }
   @include element('inner') {
     @include border-radius(5px 5px);
     @include transition(margin-top 250ms ease);

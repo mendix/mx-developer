@@ -1,5 +1,5 @@
 <template>
-  <div :class="b()" v-if="!reviewed">
+  <div :class="b({ open })" v-if="!reviewed && enabled">
       <div :class="b('inner', { open })">
           <div :class="b('message')">
               <a href="http://gtnr.it/2yFJfzA" target="_blank" v-if="messageStatus === 1" @click="closereview">Now through December 31st, for every approved Gartner Peer Insights review of Mendix by <strong>non-partners</strong>, Gartner will donate $25 to a charity of your choice.</a>
@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       reviewed: isNotificationShown(),
-      open: false
+      open: false,
+      enabled: true
     }
   },
   computed: {
@@ -46,9 +47,6 @@ export default {
       }, 1000);
     }
   },
-  mounted: function() {
-
-  },
   watch: {
     messageStatus(newVal, oldVal) {
       if ((newVal === 1 || newVal === 2) && !this.reviewed) {
@@ -57,6 +55,8 @@ export default {
             this.open = true;
           }, 1000);
         })
+      } else {
+        this.enabled = false;
       }
     }
   }
