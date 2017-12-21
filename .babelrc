@@ -1,6 +1,12 @@
 {
+  "plugins": [
+    "transform-object-assign",
+    "es6-promise"
+  ],
   "presets": [
-    "es2015"
+    "stage-2",
+    "es2015",
+    "stage-0"
   ],
   "env": {
     "test": {

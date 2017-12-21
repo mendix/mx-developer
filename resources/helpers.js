@@ -34,11 +34,12 @@ const waitForElementIdCb = (id, func, num = 200) => {
   }, 10);
 };
 
-const waitForElementId = (id, vueComponent, num = 200) => {
+const waitForElementId = (id, vueComponent, store, num = 200) => {
   const el = document.getElementById(id);
   if (el !== null) {
     const ignoredElement = new Vue({
       el: `#${id}`,
+      store,
       render: h => h(vueComponent)
     });
     return;
@@ -47,15 +48,16 @@ const waitForElementId = (id, vueComponent, num = 200) => {
     return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
   }
   setTimeout(() => {
-    waitForElementId(id, vueComponent, num - 1);
+    waitForElementId(id, vueComponent, store, num - 1);
   }, 10);
 };
 
-const waitForElementClass = (className, vueComponent, num = 200) => {
+const waitForElementClass = (className, vueComponent, store, num = 200) => {
   const el = document.getElementsByClassName(className);
   if (el.length === 1) {
     const ignoredElement = new Vue({
       el: `.${className}`,
+      store,
       render: h => h(vueComponent)
     });
     return;
@@ -64,7 +66,7 @@ const waitForElementClass = (className, vueComponent, num = 200) => {
     return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
   }
   setTimeout(() => {
-    waitForElementClass(className, vueComponent, num - 1);
+    waitForElementClass(className, vueComponent, store, num - 1);
   }, 10);
 };
 

@@ -109,8 +109,8 @@ module.exports = {
   entry: `./${conf.path.src('index')}`,
   resolve: {
     alias: {
-      Resources: path.resolve(__dirname, '../resources/'),
-      vue$: 'vue/dist/vue.runtime.esm.js'
+      Resources: path.resolve(__dirname, '../resources/')
+      // vue$: 'vue/dist/vue.runtime.esm.js'
     }
   }
 };
