@@ -23,6 +23,7 @@
 </template>
 <script>
 import Vue from 'vue';
+import {mapGetters, mapActions} from 'vuex';
 import fetchJsonp from 'fetch-jsonp';
 import SupportMenu from './SupportMenu.vue';
 import { urls } from 'Resources/helpers';
@@ -33,29 +34,20 @@ export default {
   name: 'profile',
   data () {
     return {
-      loaded: false,
-      profile: false,
       urls: urls,
       profilePic: require('Resources/img/header/avatar.svg'),
       open: false,
       imgError: false
     }
   },
+  computed: {
+    ...mapGetters([
+      'profile',
+      'loaded',
+    ])
+  },
   created() {
-    fetchJsonp(url)
-      .then(response => {
-        return response.json()
-      }).then(json => {
-        this.loaded = true;
-        if (json && json.length === 1) {
-          this.profile = json[0];
-        } else {
-          console.log(`Failed to find profile, got response: `, json);
-        }
-      }).catch(ex => {
-        this.loaded = true;
-        console.log(`Failed to get profile: `, ex);
-      })
+    this.getProfile();
   },
   methods: {
     mouseleave(e) {
@@ -70,7 +62,10 @@ export default {
     imgLoadError(e) {
       console.warn(`MX Header: Failed to load profile image: "${e.target.src}", disabling img`);
       this.imgError = true;
-    }
+    },
+    ...mapActions([
+      'getProfile'
+    ])
   },
   components: {
     'support-menu': SupportMenu

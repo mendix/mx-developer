@@ -1,0 +1,50 @@
+$notification-height: 60px;
+$notification-offset: 10px;
+@include element('notification') {
+  display: block;
+  width: 100%;
+  padding-bottom: 20px;
+  overflow: hidden;
+  @include element('inner') {
+    @include border-radius(5px 5px);
+    @include transition(margin-top 250ms ease);
+    @include box-shadow(2px 2px 8px 0px rgba(0, 0, 0, 0.25));
+    background: url('../../resources/img/charity.svg') 15px 15px no-repeat;
+    background-color: #f99b1d;
+    color: #FFF;
+    max-width: $width-row;
+    margin: 0 auto;
+    display: block;
+    min-height: $notification-height;
+    position: relative;
+    padding: 0 0 0 56px;
+    margin-top: -300px;
+    @include modifier('open') {
+      margin-top: $notification-offset;
+    }
+  }
+  @include element('message') {
+    width: 100%;
+    max-width: calc(100% - 33px);
+    min-height: $notification-height;
+    display: block;
+    padding: 17px 0;
+    a, a:hover, a:active {
+      color: #FFF;
+      @include no-text-decoration();
+      padding-bottom: 20px;
+      font-size: 14px;
+    }
+  }
+  @include element('close') {
+    width: 12px;
+    height: 12px;
+    display: block;
+    float: left;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: url('../../resources/img/icon_close.svg') 0px 0px no-repeat;
+  }
+}

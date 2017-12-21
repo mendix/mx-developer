@@ -1,12 +1,17 @@
 /*! Copyright 2017 Mendix. Author: J.W. Lagendijk <jelte.lagendijk@mendix.com>. Released under the MIT license. */
 /* eslint camelcase: ["error",{properties: "never"}] */
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
+/* eslint no-new: 0 */
 import 'es6-promise';
+require('es6-object-assign').polyfill();
+import 'js-polyfills/dom'; // IE element.append polyfills (fix =< IE11)
+
 import Vue from 'vue';
+
 import vueBemCn from 'Resources/vendor/bem';
 import Observer from 'mutation-observer';
 import debounce from 'tiny-debounce';
-import 'js-polyfills/dom'; // IE element.append polyfills (fix =< IE11)
+
+import store from './app/store/';
 
 Vue.use(vueBemCn, {
   ns: 'mx-developer__', // namespace
@@ -27,12 +32,12 @@ import {waitForElementId, waitForElementClass} from 'Resources/helpers';
 import './sass/mx-header.scss';
 // 500 * 10ms timeout = 5s timeout
 
-waitForElementId('mxHeader', Header, 500);
-waitForElementClass('mxHeader', Header, 500);
-waitForElementId('mxFooter', Footer, 500);
-waitForElementClass('mxFooter', Footer, 500);
+waitForElementId('mxHeader', Header, store, 500);
+waitForElementClass('mxHeader', Header, store, 500);
+waitForElementId('mxFooter', Footer, store, 500);
+waitForElementClass('mxFooter', Footer, store, 500);
 
-const load = () => {
+const load = function () {
   let elementHeaderSelector = null;
   const headerEl = document.getElementById('mxHeader');
   if (headerEl === null) {
@@ -54,15 +59,17 @@ const load = () => {
   }
 
   if (elementHeaderSelector !== null) {
-    const ignoredElement = new Vue({
+    new Vue({
       el: elementHeaderSelector,
+      store,
       render: h => h(Header)
     });
   }
 
   if (elementFooterSelector !== null) {
-    const ignoredElement = new Vue({
+    new Vue({
       el: elementFooterSelector,
+      store,
       render: h => h(Footer)
     });
   }
