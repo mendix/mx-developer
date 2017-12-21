@@ -1,7 +1,7 @@
 import fetchJsonp from 'fetch-jsonp';
 
 const profileUrl = `https://home.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
-const isPartnerUrl = 'https://developer-test.mendixcloud.com/rest/checkpartner?openid=';
+const isPartnerUrl = 'https://developer.mendixcloud.com/rest/checkpartner?openid=';
 
 export default {
   getProfile({commit, dispatch}) {
@@ -16,19 +16,20 @@ export default {
           if (typeof profile.openId === 'undefined') {
             commit('messageStatus', 1);
           } else {
-            console.log(profile.openId);
             dispatch('getPartnerStatus', profile.openId);
           }
         } else {
+          commit('messageStatus', 1);
           console.log(`Failed to find profile, got response: `, json);
         }
       }).catch(ex => {
         commit('loaded', true);
+        commit('messageStatus', 1);
         console.log(`Failed to get profile: `, ex);
       });
   },
   getPartnerStatus({commit}, openID) {
-    const url = isPartnerUrl + openID;
+    const url = isPartnerUrl + escape(openID);
     fetchJsonp(url, {
       jsonpCallbackFunction: 'partnerstatus'
     })
