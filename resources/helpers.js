@@ -52,6 +52,8 @@ const waitForElementId = (id, vueComponent, store, num = 200) => {
   }, 10);
 };
 
+const hasElement = className => document.getElementsByClassName(className).length > 0;
+
 const waitForElementClass = (className, vueComponent, store, num = 200) => {
   const el = document.getElementsByClassName(className);
   if (el.length === 1) {
@@ -75,6 +77,7 @@ export {
   isSmallViewport,
   isPhoneViewport,
   constants,
+  hasElement,
   waitForElementId,
   waitForElementIdCb,
   waitForElementClass

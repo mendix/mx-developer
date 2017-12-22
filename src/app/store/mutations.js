@@ -7,5 +7,8 @@ export default {
   },
   messageStatus(state, mut) {
     state.messageStatus = mut;
+  },
+  bgShown(state, mut) {
+    state.bgShown = mut;
   }
 };
