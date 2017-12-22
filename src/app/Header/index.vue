@@ -1,5 +1,5 @@
 <template>
-  <div :class="b()">
+  <div :class="b({ 'bg': bgShown })">
     <div class="mx-developer__row">
       <button :class="b('hamburger')" type="button" @click.stop.prevent="menu">
         <span :class="b('hamburger-box')">
@@ -14,6 +14,7 @@
 </template>
 <script>
 import Vue from 'vue';
+import { mapGetters } from 'vuex';
 import { ResizeObserver } from 'Resources/vendor/vue-resize';
 import { isSmallViewport, isPhoneViewport } from 'Resources/helpers';
 import NavBar from './Navbar.vue';
@@ -34,6 +35,11 @@ export default {
     NavBar,
     'resize-observer': ResizeObserver,
     'notification': NotificationBar
+  },
+  computed: {
+    ...mapGetters([
+        'bgShown'
+    ])
   },
   methods: {
     menu() {
