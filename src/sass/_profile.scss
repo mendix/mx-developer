@@ -69,17 +69,6 @@ $menu-width: 200px;
       border-width: 0;
       outline: none;
     }
-    &:after {
-      width: 50px;
-      height: 40px;
-      background: url('../../resources/img/christmas.gif') 0 0 no-repeat;
-      display: block;
-      position: absolute;
-      content: "";
-      top: 9px;
-      right: -4px;
-      @include transform(rotate(-14deg));
-    }
   }
 
   @include element('avatar') {
@@ -99,17 +88,6 @@ $menu-width: 200px;
       float: right;
       margin: 24px 0 0;
       @include border-radius(50%);
-    }
-    &:after {
-      width: 50px;
-      height: 40px;
-      background: url('../../resources/img/christmas.gif') 0 0 no-repeat;
-      display: block;
-      position: absolute;
-      content: "";
-      top: 5px;
-      right: -21px;
-      @include transform(rotate(-14deg));
     }
   }
 
