@@ -10,6 +10,7 @@
   </div>
 </template>
 <script>
+// Currently disabled. Import this in index.vue
 import Vue from 'vue';
 import {mapGetters} from 'vuex';
 

@@ -9,7 +9,6 @@
       <nav-bar :mob="mob" :phone="phone" :init="init" />
       <resize-observer @notify="handleResize" />
     </div>
-    <notification />
   </div>
 </template>
 <script>
@@ -18,7 +17,7 @@ import { mapGetters } from 'vuex';
 import { ResizeObserver } from 'Resources/vendor/vue-resize';
 import { isSmallViewport, isPhoneViewport } from 'Resources/helpers';
 import NavBar from './Navbar.vue';
-import NotificationBar from './NotificationBar.vue';
+// import NotificationBar from './NotificationBar.vue';
 
 let timeout = null;
 
@@ -33,8 +32,7 @@ export default {
   },
   components: {
     NavBar,
-    'resize-observer': ResizeObserver,
-    'notification': NotificationBar
+    'resize-observer': ResizeObserver
   },
   computed: {
     ...mapGetters([
