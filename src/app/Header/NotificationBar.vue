@@ -2,8 +2,8 @@
   <div :class="b({ open })" v-if="!reviewed && enabled">
       <div :class="b('inner', { open })">
           <div :class="b('message')">
-              <a href="http://gtnr.it/2yFJfzA" target="_blank" v-if="messageStatus === 1" @click="closereview">Now through December 31st, for every approved Gartner Peer Insights review of Mendix by <strong>non-partners</strong>, Gartner will donate $25 to a charity of your choice.</a>
-              <a href="http://gtnr.it/2yFJfzA" target="_blank" v-if="messageStatus === 2" @click="closereview">Now through December 31st, for every approved Gartner Peer Insights review of Mendix, Gartner will donate $25 to a charity of your choice.</a>
+              <a href="http://gtnr.it/2yFJfzA" target="_blank" v-if="messageStatus === 1" @click="closereview">Now through January 10th, for every approved Gartner Peer Insights review of Mendix by <strong>non-partners</strong>, Gartner will donate $25 to a charity of your choice.</a>
+              <a href="http://gtnr.it/2yFJfzA" target="_blank" v-if="messageStatus === 2" @click="closereview">Now through January 10th, for every approved Gartner Peer Insights review of Mendix, Gartner will donate $25 to a charity of your choice.</a>
           </div>
           <div :class="b('close')" @click.stop.prevent="closereview"></div>
       </div>
@@ -15,9 +15,9 @@ import Vue from 'vue';
 import {mapGetters} from 'vuex';
 
 import storage from 'local-storage-fallback';
-const reviewKey = 'gartner_review_2017';
+const reviewKey = 'header_notification_gartner_review_2018';
 const now = +(new Date());
-const reviewDeadline = +(new Date(2018, 0, 1, 0, 0, 0));
+const reviewDeadline = +(new Date(2018, 0, 11, 0, 0, 0));
 const isNotificationShown = () => storage.getItem(reviewKey) || (reviewDeadline < now);
 const notificationSetShown = () => storage.setItem(reviewKey, true);
 
