@@ -1,7 +1,7 @@
 [
   {
     "title": "Learn",
-    "url": "https://gettingstarted.mendixcloud.com/index3.html",
+    "url": "https://gettingstarted.mendixcloud.com",
     "sub": [
       {
         "title": "Learning Paths",
@@ -49,7 +49,7 @@
   },
   {
     "title": "Forum",
-    "url": "https://forum.mendixcloud.com/index4.html",
+    "url": "https://forum.mendixcloud.com",
     "sub": [
       {
         "title": "Forum Questions",
