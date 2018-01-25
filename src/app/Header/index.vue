@@ -9,7 +9,7 @@
       <nav-bar :mob="mob" :phone="phone" :init="init" />
       <resize-observer @notify="handleResize" />
     </div>
-    <notification />
+    <notification v-if="bannerEnabled" />
   </div>
 </template>
 <script>
@@ -28,7 +28,8 @@ export default {
     return {
       mob: false,
       phone: false,
-      init: false
+      init: false,
+      bannerEnabled: process.env.OPTIONS.banner
     }
   },
   components: {

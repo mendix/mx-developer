@@ -101,5 +101,8 @@
     "plugins": [
       "html"
     ]
+  },
+  "headerOptions": {
+    "banner": false
   }
 }

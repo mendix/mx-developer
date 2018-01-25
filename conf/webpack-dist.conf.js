@@ -9,6 +9,8 @@ const autoprefixer = require('autoprefixer');
 const HashOutput = require('webpack-plugin-hash-output');
 const AssetsPlugin = require('assets-webpack-plugin');
 
+const pkg = require('../package.json');
+
 const thisYear = (new Date()).getFullYear();
 const buildDate = (new Date()).toString();
 
@@ -93,7 +95,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        COPYRIGHT: `Copyright ${thisYear} Mendix. Author: J.W. Lagendijk <jelte.lagendijk@mendix.com>. Released under the MIT license.`
+        COPYRIGHT: `Copyright ${thisYear} Mendix. Author: J.W. Lagendijk <jelte.lagendijk@mendix.com>. Released under the MIT license.`,
+        OPTIONS: JSON.stringify(pkg.headerOptions)
       }
     }),
     new webpack.ProvidePlugin({

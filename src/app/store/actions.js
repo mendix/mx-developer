@@ -13,7 +13,7 @@ export default {
         if (json && json.length === 1) {
           const profile = json[0];
           commit('profile', profile);
-          if (typeof profile.openId === 'undefined') {
+          if (typeof profile.openId === 'undefined' || !process.env.OPTIONS.banner) {
             commit('messageStatus', 1);
           } else {
             dispatch('getPartnerStatus', profile.openId);
