@@ -1,7 +1,5 @@
 import fetchJsonp from 'fetch-jsonp';
-import {trackShow, trackPage, trackEvent, outBoundLinkTracker} from './tracker';
-
-window.__mxOutBoundLinkTracker = outBoundLinkTracker;
+import {trackShow, trackPage, trackEvent} from './tracker';
 
 const profileUrl = `https://home.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
 const isPartnerUrl = 'https://developer.mendixcloud.com/rest/checkpartner?openid=';

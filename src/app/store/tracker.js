@@ -4,9 +4,8 @@ let gaEnabled = false;
 let gaCheck = false;
 
 const trackerName = 'bannerTracker';
-const sendId = `${trackerName}.send`;
 
-const gaChecker = () => {
+const tracker = (type, category, event) => {
   if (!gaCheck) {
     if (typeof window.ga !== 'undefined') {
       gaEnabled = true;
@@ -14,49 +13,26 @@ const gaChecker = () => {
     }
     gaCheck = true;
   }
-};
-
-const tracker = (type, category, opts) => {
-  gaChecker();
   if (gaEnabled) {
-    const evtArr = [sendId, type, category];
-    if (opts.action) {
-      evtArr.push(opts.action);
+    if (event) {
+      window.ga(`${trackerName}.send`, type, category, event);
+    } else {
+      window.ga(`${trackerName}.send`, type, category);
     }
-    if (opts.action && opts.label) {
-      evtArr.push(opts.label);
-      if (opts.value) {
-        evtArr.push(opts.value);
-        if (opts.fields) {
-          evtArr.push(opts.fields);
-        }
-      }
-    }
-    window.ga.apply(window, evtArr);
   }
 };
 
-const outBoundLinkTracker = url => {
-  tracker('event', 'outbound', {
-    action: 'click',
-    label: url,
-    fields: {
-      transport: 'beacon',
-      hitCallback: () => {
-        document.location = url;
-      }
-    }
-  });
-  gaChecker();
-};
-
-const trackEvent = (category, eventName) => {
-  tracker('event', category, {action: eventName});
+const trackEvent = (category, event) => {
+  tracker('event', category, event);
 };
 
 const trackPage = () => {
   const page = document.location.host + document.location.pathname;
   tracker('pageview', page);
+};
+
+const trackHeaderLink = name => {
+  trackEvent('HeaderFooter', `Link: ${name}`);
 };
 
 const trackShow = () => {
@@ -66,6 +42,6 @@ const trackShow = () => {
 export {
   trackPage,
   trackEvent,
-  trackShow,
-  outBoundLinkTracker
+  trackHeaderLink,
+  trackShow
 };
