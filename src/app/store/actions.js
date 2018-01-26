@@ -1,4 +1,5 @@
 import fetchJsonp from 'fetch-jsonp';
+import {trackShow} from './tracker';
 
 const profileUrl = `https://home.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
 const isPartnerUrl = 'https://developer.mendixcloud.com/rest/checkpartner?openid=';
@@ -41,5 +42,8 @@ export default {
         commit('messageStatus', false);
         console.log(`Failed to check profile status: `, ex);
       });
+  },
+  trackHeaderFooter() {
+    trackShow();
   }
 };

@@ -14,7 +14,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { ResizeObserver } from 'Resources/vendor/vue-resize';
 import { isSmallViewport, isPhoneViewport } from 'Resources/helpers';
 import NavBar from './Navbar.vue';
@@ -42,7 +42,15 @@ export default {
         'bgShown'
     ])
   },
+  mounted: function () {
+    setTimeout(() => {
+      this.trackHeaderFooter();
+    }, 1000);
+  },
   methods: {
+    ...mapActions([
+      'trackHeaderFooter'
+    ]),
     menu() {
       this.mob = !this.mob
     },

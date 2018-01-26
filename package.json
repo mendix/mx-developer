@@ -103,6 +103,7 @@
     ]
   },
   "headerOptions": {
-    "banner": false
+    "banner": false,
+    "trackerId": "UA-113151614-1"
   }
 }
