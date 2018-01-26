@@ -14,7 +14,11 @@ const tracker = (type, category, event) => {
     gaCheck = true;
   }
   if (gaEnabled) {
-    window.ga(`${trackerName}.send`, type, category, event);
+    if (event) {
+      window.ga(`${trackerName}.send`, type, category, event);
+    } else {
+      window.ga(`${trackerName}.send`, type, category);
+    }
   }
 };
 
