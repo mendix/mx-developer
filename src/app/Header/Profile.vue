@@ -5,7 +5,7 @@
     </a>
     <a href="https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup" :class="b('start-button', { 'shown': profile && !profile.loggedIn })">Start For Free</a>
 
-    <span id="mendix-header-search-button" class="mx-developer__profile__search-button hidden"></span>
+    <span id="mendix-header-search-button" class="mx-developer__profile__search-button hidden" @click="openSearch"></span>
     <support-menu />
 
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
@@ -64,7 +64,8 @@ export default {
       this.imgError = true;
     },
     ...mapActions([
-      'getProfile'
+      'getProfile',
+      'openSearch'
     ])
   },
   components: {

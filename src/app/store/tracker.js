@@ -32,11 +32,11 @@ const trackPage = () => {
 };
 
 const trackHeaderLink = name => {
-  trackEvent('Header', `Link: ${name}`);
+  trackEvent('HeaderFooter', `Link: ${name}`);
 };
 
 const trackShow = () => {
-  trackEvent('Banner', `Show`);
+  trackEvent('HeaderFooter', `Show`);
 };
 
 export {
