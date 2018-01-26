@@ -5,7 +5,7 @@ let gaCheck = false;
 
 const trackerName = 'bannerTracker';
 
-const trackEvent = (category, event) => {
+const tracker = (type, category, event) => {
   if (!gaCheck) {
     if (typeof window.ga !== 'undefined') {
       gaEnabled = true;
@@ -14,8 +14,17 @@ const trackEvent = (category, event) => {
     gaCheck = true;
   }
   if (gaEnabled) {
-    window.ga(`${trackerName}.send`, 'event', category, event);
+    window.ga(`${trackerName}.send`, type, category, event);
   }
+};
+
+const trackEvent = (category, event) => {
+  tracker('event', category, event);
+};
+
+const trackPage = () => {
+  const page = document.location.host + document.location.pathname;
+  tracker('pageview', page);
 };
 
 const trackHeaderLink = name => {
@@ -27,6 +36,7 @@ const trackShow = () => {
 };
 
 export {
+  trackPage,
   trackEvent,
   trackHeaderLink,
   trackShow
