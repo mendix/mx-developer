@@ -1,5 +1,5 @@
 import fetchJsonp from 'fetch-jsonp';
-import {trackShow} from './tracker';
+import {trackShow, trackPage} from './tracker';
 
 const profileUrl = `https://home.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
 const isPartnerUrl = 'https://developer.mendixcloud.com/rest/checkpartner?openid=';
@@ -44,6 +44,9 @@ export default {
       });
   },
   trackHeaderFooter() {
-    trackShow();
+    trackPage();
+    setTimeout(() => {
+      trackShow();
+    }, 500);
   }
 };
