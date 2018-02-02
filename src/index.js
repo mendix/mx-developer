@@ -12,6 +12,7 @@ import Observer from 'mutation-observer';
 import debounce from 'tiny-debounce';
 
 import store from './app/store/';
+import Tracker from './app/plugins/tracker';
 
 Vue.use(vueBemCn, {
   ns: 'mx-developer__', // namespace
@@ -19,6 +20,8 @@ Vue.use(vueBemCn, {
   mod: '--', // modifier delimeter
   modValue: '-' // value delimeter for modifier
 });
+
+Vue.use(Tracker);
 
 if (process.env.NODE_ENV === 'production') {
   Vue.config.productionTip = false;

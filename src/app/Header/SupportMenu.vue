@@ -2,7 +2,7 @@
   <div :class="b()" @mouseenter="mouseenter" @mouseleave="mouseleave" v-on:click="menu">
     <span :class="b('icon')"></span>
     <div :class="b('submenu', { open })">
-        <a :class="b('submenu__link')" v-for="(sub, index) in links" :key="index" :href="sub.url">{{ sub.title }}</a>
+        <a :class="b('submenu__link')" v-for="(sub, index) in links" :key="index" :href="sub.url" v-track-link>{{ sub.title }}</a>
     </div>
   </div>
 </template>

@@ -1,8 +1,27 @@
 <template>
-    <a :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true })" v-if="link.url && !link.external" :href="link.url" @click="menuClick">{{ link.title }}</a>
-    <a :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true })" v-else-if="link.url && link.external && link.sub && link.sub.length > 0" :href="link.url" @click="menuClick" target="_blank" rel="noopener">{{ link.title }}</a>
-    <a :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true })" v-else-if="link.url && link.external && !(link.sub && link.sub.length > 0)" :href="link.url" target="_blank" rel="noopener">{{ link.title }}</a>
-    <span :class="b({ on, 'has-sub': link.sub && link.sub.length > 0 })" v-else @click.stop.prevent="menu">{{ link.title }}</span>
+    <a
+      v-if="link.url && !link.external"
+      :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true })"
+      :href="link.url"
+      @click="menuClick"
+      v-track-link>{{ link.title }}</a>
+    <a
+      v-else-if="link.url && link.external && link.sub && link.sub.length > 0"
+      :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true })"
+      :href="link.url"
+      @click="menuClick"
+      target="_blank" rel="noopener"
+      v-track-link>{{ link.title }}</a>
+    <a
+      v-else-if="link.url && link.external && !(link.sub && link.sub.length > 0)"
+      :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true })"
+      :href="link.url"
+      target="_blank" rel="noopener"
+      v-track-link>{{ link.title }}</a>
+    <span
+      v-else
+      :class="b({ on, 'has-sub': link.sub && link.sub.length > 0 })"
+      @click.stop.prevent="menu">{{ link.title }}</span>
 </template>
 <script>
 import Vue from 'vue';

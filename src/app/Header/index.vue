@@ -44,13 +44,10 @@ export default {
   },
   mounted: function () {
     setTimeout(() => {
-      this.trackHeaderFooter();
+      this.$tracker.trackShow();
     }, 1000);
   },
   methods: {
-    ...mapActions([
-      'trackHeaderFooter'
-    ]),
     menu() {
       this.mob = !this.mob
     },
