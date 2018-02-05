@@ -49,6 +49,13 @@ const trackEvent = (category, event) => {
 };
 
 const trackPage = () => {
+  if (!gaCheck) {
+    if (typeof window.ga !== 'undefined') {
+      gaEnabled = true;
+      window.ga('create', trackerId, 'auto', trackerName);
+    }
+    gaCheck = true;
+  }
   const page = document.location.host + document.location.pathname;
   if (gaEnabled) {
     if (process.env.NODE_ENV === 'production') {
