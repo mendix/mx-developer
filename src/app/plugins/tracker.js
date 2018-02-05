@@ -36,10 +36,11 @@ const track = (type, category, action, label, value, fieldsObject) => { // eslin
         }
       }
     }
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV === 'production') {
+      window.ga.apply(window.ga, trackArr);
+    } else {
       console.log('tracker send:', trackArr);
     }
-    window.ga.apply(window.ga, trackArr);
   }
 };
 
@@ -49,7 +50,14 @@ const trackEvent = (category, event) => {
 
 const trackPage = () => {
   const page = document.location.host + document.location.pathname;
-  track('pageview', page);
+  if (gaEnabled) {
+    if (process.env.NODE_ENV === 'production') {
+      window.ga(`${trackerName}.set`, 'page', page);
+    } else {
+      console.log(`${trackerName}.set`, 'page', page);
+    }
+  }
+  track('pageView', page);
 };
 
 const trackHeaderLink = url => {

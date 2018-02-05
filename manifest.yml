@@ -2,10 +2,10 @@
 applications:
 - name: mx-developer
   path: ./dist/
-  memory: 128M
+  memory: 64M
   buildpack: staticfile_buildpack
   disk_quota: 32M
-  instances: 2
+  instances: 4
   domain: mendix.com
   host: developer-static
   env:
