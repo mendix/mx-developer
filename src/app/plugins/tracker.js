@@ -70,6 +70,7 @@ const trackHeaderLink = url => {
 };
 
 const trackShow = () => {
+  trackPage();
   trackEvent('HeaderFooter', `Show`);
 };
 
