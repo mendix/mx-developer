@@ -8,7 +8,7 @@ const constants = {
 const urls = {
   platform: 'https://home.mendix.com/',
   developer: 'https://sprintr.home.mendix.com/link/myprofile',
-  community: 'https://developer.mendixcloud.com/link/ownprofile/',
+  community: 'https://developer.mendixcloud.com/link/dashboard/',
   github: 'https://github.com/mendix',
   twitter: 'https://twitter.com/MendixDeveloper',
   linkedin: 'https://www.linkedin.com/company/mendix',
