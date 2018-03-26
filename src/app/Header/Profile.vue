@@ -3,7 +3,7 @@
     <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })" title="Click here to login">
       <img :src="profilePic" alt="Click here to login" v-track-link>
     </a>
-    <a href="https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup" :class="b('start-button', { 'shown': profile && !profile.loggedIn })" v-track-link>Start For Free</a>
+    <a href="https://signup.mendix.com/link/signup/?source=developers&medium=community&campaign=signup" :class="b('start-button', { 'shown': profile && !profile.loggedIn })" v-track-link>Start For Free</a>
 
     <span id="mendix-header-search-button" class="mx-developer__profile__search-button hidden" @click="openSearch"></span>
     <support-menu />
