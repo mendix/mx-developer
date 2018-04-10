@@ -127,7 +127,7 @@
       },
       {
         "title": "Start for Free",
-        "url": "https://www.mendix.com/try-now/?utm_source=developers&utm_medium=community&utm_campaign=signup",
+        "url": "https://signup.mendix.com/link/signup/?source=developers&medium=community&campaign=signup",
         "external": true,
         "type": "button"
       },
