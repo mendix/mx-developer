@@ -2,8 +2,7 @@
   <div :class="b({'shown': init})" ref="navbar">
     <div :class="b('header')" ref="header">
       <a target="_self" href="https://developers.mendix.com" :class="b('brand')">
-        <img :src="img" alt="Logo" v-if="!phone" v-track-link>
-        <img :src="img_small" alt="Logo" v-if="phone" v-track-link>
+        <img :src="img" alt="Logo" v-track-link>
       </a>
     </div>
     <div :class="b('collapse', { 'mobile': mob })">
@@ -34,8 +33,7 @@ export default {
     return {
       imgLink: constants.headerImgUrl,
       links: require('Resources/menu/header.json'),
-      img: require('Resources/img/mx_community_logo.png'),
-      img_small: require('Resources/img/mx_logo.png'),
+      img: require('Resources/img/mx_logo.png'),
       useProfile: true
     }
   },
