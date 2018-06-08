@@ -15,6 +15,7 @@
     "fetch-jsonp": "^1.1.1",
     "js-polyfills": "^0.1.41",
     "local-storage-fallback": "^4.0.2",
+    "location-origin": "^1.1.4",
     "mutation-observer": "^1.0.3",
     "tiny-debounce": "^0.1.1",
     "vue": "^2.5.2",

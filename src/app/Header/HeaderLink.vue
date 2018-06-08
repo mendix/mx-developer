@@ -7,8 +7,7 @@
     <div :class="b('submenu', { on })" v-if="link.sub && link.sub.length > 0" :style="styleHeight">
       <ul :class="b('linkblock')">
         <li :class="b('link')" v-for="(sub, index) in link.sub" :key="index">
-          <a :href="sub.url" v-if="!sub.external" v-track-link>{{ sub.title }}</a>
-          <a :href="sub.url" v-if="sub.external" target="_blank" rel="noopener" v-track-link>{{ sub.title }}</a>
+          <link-element :track="true" :link="sub"/>
         </li>
       </ul>
     </div>
@@ -16,7 +15,9 @@
 </template>
 <script>
 import Vue from 'vue';
+
 import toplink from './TopLink.vue';
+import Link from '../components/Link.vue';
 
 let timeout = null;
 
@@ -43,6 +44,7 @@ export default {
   },
   components: {
     toplink,
+    'link-element': Link
   },
   methods: {
     menu() {
