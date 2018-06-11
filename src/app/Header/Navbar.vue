@@ -7,6 +7,7 @@
     </div>
     <div :class="b('collapse', { 'mobile': mob })">
       <div :class="b('nav')">
+        <sprintr-block :itemClass="b('item')" :mob="mob" />
         <div :class="b('item')" v-for="(link, index) in links" :key="index">
           <header-link :link="link" :mob="mob"></header-link>
         </div>
@@ -21,6 +22,7 @@ import Vue from 'vue';
 import { constants, waitForElementIdCb } from 'Resources/helpers';
 import headerLink from './HeaderLink.vue';
 import profile from './Profile.vue';
+import sprintrBlock from './SprintrBlock.vue';
 
 export default {
   name: 'navbar',
@@ -39,7 +41,8 @@ export default {
   },
   components: {
     headerLink,
-    profile
+    profile,
+    sprintrBlock
   },
   mounted: function() {
     this.$nextTick(function () {

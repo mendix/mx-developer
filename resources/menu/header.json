@@ -1,5 +1,50 @@
 [
   {
+    "title": "Community",
+    "url": false,
+    "sub": [
+      {
+        "title": "Mendix Developer Blog",
+        "url": "https://www.mendix.com/tag/developers/",
+        "external": true
+      },
+      {
+        "title": "Community Blog",
+        "url": "https://developers.mendix.com/spotlight/"
+      },
+      {
+        "title": "Jobs",
+        "url": "https://developers.mendix.com/jobs/"
+      },
+      {
+        "title": "Model Share",
+        "url": "http://modelshare.mendix.com"
+      },
+      {
+        "title": "Wallpapers",
+        "url": "https://developer.mendixcloud.com/link/wallpapers"
+      },
+      {
+        "title": "MVP Program",
+        "url": "https://developer.mendixcloud.com/link/mvp"
+      },
+      {
+        "title": "Our Partners",
+        "url": "https://developer.mendixcloud.com/link/partneroverview"
+      },
+      {
+        "title": "Our Partners’ Projects",
+        "url": "https://developer.mendixcloud.com/link/customers"
+      }
+    ]
+  },
+  {
+    "title": "App Store",
+    "url": "http://appstore.mendix.com",
+    "sub": [],
+    "external": true
+  },
+  {
     "title": "Academy",
     "url": "https://gettingstarted.mendixcloud.com",
     "sub": [{
@@ -25,6 +70,19 @@
     ]
   },
   {
+    "title": "Forum",
+    "url": "https://forum.mendixcloud.com",
+    "sub": [{
+        "title": "Questions",
+        "url": "https://forum.mendixcloud.com/link/questions"
+      },
+      {
+        "title": "Ideas",
+        "url": "https://forum.mendixcloud.com/link/ideas"
+      }
+    ]
+  },
+  {
     "title": "Docs",
     "url": "https://docs.mendix.com",
     "sub": [{
@@ -42,72 +100,6 @@
       {
         "title": "API & SDK",
         "url": "https://docs.mendix.com/apidocs-mxsdk/"
-      }
-    ]
-  },
-  {
-    "title": "Forum",
-    "url": "https://forum.mendixcloud.com",
-    "sub": [{
-        "title": "Questions",
-        "url": "https://forum.mendixcloud.com/link/questions"
-      },
-      {
-        "title": "Ideas",
-        "url": "https://forum.mendixcloud.com/link/ideas"
-      }
-    ]
-  },
-  {
-    "title": "App Store",
-    "url": "http://appstore.mendix.com",
-    "sub": [],
-    "external": true
-  },
-  {
-    "title": "Community",
-    "url": false,
-    "sub": [{
-        "title": "Our Community",
-        "url": "https://developer.mendixcloud.com/link/community"
-      },
-      {
-        "title": "Our Partners",
-        "url": "https://developer.mendixcloud.com/link/partneroverview"
-      },
-      {
-        "title": "MVP Program",
-        "url": "https://developer.mendixcloud.com/link/mvp"
-      },
-      {
-        "title": "Our Partners’ Projects",
-        "url": "https://developer.mendixcloud.com/link/customers"
-      }
-    ]
-  },
-  {
-    "title": "Resources",
-    "url": false,
-    "sub": [{
-        "title": "Mendix Developer Blog",
-        "url": "https://www.mendix.com/tag/developers/",
-        "external": true
-      },
-      {
-        "title": "Community Blog",
-        "url": "https://developers.mendix.com/spotlight/"
-      },
-      {
-        "title": "Jobs",
-        "url": "https://developers.mendix.com/jobs/"
-      },
-      {
-        "title": "Model Share",
-        "url": "http://modelshare.mendix.com"
-      },
-      {
-        "title": "Wallpapers",
-        "url": "https://developer.mendixcloud.com/link/wallpapers"
       }
     ]
   }

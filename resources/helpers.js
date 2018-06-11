@@ -52,7 +52,40 @@ const waitForElementId = (id, vueComponent, store, num = 200) => {
   }, 10);
 };
 
+const waitFor = (predicate, callback, timeoutCallback = () => {}, num = 200) => {
+  if (predicate()) {
+    callback();
+    return;
+  }
+  if (num <= 0) {
+    timeoutCallback();
+    return;
+  }
+  setTimeout(() => {
+    waitFor(predicate, callback, timeoutCallback, num - 1);
+  }, 10);
+};
+
+const waitForMX = (callback, timeoutCallback = () => {}) =>
+  waitFor(() => typeof window.mx !== 'undefined' && window.mx.session, callback, timeoutCallback);
+
 const hasElement = className => document.getElementsByClassName(className).length > 0;
+
+const getEnvironment = () => {
+  const domain = location.origin;
+  if (domain.indexOf('home-test.mendix.com') !== -1) {
+    return '-test';
+  } else if (domain.indexOf('home-accp.mendix.com') !== -1) {
+    return '-accp';
+  }
+  return '';
+};
+
+const onSprintr = () => [
+  'https://sprintr.home.mendix.com',
+  'https://sprintr.home-test.mendix.com',
+  'https://sprintr.home-accp.mendix.com'
+].indexOf(location.origin) !== -1;
 
 const waitForElementClass = (className, vueComponent, store, num = 200) => {
   const el = document.getElementsByClassName(className);
@@ -77,8 +110,11 @@ export {
   isSmallViewport,
   isPhoneViewport,
   constants,
+  getEnvironment,
   hasElement,
+  onSprintr,
   waitForElementId,
   waitForElementIdCb,
-  waitForElementClass
+  waitForElementClass,
+  waitForMX
 };
