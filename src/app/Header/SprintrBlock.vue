@@ -45,40 +45,28 @@ export default {
     return {
       isOnSprintr: onSprintr(),
       deepLinkBuzz: {
-        title: 'My Buzz',
+        title: 'Buzz',
         url: `https://sprintr.home${env}.mendix.com/link/home`,
       },
       deepLinkApps: {
-        title: 'My Apps',
+        title: 'Apps',
         url: `https://sprintr.home${env}.mendix.com/link/myprojects`,
       },
       deepLinkPeople: {
-        title: 'My Network',
+        title: 'People',
         url: `https://sprintr.home${env}.mendix.com/link/people`,
-        sub: [
-          {
-            "title": "Our Community",
-            "url": "https://developer.mendixcloud.com/link/community"
-          }
-        ]
       },
       microflowBuzz: {
-        title: 'My Buzz',
-        microflow: 'PCP.OpenBuzz'
+        title: 'Buzz',
+        microflow: 'PCP.OpenBuzz',
       },
       microflowApps: {
-        title: 'My Apps',
-        microflow: 'AppsDashboard.IVK_OpenAppsDashboard'
+        title: 'Apps',
+        microflow: 'AppsDashboard.IVK_OpenAppsDashboard',
       },
       microflowPeople: {
-        title: 'My Network',
+        title: 'People',
         microflow: 'PCP.OpenBuzzPeople',
-        sub: [
-          {
-            "title": "Our Community",
-            "url": "https://developer.mendixcloud.com/link/community"
-          }
-        ]
       },
     }
   },
