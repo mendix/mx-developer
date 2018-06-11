@@ -1,7 +1,7 @@
 <template>
   <div :class="b({'shown': init})" ref="navbar">
     <div :class="b('header')" ref="header">
-      <a target="_self" href="https://developers.mendix.com" :class="b('brand')">
+      <a target="_self" :href="homeURL" :class="b('brand')">
         <img :src="img" alt="Logo" v-track-link>
       </a>
     </div>
@@ -20,6 +20,7 @@
 <script>
 import Vue from 'vue';
 import { constants, waitForElementIdCb } from 'Resources/helpers';
+import { mapGetters } from 'vuex';
 import headerLink from './HeaderLink.vue';
 import profile from './Profile.vue';
 import sprintrBlock from './SprintrBlock.vue';
@@ -56,6 +57,14 @@ export default {
         el.removeAttribute('id');
       }, 500);
     })
-  }
+  },
+  computed: {
+    ...mapGetters([
+      'profile'
+    ]),
+    homeURL: function () {
+      return (this.profile && !this.profile.loggedIn) ? this.profile.loginUrl : 'https://home.mendix.com';
+    }
+  },
 };
 </script>
