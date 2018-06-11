@@ -1,25 +1,25 @@
 <template>
   <div :class="b()" v-if="hasProfile">
     <div v-if="isOnSprintr">
-     <div :class="itemClass" >
-
+      <div :class="itemClass" >
+        <header-microflow-link :link="microflowBuzz" :mob="mob" />>
       </div>
       <div :class="itemClass" >
-
+        <header-microflow-link :link="microflowApps" :mob="mob" />
       </div>
       <div :class="itemClass" >
-
+        <header-microflow-link :link="microflowPeople" :mob="mob" />
       </div>
     </div>
     <div v-else>
       <div :class="itemClass" >
-        <header-link :link="deepLinkBuzz" :mob="mob"></header-link>
+        <header-link :link="deepLinkBuzz" :mob="mob" />
       </div>
       <div :class="itemClass" >
-        <header-link :link="deepLinkApps" :mob="mob"></header-link>
+        <header-link :link="deepLinkApps" :mob="mob" />
       </div>
       <div :class="itemClass" >
-        <header-link :link="deepLinkPeople" :mob="mob"></header-link>
+        <header-link :link="deepLinkPeople" :mob="mob" />
       </div>
     </div>
   </div>
@@ -27,7 +27,10 @@
 <script>
 import Vue from 'vue';
 import { onSprintr, getEnvironment } from 'Resources/helpers';
+
 import headerLink from './HeaderLink.vue';
+import headerMicroflowLink from './HeaderMicroflowLink.vue';
+
 import {mapGetters} from 'vuex';
 
 const env = getEnvironment();
@@ -59,6 +62,24 @@ export default {
           }
         ]
       },
+      microflowBuzz: {
+        title: 'My Buzz',
+        microflow: 'PCP.OpenBuzz'
+      },
+      microflowApps: {
+        title: 'My Apps',
+        microflow: 'AppsDashboard.IVK_OpenAppsDashboard'
+      },
+      microflowPeople: {
+        title: 'My Network',
+        microflow: 'PCP.OpenBuzzPeople',
+        sub: [
+          {
+            "title": "Our Community",
+            "url": "https://developer.mendixcloud.com/link/community"
+          }
+        ]
+      },
     }
   },
   computed: {
@@ -71,6 +92,7 @@ export default {
   },
   components: {
     headerLink,
+    headerMicroflowLink
   },
 };
 </script>

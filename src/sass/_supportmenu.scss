@@ -59,6 +59,7 @@
       background-position: left center;
       background-repeat: no-repeat;
       white-space: nowrap;
+      cursor: pointer;
       &,
       &:active,
       &:visited {
@@ -68,6 +69,11 @@
       &:hover {
         @include no-text-decoration();
         color: $color-mx-blue;
+      }
+
+      @include modifier('guidance') {
+        color: $color-bottom-blue-secondary;
+        font-weight: bold;
       }
     }
   }
