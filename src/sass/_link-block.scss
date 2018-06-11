@@ -5,9 +5,9 @@
     padding-bottom: 2rem;
   }
   @include element('title') {
+    margin: 0 0 9px;
     &, & > a {
       display: inline-block;
-      margin: 0 0 1em;
       font-weight: 600;
       line-height: 1;
       &, &:active, &:visited {
