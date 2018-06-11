@@ -4,7 +4,7 @@ set -ev
 
 if ([ $TRAVIS_PULL_REQUEST == "false" ])
 then
-  if [[ $TRAVIS_BRANCH == 'master' ]]; then
+  if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'development' ]]; then
       echo 'Installing autopilot'
       cf api $CF_API
       cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORGANIZATION -s $CF_SPACE
