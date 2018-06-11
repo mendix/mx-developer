@@ -109,15 +109,10 @@ module.exports = {
         comments: false
       }
     }),
-    new webpack.BannerPlugin(`Copyright ${thisYear} Mendix. Author: J.W. Lagendijk <jelte.lagendijk@mendix.com>. Released under the MIT license.
-
+    new webpack.BannerPlugin(`Copyright ${thisYear} Mendix.
 Build date: ${buildDate}, [[https://travis-ci.org/mendix/mx-developer]]
 Source: https://github.com/mendix/mx-developer.
-Report issues to: https://github.com/mendix/mx-developer/issues.
-
-You like looking at source code? Javascript? Typescript? Come work for Mendix! Join a world-class team that's disrupting the status quo. (And may I suggest a position at the Community Team?)
-
-https://www.mendix.com/careers/`),
+Report issues to: https://github.com/mendix/mx-developer/issues`),
     new ExtractTextPlugin('mx-header-[contenthash].css'),
     // new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.LoaderOptionsPlugin({

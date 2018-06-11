@@ -9,10 +9,13 @@
     <support-menu />
 
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
-      <img v-if="profile && profile.avatarUrl && !imgError" :src="profile.avatarUrl" :alt="profile && profile.displayName" @mouseenter="mouseenter" @error="imgLoadError">
-      <img v-if="!(profile && profile.avatarUrl) || imgError" :src="profilePic" :alt="profile && profile.displayName" @mouseenter="mouseenter">
+      <profile-picture :profile="profile" :enterFunc="mouseenter" />
       <div :class="b('submenu', { open })">
-        <span :class="b('display-name')">Welcome, {{ profile && profile.displayName }}</span>
+        <div :class="b('submenu__header')">
+          <profile-picture :profile="profile" />
+          <span :class="b('display-name')">{{ profile && profile.displayName }}</span>
+          <span :class="b('display-username')">{{ profile && profile.userName }}</span>
+        </div>
         <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" v-track-link>Developer Portal</a>
         <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" v-track-link>My Dashboard</a>
         <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" v-if="profile" v-track-link>Account Settings</a>
@@ -26,9 +29,8 @@ import Vue from 'vue';
 import {mapGetters, mapActions} from 'vuex';
 import fetchJsonp from 'fetch-jsonp';
 import SupportMenu from './SupportMenu.vue';
+import ProfilePic from './ProfilePic.vue';
 import { urls } from 'Resources/helpers';
-
-const url = `https://home.mendix.com/mxid/appbar2?q=${+(new Date())}`;
 
 export default {
   name: 'profile',
@@ -59,10 +61,6 @@ export default {
     menu(e) {
       this.open = !this.open;
     },
-    imgLoadError(e) {
-      console.warn(`MX Header: Failed to load profile image: "${e.target.src}", disabling img`);
-      this.imgError = true;
-    },
     openSearch() {
       this.$tracker.trackEvent('Search', `Show`);
     },
@@ -71,7 +69,8 @@ export default {
     ])
   },
   components: {
-    'support-menu': SupportMenu
+    'support-menu': SupportMenu,
+    'profile-picture': ProfilePic
   }
 };
 </script>

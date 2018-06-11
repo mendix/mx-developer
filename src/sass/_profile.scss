@@ -26,11 +26,11 @@ $menu-width: 200px;
     float: right;
     &, &:active, &:visited {
       background: $color-button-green;
-      color: #fff;
+      color: $color-white;
     }
     &:hover {
       background: $color-button-green-hover;
-      color: #fff;
+      color: $color-white;
     }
 
     display: none;
@@ -103,9 +103,9 @@ $menu-width: 200px;
     min-width: $menu-width;
     min-height: 100px;
     position: absolute;
-    background: #FFF;
+    background: $color-white;
     margin-top: 75px;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     right: -15px;
     line-height: $font-size;
     font-size: $font-size;
@@ -144,6 +144,7 @@ $menu-width: 200px;
       padding: 0 1.5em 0 42px;
       height: $profile-link-height;
       line-height: $profile-link-height;
+      font-size: $font-size-smaller;
       background-position: left center;
       background-repeat: no-repeat;
       white-space: nowrap;
@@ -168,6 +169,18 @@ $menu-width: 200px;
         background-image: url('../../resources/img/header/logout.svg');
       }
     }
+
+    @include element('header') {
+      border-bottom: 1px solid $color-submenu-border;
+      padding-bottom: 0.5em;
+      margin-bottom: 0.5em;
+      img {
+        float: none;
+        width: 60px;
+        height: 60px;
+        margin: 20px auto 0;
+      }
+    }
   }
 
   @include element('display-name') {
@@ -175,10 +188,17 @@ $menu-width: 200px;
     width: 100%;
     white-space: nowrap;
     display: block;
-    padding: 1em;
-    background: $color-profile-menu-second-bg;
-    @include border-radius(4px 4px 0 0);
-    margin-bottom: 1em;
+    padding: 1em 1.5em;
+    color: $color-font-darker-grey;
+    font-weight: bold;
+  }
+  @include element('display-username') {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    display: block;
+    padding: 0 1.5em 1em;
+    color: $color-font-grey-lighter;
   }
 
   @include element('search-button') {
