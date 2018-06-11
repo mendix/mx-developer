@@ -27,67 +27,18 @@
   },
   {
     "title": "App Store",
-    "url": "http://appstore.mendix.com",
-    "sub": [],
-    "external": true
+    "url": "http://appstore.mendix.com"
   },
   {
     "title": "Academy",
-    "url": "https://gettingstarted.mendixcloud.com",
-    "sub": [{
-        "title": "Learning Paths",
-        "url": "https://gettingstarted.mendixcloud.com/link/path"
-      },
-      {
-        "title": "Modules",
-        "url": "https://gettingstarted.mendixcloud.com/link/module"
-      },
-      {
-        "title": "Webinars",
-        "url": "https://gettingstarted.mendixcloud.com/link/webinar"
-      },
-      {
-        "title": "Classroom",
-        "url": "https://gettingstarted.mendixcloud.com/link/classroom"
-      },
-      {
-        "title": "Certifications",
-        "url": "https://gettingstarted.mendixcloud.com/link/certification"
-      }
-    ]
+    "url": "https://gettingstarted.mendixcloud.com"
   },
   {
     "title": "Forum",
-    "url": "https://forum.mendixcloud.com",
-    "sub": [{
-        "title": "Questions",
-        "url": "https://forum.mendixcloud.com/link/questions"
-      },
-      {
-        "title": "Ideas",
-        "url": "https://forum.mendixcloud.com/link/ideas"
-      }
-    ]
+    "url": "https://forum.mendixcloud.com"
   },
   {
     "title": "Docs",
-    "url": "https://docs.mendix.com",
-    "sub": [{
-        "title": "Reference Guide",
-        "url": "https://docs.mendix.com/refguide/"
-      },
-      {
-        "title": "How-to's",
-        "url": "https://docs.mendix.com/howto/"
-      },
-      {
-        "title": "Release Notes",
-        "url": "https://docs.mendix.com/releasenotes/"
-      },
-      {
-        "title": "API & SDK",
-        "url": "https://docs.mendix.com/apidocs-mxsdk/"
-      }
-    ]
+    "url": "https://docs.mendix.com"
   }
 ]
