@@ -18,7 +18,7 @@ fi
 if ([ "${TRAVIS_BRANCH}" == "development" ])
 then
   echo 'Deploy to test'
-  cf zero-downtime-push $CF_APP -f ./manifest_test.yml
+  cf push -f ./manifest_test.yml
   exit 0
 fi
 
