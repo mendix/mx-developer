@@ -1,6 +1,6 @@
 <template>
   <div :class="b({'has-sub': link.sub && link.sub.length > 0})" @mouseenter="mouseenter" @mouseleave="mouseleave">
-    <toplink :on="on" :link="link" :mob="mob" :menu="menu" :topmenu="topmenu" />
+    <toplink :on="on" :link="link" :mob="mob" :menu="menu" :topmenu="topmenu" :alternative="alternative" />
     <span :class="b('expand')" v-if="link.sub && link.sub.length > 0" @click.stop.prevent="menu">
       <span :class="b('expand-icon', { 'active': on })"></span>
     </span>
@@ -22,7 +22,7 @@ let timeout = null;
 
 export default {
   name: 'headerlink',
-  props: ['link', 'mob'],
+  props: ['link', 'mob', 'alternative'],
   data () {
     return {
       on: false

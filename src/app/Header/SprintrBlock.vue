@@ -2,13 +2,13 @@
   <div :class="b()" v-if="hasProfile">
     <div v-if="isOnSprintr">
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowBuzz" :mob="mob" />>
+        <header-microflow-link :link="microflowBuzz" :alternative="deepLinkBuzz" :mob="mob" />
       </div>
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowApps" :mob="mob" />
+        <header-microflow-link :link="microflowApps" :alternative="deepLinkApps" :mob="mob" />
       </div>
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowPeople" :mob="mob" />
+        <header-microflow-link :link="microflowPeople" :alternative="deepLinkPeople" :mob="mob" />
       </div>
     </div>
     <div v-else>
