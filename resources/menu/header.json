@@ -4,12 +4,7 @@
     "url": false,
     "sub": [
       {
-        "title": "Mendix Developer Blog",
-        "url": "https://www.mendix.com/tag/developers/",
-        "external": true
-      },
-      {
-        "title": "Community Blog",
+        "title": "Blogs",
         "url": "https://developers.mendix.com/spotlight/"
       },
       {
@@ -27,10 +22,6 @@
       {
         "title": "Our Partners",
         "url": "https://developer.mendixcloud.com/link/partneroverview"
-      },
-      {
-        "title": "Our Partners’ Projects",
-        "url": "https://developer.mendixcloud.com/link/customers"
       }
     ]
   },
