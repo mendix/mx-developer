@@ -19,7 +19,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import { constants, waitForElementIdCb } from 'Resources/helpers';
+import { constants, waitForElementIdCb, replaceEnvLink } from 'Resources/helpers';
 import { mapGetters } from 'vuex';
 import headerLink from './HeaderLink.vue';
 import profile from './Profile.vue';
@@ -63,7 +63,7 @@ export default {
       'profile'
     ]),
     homeURL: function () {
-      return (this.profile && !this.profile.loggedIn) ? this.profile.loginUrl : 'https://home.mendix.com';
+      return (this.profile && !this.profile.loggedIn) ? this.profile.loginUrl : replaceEnvLink('https://home.mendix.com');
     }
   },
 };
