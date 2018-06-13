@@ -1,13 +1,36 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
 import Vue from 'vue';
 
+const getEnvironment = () => {
+  const domain = location.origin;
+  if (domain.indexOf('home-test.mendix.com') !== -1) {
+    return '-test';
+  } else if (domain.indexOf('home-accp.mendix.com') !== -1) {
+    return '-accp';
+  }
+  return '';
+};
+
+const onSprintr = () => [
+  'https://sprintr.home.mendix.com',
+  'https://sprintr.home-test.mendix.com',
+  'https://sprintr.home-accp.mendix.com'
+].indexOf(location.origin) !== -1;
+
+const replaceEnvLink = link => {
+  if (!link || link.indexOf('home.mendix.com') === -1) {
+    return link;
+  }
+  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
+};
+
 const constants = {
   copyRight: `Copyright &copy; ${(new Date()).getFullYear()} Mendix.`
 };
 
 const urls = {
-  platform: 'https://home.mendix.com/',
-  developer: 'https://sprintr.home.mendix.com/link/myprofile',
+  platform: replaceEnvLink('https://home.mendix.com/'),
+  developer: replaceEnvLink('https://sprintr.home.mendix.com/link/myprofile'),
   community: 'https://developer.mendixcloud.com/link/dashboard/',
   github: 'https://github.com/mendix',
   twitter: 'https://twitter.com/MendixDeveloper',
@@ -71,22 +94,6 @@ const waitForMX = (callback, timeoutCallback = () => {}) =>
 
 const hasElement = className => document.getElementsByClassName(className).length > 0;
 
-const getEnvironment = () => {
-  const domain = location.origin;
-  if (domain.indexOf('home-test.mendix.com') !== -1) {
-    return '-test';
-  } else if (domain.indexOf('home-accp.mendix.com') !== -1) {
-    return '-accp';
-  }
-  return '';
-};
-
-const onSprintr = () => [
-  'https://sprintr.home.mendix.com',
-  'https://sprintr.home-test.mendix.com',
-  'https://sprintr.home-accp.mendix.com'
-].indexOf(location.origin) !== -1;
-
 const waitForElementClass = (className, vueComponent, store, num = 200) => {
   const el = document.getElementsByClassName(className);
   if (el.length === 1) {
@@ -116,5 +123,6 @@ export {
   waitForElementId,
   waitForElementIdCb,
   waitForElementClass,
-  waitForMX
+  waitForMX,
+  replaceEnvLink
 };

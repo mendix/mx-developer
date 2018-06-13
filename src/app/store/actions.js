@@ -1,6 +1,8 @@
 import fetchJsonp from 'fetch-jsonp';
 
-const profileUrl = `https://home.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
+import {getEnvironment} from 'Resources/helpers';
+
+const profileUrl = `https://home${getEnvironment()}.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
 const isPartnerUrl = 'https://developer.mendixcloud.com/rest/checkpartner?openid=';
 
 export default {
