@@ -1,6 +1,6 @@
 {
   "name": "mx-header",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Header and footer for Mendix developer sites.",
   "private": true,
   "author": {
@@ -12,7 +12,7 @@
     "bem-cn-lite": "^3.0.0",
     "es6-object-assign": "^1.1.0",
     "es6-promise": "^4.1.1",
-    "fetch-jsonp": "^1.1.1",
+    "fetch-jsonp": "^1.1.3",
     "js-polyfills": "^0.1.41",
     "local-storage-fallback": "^4.0.2",
     "location-origin": "^1.1.4",

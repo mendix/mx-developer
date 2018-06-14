@@ -1,16 +1,19 @@
+/* eslint prefer-arrow-callback:0 */
 import fetchJsonp from 'fetch-jsonp';
 
-import {getEnvironment} from 'Resources/helpers';
+import {getEnvironment, onSprintr, onCloud} from 'Resources/helpers';
 
 const profileUrl = `https://home${getEnvironment()}.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
 const isPartnerUrl = 'https://developer.mendixcloud.com/rest/checkpartner?openid=';
 
 export default {
   getProfile({commit, dispatch}) {
-    fetchJsonp(profileUrl)
-      .then(response => {
+    fetchJsonp(profileUrl, {
+      jsonpCallbackFunction: 'getProfile'
+    })
+      .then(function (response) {
         return response.json();
-      }).then(json => {
+      }).then(function (json) {
         commit('loaded', true);
         if (json && json.length === 1) {
           const profile = json[0];
@@ -24,7 +27,7 @@ export default {
           commit('messageStatus', 1);
           console.log(`Failed to find profile, got response: `, json);
         }
-      }).catch(ex => {
+      }).catch(function (ex) {
         commit('loaded', true);
         commit('messageStatus', 1);
         console.log(`Failed to get profile: `, ex);
@@ -43,5 +46,36 @@ export default {
         commit('messageStatus', false);
         console.log(`Failed to check profile status: `, ex);
       });
+  },
+  getAdminAttributes({commit}) {
+    if (window.mx && window.mx.data && window.mx.data.action) {
+      let MF = false;
+      if (onSprintr()) {
+        MF = 'PCP.DS_GetProfileMenuView';
+      } else if (onCloud()) {
+        MF = 'Navigation.DS_GetProfileViewMenu';
+      }
+
+      if (MF) {
+        window.mx.data.action({
+          params: {
+            actionname: MF
+          },
+          callback: obj => {
+            if (obj.length) {
+              const mxObj = obj[0];
+              const returnObj = {};
+              mxObj.getAttributes().forEach(attr => {
+                returnObj[attr] = mxObj.get(attr);
+              });
+              commit('adminDetails', returnObj);
+            }
+          },
+          error: () => {
+            // console.error(err);
+          }
+        });
+      }
+    }
   }
 };

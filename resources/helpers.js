@@ -17,6 +17,12 @@ const onSprintr = () => [
   'https://sprintr.home-accp.mendix.com'
 ].indexOf(location.origin) !== -1;
 
+const onCloud = () => [
+  'https://cloud.home.mendix.com',
+  'https://cloud.home-test.mendix.com',
+  'https://cloud.home-accp.mendix.com'
+].indexOf(location.origin) !== -1;
+
 const replaceEnvLink = link => {
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
@@ -120,6 +126,7 @@ export {
   getEnvironment,
   hasElement,
   onSprintr,
+  onCloud,
   waitForElementId,
   waitForElementIdCb,
   waitForElementClass,

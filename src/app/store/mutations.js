@@ -10,5 +10,8 @@ export default {
   },
   bgShown(state, mut) {
     state.bgShown = mut;
+  },
+  adminDetails(state, mut) {
+    state.adminDetails = mut;
   }
 };

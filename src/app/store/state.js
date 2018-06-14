@@ -3,5 +3,6 @@ export default {
   loaded: false,
   messageStatus: false,
   isPartner: false,
-  bgShown: false
+  bgShown: false,
+  adminDetails: {}
 };

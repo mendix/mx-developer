@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     menuClick(evt) {
-      if (this.link.sub.length === 0) {
+      if (!this.link || !this.link.sub || this.link.sub.length === 0) {
         return;
       }
       this.topmenu(evt);

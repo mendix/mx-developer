@@ -19,6 +19,7 @@
         <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" v-track-link>Developer Portal</a>
         <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" v-track-link>My Dashboard</a>
         <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" v-if="profile" v-track-link>Account Settings</a>
+        <admin-links v-if="profile" :item-class="b('submenu__link', { 'type': 'developer' })" />
         <a :class="b('submenu__link', { 'type': 'logout' })" :href="profile.logoutUrl" v-if="profile && profile.logoutUrl" v-track-link>Log out</a>
       </div>
     </div>
@@ -28,8 +29,11 @@
 import Vue from 'vue';
 import {mapGetters, mapActions} from 'vuex';
 import fetchJsonp from 'fetch-jsonp';
+
 import SupportMenu from './SupportMenu.vue';
 import ProfilePic from './ProfilePic.vue';
+import AdminLinks from './AdminLinks.vue';
+
 import { urls } from 'Resources/helpers';
 
 export default {
@@ -70,7 +74,8 @@ export default {
   },
   components: {
     'support-menu': SupportMenu,
-    'profile-picture': ProfilePic
+    'profile-picture': ProfilePic,
+    'admin-links': AdminLinks
   }
 };
 </script>
