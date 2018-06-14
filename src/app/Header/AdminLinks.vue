@@ -34,23 +34,7 @@
 import Vue from 'vue';
 import {mapActions, mapGetters} from 'vuex';
 
-import { onSprintr, onCloud, replaceEnvLink } from 'Resources/helpers';
-
-const clickMf = (mfName, fallback = false) => {
-  if (window.mx && window.mx.data && window.mx.data.action) {
-    window.mx.data.action({
-      params: {
-        actionname: mfName,
-      },
-      callback: () => {},
-      error: err => {
-        if (fallback) {
-          window.location = fallback;
-        }
-      }
-    });
-  }
-}
+import { onSprintr, onCloud, replaceEnvLink, clickMf } from 'Resources/helpers';
 
 export default {
   name: 'admin',

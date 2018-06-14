@@ -8,7 +8,7 @@
     height: $height-top-bar-inside;
     float: left;
     margin: 0 10px;
-    background: url('../../resources/img/header/tonav_support.svg') 7px 31px no-repeat; //@include opacity(0.6);
+    background: url('../../resources/img/help.svg') 7px 34px no-repeat; //@include opacity(0.6);
     cursor: pointer;
     &:hover {
       @include opacity(1);

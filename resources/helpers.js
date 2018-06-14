@@ -49,6 +49,24 @@ const urls = {
 const isSmallViewport = () => window.innerWidth <= 992;
 const isPhoneViewport = () => window.innerWidth <= 480;
 
+const clickMf = (mfName, fallback = false) => {
+  if (window.mx && window.mx.data && window.mx.data.action) {
+    window.mx.data.action({
+      params: {
+        actionname: mfName
+      },
+      callback: () => {},
+      error: () => {
+        if (fallback) {
+          window.location = fallback;
+        }
+      }
+    });
+  } else if (fallback) {
+    window.location = fallback;
+  }
+};
+
 const waitForElementIdCb = (id, func, num = 200) => {
   const el = document.getElementById(id);
   if (el !== null) {
@@ -131,5 +149,6 @@ export {
   waitForElementIdCb,
   waitForElementClass,
   waitForMX,
+  clickMf,
   replaceEnvLink
 };
