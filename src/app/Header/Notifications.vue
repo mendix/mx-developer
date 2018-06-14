@@ -1,7 +1,7 @@
 <template>
   <div :class="b()">
-    <a v-if="sprintr" :class="b('icon')" :href="notificationsDeepLink"></a>
-    <span v-if="!sprintr" :class="b('icon')" @click.stop.prevent="notifications"></span>
+    <a v-if="!sprintr" :class="b('icon')" :href="notificationsDeepLink"></a>
+    <span v-if="sprintr" :class="b('icon')" @click.stop.prevent="notifications"></span>
   </div>
 </template>
 <script>
