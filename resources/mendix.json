@@ -28,8 +28,7 @@
       "people": "https://sprintr.home.mendix.com/link/people",
       "companyAdmin": "https://sprintr.home.mendix.com/link/adminpanel/",
       "platformAdmin": "https://sprintr.home.mendix.com/link/supportdeskcompanies/",
-      "notifications": "https://sprintr.home.mendix.com/link/notifications",
-      "profileMenu": ""
+      "notifications": "https://sprintr.home.mendix.com/link/notifications"
     }
   }
 }
