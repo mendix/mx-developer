@@ -26,14 +26,14 @@
 </template>
 <script>
 import Vue from 'vue';
-import { onSprintr, getEnvironment } from 'Resources/helpers';
+import {mapGetters} from 'vuex';
+
+import { onSprintr, getEnvironment, replaceEnvLink } from 'Resources/helpers';
+
+import { links, microflows } from 'Resources/mendix.json';
 
 import headerLink from './HeaderLink.vue';
 import headerMicroflowLink from './HeaderMicroflowLink.vue';
-
-import {mapGetters} from 'vuex';
-
-const env = getEnvironment();
 
 export default {
   name: 'sprintr',
@@ -46,27 +46,27 @@ export default {
       isOnSprintr: onSprintr(),
       deepLinkBuzz: {
         title: 'Buzz',
-        url: `https://sprintr.home${env}.mendix.com/link/home`,
+        url: replaceEnvLink(links.sprintr.buzz),
       },
       deepLinkApps: {
         title: 'Apps',
-        url: `https://sprintr.home${env}.mendix.com/link/myprojects`,
+        url: replaceEnvLink(links.sprintr.apps),
       },
       deepLinkPeople: {
         title: 'People',
-        url: `https://sprintr.home${env}.mendix.com/link/people`,
+        url: replaceEnvLink(links.sprintr.people),
       },
       microflowBuzz: {
         title: 'Buzz',
-        microflow: 'PCP.OpenBuzz',
+        microflow: microflows.sprintr.buzz,
       },
       microflowApps: {
         title: 'Apps',
-        microflow: 'AppsDashboard.IVK_OpenAppsDashboard',
+        microflow: microflows.sprintr.apps,
       },
       microflowPeople: {
         title: 'People',
-        microflow: 'PCP.OpenBuzzPeople',
+        microflow: microflows.sprintr.people,
       },
     }
   },

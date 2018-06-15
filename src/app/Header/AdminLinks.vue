@@ -35,6 +35,7 @@ import Vue from 'vue';
 import {mapActions, mapGetters} from 'vuex';
 
 import { onSprintr, onCloud, replaceEnvLink, clickMf } from 'Resources/helpers';
+import { links, microflows } from 'Resources/mendix.json';
 
 export default {
   name: 'admin',
@@ -45,12 +46,14 @@ export default {
     return {
       sprintr: onSprintr(),
       cloud: onCloud(),
-      companyAdminLink: replaceEnvLink('https://sprintr.home.mendix.com/link/adminpanel/'),
-      platformAdminLink: replaceEnvLink('https://sprintr.home.mendix.com/link/supportdeskcompanies/'),
-      operationsDeskLink: replaceEnvLink('https://cloud.home.mendix.com/link/operationsdeskapps/'),
-      operationsDeskMf: 'LoftManagement.OpenApplications',
-      sprintrCompanyAdminMf: 'PCP_AccountManagement.OpenAdminPanelWrapper',
-      sprintrPlatformMf: 'PCP_SupportDesk.DL_OpenSupportDeskCompanies'
+
+      companyAdminLink: replaceEnvLink(links.sprintr.companyAdmin),
+      platformAdminLink: replaceEnvLink(links.sprintr.platformAdmin),
+      operationsDeskLink: replaceEnvLink(links.cloudportal.operationsDesk),
+
+      sprintrCompanyAdminMf: microflows.sprintr.companyAdmin,
+      sprintrPlatformMf: microflows.sprintr.platformAdmin,
+      operationsDeskMf: microflows.cloudportal.operationsDesk
     }
   },
   created() {
