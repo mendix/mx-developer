@@ -1,7 +1,8 @@
 {
   "microflows": {
     "cloudportal": {
-      "operationsDesk": "LoftManagement.OpenApplications"
+      "operationsDesk": "LoftManagement.OpenApplications",
+      "profileMenu": "Navigation.DS_GetProfileViewMenu"
     },
     "sprintr": {
       "buzz": "PCP.OpenBuzz",
@@ -9,12 +10,15 @@
       "people": "PCP.OpenBuzzPeople",
       "companyAdmin": "PCP_AccountManagement.OpenAdminPanelWrapper",
       "platformAdmin": "PCP_SupportDesk.DL_OpenSupportDeskCompanies",
-      "notifications": "PCP.DL_Notifications"
+      "notifications": "PCP.DL_Notifications",
+      "profileMenu": "PCP.DS_GetProfileMenuView"
     }
   },
   "links": {
     "home": "https://home.mendix.com",
     "signup": "https://signup.mendix.com/link/signup/?source=developers&medium=community&campaign=signup",
+    "isPartner": "https://developer.mendixcloud.com/rest/checkpartner?openid=",
+    "profile": "https://home.mendix.com/mxid/appbar2",
     "cloudportal": {
       "operationsDesk": "https://cloud.home.mendix.com/link/operationsdeskapps/"
     },
@@ -24,7 +28,8 @@
       "people": "https://sprintr.home.mendix.com/link/people",
       "companyAdmin": "https://sprintr.home.mendix.com/link/adminpanel/",
       "platformAdmin": "https://sprintr.home.mendix.com/link/supportdeskcompanies/",
-      "notifications": "https://sprintr.home.mendix.com/link/notifications"
+      "notifications": "https://sprintr.home.mendix.com/link/notifications",
+      "profileMenu": ""
     }
   }
 }

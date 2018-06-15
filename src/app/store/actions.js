@@ -1,10 +1,11 @@
 /* eslint prefer-arrow-callback:0 */
 import fetchJsonp from 'fetch-jsonp';
 
-import {getEnvironment, onSprintr, onCloud} from 'Resources/helpers';
+import {replaceEnvLink, onSprintr, onCloud} from 'Resources/helpers';
 
-const profileUrl = `https://home${getEnvironment()}.mendix.com/mxid/appbar2?q=${Number(new Date())}`;
-const isPartnerUrl = 'https://developer.mendixcloud.com/rest/checkpartner?openid=';
+import {microflows, links} from 'Resources/mendix.json';
+
+const profileUrl = replaceEnvLink(links.profile) + `?q=${Number(new Date())}`;
 
 export default {
   getProfile({commit, dispatch}) {
@@ -34,7 +35,7 @@ export default {
       });
   },
   getPartnerStatus({commit}, openID) {
-    const url = isPartnerUrl + escape(openID);
+    const url = links.isPartner + escape(openID);
     fetchJsonp(url, {
       jsonpCallbackFunction: 'partnerstatus'
     })
@@ -51,9 +52,9 @@ export default {
     if (window.mx && window.mx.data && window.mx.data.action) {
       let MF = false;
       if (onSprintr()) {
-        MF = 'PCP.DS_GetProfileMenuView';
+        MF = microflows.sprintr.profileMenu;
       } else if (onCloud()) {
-        MF = 'Navigation.DS_GetProfileViewMenu';
+        MF = microflows.cloudportal.profileMenu;
       }
 
       if (MF) {
