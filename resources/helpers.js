@@ -3,11 +3,19 @@ import Vue from 'vue';
 
 const getEnvironment = () => {
   const domain = location.origin;
+
+  if (domain.indexOf('cdp-test.mendixcloud.com') !== -1) {
+    return '-test';
+  } else if (domain.indexOf('cdp-accp.mendixcloud.com') !== -1) {
+    return '-accp';
+  }
+
   if (domain.indexOf('home-test.mendix.com') !== -1) {
     return '-test';
   } else if (domain.indexOf('home-accp.mendix.com') !== -1) {
     return '-accp';
   }
+
   return '';
 };
 
