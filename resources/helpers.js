@@ -144,6 +144,17 @@ const waitForElementClass = (className, vueComponent, store, num = 200) => {
   }, 10);
 };
 
+const getSideBarToggle = () => {
+  if (!window.mx || !window.dijit || !window.dijit.registry) {
+    return null;
+  }
+  const sidebarToggles = window.dijit.registry.toArray().filter(w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1);
+  if (sidebarToggles.length) {
+    return sidebarToggles[0];
+  }
+  return null;
+};
+
 export {
   urls,
   isSmallViewport,
@@ -158,5 +169,6 @@ export {
   waitForElementClass,
   waitForMX,
   clickMf,
+  getSideBarToggle,
   replaceEnvLink
 };
