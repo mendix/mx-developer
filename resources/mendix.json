@@ -12,6 +12,12 @@
       "platformAdmin": "PCP_SupportDesk.DL_OpenSupportDeskCompanies",
       "notifications": "PCP.DL_Notifications",
       "profileMenu": "PCP.DS_GetProfileMenuView"
+    },
+    "heimdal": {
+      "profileMenu": "CommunityAlignment.DS_GetProfileMenuView"
+    },
+    "brokkr": {
+      "profileMenu": "CommunityAlignment.DS_GetProfileMenuView"
     }
   },
   "links": {

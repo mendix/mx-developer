@@ -19,6 +19,9 @@ const getEnvironment = () => {
   return '';
 };
 
+const heimdDalRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.com/;
+const brokkrRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.com/;
+
 const onSprintr = () => [
   'https://sprintr.home.mendix.com',
   'https://sprintr.home-test.mendix.com',
@@ -30,6 +33,9 @@ const onCloud = () => [
   'https://cloud.home-test.mendix.com',
   'https://cloud.home-accp.mendix.com'
 ].indexOf(location.origin) !== -1;
+
+const onHeimdal = () => heimdDalRegEx.test(location.origin);
+const onBrokkr = () => brokkrRegEx.test(location.origin);
 
 const replaceEnvLink = link => {
   if (!link || link.indexOf('home.mendix.com') === -1) {
@@ -164,6 +170,8 @@ export {
   hasElement,
   onSprintr,
   onCloud,
+  onHeimdal,
+  onBrokkr,
   waitForElementId,
   waitForElementIdCb,
   waitForElementClass,
