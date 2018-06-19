@@ -19,20 +19,14 @@ const getEnvironment = () => {
   return '';
 };
 
+const sprintrRegEx = /https:\/\/sprintr\.home(-test|-accp)?\.mendix\.com/;
+const cloudRegEx = /https:\/\/cloud\.home(-test|-accp)?\.mendix\.com/;
+
 const heimdDalRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.com/;
-const brokkrRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.com/;
+const brokkrRegEx = /https:\/\/clp(-test|-accp)?\.mendixcloud\.com/;
 
-const onSprintr = () => [
-  'https://sprintr.home.mendix.com',
-  'https://sprintr.home-test.mendix.com',
-  'https://sprintr.home-accp.mendix.com'
-].indexOf(location.origin) !== -1;
-
-const onCloud = () => [
-  'https://cloud.home.mendix.com',
-  'https://cloud.home-test.mendix.com',
-  'https://cloud.home-accp.mendix.com'
-].indexOf(location.origin) !== -1;
+const onSprintr = () => sprintrRegEx.test(location.origin);
+const onCloud = () => cloudRegEx.test(location.origin);
 
 const onHeimdal = () => heimdDalRegEx.test(location.origin);
 const onBrokkr = () => brokkrRegEx.test(location.origin);
