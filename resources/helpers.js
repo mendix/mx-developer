@@ -31,6 +31,22 @@ const onCloud = () => cloudRegEx.test(location.origin);
 const onHeimdal = () => heimdDalRegEx.test(location.origin);
 const onBrokkr = () => brokkrRegEx.test(location.origin);
 
+const mxEnv = () => {
+  if (onSprintr()) {
+    return 'sprintr';
+  }
+  if (onCloud()) {
+    return 'sprintr';
+  }
+  if (onHeimdal()) {
+    return 'heimdal';
+  }
+  if (onBrokkr()) {
+    return 'brokkr';
+  }
+  return '';
+};
+
 const replaceEnvLink = link => {
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
@@ -172,5 +188,6 @@ export {
   waitForMX,
   clickMf,
   getSideBarToggle,
-  replaceEnvLink
+  replaceEnvLink,
+  mxEnv
 };

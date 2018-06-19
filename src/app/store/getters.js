@@ -4,5 +4,6 @@ export default {
   loaded: state => state.loaded,
   messageStatus: state => state.messageStatus,
   bgShown: state => state.bgShown,
-  adminDetails: state => state.adminDetails
+  adminDetails: state => state.adminDetails,
+  environment: state => state.env
 };
