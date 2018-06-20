@@ -21,7 +21,7 @@
         <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" v-track-link>My Dashboard</a>
         <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" v-if="profile" v-track-link>Account Settings</a>
         <admin-links v-if="profile" :item-class="b('submenu__link', { 'type': 'developer' })" />
-        <a :class="b('submenu__link', { 'type': 'logout' })" :href="profile.logoutUrl" v-if="profile && profile.logoutUrl" v-track-link>Log out</a>
+        <a :class="b('submenu__link', { 'type': 'logout' })" :href="logoutLink" v-if="profile && profile.logoutUrl" v-track-link>Log out</a>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@ import AdminLinks from './AdminLinks.vue';
 import Notifications from './Notifications.vue';
 
 import { links } from 'Resources/mendix.json';
-import { urls } from 'Resources/helpers';
+import { urls, replaceEnvLink } from 'Resources/helpers';
 
 export default {
   name: 'profile',
@@ -46,6 +46,7 @@ export default {
       urls: urls,
       profilePic: require('Resources/img/header/avatar.svg'),
       signupLink: links.signup,
+      logoutLink: replaceEnvLink(links.logout),
       open: false,
       imgError: false
     }
