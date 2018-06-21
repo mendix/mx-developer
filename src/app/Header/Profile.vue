@@ -17,9 +17,9 @@
           <span :class="b('display-name')">{{ profile && profile.displayName }}</span>
           <span :class="b('display-username')">{{ profile && profile.userName }}</span>
         </div>
-        <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" v-track-link>Developer Portal</a>
+        <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" @click="home" v-track-link>Developer Portal</a>
         <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" v-track-link>My Dashboard</a>
-        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" v-if="profile" v-track-link>Account Settings</a>
+        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" @click="openProfile" v-if="profile" v-track-link>Account Settings</a>
         <admin-links v-if="profile" :item-class="b('submenu__link', { 'type': 'developer' })" />
         <a :class="b('submenu__link', { 'type': 'logout' })" :href="logoutLink" v-if="profile && profile.logoutUrl" v-track-link>Log out</a>
       </div>
@@ -36,7 +36,7 @@ import ProfilePic from './ProfilePic.vue';
 import AdminLinks from './AdminLinks.vue';
 import Notifications from './Notifications.vue';
 
-import { links } from 'Resources/mendix.json';
+import { links, microflows } from 'Resources/mendix.json';
 import { urls, replaceEnvLink } from 'Resources/helpers';
 
 export default {
@@ -53,6 +53,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'environment',
       'profile',
       'loaded',
     ])
@@ -75,7 +76,19 @@ export default {
     },
     ...mapActions([
       'getProfile'
-    ])
+    ]),
+    home(event) {
+      if (this.environment === 'sprintr') {
+        event.preventDefault();
+        clickMf(microflows.sprintr.home, this.urls.platform);
+      }
+    },
+    openProfile(event) {
+      if (this.environment === 'sprintr') {
+        event.preventDefault();
+        clickMf(microflows.sprintr.profile, this.urls.developer);
+      }
+    },
   },
   components: {
     'support-menu': SupportMenu,
