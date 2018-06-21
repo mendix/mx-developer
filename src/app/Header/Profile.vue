@@ -37,7 +37,7 @@ import AdminLinks from './AdminLinks.vue';
 import Notifications from './Notifications.vue';
 
 import { links, microflows } from 'Resources/mendix.json';
-import { urls, replaceEnvLink } from 'Resources/helpers';
+import { urls, replaceEnvLink, clickMf } from 'Resources/helpers';
 
 export default {
   name: 'profile',
