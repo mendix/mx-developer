@@ -73,7 +73,7 @@ methods: {
     home(event) {
       if (this.environment === 'sprintr') {
         event.preventDefault();
-        clickMf(links.sprintr.home, this.homeURL);
+        clickMf(microflows.sprintr.home, this.homeURL);
       }
     },
   }
