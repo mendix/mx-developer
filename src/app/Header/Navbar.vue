@@ -1,7 +1,7 @@
 <template>
   <div :class="b({'shown': init})" ref="navbar">
     <div :class="b('header')" ref="header">
-      <a target="_self" :href="homeURL" :class="b('brand')">
+      <a target="_self" :href="homeURL" :class="b('brand')" @click="home">
         <img :src="img" alt="Logo" v-track-link>
       </a>
     </div>
@@ -19,9 +19,9 @@
 </template>
 <script>
 import Vue from 'vue';
-import { constants, waitForElementIdCb, replaceEnvLink } from 'Resources/helpers';
+import { constants, waitForElementIdCb, replaceEnvLink, mxEnv, clickMf } from 'Resources/helpers';
 import { mapGetters } from 'vuex';
-import { links } from 'Resources/mendix.json';
+import { links, microflows } from 'Resources/mendix.json';
 
 import headerLink from './HeaderLink.vue';
 import profile from './Profile.vue';
@@ -69,5 +69,13 @@ export default {
       return (this.profile && !this.profile.loggedIn) ? this.profile.loginUrl : replaceEnvLink(links.home);
     }
   },
+methods: {
+    home(event) {
+      if (this.environment === 'sprintr') {
+        event.preventDefault();
+        clickMf(links.sprintr.home, this.homeURL);
+      }
+    },
+  }
 };
 </script>
