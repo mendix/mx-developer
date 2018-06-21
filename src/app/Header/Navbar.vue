@@ -1,7 +1,7 @@
 <template>
   <div :class="b({'shown': init})" ref="navbar">
     <div :class="b('header')" ref="header">
-      <a target="_self" :href="homeURL" :class="b('brand')" @click="home">
+      <a target="_self" :href="homeURL" :class="b('brand')" @click="home" id="mx-header-link-home">
         <img :src="img" alt="Logo" v-track-link>
       </a>
     </div>

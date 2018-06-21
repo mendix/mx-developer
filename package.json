@@ -50,6 +50,7 @@
     "eslint-loader": "^1.6.1",
     "eslint-plugin-babel": "^4.0.1",
     "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-vue": "^4.5.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "gulp": "gulpjs/gulp#4ed9a4a3275559c73a396eff7e1fde3824951ebb",

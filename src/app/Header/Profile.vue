@@ -11,17 +11,17 @@
 
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
       <profile-picture :profile="profile" :enterFunc="mouseenter" />
-      <div :class="b('submenu', { open })">
+      <div :class="b('submenu', { open })" id="mx-header-profile-submenu">
         <div :class="b('submenu__header')">
           <profile-picture :profile="profile" />
           <span :class="b('display-name')">{{ profile && profile.displayName }}</span>
           <span :class="b('display-username')">{{ profile && profile.userName }}</span>
         </div>
-        <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" @click="home" v-track-link>Developer Portal</a>
-        <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" v-track-link>My Dashboard</a>
-        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" @click="openProfile" v-if="profile" v-track-link>Account Settings</a>
+        <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" @click="home" id="mx-header-link-devportal" v-track-link>Developer Portal</a>
+        <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" id="mx-header-link-dashboard" v-track-link>My Dashboard</a>
+        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" @click="openProfile" v-if="profile" id="mx-header-link-accountsettings" v-track-link>Account Settings</a>
         <admin-links v-if="profile" :item-class="b('submenu__link', { 'type': 'developer' })" />
-        <a :class="b('submenu__link', { 'type': 'logout' })" :href="logoutLink" v-if="profile && profile.logoutUrl" v-track-link>Log out</a>
+        <a :class="b('submenu__link', { 'type': 'logout' })" :href="logoutLink" v-if="profile && profile.logoutUrl" v-track-link id="mx-header-link-logout">Log out</a>
       </div>
     </div>
   </div>

@@ -2,24 +2,24 @@
   <div :class="b()" v-if="hasProfile">
     <div v-if="isOnSprintr">
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowBuzz" :alternative="deepLinkBuzz" :mob="mob" />
+        <header-microflow-link :link="microflowBuzz" :alternative="deepLinkBuzz" :mob="mob" :linkID="linkIDs.buzz" />
       </div>
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowApps" :alternative="deepLinkApps" :mob="mob" />
+        <header-microflow-link :link="microflowApps" :alternative="deepLinkApps" :mob="mob" :linkID="linkIDs.apps" />
       </div>
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowPeople" :alternative="deepLinkPeople" :mob="mob" />
+        <header-microflow-link :link="microflowPeople" :alternative="deepLinkPeople" :mob="mob" :linkID="linkIDs.people" />
       </div>
     </div>
     <div v-else>
       <div :class="itemClass" >
-        <header-link :link="deepLinkBuzz" :mob="mob" />
+        <header-link :link="deepLinkBuzz" :mob="mob" :linkID="linkIDs.buzz" />
       </div>
       <div :class="itemClass" >
-        <header-link :link="deepLinkApps" :mob="mob" />
+        <header-link :link="deepLinkApps" :mob="mob" :linkID="linkIDs.apps" />
       </div>
       <div :class="itemClass" >
-        <header-link :link="deepLinkPeople" :mob="mob" />
+        <header-link :link="deepLinkPeople" :mob="mob" :linkID="linkIDs.people" />
       </div>
     </div>
   </div>
@@ -44,6 +44,11 @@ export default {
   data () {
     return {
       isOnSprintr: onSprintr(),
+      linkIDs: {
+        buzz: 'mx-header-link-buzz',
+        apps: 'mx-header-link-apps',
+        people: 'mx-header-link-people'
+      },
       deepLinkBuzz: {
         title: 'Buzz',
         url: replaceEnvLink(links.sprintr.buzz),
