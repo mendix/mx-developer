@@ -7,14 +7,14 @@
     </div>
     <div :class="b('collapse', { 'mobile': mob })">
       <div :class="b('nav')">
-        <sprintr-block :itemClass="b('item')" :mob="mob" />
+        <sprintr-block :itemClass="b('item')" :mob="mob" v-if="environment !== 'beaver'" />
         <div :class="b('item')" v-for="(link, index) in links" :key="index">
           <header-link :link="link" :mob="mob"></header-link>
         </div>
         <div :class="b('bottom')" />
       </div>
     </div>
-    <profile v-if="useProfile" />
+    <profile v-if="useProfile && environment !== 'beaver'" />
   </div>
 </template>
 <script>
@@ -62,7 +62,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'profile'
+      'profile',
+      'environment'
     ]),
     homeURL: function () {
       return (this.profile && !this.profile.loggedIn) ? this.profile.loginUrl : replaceEnvLink(links.home);

@@ -13,6 +13,9 @@
       "notifications": "PCP.DL_Notifications",
       "profileMenu": "PCP.DS_GetProfileMenuView"
     },
+    "appstore": {
+      "frontpage": "AppStore.AT_HomePage"
+    },
     "heimdal": {
       "profileMenu": "CommunityAlignment.DS_GetProfileMenuView"
     },

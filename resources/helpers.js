@@ -25,11 +25,17 @@ const cloudRegEx = /https:\/\/cloud\.home(-test|-accp)?\.mendix\.com/;
 const heimdDalRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.com/;
 const brokkrRegEx = /https:\/\/clp(-test|-accp)?\.mendixcloud\.com/;
 
+const appstoreRegEx = /https:\/\/appstore\.home(-test|-accp)?\.mendix\.com/;
+const beaverRegEx = /https:\/\/sapodatamodelcreator(-test|-accp)?\.mendixcloud\.com/;
+
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
 
 const onHeimdal = () => heimdDalRegEx.test(location.origin);
 const onBrokkr = () => brokkrRegEx.test(location.origin);
+
+const onAppStore = () => appstoreRegEx.test(location.origin);
+const onBeaver = () => beaverRegEx.test(location.origin);
 
 const mxEnv = () => {
   if (onSprintr()) {
@@ -38,11 +44,17 @@ const mxEnv = () => {
   if (onCloud()) {
     return 'sprintr';
   }
+  if (onAppStore()) {
+    return 'appstore';
+  }
   if (onHeimdal()) {
     return 'heimdal';
   }
   if (onBrokkr()) {
     return 'brokkr';
+  }
+  if (onBeaver()) {
+    return 'beaver';
   }
   return '';
 };
@@ -180,8 +192,10 @@ export {
   hasElement,
   onSprintr,
   onCloud,
+  onAppStore,
   onHeimdal,
   onBrokkr,
+  onBeaver,
   waitForElementId,
   waitForElementIdCb,
   waitForElementClass,
