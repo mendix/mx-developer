@@ -5,13 +5,14 @@
       "profileMenu": "Navigation.DS_GetProfileViewMenu"
     },
     "sprintr": {
-      "buzz": "PCP.OpenBuzz",
-      "apps": "AppsDashboard.IVK_OpenAppsDashboard",
-      "people": "PCP.OpenBuzzPeople",
-      "companyAdmin": "PCP_AccountManagement.OpenAdminPanelWrapper",
-      "platformAdmin": "PCP_SupportDesk.DL_OpenSupportDeskCompanies",
-      "notifications": "PCP.DL_Notifications",
-      "profileMenu": "PCP.DS_GetProfileMenuView"
+      "home": "CommunityHeader.OpenHome",
+      "buzz": "CommunityHeader.OpenBuzz",
+      "apps": "CommunityHeader.OpenApps",
+      "people": "CommunityHeader.OpenPeople",
+      "companyAdmin": "CommunityHeader.OpenCompanyAdmin",
+      "platformAdmin": "CommunityHeader.OpenPlatformAdmin",
+      "notifications": "CommunityHeader.OpenNotifications",
+      "profileMenu": "CommunityHeader.GetProfileMenuData"
     },
     "appstore": {
       "frontpage": "AppStore.AT_HomePage"
