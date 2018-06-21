@@ -12,6 +12,7 @@
       "companyAdmin": "CommunityHeader.OpenCompanyAdmin",
       "platformAdmin": "CommunityHeader.OpenPlatformAdmin",
       "notifications": "CommunityHeader.OpenNotifications",
+      "profile": "CommunityHeader.OpenProfile",
       "profileMenu": "CommunityHeader.GetProfileMenuData"
     },
     "appstore": {
