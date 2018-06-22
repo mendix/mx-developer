@@ -78,16 +78,16 @@ export default {
       'getProfile'
     ]),
     home(event) {
+      this.open = false;
       if (this.environment === 'sprintr') {
         event.preventDefault();
-        this.open = false;
         clickMf(microflows.sprintr.home, this.urls.platform);
       }
     },
     openProfile(event) {
+      this.open = false;
       if (this.environment === 'sprintr') {
         event.preventDefault();
-        this.open = false;
         clickMf(microflows.sprintr.profile, this.urls.developer);
       }
     },
