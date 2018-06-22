@@ -22,7 +22,8 @@ export default {
   },
   computed: {
     guidanceText: function() {
-      return (this.fromStart ? 'Start' : 'Continue') + ' your page guidance';
+      return 'Learn more about this page';
+      //return (this.fromStart ? 'Start' : 'Continue') + ' your page guidance';
     }
   },
   created() {
