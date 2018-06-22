@@ -50,7 +50,7 @@ export default {
   methods: {
     menu() {
       const sidebarToggle = getSideBarToggle();
-      if (sidebarToggle && sidebarToggle.domNode && sidebarToggle.domNode.classList.indexOf('disabled') === -1) {
+      if (sidebarToggle && sidebarToggle.domNode && sidebarToggle.domNode.classList && !sidebarToggle.domNode.classList.contains('disabled')) {
         sidebarToggle.domNode.click();
         return;
       }
