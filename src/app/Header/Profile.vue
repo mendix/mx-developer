@@ -77,14 +77,14 @@ export default {
     ...mapActions([
       'getProfile'
     ]),
-    home(event) {
+    home: function (event) {
       this.open = false;
       if (this.environment === 'sprintr') {
         event.preventDefault();
         clickMf(microflows.sprintr.home, this.urls.platform);
       }
     },
-    openProfile(event) {
+    openProfile: function (event) {
       this.open = false;
       if (this.environment === 'sprintr') {
         event.preventDefault();
