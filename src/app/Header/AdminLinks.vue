@@ -4,11 +4,11 @@
       <span
         :class="itemClass"
         v-if="adminDetails && adminDetails.HasCompanyAdmin"
-        @click.stop.prevent="companyAdmin">Company Admin</span>
+        @click.stop.prevent="companyAdmin($event)">Company Admin</span>
       <span
         :class="itemClass"
         v-if="adminDetails && adminDetails.HasPlatformAdmin"
-        @click.stop.prevent="platformAdmin">Platform Admin</span>
+        @click.stop.prevent="platformAdmin($event)">Platform Admin</span>
       <a
         :class="itemClass"
         v-if="adminDetails && adminDetails.HasOperationsDesk"
@@ -26,7 +26,7 @@
       <span
         :class="itemClass"
         v-if="adminDetails && adminDetails.HasOperationsDesk"
-        @click.stop.prevent="operationsDesk">Operations Desk</span>
+        @click.stop.prevent="operationsDesk($event)">Operations Desk</span>
     </div>
   </div>
 </template>
@@ -40,7 +40,8 @@ import { links, microflows } from 'Resources/mendix.json';
 export default {
   name: 'admin',
   props: [
-    'item-class'
+    'item-class',
+    'closeFunc'
   ],
   data () {
     return {
@@ -68,13 +69,19 @@ export default {
     ...mapActions([
       'getAdminAttributes'
     ]),
-    operationsDesk() {
+    operationsDesk: function(event) {
+      event.preventDefault();
+      this.closeFunc && this.closeFunc();
       clickMf(this.operationsDeskMf, this.operationsDeskLink);
     },
-    companyAdmin() {
+    companyAdmin: function(event) {
+      event.preventDefault();
+      this.closeFunc && this.closeFunc();
       clickMf(this.sprintrCompanyAdminMf, this.companyAdminLink);
     },
-    platformAdmin() {
+    platformAdmin: function(event) {
+      event.preventDefault();
+      this.closeFunc && this.closeFunc();
       clickMf(this.sprintrPlatformMf, this.platformAdminLink);
     },
   }
