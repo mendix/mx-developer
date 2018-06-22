@@ -47,7 +47,7 @@ export default {
       profilePic: require('Resources/img/header/avatar.svg'),
       signupLink: links.signup,
       logoutLink: replaceEnvLink(links.logout),
-      open: true,
+      open: false,
       imgError: false
     }
   },
