@@ -47,7 +47,7 @@ export default {
       profilePic: require('Resources/img/header/avatar.svg'),
       signupLink: links.signup,
       logoutLink: replaceEnvLink(links.logout),
-      open: false,
+      open: true,
       imgError: false
     }
   },
@@ -80,12 +80,14 @@ export default {
     home(event) {
       if (this.environment === 'sprintr') {
         event.preventDefault();
+        this.open = false;
         clickMf(microflows.sprintr.home, this.urls.platform);
       }
     },
     openProfile(event) {
       if (this.environment === 'sprintr') {
         event.preventDefault();
+        this.open = false;
         clickMf(microflows.sprintr.profile, this.urls.developer);
       }
     },
