@@ -17,9 +17,9 @@
           <span :class="b('display-name')">{{ profile && profile.displayName }}</span>
           <span :class="b('display-username')">{{ profile && profile.userName }}</span>
         </div>
-        <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" @click="home" id="mx-header-link-devportal" v-track-link>Developer Portal</a>
+        <a :class="b('submenu__link', { 'type': 'platform' })" :href="homeURL" @click.stop="home($event)" id="mx-header-link-devportal" v-track-link>Developer Portal</a>
         <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" id="mx-header-link-dashboard" v-track-link>My Dashboard</a>
-        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" @click="openProfile" v-if="profile" id="mx-header-link-accountsettings" v-track-link>Account Settings</a>
+        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" @click.stop="openProfile($event)" v-if="profile" id="mx-header-link-accountsettings" v-track-link>Account Settings</a>
         <admin-links v-if="profile" :item-class="b('submenu__link', { 'type': 'developer' })" />
         <a :class="b('submenu__link', { 'type': 'logout' })" :href="logoutLink" v-if="profile && profile.logoutUrl" v-track-link id="mx-header-link-logout">Log out</a>
       </div>
@@ -47,6 +47,7 @@ export default {
       profilePic: require('Resources/img/header/avatar.svg'),
       signupLink: links.signup,
       logoutLink: replaceEnvLink(links.logout),
+      homeURL: replaceEnvLink(links.home),
       open: false,
       imgError: false
     }
@@ -68,6 +69,9 @@ export default {
     mouseenter(e) {
       this.open = true;
     },
+    closeMenu() {
+      this.open = false;
+    },
     menu(e) {
       this.open = !this.open;
     },
@@ -78,14 +82,14 @@ export default {
       'getProfile'
     ]),
     home: function (event) {
-      this.open = false;
+      this.closeMenu();
       if (this.environment === 'sprintr') {
         event.preventDefault();
-        clickMf(microflows.sprintr.home, this.urls.platform);
+        clickMf(microflows.sprintr.home, this.homeURL);
       }
     },
     openProfile: function (event) {
-      this.open = false;
+      this.closeMenu();
       if (this.environment === 'sprintr') {
         event.preventDefault();
         clickMf(microflows.sprintr.profile, this.urls.developer);
