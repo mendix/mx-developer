@@ -16,7 +16,7 @@
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import { ResizeObserver } from 'Resources/vendor/vue-resize';
-import { isSmallViewport, isPhoneViewport } from 'Resources/helpers';
+import { isSmallViewport, isPhoneViewport, getSideBarToggle } from 'Resources/helpers';
 import NavBar from './Navbar.vue';
 import NotificationBar from './NotificationBar.vue';
 
@@ -49,6 +49,11 @@ export default {
   },
   methods: {
     menu() {
+      const sidebarToggle = getSideBarToggle();
+      if (sidebarToggle && sidebarToggle.domNode && sidebarToggle.domNode.classList && !sidebarToggle.domNode.classList.contains('disabled')) {
+        sidebarToggle.domNode.click();
+        return;
+      }
       this.mob = !this.mob
     },
     handleResize() {

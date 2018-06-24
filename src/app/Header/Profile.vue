@@ -3,20 +3,25 @@
     <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })" title="Click here to login">
       <img :src="profilePic" alt="Click here to login" v-track-link>
     </a>
-    <a href="https://signup.mendix.com/link/signup/?source=developers&medium=community&campaign=signup" :class="b('start-button', { 'shown': profile && !profile.loggedIn })" v-track-link>Start For Free</a>
+    <a :href="signupLink" :class="b('start-button', { 'shown': profile && !profile.loggedIn })" v-track-link>Start For Free</a>
 
     <span id="mendix-header-search-button" class="mx-developer__profile__search-button hidden" @click="openSearch"></span>
     <support-menu />
+    <notifications v-if="profile && profile.loggedIn" />
 
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
-      <img v-if="profile && profile.avatarUrl && !imgError" :src="profile.avatarUrl" :alt="profile && profile.displayName" @mouseenter="mouseenter" @error="imgLoadError">
-      <img v-if="!(profile && profile.avatarUrl) || imgError" :src="profilePic" :alt="profile && profile.displayName" @mouseenter="mouseenter">
-      <div :class="b('submenu', { open })">
-        <span :class="b('display-name')">Welcome, {{ profile && profile.displayName }}</span>
-        <a :class="b('submenu__link', { 'type': 'platform' })" :href="urls.platform" v-track-link>Developer Portal</a>
-        <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" v-track-link>My Dashboard</a>
-        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" v-if="profile" v-track-link>Account Settings</a>
-        <a :class="b('submenu__link', { 'type': 'logout' })" :href="profile.logoutUrl" v-if="profile && profile.logoutUrl" v-track-link>Log out</a>
+      <profile-picture :profile="profile" :enterFunc="mouseenter" />
+      <div :class="b('submenu', { open })" id="mx-header-profile-submenu">
+        <div :class="b('submenu__header')">
+          <profile-picture :profile="profile" />
+          <span :class="b('display-name')">{{ profile && profile.displayName }}</span>
+          <span :class="b('display-username')">{{ profile && profile.userName }}</span>
+        </div>
+        <a :class="b('submenu__link', { 'type': 'platform' })" :href="homeURL" @click.stop="home($event)" id="mx-header-link-devportal" v-track-link>Developer Portal</a>
+        <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" id="mx-header-link-dashboard" v-track-link>My Dashboard</a>
+        <a :class="b('submenu__link', { 'type': 'developer' })" :href="urls.developer" @click.stop="openProfile($event)" v-if="profile" id="mx-header-link-accountsettings" v-track-link>Account Settings</a>
+        <admin-links v-if="profile" :item-class="b('submenu__link', { 'type': 'developer' })" :closeFunc="closeMenu" />
+        <a :class="b('submenu__link', { 'type': 'logout' })" :href="logoutLink" v-if="profile && profile.logoutUrl" v-track-link id="mx-header-link-logout">Log out</a>
       </div>
     </div>
   </div>
@@ -25,10 +30,14 @@
 import Vue from 'vue';
 import {mapGetters, mapActions} from 'vuex';
 import fetchJsonp from 'fetch-jsonp';
-import SupportMenu from './SupportMenu.vue';
-import { urls } from 'Resources/helpers';
 
-const url = `https://home.mendix.com/mxid/appbar2?q=${+(new Date())}`;
+import SupportMenu from './SupportMenu.vue';
+import ProfilePic from './ProfilePic.vue';
+import AdminLinks from './AdminLinks.vue';
+import Notifications from './Notifications.vue';
+
+import { links, microflows } from 'Resources/mendix.json';
+import { urls, replaceEnvLink, clickMf } from 'Resources/helpers';
 
 export default {
   name: 'profile',
@@ -36,12 +45,16 @@ export default {
     return {
       urls: urls,
       profilePic: require('Resources/img/header/avatar.svg'),
+      signupLink: links.signup,
+      logoutLink: replaceEnvLink(links.logout),
+      homeURL: replaceEnvLink(links.home),
       open: false,
       imgError: false
     }
   },
   computed: {
     ...mapGetters([
+      'environment',
       'profile',
       'loaded',
     ])
@@ -56,22 +69,38 @@ export default {
     mouseenter(e) {
       this.open = true;
     },
+    closeMenu() {
+      this.open = false;
+    },
     menu(e) {
       this.open = !this.open;
-    },
-    imgLoadError(e) {
-      console.warn(`MX Header: Failed to load profile image: "${e.target.src}", disabling img`);
-      this.imgError = true;
     },
     openSearch() {
       this.$tracker.trackEvent('Search', `Show`);
     },
     ...mapActions([
       'getProfile'
-    ])
+    ]),
+    home: function (event) {
+      this.closeMenu();
+      if (this.environment === 'sprintr') {
+        event.preventDefault();
+        clickMf(microflows.sprintr.home, this.homeURL);
+      }
+    },
+    openProfile: function (event) {
+      this.closeMenu();
+      if (this.environment === 'sprintr') {
+        event.preventDefault();
+        clickMf(microflows.sprintr.profile, this.urls.developer);
+      }
+    },
   },
   components: {
-    'support-menu': SupportMenu
+    'support-menu': SupportMenu,
+    'profile-picture': ProfilePic,
+    'admin-links': AdminLinks,
+    'notifications': Notifications
   }
 };
 </script>

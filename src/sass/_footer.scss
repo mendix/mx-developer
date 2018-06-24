@@ -141,5 +141,13 @@
   @include element('link-col') {
     display: table-cell;
     width: 17%;
+    &:first-child {
+      a {
+        &, &:active, &:visited {
+          color: $color-bottom-light-blue-second;
+          font-weight: 600;
+        }
+      }
+    }
   }
 }

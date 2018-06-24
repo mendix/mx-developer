@@ -1,13 +1,78 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
 import Vue from 'vue';
 
+const getEnvironment = () => {
+  const domain = location.origin;
+
+  if (domain.indexOf('-test.mendixcloud.com') !== -1) {
+    return '-test';
+  } else if (domain.indexOf('-accp.mendixcloud.com') !== -1) {
+    return '-accp';
+  }
+
+  if (domain.indexOf('home-test.mendix.com') !== -1) {
+    return '-test';
+  } else if (domain.indexOf('home-accp.mendix.com') !== -1) {
+    return '-accp';
+  }
+
+  return '';
+};
+
+const sprintrRegEx = /https:\/\/sprintr\.home(-test|-accp)?\.mendix\.com/;
+const cloudRegEx = /https:\/\/cloud\.home(-test|-accp)?\.mendix\.com/;
+
+const heimdDalRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.com/;
+const brokkrRegEx = /https:\/\/clp(-test|-accp)?\.mendixcloud\.com/;
+
+const appstoreRegEx = /https:\/\/appstore\.home(-test|-accp)?\.mendix\.com/;
+const beaverRegEx = /https:\/\/sapodatamodelcreator(-test|-accp)?\.mendixcloud\.com/;
+
+const onSprintr = () => sprintrRegEx.test(location.origin);
+const onCloud = () => cloudRegEx.test(location.origin);
+
+const onHeimdal = () => heimdDalRegEx.test(location.origin);
+const onBrokkr = () => brokkrRegEx.test(location.origin);
+
+const onAppStore = () => appstoreRegEx.test(location.origin);
+const onBeaver = () => beaverRegEx.test(location.origin);
+
+const mxEnv = () => {
+  if (onSprintr()) {
+    return 'sprintr';
+  }
+  if (onCloud()) {
+    return 'sprintr';
+  }
+  if (onAppStore()) {
+    return 'appstore';
+  }
+  if (onHeimdal()) {
+    return 'heimdal';
+  }
+  if (onBrokkr()) {
+    return 'brokkr';
+  }
+  if (onBeaver()) {
+    return 'beaver';
+  }
+  return '';
+};
+
+const replaceEnvLink = link => {
+  if (!link || link.indexOf('home.mendix.com') === -1) {
+    return link;
+  }
+  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
+};
+
 const constants = {
   copyRight: `Copyright &copy; ${(new Date()).getFullYear()} Mendix.`
 };
 
 const urls = {
-  platform: 'https://home.mendix.com/',
-  developer: 'https://sprintr.home.mendix.com/link/myprofile',
+  platform: replaceEnvLink('https://home.mendix.com/'),
+  developer: replaceEnvLink('https://sprintr.home.mendix.com/link/myprofile'),
   community: 'https://developer.mendixcloud.com/link/dashboard/',
   github: 'https://github.com/mendix',
   twitter: 'https://twitter.com/MendixDeveloper',
@@ -19,6 +84,24 @@ const urls = {
 
 const isSmallViewport = () => window.innerWidth <= 992;
 const isPhoneViewport = () => window.innerWidth <= 480;
+
+const clickMf = (mfName, fallback = false) => {
+  if (window.mx && window.mx.data && window.mx.data.action) {
+    window.mx.data.action({
+      params: {
+        actionname: mfName
+      },
+      callback: () => {},
+      error: () => {
+        if (fallback) {
+          window.location = fallback;
+        }
+      }
+    });
+  } else if (fallback) {
+    window.location = fallback;
+  }
+};
 
 const waitForElementIdCb = (id, func, num = 200) => {
   const el = document.getElementById(id);
@@ -52,6 +135,23 @@ const waitForElementId = (id, vueComponent, store, num = 200) => {
   }, 10);
 };
 
+const waitFor = (predicate, callback, timeoutCallback = () => {}, num = 200) => {
+  if (predicate()) {
+    callback();
+    return;
+  }
+  if (num <= 0) {
+    timeoutCallback();
+    return;
+  }
+  setTimeout(() => {
+    waitFor(predicate, callback, timeoutCallback, num - 1);
+  }, 10);
+};
+
+const waitForMX = (callback, timeoutCallback = () => {}) =>
+  waitFor(() => typeof window.mx !== 'undefined' && window.mx.session, callback, timeoutCallback);
+
 const hasElement = className => document.getElementsByClassName(className).length > 0;
 
 const waitForElementClass = (className, vueComponent, store, num = 200) => {
@@ -72,13 +172,36 @@ const waitForElementClass = (className, vueComponent, store, num = 200) => {
   }, 10);
 };
 
+const getSideBarToggle = () => {
+  if (!window.mx || !window.dijit || !window.dijit.registry) {
+    return null;
+  }
+  const sidebarToggles = window.dijit.registry.toArray().filter(w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1);
+  if (sidebarToggles.length) {
+    return sidebarToggles[0];
+  }
+  return null;
+};
+
 export {
   urls,
   isSmallViewport,
   isPhoneViewport,
   constants,
+  getEnvironment,
   hasElement,
+  onSprintr,
+  onCloud,
+  onAppStore,
+  onHeimdal,
+  onBrokkr,
+  onBeaver,
   waitForElementId,
   waitForElementIdCb,
-  waitForElementClass
+  waitForElementClass,
+  waitForMX,
+  clickMf,
+  getSideBarToggle,
+  replaceEnvLink,
+  mxEnv
 };

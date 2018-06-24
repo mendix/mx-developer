@@ -8,7 +8,7 @@
     height: $height-top-bar-inside;
     float: left;
     margin: 0 10px;
-    background: url('../../resources/img/header/tonav_support.svg') 7px 31px no-repeat; //@include opacity(0.6);
+    background: url('../../resources/img/help.svg') 7px 34px no-repeat; //@include opacity(0.6);
     cursor: pointer;
     &:hover {
       @include opacity(1);
@@ -37,7 +37,7 @@
     }
     line-height: $font-size;
     font-size: $font-size;
-    z-index: 10000;
+    z-index: 10012;
     $offset: 26px;
     &:before {
       right: $offset;
@@ -59,6 +59,7 @@
       background-position: left center;
       background-repeat: no-repeat;
       white-space: nowrap;
+      cursor: pointer;
       &,
       &:active,
       &:visited {
@@ -68,6 +69,11 @@
       &:hover {
         @include no-text-decoration();
         color: $color-mx-blue;
+      }
+
+      @include modifier('guidance') {
+        color: $color-bottom-blue-secondary;
+        font-weight: bold;
       }
     }
   }

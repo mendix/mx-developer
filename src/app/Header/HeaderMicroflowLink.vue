@@ -1,7 +1,7 @@
 <script>
 import HeaderLinkMixin from '../mixins/HeaderLink.vue';
 
-import toplink from './TopLink.vue';
+import toplink from './TopMicroflowLink.vue';
 
 export default {
   name: 'headerlink',

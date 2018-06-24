@@ -1,0 +1,46 @@
+{
+  "microflows": {
+    "cloudportal": {
+      "operationsDesk": "LoftManagement.OpenApplications",
+      "profileMenu": "Navigation.DS_GetProfileViewMenu"
+    },
+    "sprintr": {
+      "home": "CommunityHeader.OpenHome",
+      "buzz": "CommunityHeader.OpenBuzz",
+      "apps": "CommunityHeader.OpenApps",
+      "people": "CommunityHeader.OpenPeople",
+      "companyAdmin": "CommunityHeader.OpenCompanyAdmin",
+      "platformAdmin": "CommunityHeader.OpenPlatformAdmin",
+      "notifications": "CommunityHeader.OpenNotifications",
+      "profile": "CommunityHeader.OpenProfile",
+      "profileMenu": "CommunityHeader.GetProfileMenuData"
+    },
+    "appstore": {
+      "frontpage": "AppStore.AT_HomePage"
+    },
+    "heimdal": {
+      "profileMenu": "CommunityAlignment.DS_GetProfileMenuView"
+    },
+    "brokkr": {
+      "profileMenu": "CommunityAlignment.DS_GetProfileMenuView"
+    }
+  },
+  "links": {
+    "home": "https://sprintr.home.mendix.com",
+    "signup": "https://signup.mendix.com/link/signup/?source=developers&medium=community&campaign=signup",
+    "isPartner": "https://developer.mendixcloud.com/rest/checkpartner?openid=",
+    "profile": "https://home.mendix.com/mxid/appbar2",
+    "logout": "https://home.mendix.com/mxid/logoff",
+    "cloudportal": {
+      "operationsDesk": "https://cloud.home.mendix.com/link/operationsdeskapps/"
+    },
+    "sprintr": {
+      "buzz": "https://sprintr.home.mendix.com/link/home",
+      "apps": "https://sprintr.home.mendix.com/link/myprojects",
+      "people": "https://sprintr.home.mendix.com/link/people",
+      "companyAdmin": "https://sprintr.home.mendix.com/link/adminpanel/",
+      "platformAdmin": "https://sprintr.home.mendix.com/link/supportdeskcompanies/",
+      "notifications": "https://sprintr.home.mendix.com/link/notifications"
+    }
+  }
+}
