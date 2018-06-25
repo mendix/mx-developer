@@ -28,7 +28,7 @@
 import Vue from 'vue';
 import {mapGetters} from 'vuex';
 
-import { onSprintr, getEnvironment, replaceEnvLink } from 'Resources/helpers';
+import { onSprintr, replaceEnvLink } from 'Resources/helpers';
 
 import { links, microflows } from 'Resources/mendix.json';
 

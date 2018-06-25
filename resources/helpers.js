@@ -4,29 +4,31 @@ import Vue from 'vue';
 const getEnvironment = () => {
   const domain = location.origin;
 
-  if (domain.indexOf('-test.mendixcloud.com') !== -1) {
+  if (
+    domain.indexOf('-test.mendixcloud.com') !== -1 ||
+    domain.indexOf('home-test.mendix.com') !== -1 ||
+    domain.indexOf('home-test.mendix.dev') !== -1
+  ) {
     return '-test';
-  } else if (domain.indexOf('-accp.mendixcloud.com') !== -1) {
-    return '-accp';
-  }
-
-  if (domain.indexOf('home-test.mendix.com') !== -1) {
-    return '-test';
-  } else if (domain.indexOf('home-accp.mendix.com') !== -1) {
+  } else if (
+    domain.indexOf('-accp.mendixcloud.com') !== -1 ||
+    domain.indexOf('home-accp.mendix.com') !== -1 ||
+    domain.indexOf('home-accp.mendix.dev') !== -1
+  ) {
     return '-accp';
   }
 
   return '';
 };
 
-const sprintrRegEx = /https:\/\/sprintr\.home(-test|-accp)?\.mendix\.com/;
-const cloudRegEx = /https:\/\/cloud\.home(-test|-accp)?\.mendix\.com/;
+const sprintrRegEx = /https:\/\/sprintr\.home(-test|-accp)?\.mendix\.(dev|com)/;
+const cloudRegEx = /https:\/\/cloud\.home(-test|-accp)?\.mendix\.(dev|com)/;
 
-const heimdDalRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.com/;
-const brokkrRegEx = /https:\/\/clp(-test|-accp)?\.mendixcloud\.com/;
+const heimdDalRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.(dev|com)/;
+const brokkrRegEx = /https:\/\/clp(-test|-accp)?\.mendixcloud\.(dev|com)/;
 
-const appstoreRegEx = /https:\/\/appstore\.home(-test|-accp)?\.mendix\.com/;
-const beaverRegEx = /https:\/\/sapodatamodelcreator(-test|-accp)?\.mendixcloud\.com/;
+const appstoreRegEx = /https:\/\/appstore\.home(-test|-accp)?\.mendix\.(dev|com)/;
+const beaverRegEx = /https:\/\/sapodatamodelcreator(-test|-accp)?\.mendixcloud\.(dev|com)/;
 
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
@@ -63,7 +65,8 @@ const replaceEnvLink = link => {
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
   }
-  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
+  const isDev = location.origin.indexOf('home.mendix.dev') !== -1;
+  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.${isDev ? 'dev' : 'com'}`);
 };
 
 const constants = {
@@ -188,7 +191,6 @@ export {
   isSmallViewport,
   isPhoneViewport,
   constants,
-  getEnvironment,
   hasElement,
   onSprintr,
   onCloud,
