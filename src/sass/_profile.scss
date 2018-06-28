@@ -163,7 +163,10 @@ $menu-width: 200px;
         background-image: url('../../resources/img/header/my_profile.svg');
       }
       @include modifier('type-developer') {
-        background-image: url('../../resources/img/header/acc_settings.svg');
+        background: url('../../resources/img/header/gear.svg') 6px 6px no-repeat;
+      }
+      @include modifier('type-admin') {
+        background: url('../../resources/img/header/admin.svg') 6px 3px no-repeat;
       }
       @include modifier('type-logout') {
         background-image: url('../../resources/img/header/logout.svg');
