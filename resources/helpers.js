@@ -30,6 +30,8 @@ const brokkrRegEx = /https:\/\/clp(-test|-accp)?\.mendixcloud\.(dev|com)/;
 const appstoreRegEx = /https:\/\/appstore\.home(-test|-accp)?\.mendix\.(dev|com)/;
 const beaverRegEx = /https:\/\/sapodatamodelcreator(-test|-accp)?\.mendixcloud\.(dev|com)/;
 
+const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
+
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
 
@@ -38,6 +40,8 @@ const onBrokkr = () => brokkrRegEx.test(location.origin);
 
 const onAppStore = () => appstoreRegEx.test(location.origin);
 const onBeaver = () => beaverRegEx.test(location.origin);
+
+const onModelShare = () => modelShareRegEx.test(location.origin);
 
 const mxEnv = () => {
   if (onSprintr()) {
@@ -58,7 +62,10 @@ const mxEnv = () => {
   if (onBeaver()) {
     return 'beaver';
   }
-  return '';
+  if (onModelShare()) {
+    return 'modelshare';
+  }
+  return 'community';
 };
 
 const replaceEnvLink = link => {
@@ -198,6 +205,7 @@ export {
   onHeimdal,
   onBrokkr,
   onBeaver,
+  onModelShare,
   waitForElementId,
   waitForElementIdCb,
   waitForElementClass,

@@ -11,7 +11,7 @@ $notification-offset: 10px;
     @include border-radius(5px 5px);
     @include transition(margin-top 250ms ease);
     @include box-shadow(2px 2px 8px 0px rgba(0, 0, 0, 0.25));
-    background: url('../../resources/img/charity.svg') 15px 15px no-repeat;
+    //background: url('../../resources/img/charity.svg') 15px 15px no-repeat;
     background-color: #f99b1d;
     color: #FFF;
     max-width: $width-row;
@@ -19,7 +19,8 @@ $notification-offset: 10px;
     display: block;
     min-height: $notification-height;
     position: relative;
-    padding: 0 0 0 56px;
+    //padding: 0 0 0 56px;
+    padding: 0 0 0 30px;
     margin-top: -300px;
     @include modifier('open') {
       margin-top: $notification-offset;

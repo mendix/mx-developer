@@ -44,7 +44,7 @@ const fallbackProfileCall = (commit, profile) => {
 };
 
 export default {
-  getProfile({commit, dispatch}) {
+  getProfile({commit}) {
     fetchJsonp(profileUrl, {
       jsonpCallbackFunction: 'getProfile'
     })
@@ -62,7 +62,8 @@ export default {
           if (typeof profile.openId === 'undefined' || !process.env.OPTIONS.banner) {
             commit('messageStatus', 1);
           } else {
-            dispatch('getPartnerStatus', profile.openId);
+            commit('messageStatus', 1);
+            // dispatch('getPartnerStatus', profile.openId);
           }
         } else {
           commit('messageStatus', 1);
@@ -74,20 +75,20 @@ export default {
         console.log(`Failed to get profile: `, ex);
       });
   },
-  getPartnerStatus({commit}, openID) {
-    const url = links.isPartner + escape(openID);
-    fetchJsonp(url, {
-      jsonpCallbackFunction: 'partnerstatus'
-    })
-      .then(response => response.json())
-      .then(json => {
-        commit('messageStatus', typeof json.isPartner === 'undefined' ? 1 : json.isPartner ? 3 : 2);
-      })
-      .catch(ex => {
-        commit('messageStatus', false);
-        console.log(`Failed to check profile status: `, ex);
-      });
-  },
+  // getPartnerStatus({commit}, openID) {
+  //   const url = links.isPartner + escape(openID);
+  //   fetchJsonp(url, {
+  //     jsonpCallbackFunction: 'partnerstatus'
+  //   })
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       commit('messageStatus', typeof json.isPartner === 'undefined' ? 1 : json.isPartner ? 3 : 2);
+  //     })
+  //     .catch(ex => {
+  //       commit('messageStatus', false);
+  //       console.log(`Failed to check profile status: `, ex);
+  //     });
+  // },
   getAdminAttributes({commit}) {
     if (window.mx && window.mx.data && window.mx.data.action) {
       let MF = false;
