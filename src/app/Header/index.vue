@@ -14,7 +14,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 import { ResizeObserver } from 'Resources/vendor/vue-resize';
 import { isSmallViewport, isPhoneViewport, getSideBarToggle } from 'Resources/helpers';
 import NavBar from './Navbar.vue';

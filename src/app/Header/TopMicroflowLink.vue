@@ -3,7 +3,6 @@
 </template>
 <script>
 import Vue from 'vue';
-import { waitForMX } from 'Resources/helpers';
 
 let timeout = null;
 

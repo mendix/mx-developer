@@ -21,14 +21,14 @@ const getEnvironment = () => {
   return '';
 };
 
-const sprintrRegEx = /https:\/\/sprintr\.home(-test|-accp)?\.mendix\.(dev|com)/;
-const cloudRegEx = /https:\/\/cloud\.home(-test|-accp)?\.mendix\.(dev|com)/;
+const sprintrRegEx = /https:\/\/(.+?\.|)sprintr\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
+const cloudRegEx = /https:\/\/(.+?\.|)cloud\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
 
-const heimdDalRegEx = /https:\/\/cdp(-test|-accp)?\.mendixcloud\.(dev|com)/;
-const brokkrRegEx = /https:\/\/clp(-test|-accp)?\.mendixcloud\.(dev|com)/;
+const heimdDalRegEx = /https:\/\/(.+?\.|)cdp(-test|-accp)?\.(mendixcloud\.com|mendix\.dev|dev\.mendix\.com)/;
+const brokkrRegEx = /https:\/\/(.+?\.|)clp(-test|-accp)?\.(mendixcloud\.com|mendix\.dev|dev\.mendix\.com)/;
 
-const appstoreRegEx = /https:\/\/appstore\.home(-test|-accp)?\.mendix\.(dev|com)/;
-const beaverRegEx = /https:\/\/sapodatamodelcreator(-test|-accp)?\.mendixcloud\.(dev|com)/;
+const appstoreRegEx = /https:\/\/(.+?\.|)appstore\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
+const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mendixcloud\.com|mendix\.dev|dev\.mendix\.com)/;
 
 const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
 
@@ -48,7 +48,7 @@ const mxEnv = () => {
     return 'sprintr';
   }
   if (onCloud()) {
-    return 'sprintr';
+    return 'cloud';
   }
   if (onAppStore()) {
     return 'appstore';
@@ -72,8 +72,13 @@ const replaceEnvLink = link => {
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
   }
-  const isDev = location.origin.indexOf('home.mendix.dev') !== -1;
-  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.${isDev ? 'dev' : 'com'}`);
+  if (location.origin.indexOf('home.mendix.dev') !== -1) {
+    return link.replace('home.mendix.com', `home.mendix.dev`);
+  }
+  if (location.origin.indexOf('dev.mendix.com') !== -1) {
+    return link.replace('home.mendix.com', `home.dev.mendix.com`);
+  }
+  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
 };
 
 const constants = {
