@@ -9,7 +9,7 @@
       <nav-bar :mob="mob" :phone="phone" :init="init" />
       <resize-observer @notify="handleResize" />
     </div>
-    <notification v-if="bannerEnabled" />
+    <notification v-if="bannerEnabled && environment === 'community'" />
   </div>
 </template>
 <script>
@@ -39,7 +39,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-        'bgShown'
+        'bgShown',
+        'environment'
     ])
   },
   mounted: function () {

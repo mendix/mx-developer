@@ -10,8 +10,8 @@ $notification-offset: 10px;
   @include element('inner') {
     @include border-radius(5px 5px);
     @include transition(margin-top 250ms ease);
-    @include box-shadow(2px 2px 8px 0px rgba(0, 0, 0, 0.25));
-    background: url('../../resources/img/charity.svg') 15px 15px no-repeat;
+    @include box-shadow(1px 1px 4px 1px rgba(0, 0, 0, 0.25));
+    //background: url('../../resources/img/charity.svg') 15px 15px no-repeat;
     background-color: #f99b1d;
     color: #FFF;
     max-width: $width-row;
@@ -19,23 +19,44 @@ $notification-offset: 10px;
     display: block;
     min-height: $notification-height;
     position: relative;
-    padding: 0 0 0 56px;
+    //padding: 0 0 0 56px;
+    padding: 0 0 0 30px;
     margin-top: -300px;
     @include modifier('open') {
       margin-top: $notification-offset;
     }
   }
   @include element('message') {
+    $message_root: &;
     width: 100%;
     max-width: calc(100% - 33px);
     min-height: $notification-height;
     display: block;
-    padding: 17px 0;
+    padding: 17px 0 17px 25px;
+    position: relative;
     a, a:hover, a:active {
       color: #FFF;
       @include no-text-decoration();
       padding-bottom: 20px;
       font-size: 14px;
+    }
+    &:before {
+      content: " ";
+      position: absolute;
+      background-image: url('../../resources/img/megaphone-2.svg');
+      background-position: 0px 0px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      top: 19px;
+      left: -8px;
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+    &:hover {
+      @include element('link', $message_root) {
+        border-bottom: 1px solid #FFF;
+      }
     }
   }
   @include element('close') {
