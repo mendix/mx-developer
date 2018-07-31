@@ -44,7 +44,7 @@ const mxEnv = () => {
     return 'sprintr';
   }
   if (onCloud()) {
-    return 'sprintr';
+    return 'cloud';
   }
   if (onAppStore()) {
     return 'appstore';
