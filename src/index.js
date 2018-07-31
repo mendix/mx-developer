@@ -81,6 +81,19 @@ const load = function () {
 
 window._headerObserver = new Observer(debounce(load, 100));
 
+if (!window.__mxToggleGuidanceButton) {
+  window.__mxToggleGuidanceTemp = {
+    cb: null,
+    start: true
+  };
+  window.__mxToggleGuidanceButton = (cb, start = true) => {
+    window.__mxToggleGuidanceTemp = {
+      cb,
+      start
+    };
+  };
+}
+
 window._headerObserver.observe(document, {
   subtree: true,
   childList: true,
