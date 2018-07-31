@@ -28,7 +28,7 @@ const heimdDalRegEx = /https:\/\/(.+?\.|)cdp(-test|-accp)?\.(mendixcloud\.com|me
 const brokkrRegEx = /https:\/\/(.+?\.|)clp(-test|-accp)?\.(mendixcloud\.com|mendix\.dev|dev\.mendix\.com)/;
 
 const appstoreRegEx = /https:\/\/(.+?\.|)appstore\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
-const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mendixcloud\.com|mendix\.dev|dev\.mendix\.com)/;;
+const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mendixcloud\.com|mendix\.dev|dev\.mendix\.com)/;
 
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
@@ -67,11 +67,11 @@ const replaceEnvLink = link => {
   }
   if (location.origin.indexOf('home.mendix.dev') !== -1) {
     return link.replace('home.mendix.com', `home.mendix.dev`);
-  } else if (location.origin.indexOf('dev.mendix.com') !== -1) {
-    return link.replace('home.mendix.com', `home.dev.mendix.com`);
-  } else {
-    return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
   }
+  if (location.origin.indexOf('dev.mendix.com') !== -1) {
+    return link.replace('home.mendix.com', `home.dev.mendix.com`);
+  }
+  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
 };
 
 const constants = {
