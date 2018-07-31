@@ -38,6 +38,11 @@ export default {
           this.clickCallback = null;
         }
       }
+      if (window.__mxToggleGuidanceTemp && null !== window.__mxToggleGuidanceTemp.cb) {
+        const { cb, start } = window.__mxToggleGuidanceTemp;
+        window.__mxToggleGuidanceButton(cb, start);
+        delete window.__mxToggleGuidanceTemp;
+      }
     });
   },
 };
