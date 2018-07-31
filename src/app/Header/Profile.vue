@@ -29,7 +29,6 @@
 <script>
 import Vue from 'vue';
 import {mapGetters, mapActions} from 'vuex';
-import fetchJsonp from 'fetch-jsonp';
 
 import SupportMenu from './SupportMenu.vue';
 import ProfilePic from './ProfilePic.vue';

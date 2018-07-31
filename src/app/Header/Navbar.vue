@@ -19,7 +19,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import { constants, waitForElementIdCb, replaceEnvLink, mxEnv, clickMf } from 'Resources/helpers';
+import { constants, waitForElementIdCb, replaceEnvLink, clickMf } from 'Resources/helpers';
 import { mapGetters } from 'vuex';
 import { links, microflows } from 'Resources/mendix.json';
 
