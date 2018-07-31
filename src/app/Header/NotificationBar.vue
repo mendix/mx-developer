@@ -9,7 +9,7 @@
           @click="clickLink"
           rel="noopener"
           v-track-link>
-            We’re nominated for the Computable Awards 2018 in 7 categories! Support Mendix and vote <strong>now</strong>
+            We’re nominated for the Computable Awards 2018 in 7 categories! Support Mendix, and vote <strong>now</strong> via <span :class="b('message__link')">https://bit.ly/2IPS9zy</span>
           </a>
       </div>
       <div :class="b('close')" @click.stop.prevent="clickClose"></div>

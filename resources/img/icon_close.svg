@@ -3,9 +3,9 @@
     <line x1="1" y1="11"
           x2="11" y2="1"
           stroke="#FFF"
-          stroke-width="2"/>
+          stroke-width="1"/>
     <line x1="1" y1="1"
           x2="11" y2="11"
           stroke="#FFF"
-          stroke-width="2"/>
+          stroke-width="1"/>
 </svg>
