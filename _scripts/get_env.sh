@@ -2,7 +2,7 @@
 
 # Choose necessary argument according to the current branch.
 if [[ $TRAVIS_BRANCH == 'development' ]]; then
-    echo 'test'
+    echo 'development'
 elif [[ $TRAVIS_BRANCH == 'master' ]]; then
     echo 'production'
 else

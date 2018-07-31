@@ -17,16 +17,27 @@
   </div>
 </template>
 <script>
-// Currently disabled. Import this in index.vue
+
 import Vue from 'vue';
 import {mapGetters} from 'vuex';
 
-import storage from 'local-storage-fallback';
+import {CrossStorageClient} from 'chase-storage';
+
 const reviewKey = 'header_notification_computables_2018';
 const now = +(new Date());
 const deadline = +(new Date(2018, 9, 7, 0, 0, 0));
-const isNotificationShown = () => storage.getItem(reviewKey) || (deadline < now);
-const notificationSetShown = () => storage.setItem(reviewKey, true);
+
+let domain = 'https://developer-static.mendix.com';
+
+if (process.env.NODE_ENV === 'development') {
+  if (location.origin.indexOf('localhost') !== -1) {
+    domain = 'http://localhost:3000'
+  } else {
+    domain = 'https://mx-developer-test.cfapps.io';
+  }
+}
+
+const client = new CrossStorageClient(`${domain}/hub.html`);
 
 let timeout = null;
 
@@ -34,7 +45,7 @@ export default {
   name: 'notification',
   data() {
     return {
-      reviewed: isNotificationShown(),
+      reviewed: false,
       open: false,
       enabled: true
     }
@@ -50,8 +61,10 @@ export default {
     closereview() {
       this.open = false;
       setTimeout(() => {
-          this.reviewed = true,
-          notificationSetShown();
+          this.reviewed = true;
+          client.onConnect().then(function() {
+            return client.set(reviewKey, true);
+          });
       }, 1000);
     },
     clickClose() {
@@ -67,10 +80,22 @@ export default {
     messageStatus(newVal, oldVal) {
       if ((newVal === 1 || newVal === 2) && !this.reviewed) {
         this.$nextTick(function () {
-          setTimeout(() => {
-            Vue.$tracker.trackEvent('Computables', 'open');
-            this.open = true;
-          }, 1000);
+          client
+            .onConnect()
+            .then(() => {
+              return client.get(reviewKey);
+            })
+            .then((res) => {
+              if (!res) {
+                setTimeout(() => {
+                  Vue.$tracker.trackEvent('Computables', 'open');
+                  this.open = true;
+                }, 1000);
+              }
+            })
+            .catch(e => {
+              Vue.$tracker.trackEvent('Computables', 'storageerror');
+            });
         })
       } else {
         this.enabled = false;

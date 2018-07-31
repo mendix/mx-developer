@@ -81,7 +81,18 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
+      filename: 'index.html',
+      chunks: [
+        'mx-header'
+      ],
       template: conf.path.src('index.html')
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'hub.html',
+      chunks: [
+        'hub'
+      ],
+      template: conf.path.src('hub.html')
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -107,9 +118,12 @@ module.exports = {
   devtool: 'source-map',
   output: {
     path: path.join(process.cwd(), conf.paths.tmp),
-    filename: 'mx-header.js'
+    filename: '[name].js'
   },
-  entry: `./${conf.path.src('index')}`,
+  entry: {
+    'mx-header': `./${conf.path.src('index')}`,
+    hub: `./${conf.path.src('hub')}`
+  },
   resolve: {
     alias: {
       Resources: path.resolve(__dirname, '../resources/')

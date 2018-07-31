@@ -90,7 +90,18 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     // new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
+      filename: 'index.html',
+      chunks: [
+        'mx-header'
+      ],
       template: conf.path.src('index.html')
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'hub.html',
+      chunks: [
+        'hub'
+      ],
+      template: conf.path.src('hub.html')
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -129,6 +140,7 @@ Report issues to: https://github.com/mendix/mx-developer/issues`),
         str += `# Mendix assets redirect mapping\n`;
         str += `############################################################################################\n\n`;
         str += `~*\\/mx-header.js /${assets['mx-header'].js};\n`;
+        str += `~*\\/mx-header.js /${assets.hub.js};\n`;
         str += `~*\\/mx-header.css /${assets['mx-header'].css};\n`;
         return str;
       }
@@ -139,7 +151,8 @@ Report issues to: https://github.com/mendix/mx-developer/issues`),
     filename: '[name]-[hash].js'
   },
   entry: {
-    'mx-header': `./${conf.path.src('index')}`
+    'mx-header': `./${conf.path.src('index')}`,
+    hub: `./${conf.path.src('hub')}`
   },
   resolve: {
     alias: {
