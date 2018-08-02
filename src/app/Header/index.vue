@@ -9,7 +9,7 @@
       <nav-bar :mob="mob" :phone="phone" :init="init" />
       <resize-observer @notify="handleResize" />
     </div>
-    <notification v-if="bannerEnabled && environment === 'community'" />
+    <notification v-if="bannerEnabled && environment === 'forum'" />
   </div>
 </template>
 <script>

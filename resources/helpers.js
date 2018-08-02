@@ -32,6 +32,8 @@ const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mend
 
 const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
 
+const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
+
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
 
@@ -42,6 +44,7 @@ const onAppStore = () => appstoreRegEx.test(location.origin);
 const onBeaver = () => beaverRegEx.test(location.origin);
 
 const onModelShare = () => modelShareRegEx.test(location.origin);
+const onForum = () => forumRegEx.test(location.origin);
 
 const mxEnv = () => {
   if (onSprintr()) {
@@ -64,6 +67,9 @@ const mxEnv = () => {
   }
   if (onModelShare()) {
     return 'modelshare';
+  }
+  if (onForum()) {
+    return 'forum';
   }
   return 'community';
 };
