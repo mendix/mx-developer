@@ -82,6 +82,13 @@ const replaceEnvLink = link => {
     return link.replace('home.mendix.com', `home.mendix.dev`);
   }
   if (location.origin.indexOf('dev.mendix.com') !== -1) {
+    // MXLAB integration (https://prefix.app.home.dev.mendix.com)
+    const urlParts = location.origin.split('.').map(part => part.replace(/http(s)?:\/\//, ''));
+    const firstPart = urlParts[0];
+    const nonIndex = ['sprintr', 'sprintr', 'home', 'cloud', 'cdp', 'cdp-test', 'cdp-accp', 'clp', 'clp-test', 'clp-accp', 'appstore'].indexOf(firstPart) === -1;
+    if (nonIndex) {
+      return link.replace(/(http(s)?:\/\/)/, `$1${firstPart}.`).replace('home.mendix.com', `home.dev.mendix.com`);
+    }
     return link.replace('home.mendix.com', `home.dev.mendix.com`);
   }
   return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
