@@ -106,6 +106,10 @@
       {
         "title": "API & SDK",
         "url": "https://docs.mendix.com/apidocs-mxsdk/"
+      },
+      {
+        "title": "Low-code Guide",
+        "url": "https://www.mendix.com/low-code-guide/"
       }
     ]
   },
