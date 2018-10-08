@@ -75,6 +75,9 @@ const mxEnv = () => {
 };
 
 const replaceEnvLink = link => {
+  if (link && link.indexOf('developer.mendixcloud.com') !== -1) {
+    return link.replace('developer.mendixcloud.com', `developer${getEnvironment()}.mendixcloud.com`);
+  }
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
   }
@@ -101,7 +104,7 @@ const constants = {
 const urls = {
   platform: replaceEnvLink('https://home.mendix.com/'),
   developer: replaceEnvLink('https://sprintr.home.mendix.com/link/myprofile'),
-  community: 'https://developer.mendixcloud.com/link/dashboard/',
+  community: replaceEnvLink('https://developer.mendixcloud.com/link/dashboard/'),
   github: 'https://github.com/mendix',
   twitter: 'https://twitter.com/MendixDeveloper',
   linkedin: 'https://www.linkedin.com/company/mendix',
