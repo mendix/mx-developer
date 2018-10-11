@@ -8,7 +8,7 @@
         <header-microflow-link :link="microflowApps" :alternative="deepLinkApps" :mob="mob" :linkID="linkIDs.apps" />
       </div>
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowPeople" :alternative="deepLinkPeople" :mob="mob" :linkID="linkIDs.people" />
+        <header-link :link="deepLinkPeople" :mob="mob" :linkID="linkIDs.people" />
       </div>
     </div>
     <div v-else>
