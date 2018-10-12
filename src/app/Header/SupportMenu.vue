@@ -4,6 +4,7 @@
     <div :class="b('submenu', { open })">
         <a :class="b('submenu__link')" v-for="(sub, index) in links" :key="index" :href="sub.url" v-track-link>{{ sub.title }}</a>
         <guidance-button :class="b('submenu__link', { 'guidance': true })" />
+        <whatsnext-button :class="b('submenu__link', { 'guidance': true })" />
     </div>
   </div>
 </template>
@@ -11,6 +12,7 @@
 import Vue from 'vue';
 const links = require('Resources/menu/support.json');
 import GuidanceFlowButton from './GuidanceFlowButton.vue';
+import WhatsNextButton from './WhatsNextButton.vue';
 
 let timeout = null;
 
@@ -34,7 +36,8 @@ export default {
     }
   },
   components: {
-    'guidance-button': GuidanceFlowButton
+    'guidance-button': GuidanceFlowButton,
+    'whatsnext-button': WhatsNextButton
   }
 };
 </script>
