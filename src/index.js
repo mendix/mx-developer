@@ -94,6 +94,17 @@ if (!window.__mxToggleGuidanceButton) {
   };
 }
 
+if (!window.__mxToggleWhatsNextButton) {
+  window.__mxToggleWhatsNextTemp = {
+    cb: null
+  };
+  window.__mxToggleWhatsNextButton = cb => {
+    window.__mxToggleWhatsNextTemp = {
+      cb
+    };
+  };
+}
+
 window._headerObserver.observe(document, {
   subtree: true,
   childList: true,
