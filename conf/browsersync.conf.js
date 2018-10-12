@@ -17,6 +17,7 @@ module.exports = function () {
       middleware: [compress()]
     },
     https,
-    open: false
+    open: false,
+    port: 3100
   };
 };
