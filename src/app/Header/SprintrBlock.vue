@@ -43,7 +43,7 @@ export default {
   ],
   data () {
     return {
-      isOnSprintr: true,
+      isOnSprintr: onSprintr(),
       linkIDs: {
         buzz: 'mx-header-link-buzz',
         apps: 'mx-header-link-apps',
