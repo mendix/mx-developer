@@ -64,14 +64,17 @@ export default {
       microflowBuzz: {
         title: 'Buzz',
         microflow: microflows.sprintr.buzz,
+        progress: true
       },
       microflowApps: {
         title: 'Apps',
         microflow: microflows.sprintr.apps,
+        progress: true
       },
       microflowPeople: {
         title: 'People',
         microflow: microflows.sprintr.people,
+        progress: true
       },
     }
   },
