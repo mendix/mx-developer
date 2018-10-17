@@ -20,12 +20,25 @@ export default {
   methods: {
     onClick(evt) {
       if (window.mx && window.mx.data && window.mx.data.action) {
+        let progress = null;
+        if (this.link.progress && window.mx && window.mx.ui && window.mx.ui.showProgress) {
+          progress = window.mx.ui.showProgress();
+        }
         window.mx.data.action({
           params: {
             actionname: this.link.microflow,
           },
-          callback: () => {},
+          callback: () => {
+            if (progress !== null && window.mx && window.mx.ui && window.mx.ui.hideProgress) {
+              window.mx.ui.hideProgress(progress);
+              progress = null;
+            }
+          },
           error: () => {
+            if (progress !== null && window.mx && window.mx.ui && window.mx.ui.hideProgress) {
+              window.mx.ui.hideProgress(progress);
+              progress = null;
+            }
             if (this.alternateUrl) {
               window.location = this.alternateUrl;
             }

@@ -116,14 +116,25 @@ const urls = {
 const isSmallViewport = () => window.innerWidth <= 992;
 const isPhoneViewport = () => window.innerWidth <= 480;
 
-const clickMf = (mfName, fallback = false) => {
+const clickMf = (mfName, fallback = false, showProgress = false) => {
   if (window.mx && window.mx.data && window.mx.data.action) {
+    let p = null;
+    if (showProgress && window.mx.ui.showProgress) {
+      p = window.mx.ui.showProgress();
+    }
     window.mx.data.action({
       params: {
         actionname: mfName
       },
-      callback: () => {},
+      callback: () => {
+        if (showProgress && window.mx.ui.hideProgress && p !== null) {
+          window.mx.ui.hideProgress(p);
+        }
+      },
       error: () => {
+        if (showProgress && window.mx.ui.hideProgress && p !== null) {
+          window.mx.ui.hideProgress(p);
+        }
         if (fallback) {
           window.location = fallback;
         }

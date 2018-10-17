@@ -43,7 +43,7 @@ export default {
   ],
   data () {
     return {
-      isOnSprintr: onSprintr(),
+      isOnSprintr: true,
       linkIDs: {
         buzz: 'mx-header-link-buzz',
         apps: 'mx-header-link-apps',
@@ -64,14 +64,17 @@ export default {
       microflowBuzz: {
         title: 'Buzz',
         microflow: microflows.sprintr.buzz,
+        progress: true
       },
       microflowApps: {
         title: 'Apps',
         microflow: microflows.sprintr.apps,
+        progress: true
       },
       microflowPeople: {
         title: 'People',
         microflow: microflows.sprintr.people,
+        progress: true
       },
     }
   },
