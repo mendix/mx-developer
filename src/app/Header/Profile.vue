@@ -9,8 +9,8 @@
     <support-menu />
     <notifications v-if="profile && profile.loggedIn" />
 
-    <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" @mouseleave="mouseleave" v-on:click="menu">
-      <profile-picture :profile="profile" :enterFunc="mouseenter" />
+    <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" v-on:click="menu">
+      <profile-picture :profile="profile" />
       <div :class="b('submenu', { open })" id="mx-header-profile-submenu">
         <div :class="b('submenu__header')">
           <profile-picture :profile="profile" />
