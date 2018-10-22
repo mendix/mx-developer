@@ -126,7 +126,7 @@
       border: 1px solid $color-submenu-border;
       min-width: 200px;
       min-height: 50px;
-      left: 100%;
+      left: calc(100% - 7px);
       position: absolute;
       background: $color-white;
       padding: 1em;
