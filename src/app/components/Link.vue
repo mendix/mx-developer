@@ -12,7 +12,7 @@ import Vue from 'vue';
 import {replaceEnvLink} from 'Resources/helpers';
 
 export default {
-  name: 'link',
+  name: 'link-element',
   props: [
     'link',
     'track',

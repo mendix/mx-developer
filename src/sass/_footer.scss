@@ -1,4 +1,4 @@
-@include element('footer') {
+@include element('footer-block') {
   &, * {
     @include box-sizing(border-box);
     -webkit-font-smoothing: antialiased;

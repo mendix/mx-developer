@@ -31,7 +31,7 @@ const links = require('Resources/menu/footer.json');
 import linkBlock from './LinkBlock.vue';
 
 export default {
-  name: 'footer',
+  name: 'footer-block',
   data () {
     return {
       copyRight: constants.copyRight,

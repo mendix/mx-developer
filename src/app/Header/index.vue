@@ -23,7 +23,7 @@ import NotificationBar from './NotificationBar.vue';
 let timeout = null;
 
 export default {
-  name: 'header',
+  name: 'header-block',
   data() {
     return {
       mob: false,

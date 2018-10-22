@@ -7,9 +7,9 @@ main.has-header {
 }
 
 #mxHeader, .mxHeader {
-  @extend .mx-developer__header;
+  @extend .mx-developer__header-block;
 }
 
 #mxFooter, .mxFooter {
-  @extend .mx-developer__footer;
+  @extend .mx-developer__footer-block;
 }
