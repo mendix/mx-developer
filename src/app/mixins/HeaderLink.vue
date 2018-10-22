@@ -11,7 +11,7 @@
     <span :class="b('expand')" v-if="link.sub && link.sub.length > 0" @click.stop.prevent="menu">
       <span :class="b('expand-icon', { 'active': on })"></span>
     </span>
-    <div :class="b('submenu', { on, 'is-top': navlevel && !mob })" v-if="link.sub && link.sub.length > 0 && on" :style="styleHeight">
+    <div :class="b('submenu', { on, 'is-top': navlevel && !mob })" v-if="link.sub && link.sub.length > 0" :style="styleHeight">
       <ul :class="b('linkblock')">
         <li :class="b('link')" v-for="(sub, index) in link.sub" :key="index">
           <headerlink v-if="sub.sub && sub.sub.length > 0" :link="sub" :mob="mob"></headerlink>

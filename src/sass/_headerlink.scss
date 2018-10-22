@@ -48,19 +48,6 @@
         line-height: 1;
       }
     }
-    @include modifier('is-top') {
-      //line-height: $height-top-bar-inside + $logo-text-correction;
-      //height: $height-top-bar-inside;
-      //color: $color-font-darker-grey!important;
-      @include mq(sm, min) {
-        padding: 0 13px;
-        line-height: $height-top-bar-inside + $logo-text-correction;
-        height: $height-top-bar-inside;
-      }
-      @include mq(md, min) {
-        padding: 0 17px;
-      }
-    }
     @include modifier('is-link') {
       cursor: pointer;
     }
@@ -69,17 +56,34 @@
         max-width: 300px;
       }
       @include mq(sm, min) {
-        // &:after {
-        //   line-height: 1;
-        //   position: absolute;
-        //   top: 43px;
-        //   right: -16px;
-        //   display: block;
-        //   width: 14px;
-        //   height: 10px;
-        //   content: "";
-        //   background: url('../../resources/img/header/gray-down.svg') 0 0 no-repeat;
-        // }
+         &:after {
+           line-height: 1;
+           position: absolute;
+           top: 6px;
+           right: -12px;
+           display: block;
+           width: 14px;
+           height: 10px;
+           content: "";
+           background: url('../../resources/img/header/gray-down.svg') 0 0 no-repeat;
+           transform: rotate(-90deg);
+         }
+      }
+    }
+    @include modifier('is-top') {
+      //line-height: $height-top-bar-inside + $logo-text-correction;
+      //height: $height-top-bar-inside;
+      //color: $color-font-darker-grey!important;
+      @include mq(sm, min) {
+        padding: 0 13px;
+        line-height: $height-top-bar-inside + $logo-text-correction;
+        height: $height-top-bar-inside;
+        &:after {
+          display: none;
+        }
+      }
+      @include mq(md, min) {
+        padding: 0 17px;
       }
     }
     @include mq(sm, max) {
@@ -93,6 +97,7 @@
       @include mq(sm, min) {
         &.mx-developer__headerlink__head--has-sub:after {
           background: url('../../resources/img/header/blue-down.svg') 0 0 no-repeat;
+          display: none;
         }
       }
       @include mq(sm, max) {
@@ -125,7 +130,7 @@
       position: absolute;
       background: $color-white;
       padding: 1em;
-      margin-top: -32px;
+      margin-top: -34px;
       z-index: 9999;
     }
 
