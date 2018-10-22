@@ -1,13 +1,21 @@
 <template>
   <div :class="b({'has-sub': link.sub && link.sub.length > 0})" @mouseenter="mouseenter" @mouseleave="mouseleave">
-    <toplink :on="on" :link="link" :mob="mob" :menu="menu" :topmenu="topmenu" :alternative="alternative" :linkID="linkID" />
+    <toplink :on="on"
+             :link="link"
+             :ontop="navlevel"
+             :mob="mob"
+             :menu="menu"
+             :topmenu="topmenu"
+             :alternative="alternative"
+             :linkID="linkID" />
     <span :class="b('expand')" v-if="link.sub && link.sub.length > 0" @click.stop.prevent="menu">
       <span :class="b('expand-icon', { 'active': on })"></span>
     </span>
-    <div :class="b('submenu', { on })" v-if="link.sub && link.sub.length > 0" :style="styleHeight">
+    <div :class="b('submenu', { on, 'is-top': navlevel && !mob })" v-if="link.sub && link.sub.length > 0" :style="styleHeight">
       <ul :class="b('linkblock')">
         <li :class="b('link')" v-for="(sub, index) in link.sub" :key="index">
-          <link-element :track="true" :link="sub"/>
+          <headerlink v-if="sub.sub && sub.sub.length > 0" :link="sub" :mob="mob"></headerlink>
+          <link-element v-else :track="true" :link="sub"/>
         </li>
       </ul>
     </div>
@@ -22,7 +30,7 @@ let timeout = null;
 
 export default {
   name: 'headerlink',
-  props: ['link', 'mob', 'alternative', 'linkID'],
+  props: ['link', 'mob', 'alternative', 'linkID', 'navlevel'],
   data () {
     return {
       on: false

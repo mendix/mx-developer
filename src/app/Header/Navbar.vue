@@ -9,7 +9,7 @@
       <div :class="b('nav')">
         <sprintr-block :itemClass="b('item')" :mob="mob" v-if="environment !== 'beaver'" />
         <div :class="b('item')" v-for="(link, index) in links" :key="index">
-          <header-link :link="link" :mob="mob"></header-link>
+          <header-link :link="link" :mob="mob" :navlevel="topNavLevel"></header-link>
         </div>
         <div :class="b('bottom')" />
       </div>
@@ -39,7 +39,8 @@ export default {
       imgLink: constants.headerImgUrl,
       links: require('Resources/menu/header.json'),
       img: require('Resources/img/mx_logo.png'),
-      useProfile: true
+      useProfile: true,
+      topNavLevel: true
     }
   },
   components: {

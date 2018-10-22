@@ -1,7 +1,7 @@
 <template>
     <a
       v-if="link.url && !link.external"
-      :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true })"
+      :class="b({ on, 'has-sub': link.sub && link.sub.length > 0, 'is-link': true, 'is-top': ontop })"
       :href="url"
       :id="id"
       @click="menuClick"
@@ -34,7 +34,7 @@ import { replaceEnvLink } from 'Resources/helpers';
 
 export default {
   name: 'headerlink__head',
-  props: ['link', 'mob', 'on', 'menu', 'topmenu', 'linkID'],
+  props: ['link', 'mob', 'on', 'menu', 'topmenu', 'linkID', 'ontop'],
   computed: {
     url: function () {
       return this.link && this.link.url && replaceEnvLink(this.link.url) || null;

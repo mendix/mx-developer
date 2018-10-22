@@ -8,16 +8,17 @@
   // @include mq(md, min) {
   //   padding: 0 17px;
   // }
-  @include mq(sm, min) {
-    padding: 0 13px;
-  }
-  @include mq(md, min) {
-    padding: 0 17px;
-  }
+  //@include mq(sm, min) {
+    //padding: 0;
+    //padding: 0 13px;
+  //}
+  //@include mq(md, min) {
+  //  padding: 0;
+  //  //padding: 0 17px;
+  //}
 
-
-  line-height: $height-top-bar-inside + $logo-text-correction;
-  height: $height-top-bar-inside;
+  //line-height: $height-top-bar-inside + $logo-text-correction;
+  //height: $height-top-bar-inside;
   color: $color-font-darker-grey!important;
   vertical-align: middle;
   position: relative;
@@ -39,12 +40,25 @@
       font-size: $font-size;
       cursor: default;
       display: block;
-      height: $height-top-bar-inside;
-      line-height: $height-top-bar-inside + $logo-text-correction;
+      //height: $height-top-bar-inside;
+      //line-height: $height-top-bar-inside + $logo-text-correction;
       position: relative;
       @include mq(sm, max) {
         height: auto;
         line-height: 1;
+      }
+    }
+    @include modifier('is-top') {
+      //line-height: $height-top-bar-inside + $logo-text-correction;
+      //height: $height-top-bar-inside;
+      //color: $color-font-darker-grey!important;
+      @include mq(sm, min) {
+        padding: 0 13px;
+        line-height: $height-top-bar-inside + $logo-text-correction;
+        height: $height-top-bar-inside;
+      }
+      @include mq(md, min) {
+        padding: 0 17px;
       }
     }
     @include modifier('is-link') {
@@ -99,7 +113,7 @@
     }
     @include mq(sm, min) {
       @include border-radius(4px);
-      @include speech-bubble(top, left);
+      @include speech-bubble(left, top);
       @include transition(opacity 150ms ease-in-out, visibility 150ms ease-in-out);
       @include box-shadow(2px 3px 3px rgba(0, 0, 0, 0.08));
       @include opacity(0);
@@ -107,16 +121,23 @@
       border: 1px solid $color-submenu-border;
       min-width: 200px;
       min-height: 50px;
+      left: 100%;
       position: absolute;
       background: $color-white;
-      margin-top: -9px;
       padding: 1em;
+      margin-top: -32px;
       z-index: 9999;
     }
 
     @include modifier('on') {
       visibility: visible;
       @include opacity(1);
+    }
+
+    @include modifier('is-top') {
+      @include speech-bubble(top, left);
+      margin-top: -9px;
+      left: 0;
     }
   }
   @include element('linkblock') {
