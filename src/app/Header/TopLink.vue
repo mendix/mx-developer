@@ -34,7 +34,7 @@ import { replaceEnvLink } from 'Resources/helpers';
 
 export default {
   name: 'headerlink__head',
-  props: ['link', 'mob', 'on', 'menu', 'topmenu', 'linkID', 'ontop'],
+  props: ['link', 'on', 'menu', 'topmenu', 'linkID', 'ontop'],
   computed: {
     url: function () {
       return this.link && this.link.url && replaceEnvLink(this.link.url) || null;

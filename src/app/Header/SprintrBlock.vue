@@ -2,24 +2,24 @@
   <div :class="b()" v-if="hasProfile">
     <div v-if="isOnSprintr">
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowBuzz" :alternative="deepLinkBuzz" :mob="mob" :linkID="linkIDs.buzz" />
+        <header-microflow-link :link="microflowBuzz" :alternative="deepLinkBuzz" :linkID="linkIDs.buzz" />
       </div>
       <div :class="itemClass" >
-        <header-microflow-link :link="microflowApps" :alternative="deepLinkApps" :mob="mob" :linkID="linkIDs.apps" />
+        <header-microflow-link :link="microflowApps" :alternative="deepLinkApps" :linkID="linkIDs.apps" />
       </div>
       <div :class="itemClass" >
-        <header-link :link="deepLinkPeople" :mob="mob" :linkID="linkIDs.people" />
+        <header-link :link="deepLinkPeople" :linkID="linkIDs.people" />
       </div>
     </div>
     <div v-else>
       <div :class="itemClass" >
-        <header-link :link="deepLinkBuzz" :mob="mob" :linkID="linkIDs.buzz" />
+        <header-link :link="deepLinkBuzz" :linkID="linkIDs.buzz" />
       </div>
       <div :class="itemClass" >
-        <header-link :link="deepLinkApps" :mob="mob" :linkID="linkIDs.apps" />
+        <header-link :link="deepLinkApps" :linkID="linkIDs.apps" />
       </div>
       <div :class="itemClass" >
-        <header-link :link="deepLinkPeople" :mob="mob" :linkID="linkIDs.people" />
+        <header-link :link="deepLinkPeople" :linkID="linkIDs.people" />
       </div>
     </div>
   </div>
@@ -39,7 +39,6 @@ export default {
   name: 'sprintr',
   props: [
     'itemClass',
-    'mob'
   ],
   data () {
     return {

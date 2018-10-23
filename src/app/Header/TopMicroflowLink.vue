@@ -8,7 +8,7 @@ let timeout = null;
 
 export default {
   name: 'headerlink__head',
-  props: ['link', 'mob', 'on', 'menu', 'topmenu', 'alternative', 'linkID'],
+  props: ['link', 'on', 'menu', 'topmenu', 'alternative', 'linkID'],
   computed: {
     alternateUrl: function () {
       return this.alternative && this.alternative.url || false;

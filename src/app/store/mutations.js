@@ -13,5 +13,12 @@ export default {
   },
   adminDetails(state, mut) {
     state.adminDetails = mut;
+  },
+  mobState(state, mut) {
+    if (mut === null) {
+      state.isMob = !state.isMob;
+    } else if (typeof mut === 'boolean') {
+      state.isMob = mut;
+    }
   }
 };

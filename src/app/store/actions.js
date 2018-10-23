@@ -119,5 +119,8 @@ export default {
         });
       }
     }
+  },
+  mobStateSetAction({commit}, payload = null) {
+    commit('mobState', payload);
   }
 };

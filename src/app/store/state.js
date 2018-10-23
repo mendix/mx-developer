@@ -6,6 +6,7 @@ export default {
   loaded: false,
   messageStatus: false,
   isPartner: false,
+  isMob: false,
   bgShown: false,
   adminDetails: {},
   env: mxEnv()

@@ -3,7 +3,6 @@
     <toplink :on="on"
              :link="link"
              :ontop="navlevel"
-             :mob="mob"
              :menu="menu"
              :topmenu="topmenu"
              :alternative="alternative"
@@ -11,10 +10,10 @@
     <span :class="b('expand')" v-if="link.sub && link.sub.length > 0" @click.stop.prevent="menu">
       <span :class="b('expand-icon', { 'active': on })"></span>
     </span>
-    <div :class="b('submenu', { on, 'is-top': navlevel && !mob })" v-if="link.sub && link.sub.length > 0" :style="styleHeight">
+    <div :class="b('submenu', { on, 'is-top': navlevel && !mobStateGetter })" v-if="link.sub && link.sub.length > 0" :style="styleHeight">
       <ul :class="b('linkblock')">
         <li :class="b('link')" v-for="(sub, index) in link.sub" :key="index">
-          <headerlink v-if="sub.sub && sub.sub.length > 0" :link="sub" :mob="mob"></headerlink>
+          <headerlink v-if="sub.sub && sub.sub.length > 0" :link="sub"></headerlink>
           <link-element v-else :track="true" :link="sub"/>
         </li>
       </ul>
@@ -23,22 +22,25 @@
 </template>
 <script>
 import Vue from 'vue';
-
+import { mapGetters } from "vuex";
 import Link from '../components/Link.vue';
 
 let timeout = null;
 
 export default {
   name: 'headerlink',
-  props: ['link', 'mob', 'alternative', 'linkID', 'navlevel'],
+  props: ['link', 'alternative', 'linkID', 'navlevel'],
   data () {
     return {
       on: false
     }
   },
   computed: {
+    ...mapGetters([
+      'mobStateGetter'
+    ]),
     styleHeight: function() {
-      if (!this.mob) {
+      if (!this.mobStateGetter) {
         return '';
       } else if (!this.on) {
         return 'max-height: 0px;';
@@ -54,12 +56,12 @@ export default {
   },
   methods: {
     menu() {
-      if (this.mob) {
+      if (this.mobStateGetter) {
         this.on = !this.on;
       }
     },
     topmenu(evt) {
-      if (this.mob) {
+      if (this.mobStateGetter) {
         if (!this.on) {
           evt.preventDefault();
           this.on = true;
@@ -67,7 +69,7 @@ export default {
       }
     },
     mouseenter() {
-      if (!this.mob) {
+      if (!this.mobStateGetter) {
         if (timeout) {
           clearTimeout(timeout)
         }
@@ -77,7 +79,7 @@ export default {
       }
     },
     mouseleave() {
-      if (!this.mob) {
+      if (!this.mobStateGetter) {
         if (timeout) {
           clearTimeout(timeout);
         }

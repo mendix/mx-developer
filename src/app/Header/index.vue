@@ -3,10 +3,10 @@
     <div class="mx-developer__row">
       <button :class="b('hamburger')" type="button" @click.stop.prevent="menu">
         <span :class="b('hamburger-box')">
-          <span :class="b('hamburger-inner', { 'active': mob })"></span>
+          <span :class="b('hamburger-inner', { 'active': mobStateGetter })"></span>
         </span>
       </button>
-      <nav-bar :mob="mob" :phone="phone" :init="init" />
+      <nav-bar :phone="phone" :init="init" />
       <resize-observer @notify="handleResize" />
     </div>
     <notification v-if="bannerEnabled && environment === 'forum'" />
@@ -14,7 +14,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { ResizeObserver } from 'Resources/vendor/vue-resize';
 import { isSmallViewport, isPhoneViewport, getSideBarToggle } from 'Resources/helpers';
 import NavBar from './Navbar.vue';
@@ -26,7 +26,6 @@ export default {
   name: 'header-block',
   data() {
     return {
-      mob: false,
       phone: false,
       init: false,
       bannerEnabled: process.env.OPTIONS.banner
@@ -40,7 +39,8 @@ export default {
   computed: {
     ...mapGetters([
         'bgShown',
-        'environment'
+        'environment',
+        'mobStateGetter'
     ])
   },
   mounted: function () {
@@ -49,13 +49,16 @@ export default {
     }, 1000);
   },
   methods: {
+    ...mapActions([
+      'mobStateSetAction'
+    ]),
     menu() {
       const sidebarToggle = getSideBarToggle();
       if (sidebarToggle && sidebarToggle.domNode && sidebarToggle.domNode.classList && !sidebarToggle.domNode.classList.contains('disabled')) {
         sidebarToggle.domNode.click();
         return;
       }
-      this.mob = !this.mob
+      this.mobStateSetAction();
     },
     handleResize() {
       if (timeout) {
@@ -63,7 +66,7 @@ export default {
       }
       timeout = setTimeout(() => {
         if (!isSmallViewport()) {
-          this.mob = false;
+          this.mobStateSetAction(false);
         }
         this.phone = isPhoneViewport();
       }, 50);

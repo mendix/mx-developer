@@ -2,23 +2,6 @@
   $headerlink:&;
   font-size: $font-size;
   padding: 0;
-  // @include mq(sm, min) {
-  //   padding: 0 10px;
-  // }
-  // @include mq(md, min) {
-  //   padding: 0 17px;
-  // }
-  //@include mq(sm, min) {
-    //padding: 0;
-    //padding: 0 13px;
-  //}
-  //@include mq(md, min) {
-  //  padding: 0;
-  //  //padding: 0 17px;
-  //}
-
-  //line-height: $height-top-bar-inside + $logo-text-correction;
-  //height: $height-top-bar-inside;
   color: $color-font-darker-grey!important;
   vertical-align: middle;
   position: relative;
@@ -40,8 +23,6 @@
       font-size: $font-size;
       cursor: default;
       display: block;
-      //height: $height-top-bar-inside;
-      //line-height: $height-top-bar-inside + $logo-text-correction;
       position: relative;
       @include mq(sm, max) {
         height: auto;
@@ -71,9 +52,6 @@
       }
     }
     @include modifier('is-top') {
-      //line-height: $height-top-bar-inside + $logo-text-correction;
-      //height: $height-top-bar-inside;
-      //color: $color-font-darker-grey!important;
       @include mq(sm, min) {
         padding: 0 13px;
         line-height: $height-top-bar-inside + $logo-text-correction;
