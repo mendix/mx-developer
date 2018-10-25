@@ -133,7 +133,7 @@
       },
       {
         "title": "Contact Us",
-        "url": "http://ww2.mendix.com/contact-us.html",
+        "url": "https://www.mendix.com/contact-us/",
         "external": true,
         "type": "button"
       }
