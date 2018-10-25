@@ -4,6 +4,7 @@ import fetchJsonp from 'fetch-jsonp';
 import {replaceEnvLink, onSprintr, onCloud, mxEnv} from 'Resources/helpers';
 
 import {microflows, links} from 'Resources/mendix.json';
+import {types} from './mutationTypes.js';
 
 const profileUrl = replaceEnvLink(links.profile) + `?q=${Number(new Date())}`;
 
@@ -121,6 +122,6 @@ export default {
     }
   },
   mobStateSetAction({commit}, payload = null) {
-    commit('mobState', payload);
+    commit(types.SET_MOBILE_STATE, payload);
   }
 };

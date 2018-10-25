@@ -64,6 +64,7 @@
     "img-loader": "^2.0.0",
     "jasmine": "^2.5.3",
     "jest": "^23.6.0",
+    "jest-serializer-vue": "^2.0.2",
     "json-loader": "^0.5.4",
     "karma": "^1.4.1",
     "karma-coverage": "^1.1.1",
@@ -93,7 +94,8 @@
     "test": "./node_modules/.bin/gulp test",
     "test:auto": "./node_modules/.bin/gulp test:auto",
     "deploy": "./node_modules/.bin/gulp && cf push -f manifest.yml",
-    "unit": "jest --watchAll --verbose"
+    "unit": "jest --verbose",
+    "unit-watch": "jest --watchAll --verbose"
   },
   "eslintConfig": {
     "root": true,
@@ -122,6 +124,9 @@
       "^@/(.*)$": "<rootDir>/src/app/$1",
       "Resources/(.*)": "<rootDir>/resources/$1"
     },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"

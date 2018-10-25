@@ -12,9 +12,9 @@
     </span>
     <div :class="b('submenu', { on, 'is-top': navlevel && !mobStateGetter })" v-if="link.sub && link.sub.length > 0" :style="styleHeight">
       <ul :class="b('linkblock')">
-        <li :class="b('link')" v-for="(sub, index) in link.sub" :key="index">
-          <headerlink v-if="sub.sub && sub.sub.length > 0" :link="sub"></headerlink>
-          <link-element v-else :track="true" :link="sub"/>
+        <li :class="b('link')" v-for="(subLink, index) in link.sub" :key="index">
+          <headerlink v-if="subLink.sub && subLink.sub.length > 0" :link="subLink"></headerlink>
+          <link-element v-else :track="true" :link="subLink"/>
         </li>
       </ul>
     </div>

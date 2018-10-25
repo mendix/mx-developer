@@ -1,7 +1,7 @@
 <template>
-  <div :class="b({ 'bg': bgShown })">
+  <div :class="b({ 'bg': bgShown })" v-sticky>
     <div class="mx-developer__row">
-      <button :class="b('hamburger')" type="button" @click.stop.prevent="menu">
+      <button :class="b('hamburger')" jest="hamburger-button" type="button" @click.stop.prevent="menu">
         <span :class="b('hamburger-box')">
           <span :class="b('hamburger-inner', { 'active': mobStateGetter })"></span>
         </span>
@@ -58,6 +58,10 @@ export default {
         sidebarToggle.domNode.click();
         return;
       }
+      /**
+       * Using Vuex for data that needs to be accessed by the entire application is a good practice.
+       * In this case, we moved mob property to the vuex store
+       */
       this.mobStateSetAction();
     },
     handleResize() {

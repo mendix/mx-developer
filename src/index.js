@@ -15,6 +15,9 @@ import debounce from 'tiny-debounce';
 import store from './app/store/';
 import Tracker from './app/plugins/tracker';
 
+import {StickyDirective} from './app/directives/sticky-directive';
+Vue.directive('sticky', StickyDirective);
+
 Vue.use(vueBemCn, {
   ns: 'mx-developer__', // namespace
   el: '__', // element delimeter

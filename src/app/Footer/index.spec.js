@@ -2,8 +2,8 @@ import {renderComponent} from 'Resources/specHelpers';
 import Main from './index.vue';
 
 describe('Footer', () => {
-  it('should be a footer', () => {
-    expect(Main.name).toEqual('footer');
+  it('should be a footer-block', () => {
+    expect(Main.name).toEqual('footer-block');
   });
   it('has data', () => {
     const data = Main.data();

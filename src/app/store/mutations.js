@@ -1,3 +1,5 @@
+import {types} from './mutationTypes.js';
+
 export default {
   profile(state, mut) {
     state.profile = mut;
@@ -14,7 +16,7 @@ export default {
   adminDetails(state, mut) {
     state.adminDetails = mut;
   },
-  mobState(state, mut) {
+  [types.SET_MOBILE_STATE](state, mut) {
     if (mut === null) {
       state.isMob = !state.isMob;
     } else if (typeof mut === 'boolean') {
