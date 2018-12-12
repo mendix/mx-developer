@@ -1,6 +1,6 @@
 <template>
   <div :class="b({'loading': !loaded })">
-    <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn })" title="Click here to login">
+    <a :href="profile.loginUrl" :class="b('login-button', { 'shown': profile && !profile.loggedIn, event })" title="Click here to login">
       <img :src="profilePic" alt="Click here to login" v-track-link>
     </a>
     <a :href="signupLink" :class="b('start-button', { 'shown': profile && !profile.loggedIn })" v-track-link>Start For Free</a>
@@ -9,7 +9,7 @@
     <support-menu />
     <notifications v-if="profile && profile.loggedIn" />
 
-    <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl })" v-if="profile && profile.loggedIn" v-on:click="menu">
+    <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl, event })" v-if="profile && profile.loggedIn" v-on:click="menu">
       <profile-picture :profile="profile" />
       <div :class="b('submenu', { open })" id="mx-header-profile-submenu">
         <div :class="b('submenu__header')">
@@ -47,7 +47,8 @@ export default {
       logoutLink: replaceEnvLink(links.logout),
       homeURL: replaceEnvLink(links.home),
       open: false,
-      imgError: false
+      imgError: false,
+      event: process.env.OPTIONS.event
     }
   },
   computed: {
