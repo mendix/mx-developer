@@ -105,7 +105,8 @@
     ]
   },
   "headerOptions": {
-    "banner": true,
-    "trackerId": "UA-113151614-1"
+    "banner": false,
+    "trackerId": "UA-113151614-1",
+    "event": "christmas"
   }
 }

@@ -15,6 +15,7 @@ $menu-width: 200px;
 }
 
 @include element('profile') {
+  $profile-root: &;
   line-height: $height-top-bar-inside;
   float: right;
   @include modifier('loading') {
@@ -70,6 +71,21 @@ $menu-width: 200px;
       border-width: 0;
       outline: none;
     }
+
+    @include modifier('event-christmas') {
+      position: relative;
+      &:after {
+        width: 50px;
+        height: 40px;
+        background: url('../../resources/img/christmas.gif') 0 0 no-repeat;
+        display: block;
+        position: absolute;
+        content: "";
+        top: -20px;
+        right: -22px;
+        @include transform(rotate(-14deg));
+      }
+    }
   }
 
   @include element('avatar') {
@@ -89,6 +105,23 @@ $menu-width: 200px;
       float: right;
       margin: 24px 0 0;
       @include border-radius(50%);
+    }
+
+    @include modifier('event-christmas') {
+      @include element('picture', $profile-root) {
+        position: relative;
+        &:after {
+          width: 50px;
+          height: 40px;
+          background: url('../../resources/img/christmas.gif') 0 0 no-repeat;
+          display: block;
+          position: absolute;
+          content: "";
+          top: 4px;
+          right: -22px;
+          @include transform(rotate(-14deg));
+        }
+      }
     }
   }
 
@@ -183,6 +216,11 @@ $menu-width: 200px;
         width: 60px;
         height: 60px;
         margin: 20px auto 0;
+      }
+      @include element('picture', $profile-root) {
+        &:after {
+          display: none;
+        }
       }
     }
   }
