@@ -98,7 +98,7 @@ const replaceEnvLink = link => {
 };
 
 const constants = {
-  copyRight: `Copyright &copy; ${(new Date()).getFullYear()} Mendix.`
+  copyRight: `Copyright &copy; ${(new Date()).getFullYear()} Mendix Technology B.V.`
 };
 
 const urls = {
