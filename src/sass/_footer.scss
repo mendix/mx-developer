@@ -39,13 +39,14 @@
   }
   @include element('bottom-links') {
     color: $color-bottom-light-blue-second;
-    font-size: $font-size;
+    font-size: $font-size - 1;
+    line-height: 31px;
     a, div {
       &, &:active, &:visited {
         text-decoration: none;
         color: $color-bottom-light-blue-second;
         outline: 0;
-        font-size: $font-size;
+        font-size: $font-size - 1;
       }
     }
     .copyright {
