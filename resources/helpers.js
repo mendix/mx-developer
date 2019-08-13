@@ -1,3 +1,6 @@
+import Observer from 'mutation-observer';
+import debounce from 'tiny-debounce';
+
 const getEnvironment = () => {
     const domain = window.location.origin;
 
@@ -43,32 +46,27 @@ const onBeaver = () => beaverRegEx.test(window.location.origin);
 const onModelShare = () => modelShareRegEx.test(window.location.origin);
 const onForum = () => forumRegEx.test(window.location.origin);
 
-const mxEnv = () => {
-    if (onSprintr()) {
-        return 'sprintr';
-    }
-    if (onCloud()) {
-        return 'cloud';
-    }
-    if (onAppStore()) {
-        return 'appstore';
-    }
-    if (onHeimdal()) {
-        return 'heimdal';
-    }
-    if (onBrokkr()) {
-        return 'brokkr';
-    }
-    if (onBeaver()) {
-        return 'beaver';
-    }
-    if (onModelShare()) {
-        return 'modelshare';
-    }
-    if (onForum()) {
-        return 'forum';
-    }
-    return 'community';
+export const SPRINTR = 'sprintr';
+export const CLOUD = 'cloud';
+export const APPSTORE = 'appstore';
+export const HEIMDAL = 'heimdal';
+export const BROKKR = 'brokkr';
+export const BEAVER = 'beaver';
+export const MODELSHARE = 'modelshare';
+export const FORUM = 'forum';
+export const COMMUNITY = 'community';
+
+export const getCurrentApp = () => {
+    if (onSprintr()) return SPRINTR;
+    if (onCloud()) return CLOUD;
+    if (onAppStore()) return APPSTORE;
+    if (onHeimdal()) return HEIMDAL;
+    if (onBrokkr()) return BROKKR;
+    if (onBeaver()) return BEAVER;
+    if (onModelShare()) return MODELSHARE;
+    if (onForum()) return FORUM;
+
+    return COMMUNITY;
 };
 
 const replaceEnvLink = link => {
@@ -246,20 +244,44 @@ const waitForElementClass = (className, Component, store, num = 200) => {
     }, 10);
 };
 
-const getSideBarToggle = () => {
-    if (!window.mx || !window.dijit || !window.dijit.registry) {
-        return null;
-    }
-    const sidebarToggles = window.dijit.registry
-        .toArray()
-        .filter(
-            w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1
-        );
-    if (sidebarToggles.length) {
-        return sidebarToggles[0];
-    }
-    return null;
+export const MEDIUM_SCREEN = 'medium_screen';
+export const SMALL_SCREEN = 'small_screen';
+
+export const getWindowSize = (width: number) => {
+    if (width <= 480) return SMALL_SCREEN;
+    if (width <= 992) return MEDIUM_SCREEN;
 };
+
+export const observe = (domElement: any, callback: Function) => {
+    const observer = new Observer(debounce(callback, 100));
+    observer.observe(domElement, {
+        subtree: true,
+        childList: true,
+        attributes: false,
+        characterData: false,
+        attributeOldValue: false,
+        characterDataOldValue: false,
+    });
+};
+
+/**
+ * We don't want to use dijit (dojo's UI library).
+ * Just use React
+ */
+// const getSideBarToggle = () => {
+//     if (!window.mx || !window.dijit || !window.dijit.registry) {
+//         return null;
+//     }
+//     const sidebarToggles = window.dijit.registry
+//         .toArray()
+//         .filter(
+//             w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1
+//         );
+//     if (sidebarToggles.length) {
+//         return sidebarToggles[0];
+//     }
+//     return null;
+// };
 
 export {
     urls,
@@ -279,7 +301,5 @@ export {
     waitForElementClass,
     waitForMX,
     clickMf,
-    getSideBarToggle,
     replaceEnvLink,
-    mxEnv,
 };
