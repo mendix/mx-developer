@@ -63,6 +63,7 @@ export default {
             commit('messageStatus', 1);
           } else {
             commit('messageStatus', 1);
+            window.__MXOpenID = typeof profile.openId === 'undefined' ? null : profile.openId;
             // dispatch('getPartnerStatus', profile.openId);
           }
         } else {
