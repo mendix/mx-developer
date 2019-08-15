@@ -54,6 +54,7 @@ export default {
         commit('loaded', true);
         if (json && json.length === 1) {
           const profile = json[0];
+          window.__MXOpenID = typeof profile.openId === 'undefined' ? null : profile.openId;
           if (profile.loggedIn) {
             commit('profile', profile);
           } else {
@@ -63,7 +64,6 @@ export default {
             commit('messageStatus', 1);
           } else {
             commit('messageStatus', 1);
-            window.__MXOpenID = typeof profile.openId === 'undefined' ? null : profile.openId;
             // dispatch('getPartnerStatus', profile.openId);
           }
         } else {
