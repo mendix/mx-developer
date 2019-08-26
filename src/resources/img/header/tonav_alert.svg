@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>ICN24 / tonav alert</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="ICN24-/-tonav-alert" stroke="#555555">
+            <g id="Group-150" transform="translate(0.000000, 1.000000)">
+                <path d="M20.5,16.5 L20.5,11 C20.5,7.349 18.191,4.244 14.96,3.041 C14.738,1.603 13.5,0.5 12,0.5 C10.5,0.5 9.258,1.603 9.037,3.041 C5.805,4.244 3.5,7.349 3.5,11 L3.5,16.5 C3.5,18.157 2.156,19.5 0.5,19.5 L23.5,19.5 C21.841,19.5 20.5,18.157 20.5,16.5 L20.5,16.5 Z" id="Stroke-3105"></path>
+                <path d="M15,19.5 C15,21.157 13.656,22.5 12,22.5 C10.341,22.5 9,21.157 9,19.5" id="Stroke-3106"></path>
+            </g>
+        </g>
+    </g>
+</svg>

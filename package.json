@@ -39,6 +39,7 @@
     },
     "devDependencies": {
         "@types/classnames": "^2.2.9",
+        "mendix-client": "^7.15.7",
         "node-sass": "^4.12.0",
         "stylelint": "^10.1.0",
         "stylelint-config-prettier": "^5.2.0",

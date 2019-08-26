@@ -1,0 +1,82 @@
+[
+    {
+        "key": "buzz",
+        "label": "Buzz",
+        "link": "https://sprintr.home.mendix.com/link/home",
+        "microflow": "CommunityHeader.OpenBuzz"
+    },
+    {
+        "key": "apps",
+        "label": "Apps",
+        "link": "https://sprintr.home.mendix.com/link/myprojects",
+        "microflow": "CommunityHeader.OpenApps"
+    },
+    {
+        "key": "people",
+        "label": "People",
+        "link": "https://developer.mendixcloud.com/link/people",
+        "microflow": "CommunityHeader.OpenPeople"
+    },
+    {
+        "key": "community",
+        "label": "Community",
+        "link": "https://developers.mendix.com/",
+        "nodes": [
+            {
+                "key": "blogs",
+                "label": "Blogs",
+                "link": "https://developers.mendix.com/spotlight/"
+            },
+            {
+                "key": "jobs",
+                "label": "Jobs",
+                "link": "https://developers.mendix.com/jobs/"
+            },
+            {
+                "key": "model-share",
+                "label": "Model Share",
+                "link": "https://modelshare.mendix.com/"
+            },
+            {
+                "key": "mvp-program",
+                "label": "MVP Program",
+                "link": "https://developer.mendixcloud.com/link/mvp"
+            },
+            {
+                "key": "leaderboards",
+                "label": "Leaderboards",
+                "link": "https://developer.mendixcloud.com/link/leaderboards"
+            },
+            {
+                "key": "our-partners",
+                "label": "Our Partners",
+                "link": "https://developer.mendixcloud.com/link/partneroverview"
+            },
+            {
+                "key": "mendix-shop",
+                "label": "Mendix Shop",
+                "link": "https://shop.mendix.com"
+            }
+        ]
+    },
+    {
+        "key": "app-store",
+        "label": "App Store",
+        "link": "https://appstore.home.mendix.com"
+    },
+    {
+        "key": "academy",
+        "label": "Academy",
+        "link": "https://gettingstarted.mendixcloud.com"
+    },
+    {
+        "key": "forum",
+        "label": "Forum",
+        "link": "https://forum.mendixcloud.com"
+    },
+    {
+        "key": "docs",
+        "label": "Docs",
+        "link": "https://docs.mendix.com"
+    }
+]
