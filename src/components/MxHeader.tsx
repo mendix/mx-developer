@@ -16,7 +16,6 @@ import {
 import { Provider } from '../context/store';
 
 interface MxHeaderProps {
-    style: { [key: string]: string };
     idTokenProviderMF?: string;
 }
 
@@ -49,7 +48,7 @@ class MxHeader extends React.Component<MxHeaderProps, MxHeaderState> {
         }));
 
     render() {
-        const { style, idTokenProviderMF } = this.props;
+        const { idTokenProviderMF } = this.props;
         const { isMobileNavBarOpen } = this.state;
 
         const currentApp = getCurrentApp();
@@ -59,7 +58,7 @@ class MxHeader extends React.Component<MxHeaderProps, MxHeaderState> {
         return (
             <Provider initialState={initialState}>
                 <div className="MxHeader__container">
-                    <div className="MxHeader" style={style}>
+                    <div className="MxHeader">
                         <Authenticate />
                         <MobileMenuToggle
                             toggle={this.toggleMobileNavBar}

@@ -9,7 +9,7 @@ export interface Node {
 }
 
 /**
- * handle erros when `nodes` is invalid here,
+ * handle errors when `nodes` is invalid here,
  * so this component is robust by itself,
  * not depending on its parent's implementation
  */

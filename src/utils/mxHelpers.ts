@@ -255,23 +255,23 @@ export const waitForElementIdCb = (id: string, func: Function, num = 200) => {
     }, 10);
 };
 
-export const waitForElementId = (id: string, Component, store, num = 200) => {
-    const el = document.getElementById(id);
-    if (el !== null) {
-        // const ignoredElement = new Vue({
-        //   el: `#${id}`,
-        //   store,
-        //   render: h => h(Component)
-        // });
-        return;
-    }
-    if (num <= 0) {
-        return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
-    }
-    setTimeout(() => {
-        waitForElementId(id, Component, store, num - 1);
-    }, 10);
-};
+// export const waitForElementId = (id: string, Component, store, num = 200) => {
+//     const el = document.getElementById(id);
+//     if (el !== null) {
+//         // const ignoredElement = new Vue({
+//         //   el: `#${id}`,
+//         //   store,
+//         //   render: h => h(Component)
+//         // });
+//         return;
+//     }
+//     if (num <= 0) {
+//         return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
+//     }
+//     setTimeout(() => {
+//         waitForElementId(id, Component, store, num - 1);
+//     }, 10);
+// };
 
 const waitFor = (
     predicate: Function,
@@ -302,28 +302,28 @@ export const waitForMX = (callback: Function, timeoutCallback = () => {}) =>
 export const hasElement = (className: string) =>
     document.getElementsByClassName(className).length > 0;
 
-export const waitForElementClass = (
-    className: string,
-    Component,
-    store,
-    num = 200
-) => {
-    const el = document.getElementsByClassName(className);
-    if (el.length === 1) {
-        // const ignoredElement = new Vue({
-        //     el: `.${className}`,
-        //     store,
-        //     render: h => h(Component),
-        // });
-        return;
-    }
-    if (num <= 0) {
-        return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
-    }
-    setTimeout(() => {
-        waitForElementClass(className, Component, store, num - 1);
-    }, 10);
-};
+// export const waitForElementClass = (
+//     className: string,
+//     Component,
+//     store,
+//     num = 200
+// ) => {
+//     const el = document.getElementsByClassName(className);
+//     if (el.length === 1) {
+//         // const ignoredElement = new Vue({
+//         //     el: `.${className}`,
+//         //     store,
+//         //     render: h => h(Component),
+//         // });
+//         return;
+//     }
+//     if (num <= 0) {
+//         return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
+//     }
+//     setTimeout(() => {
+//         waitForElementClass(className, Component, store, num - 1);
+//     }, 10);
+// };
 
 /**
  * Naming follows the definitions in the scss file `_helpers.scss`

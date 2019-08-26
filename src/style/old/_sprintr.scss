@@ -1,7 +1,0 @@
-@include element('sprintr') {
-    float: left;
-
-    @include mq(sm, max) {
-        width: 100%;
-    }
-}

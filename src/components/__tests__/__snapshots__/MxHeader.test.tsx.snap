@@ -25,7 +25,7 @@ exports[`MxHeader should render correctly 1`] = `
       <img
         alt="Logo"
         class="MxHeader__logo"
-        src="test-file-stub"
+        src="mx_logo.png"
       />
     </a>
     <div
@@ -256,7 +256,7 @@ exports[`MxHeader should render correctly 1`] = `
         <img
           alt="Click here to login"
           class="MxHeader__avatar"
-          src="test-file-stub"
+          src="avatar.png"
         />
       </a>
     </div>
