@@ -69,4 +69,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
 export default connect(
     null,
     mapDispatchToProps
-)(AdminLinks);
+)(React.memo(AdminLinks));

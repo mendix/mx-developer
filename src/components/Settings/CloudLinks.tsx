@@ -48,4 +48,4 @@ const CloudLinks = ({
     );
 };
 
-export default connect()(CloudLinks);
+export default connect()(React.memo(CloudLinks));

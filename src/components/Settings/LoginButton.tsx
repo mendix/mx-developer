@@ -19,4 +19,4 @@ const LoginButton = ({ loginUrl }: { loginUrl: string }) => {
     );
 };
 
-export default connect()(LoginButton);
+export default connect()(React.memo(LoginButton));

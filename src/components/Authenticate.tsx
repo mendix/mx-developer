@@ -91,4 +91,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
 export default connect(
     null,
     mapDispatchToProps
-)(Authenticate);
+)(React.memo(Authenticate));

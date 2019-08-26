@@ -55,4 +55,4 @@ const SprintrLinks = ({
     );
 };
 
-export default connect()(SprintrLinks);
+export default connect()(React.memo(SprintrLinks));

@@ -19,4 +19,4 @@ const Settings = ({ loggedIn }: { loggedIn: boolean }) => (
     </div>
 );
 
-export default connect()(Settings);
+export default connect()(React.memo(Settings));

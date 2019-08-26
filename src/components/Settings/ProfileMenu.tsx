@@ -68,4 +68,4 @@ const ProfileMenu = ({
     );
 };
 
-export default connect()(ProfileMenu);
+export default connect()(React.memo(ProfileMenu));

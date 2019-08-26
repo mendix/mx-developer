@@ -35,4 +35,4 @@ class Profile extends React.Component<ProfileProps, ProfileState> {
     }
 }
 
-export default connect()(Profile);
+export default connect()(React.memo(Profile));

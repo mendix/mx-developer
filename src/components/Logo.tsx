@@ -31,4 +31,4 @@ const Logo = ({ loginUrl, loggedIn }: LogoProps) => {
     );
 };
 
-export default connect()(Logo);
+export default connect()(React.memo(Logo));
