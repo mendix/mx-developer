@@ -1,0 +1,49 @@
+// Colors
+$color-mx-blue: #0595db;
+$color-bottom-blue: #46597b;
+$color-bottom-blue-secondary: #3e4f6e;
+$color-white: #fff;
+$color-font-grey: #888;
+$color-font-grey-lighter: #bfbfbf;
+$color-font-darker-grey: #555;
+$color-bottom-light-blue: #6d7c96;
+$color-bottom-light-blue-second: #808da3;
+
+// Colors specific
+$color-top-background: $color-white;
+$color-top-border: $color-mx-blue;
+
+$color-sub-background: #ededed;
+$color-submenu-border: #d2d2d2;
+
+$color-bottom-background: $color-bottom-blue;
+$color-bottom-font: #a4acbb;
+
+$color-button-green: #76ca02;
+$color-button-grey: #f0f0ee;
+$color-button-green-hover: #4ba303;
+$color-button-grey-hover: #d4d4d2;
+
+$color-profile-menu-second-bg: #f8f8f8;
+
+// Measurements
+$top-row-height: 40px;
+$width-desktop: 1200px;
+$width-row: 1170px;
+$topbar-border-width: 5px;
+
+$profile-link-height: 32px;
+
+$height-top-bar: 89px;
+$height-top-bar-inside: $height-top-bar - $topbar-border-width;
+
+$default-margin: 15px;
+
+$logo-text-correction: 6px;
+
+// Font
+$font-size: 14px;
+$font-size-smaller: 12px;
+$font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;
+
+$opacity-footer-icon: 0.506;

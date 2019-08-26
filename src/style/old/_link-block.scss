@@ -1,0 +1,53 @@
+@include element('link-block') {
+    line-height: 19px;
+    font-size: 14px;
+    // @include modifier('footer') {
+    //     padding-bottom: 2rem;
+    // }
+    @include element('title') {
+        margin: 0 0 9px;
+        &,
+        & > a {
+            display: inline-block;
+            font-weight: 600;
+            line-height: 1;
+            &,
+            &:active,
+            &:visited {
+                @include no-text-decoration();
+                color: $color-bottom-light-blue-second !important;
+            }
+        }
+    }
+    @include element('links') {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        @include modifier('no-title') {
+            padding-top: calc(1rem + 1em);
+        }
+    }
+    @include element('link') {
+        line-height: 32px;
+        a {
+            @include no-text-decoration();
+            &,
+            &:active,
+            &:visited {
+                font-weight: 400;
+                color: $color-white;
+            }
+            &:hover {
+                color: $color-bottom-font;
+            }
+        }
+        @include modifier('type-button') {
+            // margin-bottom: 5px;
+            // a {
+            //   border: 1px solid $color-bottom-font;
+            //   @include border-radius(3px);
+            //   padding: 5px;
+            // }
+        }
+    }
+}

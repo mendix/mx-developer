@@ -1,19 +1,28 @@
 {
     "compilerOptions": {
+        "noEmitOnError": true,
+        "sourceMap": true,
+        "module": "amd",
         "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "module": "esnext",
+        "lib": ["es6", "dom"],
+        "types": ["jest", "node", "mendix-client"],
         "moduleResolution": "node",
+        "declaration": false,
+        "removeComments": true,
+        "noLib": false,
+        "watch": false,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "strict": true,
         "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "jsx": "react"
+        "strictFunctionTypes": false,
+        "skipLibCheck": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
     },
-    "include": ["src"]
+    "include": ["src/**/*"],
+    "exclude": ["build", "node_modules", "**/*.test.tsx"]
 }

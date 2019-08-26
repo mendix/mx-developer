@@ -8,7 +8,7 @@ import {
     getWindowSize,
     SMALL_SCREEN,
     observe,
-} from '../../resources/helpers';
+} from '../resources/helpers';
 
 import NavBar from './NavBar';
 import Notification from './Notification';

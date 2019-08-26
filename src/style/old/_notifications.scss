@@ -1,0 +1,20 @@
+@include element('notifications') {
+    display: inline-block;
+    position: relative;
+    float: left;
+    @include element('icon') {
+        //display: none;
+        width: 36px;
+        height: $height-top-bar-inside;
+        float: left;
+        margin: 0 10px;
+        background: url('../resources/img/notifications.svg') 7px 34px no-repeat; //@include opacity(0.6);
+        cursor: pointer;
+        &:hover {
+            @include opacity(1);
+        }
+        @include mq(phablet, max) {
+            margin: 0 3px 0 0;
+        }
+    }
+}
