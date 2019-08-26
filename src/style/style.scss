@@ -2,6 +2,10 @@
 @import 'variables';
 @import 'helpers';
 
+* {
+    box-sizing: border-box;
+}
+
 .MxHeader {
     display: flex;
     align-items: center;
@@ -102,6 +106,8 @@ $hamburger-layer-border-radius: 4px !default;
     background: none;
     border: none;
     margin: 0 4px;
+    cursor: pointer;
+    outline: 0;
 
     @include mq(sm, min) {
         display: none;
@@ -275,6 +281,8 @@ $menu-top: 68px;
     font-size: 0;
     border: none;
     padding: 0 10px;
+    cursor: pointer;
+    outline: 0;
     @include mq(phablet, min) {
         width: 56px;
     }
@@ -340,22 +348,23 @@ $menu-top: 68px;
     background: url('../resources/img/notifications.svg') no-repeat center;
 }
 
-button.MxHeader__avatar {
+.MxHeader__avatar {
     width: 42px;
     height: 42px;
     display: inline-block;
     border-radius: 50%;
     padding: 0;
     border: none;
+    cursor: pointer;
+    outline: 0;
     img {
-        @extend button.MxHeader__avatar;
+        @extend .MxHeader__avatar;
         border: 1px solid #eeeeee;
     }
 }
 
 .MxHeader__profile {
     padding: 0 0 0 16px;
-    line-height: 84px;
     background: transparent;
     border: none;
 }
@@ -380,7 +389,7 @@ button.MxHeader__avatar {
 }
 
 .MxHeader__profile-menu-photo {
-    @extend button.MxHeader__avatar;
+    @extend .MxHeader__avatar;
     width: 60px;
     height: 60px;
     display: block;
