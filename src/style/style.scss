@@ -273,9 +273,7 @@ $menu-top: 68px;
     align-items: center;
 }
 
-.MxHeader__search,
-.MxHeader__support,
-.MxHeader__notification {
+%MxHeader__settings-button {
     width: 38px;
     height: 84px;
     font-size: 0;
@@ -289,7 +287,11 @@ $menu-top: 68px;
 }
 
 .MxHeader__search {
+    @extend %MxHeader__settings-button;
     background: url('../resources/img/search.svg') no-repeat center;
+    .hidden {
+        display: none;
+    }
 }
 
 .MxHeader__support-menu {
@@ -335,6 +337,7 @@ $menu-top: 68px;
 }
 
 .MxHeader__support {
+    @extend %MxHeader__settings-button;
     background: url('../resources/img/help.svg') no-repeat center;
     position: relative;
     cursor: pointer;
@@ -345,6 +348,7 @@ $menu-top: 68px;
 }
 
 .MxHeader__notification {
+    @extend %MxHeader__settings-button;
     background: url('../resources/img/notifications.svg') no-repeat center;
 }
 
