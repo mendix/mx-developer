@@ -4,8 +4,8 @@ import {
     navigateByCallingMicroflow,
     onSprintr,
     getEnvironmentLink,
-} from '../../utils/mxHelpers';
-import { links, microflows } from '../../resources/mendix.json';
+} from '../../../utils/mxHelpers';
+import { links, microflows } from '../../../resources/mendix.json';
 
 const Notification = () => {
     const deepLink = getEnvironmentLink(links.sprintr.notifications);

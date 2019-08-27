@@ -12,8 +12,8 @@ import {
     getWindowSize,
     PHONE,
     SCREEN_SM,
-} from '../utils/mxHelpers';
-import { Provider } from '../context/store';
+} from '../../utils/mxHelpers';
+import { Provider } from '../../context/store';
 
 interface MxHeaderProps {
     idTokenProviderMF?: string;

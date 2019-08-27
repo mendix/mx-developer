@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { connect } from '../../context/store';
-import avatarImage from '../../resources/img/header/avatar.png';
-import { getEnvironmentLink, onSprintr } from '../../utils/mxHelpers';
-import { links, microflows } from '../../resources/mendix.json';
+import { connect } from '../../../context/store';
+import avatarImage from '../../../resources/img/header/avatar.png';
+import { getEnvironmentLink, onSprintr } from '../../../utils/mxHelpers';
+import { links, microflows } from '../../../resources/mendix.json';
 
 import AdminLinks from './AdminLinks';
 import getClickHandlerForLinkWithMicroflow from '../getClickHandlerForLinkWithMicroflow';

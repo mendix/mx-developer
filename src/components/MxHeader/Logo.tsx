@@ -4,10 +4,10 @@ import {
     SPRINTR,
     getCurrentApp,
     getEnvironmentLink,
-} from '../utils/mxHelpers';
-import { connect } from '../context/store';
-import { links, microflows } from '../resources/mendix.json';
-import logoImage from '../resources/img/mx_logo.png';
+} from '../../utils/mxHelpers';
+import { connect } from '../../context/store';
+import { links, microflows } from '../../resources/mendix.json';
+import logoImage from '../../resources/img/mx_logo.png';
 
 const currentApp = getCurrentApp();
 

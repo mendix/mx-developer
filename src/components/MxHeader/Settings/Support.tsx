@@ -1,6 +1,6 @@
 import React from 'react';
 
-import supportMenuItems from '../../resources/menu/support.json';
+import supportMenuItems from '../../../resources/menu/support.json';
 
 const SupportMenu = () => (
     <ul className="MxHeader__support-menu">

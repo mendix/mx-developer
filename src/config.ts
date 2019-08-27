@@ -6,4 +6,4 @@ export const STATUS = {
     SERVER_ERROR: 500,
 };
 
-export const PROFILE_URL = __APPBAR2__URL__;
+export const PROFILE_URL = process.env.REACT_APP_PROFILE_URL;

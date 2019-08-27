@@ -66,11 +66,12 @@ export const mxData = {
 export const getData = get;
 export const callMicroflow = (actionname: string) => action({ actionname });
 
-export const showProgress = () => window.mx.ui.showProgress();
+export const showProgress = () =>
+    window.mx && window.mx.ui && window.mx.ui.showProgress();
 
-export const hideProgress = (id: number | null) => {
+export const hideProgress = (id: number | null = null) => {
     if (id !== null) {
-        window.mx.ui.hideProgress(id);
+        window.mx && window.mx.ui && window.mx.ui.hideProgress(id);
     }
 };
 

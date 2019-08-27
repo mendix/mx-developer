@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { connect } from '../../context/store';
-import { setAdminInfoAction, AdminInfo } from '../../context/reducer';
-import { onSprintr, onCloud, getAdminInfo } from '../../utils/mxHelpers';
-import { microflows } from '../../resources/mendix.json';
+import { connect } from '../../../context/store';
+import { setAdminInfoAction, AdminInfo } from '../../../context/reducer';
+import { onSprintr, onCloud, getAdminInfo } from '../../../utils/mxHelpers';
+import { microflows } from '../../../resources/mendix.json';
 import getClickHandlerForLinkWithMicroflow from '../getClickHandlerForLinkWithMicroflow';
 import SprintrLinks from './SprintrLinks';
 import CloudLinks from './CloudLinks';

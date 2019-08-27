@@ -200,7 +200,7 @@ exports[`MxHeader should render correctly 1`] = `
       class="MxHeader__Setting"
     >
       <button
-        class="MxHeader__search"
+        class="MxHeader__search hidden"
         id="mendix-header-search-button"
       >
         Search

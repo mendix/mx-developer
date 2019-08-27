@@ -6,12 +6,15 @@
     box-sizing: border-box;
 }
 
+$header-height: 84px;
+$header-max-width: 1170px;
+
 .MxHeader {
     display: flex;
     align-items: center;
-    height: 84px;
+    height: $header-height;
     width: 100%;
-    max-width: 1170px;
+    max-width: $header-max-width;
     margin: 0 auto;
     padding: 0 20px 0 2px; // mobile-first
     position: relative;
@@ -45,7 +48,7 @@
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 84px;
+        top: $header-height;
         left: 0;
         width: 100%;
         box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.15);
@@ -59,17 +62,18 @@ $nav-bar-menu-item-padding: 17px;
     display: flex;
     padding: 0 0 0 22px;
     width: 100%;
-    border-top: 1px solid #d2d2d2;
+    border-top: 1px solid $color-divider;
     background: white;
     height: 56px;
     line-height: 56px;
     justify-content: space-between;
+    cursor: pointer;
     &--menu-open {
         @extend .MxHeader__nav-bar-item-link;
     }
     &--desktop {
         @extend .MxHeader__nav-bar-item-link;
-        line-height: 84px;
+        line-height: $header-height;
         border-top: none;
 
         @include mq(sm, min) {
@@ -250,13 +254,17 @@ $menu-top: 68px;
     @extend %MxHeader__link;
 }
 
-.MxHeader__nav-bar-menu-toggle {
+button.MxHeader__nav-bar-menu-toggle {
     width: 56px;
     height: 56px;
     text-align: center;
     background: url('../resources/img/header/gray-down.svg') 23px 28px no-repeat;
+    border: none;
+    cursor: pointer;
+    font-size: 0;
+    outline: none;
     &--open {
-        @extend .MxHeader__nav-bar-menu-toggle;
+        @extend button.MxHeader__nav-bar-menu-toggle;
         background: url('../resources/img/header/blue-down.svg') 23px 28px
             no-repeat;
         transform: rotate(180deg) translate(0, 0);
@@ -269,13 +277,13 @@ $menu-top: 68px;
 
 .MxHeader__Setting {
     display: flex;
-    height: 84px;
+    height: $header-height;
     align-items: center;
 }
 
 %MxHeader__settings-button {
     width: 38px;
-    height: 84px;
+    height: $header-height;
     font-size: 0;
     border: none;
     padding: 0 10px;
@@ -289,7 +297,8 @@ $menu-top: 68px;
 .MxHeader__search {
     @extend %MxHeader__settings-button;
     background: url('../resources/img/search.svg') no-repeat center;
-    .hidden {
+    &.hidden {
+        // hide this icon because the search will look for its id and replace it.
         display: none;
     }
 }
@@ -327,7 +336,7 @@ $menu-top: 68px;
     text-decoration-line: none !important;
     color: #555 !important;
     outline: 0;
-    font-size: 14px;
+    font-size: $font-size;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: color 0.15s;
@@ -387,7 +396,7 @@ $menu-top: 68px;
 }
 
 .MxHeader__profile-menu-divider {
-    background: #d2d2d2;
+    background: $color-divider;
     height: 1px;
     margin: 7px 0;
 }

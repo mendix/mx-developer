@@ -190,7 +190,7 @@ $breakpoints: (
 @mixin speech-bubble($side: left, $offset-direction: top) {
     $offset: 16px;
     $size: 6px;
-    $border-color: $color-submenu-border;
+    $border-color: $color-divider;
     $border-width: 2;
     margin-#{$side}: $size + ($border-width / 2);
     margin-#{opposite-direction($side)}: 4px;

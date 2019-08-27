@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { connect } from '../../context/store';
+import { connect } from '../../../context/store';
 import Search from './Search';
 import Support from './Support';
 import Notification from './Notification';

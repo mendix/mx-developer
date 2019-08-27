@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { getCurrentApp, BEAVER } from '../utils/mxHelpers';
+import { getCurrentApp, BEAVER } from '../../utils/mxHelpers';
 
-import navbarItemData from '../resources/menu/navbar.json';
+import navbarItemData from '../../resources/menu/navbar.json';
 import NavBarItem from './NavBarItem';
 
 const NavBar = ({ isOpenOnMobile = false }: { isOpenOnMobile: boolean }) => {

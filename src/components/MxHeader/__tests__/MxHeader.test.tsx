@@ -1,16 +1,16 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import MxHeader from '../MxHeader';
+import MxHeader from '../index';
 
-jest.mock('../../utils/getProfileViaAppBar2', () =>
+jest.mock('../../../utils/getProfileViaAppBar2', () =>
     jest.fn(() => ({
         loginUrl: 'login-url',
         loggedIn: true,
     }))
 );
 
-jest.mock('../../utils/mxHelpers', () => ({
+jest.mock('../../../utils/mxHelpers', () => ({
     getEnvironmentLink: jest.fn(link => link),
     getCurrentApp: jest.fn(() => 'forum'),
     callMicroflow: jest.fn(() => Promise.resolve('response-of-microflow')),
@@ -25,7 +25,7 @@ jest.mock('../../utils/mxHelpers', () => ({
     ),
 }));
 
-jest.mock('../../utils/parseIdToken', () =>
+jest.mock('../../../utils/parseIdToken', () =>
     jest.fn(() => ({
         username: 'mock-username',
         displayName: 'mock-displayName',
@@ -41,7 +41,7 @@ jest.mock('../../utils/parseIdToken', () =>
 describe('MxHeader', () => {
     it('should render correctly', () => {
         const { container } = render(
-            <MxHeader style={{}} idTokenProviderMF="idTokenProviderMF" />
+            <MxHeader idTokenProviderMF="idTokenProviderMF" />
         );
         expect(container.firstChild).toMatchSnapshot();
     });

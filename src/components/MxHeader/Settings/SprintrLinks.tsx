@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { connect } from '../../context/store';
-import { getEnvironmentLink } from '../../utils/mxHelpers';
-import { microflows, links } from '../../resources/mendix.json';
+import { connect } from '../../../context/store';
+import { getEnvironmentLink } from '../../../utils/mxHelpers';
+import { microflows, links } from '../../../resources/mendix.json';
 
 const operationsDeskLink = getEnvironmentLink(links.cloudportal.operationsDesk);
 const platformAdminLink = getEnvironmentLink(links.sprintr.platformAdmin);

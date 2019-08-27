@@ -1,7 +1,7 @@
 import React from 'react';
 
 import NavBarMenu, { Node } from './NavBarMenu';
-import { navigateByCallingMicroflow, onSprintr } from '../utils/mxHelpers';
+import { navigateByCallingMicroflow, onSprintr } from '../../utils/mxHelpers';
 
 interface NavBarItemProps extends Node {
     isOnMobile: boolean;
@@ -48,14 +48,16 @@ class NavBarItem extends React.Component<NavBarItemProps, NavBarItemState> {
             isOpen: boolean;
             onClick: (event: React.MouseEvent<HTMLElement>) => void;
         }) => (
-            <div
+            <button
                 className={
                     isOpen
                         ? 'MxHeader__nav-bar-menu-toggle--open'
                         : 'MxHeader__nav-bar-menu-toggle'
                 }
                 onClick={onClick}
-            />
+            >
+                {isOpen ? 'Close' : 'Expand'}
+            </button>
         );
 
         const getItemLinkClass = () => {

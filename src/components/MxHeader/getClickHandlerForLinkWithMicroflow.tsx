@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { navigateByCallingMicroflow } from '../utils/mxHelpers';
+import { navigateByCallingMicroflow } from '../../utils/mxHelpers';
 
 const getClickHandlerForLinkWithMicroflow = ({
     microflow,

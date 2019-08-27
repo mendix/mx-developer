@@ -1,7 +1,7 @@
 import React from 'react';
 import MxHeader from './components/MxHeader';
 
-import './style/style.scss';
+import './style/MxHeader.scss';
 
 const App: React.FC = () => {
     return <MxHeader />;

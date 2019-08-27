@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { AuthenticateProps, IdTokenProfile, AppBar2Profile } from '../typings';
-import { connect } from '../context/store';
-import { setIdentityDataAction } from '../context/reducer';
+import { AuthenticateProps, IdTokenProfile, AppBar2Profile } from '../../typings';
+import { connect } from '../../context/store';
+import { setIdentityDataAction } from '../../context/reducer';
 
-import getProfileViaAppBar2 from '../utils/getProfileViaAppBar2';
-import { callMicroflow } from '../utils/mxHelpers';
-import parseIdToken from '../utils/parseIdToken';
+import getProfileViaAppBar2 from '../../utils/getProfileViaAppBar2';
+import { callMicroflow } from '../../utils/mxHelpers';
+import parseIdToken from '../../utils/parseIdToken';
 
 /**
  * If user logs in with SSO (AppCloudService / MendixSSO), userObject is always System.User. Then it does not contain email.
