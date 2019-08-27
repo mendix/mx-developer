@@ -1,24 +1,29 @@
 [
     {
         "label": "Buzz",
+        "highlighted": true,
         "url": "https://sprintr.home.mendix.com/link/home",
         "nodes": [
             {
                 "label": "Apps",
+                "highlighted": true,
                 "url": "https://sprintr.home.mendix.com/link/myprojects"
             },
             {
                 "label": "People",
+                "highlighted": true,
                 "url": "https://developer.mendixcloud.com/link/people"
             },
             {
                 "label": "App Store",
+                "highlighted": true,
                 "url": "https://appstore.home.mendix.com/"
             }
         ]
     },
     {
         "label": "Community",
+        "highlighted": true,
         "nodes": [
             {
                 "label": "Blogs",
@@ -52,6 +57,7 @@
     },
     {
         "label": "Academy",
+        "highlighted": true,
         "url": "https://gettingstarted.mendixcloud.com",
         "nodes": [
             {
@@ -78,6 +84,7 @@
     },
     {
         "label": "Forum",
+        "highlighted": true,
         "url": "https://forum.mendixcloud.com",
         "nodes": [
             {
@@ -92,6 +99,7 @@
     },
     {
         "label": "Docs",
+        "highlighted": true,
         "url": "https://docs.mendix.com",
         "nodes": [
             {

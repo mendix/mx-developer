@@ -1,4 +1,5 @@
 @import '../../node_modules/reset-css/sass/reset';
+@import '../../node_modules/npm-font-open-sans/open-sans';
 @import 'variables';
 @import 'helpers';
 
@@ -7,18 +8,19 @@
 }
 
 $header-height: 84px;
-$header-max-width: 1170px;
 
 .MxHeader {
     display: flex;
     align-items: center;
     height: $header-height;
     width: 100%;
-    max-width: $header-max-width;
+    max-width: $max-width;
     margin: 0 auto;
     padding: 0 20px 0 2px; // mobile-first
     position: relative;
     font-family: $font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     @include mq(sm, min) {
         padding: 0 20px 0 15px;
     }
@@ -337,8 +339,6 @@ button.MxHeader__nav-bar-menu-toggle {
     color: #555 !important;
     outline: 0;
     font-size: $font-size;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     transition: color 0.15s;
     &:hover {
         color: #0595db !important;

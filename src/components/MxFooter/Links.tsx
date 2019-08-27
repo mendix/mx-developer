@@ -52,7 +52,14 @@ const generateBranch = ({ nodes, ...node }: TreeNode): ReactNode => (
 );
 
 const Links = () => (
-    <div className="MxFooter__links">{linkTree.map(generateBranch)}</div>
+    <div className="MxFooter__links">
+        {linkTree.map(({ nodes, ...node }: TreeNode) => (
+            <div className="MxFooter__link-group">
+                {generateLink(node)}
+                {nodes && nodes.map(generateBranch)}
+            </div>
+        ))}
+    </div>
 );
 
 export default Links;
