@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from '../../../context/store';
 
-import loginAvatar from '../../../resources/img/header/avatar.png';
+import loginAvatar from '../../../resources/img/header/avatar.svg';
 
 const LoginButton = ({ loginUrl }: { loginUrl: string }) => {
     return (
