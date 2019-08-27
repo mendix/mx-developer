@@ -6,4 +6,7 @@ export const STATUS = {
     SERVER_ERROR: 500,
 };
 
-export const PROFILE_URL = process.env.REACT_APP_PROFILE_URL;
+export const PROFILE_URL =
+    process.env.REACT_APP_MX_ENV === 'prod'
+        ? process.env.REACT_APP_PROFILE_URL
+        : process.env.REACT_APP_PROFILE_URL_TEST;
