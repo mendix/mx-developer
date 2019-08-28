@@ -25,6 +25,7 @@ interface Parsed {
 const parseIdToken = (idToken: string): Parsed => {
     if (!idToken) return {};
 
+    // eslint-disable-next-line no-useless-computed-key
     const { ['mx:user:profile:v1']: profileData, ...decoded } = jwtDecode<
         DecodedToken
     >(idToken);
