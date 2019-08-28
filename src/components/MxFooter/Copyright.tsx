@@ -23,6 +23,7 @@ const Copyright = () => (
                 <a
                     href={url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="MxFooter__copyright-link"
                 >
                     {label}

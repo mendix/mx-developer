@@ -44,6 +44,7 @@ const SocialMedia = () => (
                 key={label}
                 className="MxFooter__social-media-item"
                 target="_blank"
+                rel="noopener noreferrer"
             >
                 <img src={image} alt={label} />
             </a>
