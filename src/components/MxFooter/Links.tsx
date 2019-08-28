@@ -39,13 +39,15 @@ const generateLink = ({
 };
 
 const Links = () => (
-    <div className="MxFooter__links">
-        {linkTree.map(({ nodes, ...node }: TreeNode, index) => (
-            <div className="MxFooter__link-group" key={index}>
-                {generateLink(node)}
-                {nodes && nodes.map(generateLink)}
-            </div>
-        ))}
+    <div className="MxFooter__links-container">
+        <div className="MxFooter__links">
+            {linkTree.map(({ nodes, ...node }: TreeNode, index) => (
+                <div className="MxFooter__link-group" key={index}>
+                    {generateLink(node)}
+                    {nodes && nodes.map(generateLink)}
+                </div>
+            ))}
+        </div>
     </div>
 );
 

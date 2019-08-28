@@ -5,9 +5,11 @@ import Copyright from './Copyright';
 
 const Banner = () => {
     return (
-        <div className="MxFooter__banner">
-            <Copyright />
-            <SocialMedia />
+        <div className="MxFooter__banner-container">
+            <div className="MxFooter__banner">
+                <Copyright />
+                <SocialMedia />
+            </div>
         </div>
     );
 };
