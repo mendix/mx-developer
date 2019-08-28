@@ -1,11 +1,5 @@
-/**
- * We recommend isolating the usage of Mendix Client API from your React component.
- * It will make testing a lot easier.
- * For example, in your React component, you only need to mock a simple function `callMicroflow` instead of `window.mx.data.action`.
- * This is also helpful for migrating to pluggable widget later.
- *
- * We provide some examples here. You can implement your own Mendix Client API helpers.
- */
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 interface MxDataActionParams {
     actionname: string;
@@ -256,23 +250,19 @@ export const waitForElementIdCb = (id: string, func: Function, num = 200) => {
     }, 10);
 };
 
-// export const waitForElementId = (id: string, Component, store, num = 200) => {
-//     const el = document.getElementById(id);
-//     if (el !== null) {
-//         // const ignoredElement = new Vue({
-//         //   el: `#${id}`,
-//         //   store,
-//         //   render: h => h(Component)
-//         // });
-//         return;
-//     }
-//     if (num <= 0) {
-//         return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
-//     }
-//     setTimeout(() => {
-//         waitForElementId(id, Component, store, num - 1);
-//     }, 10);
-// };
+export const waitForElementId = (id: string, Component: any, num = 200) => {
+    const el = document.getElementById(id);
+    if (el !== null) {
+        ReactDOM.render(<Component />, document.getElementById(id));
+        return;
+    }
+    if (num <= 0) {
+        return;
+    }
+    setTimeout(() => {
+        waitForElementId(id, Component, num - 1);
+    }, 10);
+};
 
 const waitFor = (
     predicate: Function,
