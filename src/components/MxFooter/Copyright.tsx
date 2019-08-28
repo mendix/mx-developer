@@ -19,12 +19,12 @@ const Copyright = () => (
     <span className="MxFooter__copyright">
         Copyright © 2019 Mendix Technology B.V. All rights reserved.
         {links.map(({ label, url }) => (
-            <>
+            <span key={label}>
                 <span className="MxFooter__divider"></span>
                 <a href={url} target="_blank" className="MxFooter__link">
                     {label}
                 </a>
-            </>
+            </span>
         ))}
     </span>
 );

@@ -12,7 +12,7 @@ const socialMedia = [
 const SocialMedia = () => (
     <div className="MxFooter__social-media-group">
         {socialMedia.map(({ label, url, image }) => (
-            <a href={url}>
+            <a href={url} key={label}>
                 <img src={image} alt={label} />
             </a>
         ))}

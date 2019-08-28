@@ -10,19 +10,6 @@ interface TreeNode {
     nodes?: TreeNode[];
 }
 
-interface LinkProps {
-    url?: string;
-    className: string;
-    external?: boolean;
-    label: string;
-}
-
-const Link = ({ url, className, external, label }: LinkProps) => (
-    <a href={url} className={className} target={external ? '_blank' : '_self'}>
-        {label}
-    </a>
-);
-
 const generateLink = ({
     highlighted = false,
     url,
@@ -35,28 +22,28 @@ const generateLink = ({
 
     if (!label) return null;
 
-    const props: LinkProps = { url, className, external, label };
-
     return url ? (
-        <Link {...props}></Link>
+        <a
+            href={url}
+            className={className}
+            target={external ? '_blank' : '_self'}
+            key={label}
+        >
+            {label}
+        </a>
     ) : (
-        <div className={className}>{label}</div>
+        <div className={className} key={label}>
+            {label}
+        </div>
     );
 };
 
-const generateBranch = ({ nodes, ...node }: TreeNode): ReactNode => (
-    <>
-        {generateLink(node)}
-        {nodes && nodes.map(generateBranch)}
-    </>
-);
-
 const Links = () => (
     <div className="MxFooter__links">
-        {linkTree.map(({ nodes, ...node }: TreeNode) => (
-            <div className="MxFooter__link-group">
+        {linkTree.map(({ nodes, ...node }: TreeNode, index) => (
+            <div className="MxFooter__link-group" key={index}>
                 {generateLink(node)}
-                {nodes && nodes.map(generateBranch)}
+                {nodes && nodes.map(generateLink)}
             </div>
         ))}
     </div>
