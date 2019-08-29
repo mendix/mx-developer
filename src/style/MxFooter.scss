@@ -42,7 +42,8 @@
     flex-direction: column;
 }
 
-.MxFooter__link {
+.MxFooter__link,
+%MxFooter__link {
     text-decoration: none;
     text-decoration-line: none !important;
     font-weight: 400;
@@ -56,7 +57,7 @@
 }
 
 .MxFooter__link--highlighted {
-    @extend .MxFooter__link;
+    @extend %MxFooter__link;
     font-weight: 600;
     color: $color-bottom-light-blue-second !important;
 }
@@ -87,7 +88,7 @@
 }
 
 .MxFooter__copyright-link {
-    @extend .MxFooter__link;
+    @extend %MxFooter__link;
     color: $color-bottom-light-blue-second;
 }
 
