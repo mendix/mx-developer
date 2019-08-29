@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from '../../../context/store';
-import defaultAvatar from '../../../resources/img/header/avatar-empty.svg';
+import defaultAvatar from '../../../resources/img/header/avatar.svg';
 
 import ProfileMenu from './ProfileMenu';
 
