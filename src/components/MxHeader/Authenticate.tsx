@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { AuthenticateProps, IdTokenProfile, AppBar2Profile } from '../../typings';
+import {
+    AuthenticateProps,
+    IdTokenProfile,
+    AppBar2Profile,
+} from '../../typings';
 import { connect } from '../../context/store';
 import { setIdentityDataAction } from '../../context/reducer';
 

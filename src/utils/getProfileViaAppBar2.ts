@@ -14,9 +14,7 @@ const getProfileViaAppBar2 = (): Promise<AppBar2Response> =>
         jsonpCallbackFunction: 'getProfileFeedback',
     })
         .then(response => response.json())
-        .then(json =>
-            json && !!json.length && json[0].loggedIn ? json[0] : {}
-        )
+        .then(json => json && !!json.length && json[0])
         .catch(e => {
             console.warn('Error loading profile for feedback widget: ', e);
         });
