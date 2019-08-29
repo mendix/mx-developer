@@ -8839,10 +8839,10 @@ react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
-react-simple-redux@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-simple-redux/-/react-simple-redux-0.2.0.tgz#8ee389ab001014e6e95e00dffb76016ade8e51b5"
-  integrity sha512-uX1MwQlQ12r8iC9tKlPBgwhNPcWy+nOUrwQLxMgBdCPZHmLHgJw0vfVhmCWytcrYvakmBKv8kzj5hVBRGQ5t7w==
+react-simple-redux@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-simple-redux/-/react-simple-redux-0.2.1.tgz#e05cad211f14aab1dfd1fe0f68c0feb7fed3ade6"
+  integrity sha512-xO3bKZYl+2ohGO5srZYR3zm7eyXvd2aucIdPHq2XyOy92dFe9ap4s0NLWxhYml9VAdo9Uf1y4U5wRDMdPJwjyQ==
 
 react@^16.7.0-alpha.0, react@^16.9.0:
   version "16.9.0"
