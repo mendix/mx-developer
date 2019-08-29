@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Observer from 'mutation-observer';
+import debounce from 'tiny-debounce';
 
 interface MxDataActionParams {
     actionname: string;
@@ -315,6 +317,25 @@ export const hasElement = (className: string) =>
 //         waitForElementClass(className, Component, store, num - 1);
 //     }, 10);
 // };
+
+const mountComponent = (id: string, Component: any) => () => {
+    const elementsWithClassName = document.getElementsByClassName(id);
+    const element =
+        document.getElementById(id) ||
+        (elementsWithClassName.length > 0 && elementsWithClassName[0]);
+    if (element) {
+        ReactDOM.render(<Component />, element);
+    }
+};
+
+export const observeMountingComponents = (ComponentData: any[]) =>
+    new Observer(
+        debounce(() => {
+            ComponentData.forEach(({ id, Component }) =>
+                mountComponent(id, Component)
+            );
+        }, 100)
+    );
 
 /**
  * Naming follows the definitions in the scss file `_helpers.scss`

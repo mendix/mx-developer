@@ -1,44 +1,31 @@
 {
-  "compilerOptions": {
-    "noEmitOnError": true,
-    "sourceMap": true,
-    "module": "esnext",
-    "target": "es5",
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "types": [
-      "jest",
-      "node",
-      "mendix-client"
-    ],
-    "moduleResolution": "node",
-    "declaration": false,
-    "removeComments": true,
-    "noLib": false,
-    "watch": false,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "strict": true,
-    "resolveJsonModule": true,
-    "strictFunctionTypes": false,
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "isolatedModules": true,
-    "noEmit": true
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "build",
-    "node_modules",
-    "**/*.test.tsx"
-  ]
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "sourceMap": true,
+        "module": "esnext",
+        "target": "es5",
+        "lib": ["es6", "dom"],
+        "types": ["jest", "node", "mendix-client"],
+        "moduleResolution": "node",
+        "declaration": false,
+        "removeComments": true,
+        "noLib": false,
+        "watch": false,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "strict": true,
+        "resolveJsonModule": true,
+        "strictFunctionTypes": false,
+        "skipLibCheck": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "isolatedModules": true,
+        "noEmit": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["build", "node_modules", "**/*.test.tsx"]
 }
