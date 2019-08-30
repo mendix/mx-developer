@@ -1,8 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Observer from 'mutation-observer';
-import debounce from 'tiny-debounce';
-
 interface MxDataActionParams {
     actionname: string;
     applyto?: string | undefined;
@@ -94,11 +89,6 @@ export const navigateByCallingMicroflow = async (
     }
 };
 
-/* --------------------------------------------- Old implementation -------------------------------------------- */
-
-// import Observer from 'mutation-observer';
-// import debounce from 'tiny-debounce';
-
 const getEnvironment = () => {
     const domain = window.location.origin;
 
@@ -171,7 +161,6 @@ export const getCurrentApp = () => {
     return COMMUNITY;
 };
 
-// old replaceEnvLink
 export const getEnvironmentLink = (link: string) => {
     if (link && link.indexOf('developer.mendixcloud.com') !== -1) {
         return link.replace(
@@ -218,125 +207,6 @@ export const getEnvironmentLink = (link: string) => {
     );
 };
 
-export const constants = {
-    copyRight: `Copyright &copy; ${new Date().getFullYear()} Mendix Technology B.V.`,
-};
-
-// const urls = {
-//     platform: getEnvironmentLink('https://home.mendix.com/'),
-//     developer: getEnvironmentLink(
-//         'https://sprintr.home.mendix.com/link/myprofile'
-//     ),
-//     community: getEnvironmentLink(
-//         'https://developer.mendixcloud.com/link/dashboard/'
-//     ),
-//     github: 'https://github.com/mendix',
-//     twitter: 'https://twitter.com/MendixDeveloper',
-//     linkedin: 'https://www.linkedin.com/company/mendix',
-//     googleplus: 'https://plus.google.com/+MendixSocial',
-//     facebook: 'https://www.facebook.com/mendixsoftware',
-//     instagram: 'https://www.instagram.com/mendixinc/',
-// };
-
-export const waitForElementIdCb = (id: string, func: Function, num = 200) => {
-    const el = document.getElementById(id);
-    if (el !== null) {
-        func(el, num);
-        return;
-    }
-    if (num <= 0) {
-        return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
-    }
-    setTimeout(() => {
-        waitForElementIdCb(id, func, num - 1);
-    }, 10);
-};
-
-export const waitForElementId = (id: string, Component: any, num = 200) => {
-    const el = document.getElementById(id);
-    if (el !== null) {
-        ReactDOM.render(<Component />, document.getElementById(id));
-        return;
-    }
-    if (num <= 0) {
-        return;
-    }
-    setTimeout(() => {
-        waitForElementId(id, Component, num - 1);
-    }, 10);
-};
-
-const waitFor = (
-    predicate: Function,
-    callback: Function,
-    timeoutCallback = () => {},
-    num = 200
-) => {
-    if (predicate()) {
-        callback();
-        return;
-    }
-    if (num <= 0) {
-        timeoutCallback();
-        return;
-    }
-    setTimeout(() => {
-        waitFor(predicate, callback, timeoutCallback, num - 1);
-    }, 10);
-};
-
-export const waitForMX = (callback: Function, timeoutCallback = () => {}) =>
-    waitFor(
-        () => typeof window.mx !== 'undefined' && window.mx.session,
-        callback,
-        timeoutCallback
-    );
-
-export const hasElement = (className: string) =>
-    document.getElementsByClassName(className).length > 0;
-
-// export const waitForElementClass = (
-//     className: string,
-//     Component,
-//     store,
-//     num = 200
-// ) => {
-//     const el = document.getElementsByClassName(className);
-//     if (el.length === 1) {
-//         // const ignoredElement = new Vue({
-//         //     el: `.${className}`,
-//         //     store,
-//         //     render: h => h(Component),
-//         // });
-//         return;
-//     }
-//     if (num <= 0) {
-//         return; // console.log(`[MX-HEADER-FOOTER] Cannot find element with ID: ${id}`);
-//     }
-//     setTimeout(() => {
-//         waitForElementClass(className, Component, store, num - 1);
-//     }, 10);
-// };
-
-const mountComponent = (id: string, Component: any) => () => {
-    const elementsWithClassName = document.getElementsByClassName(id);
-    const element =
-        document.getElementById(id) ||
-        (elementsWithClassName.length > 0 && elementsWithClassName[0]);
-    if (element) {
-        ReactDOM.render(<Component />, element);
-    }
-};
-
-export const observeMountingComponents = (ComponentData: any[]) =>
-    new Observer(
-        debounce(() => {
-            ComponentData.forEach(({ id, Component }) =>
-                mountComponent(id, Component)
-            );
-        }, 100)
-    );
-
 /**
  * Naming follows the definitions in the scss file `_helpers.scss`
  */
@@ -357,37 +227,6 @@ export const getWindowSize = (width: number) => {
     if (width <= 992) return SCREEN_SM;
     return SCREEN_MD;
 };
-
-// export const observe = (domElement: any, callback: Function) => {
-//   const observer = new Observer(debounce(callback, 100));
-//   observer.observe(domElement, {
-//     subtree: true,
-//     childList: true,
-//     attributes: false,
-//     characterData: false,
-//     attributeOldValue: false,
-//     characterDataOldValue: false,
-//   });
-// };
-
-/**
- * We don't want to use dijit (dojo's UI library).
- * Just use React
- */
-// const getSideBarToggle = () => {
-//     if (!window.mx || !window.dijit || !window.dijit.registry) {
-//         return null;
-//     }
-//     const sidebarToggles = window.dijit.registry
-//         .toArray()
-//         .filter(
-//             w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1
-//         );
-//     if (sidebarToggles.length) {
-//         return sidebarToggles[0];
-//     }
-//     return null;
-// };
 
 interface AdminInfo {
     HasCompanyAdmin?: boolean;

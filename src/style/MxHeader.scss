@@ -1,11 +1,6 @@
-@import '../../node_modules/reset-css/sass/reset';
-@import '../../node_modules/npm-font-open-sans/open-sans';
+@import 'common';
 @import 'variables';
 @import 'helpers';
-
-* {
-    box-sizing: border-box;
-}
 
 $header-height: 84px;
 
@@ -238,6 +233,7 @@ $menu-top: 68px;
 %MxHeader__nav-bar-item {
     position: relative;
     height: 100%;
+    background: white;
     &--desktop {
         @extend %MxHeader__nav-bar-item;
         &:hover .MxHeader__nav-bar-menu--desktop {

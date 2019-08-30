@@ -1,11 +1,6 @@
-@import '../../node_modules/reset-css/sass/reset';
-@import '../../node_modules/npm-font-open-sans/open-sans';
+@import 'common';
 @import 'variables';
 @import 'helpers';
-
-* {
-    box-sizing: border-box;
-}
 
 .MxFooter {
     position: relative;
@@ -47,10 +42,13 @@
     text-decoration: none;
     text-decoration-line: none !important;
     font-weight: 400;
-    color: #fff;
     line-height: 32px;
     display: inline-block;
     transition: color 0.2s ease;
+    color: #fff;
+    &:visited {
+        color: #fff;
+    }
     &:hover {
         color: $color-bottom-light-blue-second !important;
     }
@@ -58,8 +56,11 @@
 
 .MxFooter__link--highlighted {
     @extend %MxFooter__link;
-    font-weight: 600;
     color: $color-bottom-light-blue-second !important;
+    font-weight: 600;
+    &:visited {
+        color: $color-bottom-light-blue-second !important;
+    }
 }
 
 .MxFooter__banner-container {

@@ -101,7 +101,6 @@
         "@types/jwt-decode": "^2.2.1",
         "clean-webpack-plugin": "^3.0.0",
         "cross-env": "^5.2.0",
-        "html-webpack-plugin": "^3.2.0",
         "mendix-client": "^7.15.7",
         "node-sass": "^4.12.0",
         "stylelint": "^10.1.0",
@@ -109,7 +108,6 @@
         "stylelint-config-standard": "^18.3.0",
         "stylelint-scss": "^3.9.3",
         "uglifyjs-webpack-plugin": "^2.2.0",
-        "url-loader": "^2.1.0",
         "webpack-cli": "^3.3.7"
     },
     "jest": {

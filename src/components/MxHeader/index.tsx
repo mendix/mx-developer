@@ -1,4 +1,5 @@
 import React from 'react';
+import debounce from 'tiny-debounce';
 
 import Authenticate from './Authenticate';
 import MobileMenuToggle from './MobileMenuToggle';
@@ -34,13 +35,13 @@ class MxHeader extends React.Component<MxHeaderProps, MxHeaderState> {
         window.removeEventListener('resize', this.closeMobileMenuOnBigScreen);
     }
 
-    closeMobileMenuOnBigScreen = () => {
+    closeMobileMenuOnBigScreen = debounce(() => {
         const { isMobileNavBarOpen } = this.state;
         const windowSize = getWindowSize(window.innerWidth);
         const shouldShowMobileMenu = [PHONE, SCREEN_SM].includes(windowSize);
         if (!shouldShowMobileMenu && isMobileNavBarOpen)
             this.setState({ isMobileNavBarOpen: false });
-    };
+    }, 100);
 
     toggleMobileNavBar = () =>
         this.setState(({ isMobileNavBarOpen }) => ({

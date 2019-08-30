@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import linkTree from '../../resources/menu/footer.json';
+import { links } from '../../resources/menu/footer.json';
 
 interface TreeNode {
     label?: string;
@@ -41,7 +41,7 @@ const generateLink = ({
 const Links = () => (
     <div className="MxFooter__links-container">
         <div className="MxFooter__links">
-            {linkTree.map(({ nodes, ...node }: TreeNode, index) => (
+            {links.map(({ nodes, ...node }: TreeNode, index: number) => (
                 <div className="MxFooter__link-group" key={index}>
                     {generateLink(node)}
                     {nodes && nodes.map(generateLink)}
