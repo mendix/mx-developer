@@ -1,0 +1,116 @@
+@import 'common';
+@import 'variables';
+@import 'helpers';
+
+.MxFooter {
+    position: relative;
+    font-family: $font-family;
+    font-size: $font-size;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
+}
+
+.MxFooter__links-container {
+    background: #46597b;
+    width: 100%;
+    padding: 20px 20px 30px 15px; // mobile-first
+    display: none;
+    @include mq(sm, min) {
+        display: block;
+    }
+}
+
+.MxFooter__links {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 50px 15px 0;
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+}
+
+.MxFooter__link-group {
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.MxFooter__link,
+%MxFooter__link {
+    text-decoration: none;
+    text-decoration-line: none !important;
+    font-weight: 400;
+    line-height: 32px;
+    display: inline-block;
+    transition: color 0.2s ease;
+    color: #fff;
+    &:visited {
+        color: #fff;
+    }
+    &:hover {
+        color: $color-bottom-light-blue-second !important;
+    }
+}
+
+.MxFooter__link--highlighted {
+    @extend %MxFooter__link;
+    color: $color-bottom-light-blue-second !important;
+    font-weight: 600;
+    &:visited {
+        color: $color-bottom-light-blue-second !important;
+    }
+}
+
+.MxFooter__banner-container {
+    background: #3e4f6e;
+}
+
+.MxFooter__banner {
+    padding: 0 15px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    align-items: center;
+    @include mq(sm, min) {
+        flex-direction: row;
+    }
+}
+
+.MxFooter__copyright {
+    text-align: center;
+    color: $color-bottom-light-blue-second;
+    padding: 20px 80px 0 0;
+}
+
+.MxFooter__copyright-link {
+    @extend %MxFooter__link;
+    color: $color-bottom-light-blue-second;
+}
+
+.MxFooter__copyright-link-container {
+    border-left: 1px solid $color-bottom-light-blue-second;
+    padding-left: 7px;
+    margin-left: 7px;
+}
+
+.MxFooter__social-media {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.MxFooter__social-media-item {
+    margin-right: 30px;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+}

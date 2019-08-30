@@ -1,0 +1,487 @@
+@import 'common';
+@import 'variables';
+@import 'helpers';
+
+$header-height: 84px;
+
+.MxHeader {
+    display: flex;
+    align-items: center;
+    height: $header-height;
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 20px 0 2px; // mobile-first
+    position: relative;
+    font-family: $font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include mq(sm, min) {
+        padding: 0 20px 0 15px;
+    }
+    @include mq(md, min) {
+        padding: 0 15px;
+    }
+}
+
+.MxHeader__container {
+    width: 100%;
+    background: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #0595db;
+    position: relative; // is needed for z-index
+    z-index: 1000; // TODO: check if it works everywhere
+}
+
+.MxHeader__nav-bar {
+    display: none;
+    align-items: center;
+    height: 100%;
+    top: 0;
+    @include mq(sm, min) {
+        display: flex;
+    }
+    &--open-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: $header-height;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+}
+
+$nav-bar-menu-item-padding: 17px;
+
+.MxHeader__nav-bar-item-link,
+%MxHeader__nav-bar-item-link {
+    @extend %MxHeader__link;
+    display: flex;
+    padding: 0 0 0 22px;
+    width: 100%;
+    border-top: 1px solid $color-divider;
+    background: white;
+    height: 56px;
+    line-height: 56px;
+    justify-content: space-between;
+    cursor: pointer;
+    &--menu-open {
+        @extend %MxHeader__nav-bar-item-link;
+    }
+    &--desktop {
+        @extend %MxHeader__nav-bar-item-link;
+        line-height: $header-height;
+        border-top: none;
+
+        @include mq(sm, min) {
+            padding: 0 13px;
+        }
+        @include mq(md, min) {
+            padding: 0 $nav-bar-menu-item-padding;
+        }
+    }
+}
+
+.MxHeader__logo {
+    height: 40px;
+}
+
+.MxHeader__home {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    @include mq(md, min) {
+        margin-right: 40px;
+    }
+}
+
+$hamburger-layer-color: $color-font-darker-grey !default;
+$hamburger-layer-border-radius: 4px !default;
+
+.MxHeader__mobile-menu-toggle-box,
+%MxHeader__mobile-menu-toggle-box {
+    position: relative;
+    @include transition(background-color 0s 0.13s linear);
+    display: inline-block;
+    padding: 10px;
+
+    /* -------------------------------- START: drawing the upper bar and the lower bar  -------------------------------- */
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background-color: $hamburger-layer-color;
+        position: absolute;
+
+        @include border-radius($hamburger-layer-border-radius);
+        @include prefix(transition-property, transform, moz webkit o);
+        @include prefix(transition-duration, 0.15s, moz webkit o);
+        @include prefix(transition-timing-function, ease, moz webkit o);
+    }
+
+    // position the upper bar
+    &::before {
+        top: 0;
+        left: 0;
+        @include transition(
+            top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+            transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+        );
+    }
+
+    // position the lower bar
+    &::after {
+        bottom: 0;
+        left: 0;
+        @include transition(
+            top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+            transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+        );
+    }
+
+    /* -------------------------------- END: drawing the upper bar and the lower bar  -------------------------------- */
+}
+
+.MxHeader__mobile-menu-toggle-box--on {
+    @extend %MxHeader__mobile-menu-toggle-box;
+    // rotate the upper bar when open
+    &::before {
+        @extend %MxHeader__mobile-menu-toggle-box::before;
+        width: 28px;
+
+        @include transition(
+            top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+            transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1)
+        );
+        transform: translate3d(-2px, 8px, 0) rotate(45deg);
+    }
+
+    // rotate the lower bar when open
+    &::after {
+        @extend %MxHeader__mobile-menu-toggle-box::after;
+        width: 28px;
+
+        @include transition(
+            top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+            transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1)
+        );
+        transform: translate3d(-2px, -10px, 0) rotate(-45deg);
+    }
+}
+
+.MxHeader__mobile-menu-toggle {
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    background: none;
+    border: none;
+    margin: 0 4px;
+    cursor: pointer;
+    outline: 0;
+
+    @include mq(sm, min) {
+        display: none;
+    }
+}
+.MxHeader__mobile-menu-toggle-middle-bar,
+%MxHeader__mobile-menu-toggle-middle-bar {
+    height: 2px;
+    width: 20px;
+    background: $hamburger-layer-color;
+    position: absolute;
+    top: 9px;
+    left: 0;
+    transition: background 0.2s ease;
+}
+
+.MxHeader__mobile-menu-toggle-middle-bar--on {
+    @extend %MxHeader__mobile-menu-toggle-middle-bar;
+    transition: background 0.2s ease;
+    background: rgba(0, 0, 0, 0);
+}
+
+$menu-width: 200px;
+$menu-top: 68px;
+
+.MxHeader__nav-bar-menu {
+    border: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    top: 0;
+    padding: 0 0 10px 40px;
+    &--desktop {
+        list-style-type: none;
+        line-height: $font-size;
+        @include speech-bubble(top, left);
+        top: $menu-top;
+        left: 14px;
+    }
+}
+
+.MxHeader__nav-bar-item,
+%MxHeader__nav-bar-item {
+    position: relative;
+    height: 100%;
+    background: white;
+    &--desktop {
+        @extend %MxHeader__nav-bar-item;
+        &:hover .MxHeader__nav-bar-menu--desktop {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.MxHeader__nav-bar-menu-item {
+    margin-bottom: 10px;
+    line-height: 24px;
+}
+
+.MxHeader__nav-bar-menu-item-link {
+    display: block;
+    @extend %MxHeader__link;
+}
+
+.MxHeader__nav-bar-menu-toggle,
+%MxHeader__nav-bar-menu-toggle {
+    width: 56px;
+    height: 56px;
+    text-align: center;
+    background: url('../resources/img/header/gray-down.svg') 23px 28px no-repeat;
+    border: none;
+    cursor: pointer;
+    font-size: 0;
+    outline: none;
+}
+
+.MxHeader__nav-bar-menu-toggle--open {
+    @extend %MxHeader__nav-bar-menu-toggle;
+    background: url('../resources/img/header/blue-down.svg') 23px 28px no-repeat;
+    transform: rotate(180deg) translate(0, 0);
+}
+
+.MxHeader__white-space {
+    flex-grow: 1;
+}
+
+.MxHeader__Setting {
+    display: flex;
+    height: $header-height;
+    align-items: center;
+}
+
+%MxHeader__settings-button {
+    width: 38px;
+    height: $header-height;
+    font-size: 0;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    outline: 0;
+    @include mq(phablet, min) {
+        width: 56px;
+    }
+}
+
+.MxHeader__search {
+    @extend %MxHeader__settings-button;
+    background: url('../resources/img/search.svg') no-repeat center;
+    &.hidden {
+        // hide this icon because the search will look for its id and replace it.
+        display: none;
+    }
+}
+
+.MxHeader__support-menu {
+    list-style-type: none;
+    line-height: $font-size;
+    @include speech-bubble(top, right);
+    padding: 8px 0;
+    top: $menu-top;
+    right: 7px;
+    font-size: $font-size;
+}
+
+.MxHeader__support-menu-item {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-position: 0;
+    background-repeat: no-repeat;
+    white-space: nowrap;
+}
+
+.MxHeader__support-menu-item-link {
+    @extend %MxHeader__link;
+    display: block;
+    text-align: left;
+    padding: 0 17px;
+    height: 32px;
+    line-height: 32px;
+}
+
+%MxHeader__link {
+    text-decoration: none;
+    text-decoration-line: none !important;
+    color: #555 !important;
+    outline: 0;
+    font-size: $font-size;
+    transition: color 0.15s;
+    &:hover {
+        color: #0595db !important;
+    }
+}
+
+.MxHeader__support {
+    @extend %MxHeader__settings-button;
+    background: url('../resources/img/help.svg') no-repeat center;
+    position: relative;
+    cursor: pointer;
+    &:hover .MxHeader__support-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.MxHeader__notification {
+    @extend %MxHeader__settings-button;
+    background: url('../resources/img/notifications.svg') no-repeat center;
+}
+
+.MxHeader__avatar,
+%MxHeader__avatar {
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    outline: 0;
+    img {
+        @extend %MxHeader__avatar;
+        border: 1px solid #eeeeee;
+    }
+}
+
+.MxHeader__profile {
+    padding: 0 0 0 16px;
+    background: transparent;
+    border: none;
+}
+
+.MxHeader__profile-menu {
+    @include speech-bubble(top, right);
+    opacity: 1;
+    visibility: visible;
+    padding: 8px 0;
+    top: $menu-top;
+    right: 20px;
+    font-size: $font-size;
+    @include mq(md, min) {
+        right: 14px;
+    }
+}
+
+.MxHeader__profile-menu-divider {
+    background: $color-divider;
+    height: 1px;
+    margin: 7px 0;
+}
+
+.MxHeader__profile-menu-photo {
+    @extend %MxHeader__avatar;
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 20px auto 14px auto;
+    border: 1px solid #eeeeee;
+}
+
+%MxHeader__profile-menu-upper-part-item {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    display: block;
+    padding: 0 21px 14px;
+    line-height: normal;
+}
+
+.MxHeader__profile-menu-username {
+    @extend %MxHeader__profile-menu-upper-part-item;
+    color: #555;
+    font-weight: 700;
+}
+
+.MxHeader__profile-menu-email {
+    @extend %MxHeader__profile-menu-upper-part-item;
+    color: #888;
+}
+
+%MxHeader__profile-menu-lower-part-item {
+    display: block;
+    padding: 0 18px 0 48px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    background-position: 8px;
+    background-repeat: no-repeat;
+    white-space: nowrap;
+    @extend %MxHeader__link;
+}
+
+.MxHeader__developer-portal {
+    @extend %MxHeader__profile-menu-lower-part-item;
+    background-image: url('../resources/img/header/sprintr.svg');
+}
+
+.MxHeader__community-profile {
+    @extend %MxHeader__profile-menu-lower-part-item;
+    background-image: url('../resources/img/header/my_profile.svg');
+}
+
+.MxHeader_admin-link {
+    @extend %MxHeader__profile-menu-lower-part-item;
+    background: url('../resources/img/header/admin.svg') 14px 3px no-repeat;
+}
+
+.MxHeader__logout {
+    @extend %MxHeader__profile-menu-lower-part-item;
+    background-image: url('../resources/img/header/logout.svg');
+}
+
+.MxHeader__start-button {
+    $pad: ($height-top-bar-inside - $font-size) / 2;
+    @include border-radius($top-row-height / 2);
+    padding: 13px 10px;
+    @include no-text-decoration();
+    text-align: center;
+    font-size: $font-size;
+    font-weight: normal;
+    line-height: $font-size;
+    white-space: nowrap;
+    @include transition(background-color 250ms ease);
+    margin-left: 10px;
+
+    &,
+    &:active,
+    &:visited {
+        background: $color-button-green;
+        color: white;
+    }
+    &:hover {
+        background: $color-button-green-hover;
+        color: white;
+    }
+}

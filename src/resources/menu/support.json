@@ -1,0 +1,14 @@
+[
+    {
+        "label": "Ask the Community",
+        "url": "https://forum.mendixcloud.com/link/questions"
+    },
+    {
+        "label": "Check the Documentation",
+        "url": "https://docs.mendix.com"
+    },
+    {
+        "label": "Contact Mendix Support",
+        "url": "https://support.mendix.com/hc/en-us"
+    }
+]
