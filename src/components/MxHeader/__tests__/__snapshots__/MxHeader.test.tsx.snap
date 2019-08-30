@@ -243,22 +243,6 @@ exports[`MxHeader should render correctly 1`] = `
           </li>
         </ul>
       </div>
-      <a
-        class="MxHeader__start-button"
-        href="https://signup.mendix.com/link/signup/?source=developers&medium=community&campaign=signup"
-      >
-        Start For Free
-      </a>
-      <a
-        class="MxHeader__profile"
-        title="Click here to login"
-      >
-        <img
-          alt="Click here to login"
-          class="MxHeader__avatar"
-          src="avatar.png"
-        />
-      </a>
     </div>
   </div>
 </div>
