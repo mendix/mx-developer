@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Observer from 'mutation-observer';
+import debounce from 'tiny-debounce';
 
 import MxHeader from './components/MxHeader';
 import MxFooter from './components/MxFooter';
@@ -7,32 +9,45 @@ import MxFooter from './components/MxFooter';
 import './style/MxHeader.scss';
 import './style/MxFooter.scss';
 
-const observer = new MutationObserver(() => {
-    const headerElements = document.getElementsByClassName('mxHeader');
-    const footerElements = document.getElementsByClassName('mxFooter');
-
-    if (headerElements.length > 0 && footerElements.length > 0) {
-        ReactDOM.render(<MxHeader />, headerElements[0]);
-        ReactDOM.render(<MxFooter />, footerElements[0]);
-
-        observer.disconnect();
+const mount = (id: string, Component: React.ComponentType<any>) => {
+    const elements = document.getElementsByClassName(id);
+    const element =
+        document.getElementById(id) || (elements.length > 0 && elements[0]);
+    if (element) {
+        ReactDOM.render(<Component />, element);
     }
-});
+};
 
-observer.observe(document.body, { childList: true });
+const observer = new Observer(
+    debounce(() => {
+        mount('mxHeader', MxHeader);
+        mount('mxFooter', MxFooter);
+    }, 100)
+);
+
+observer.observe(document, {
+    subtree: true,
+    childList: true,
+    attributes: false,
+    characterData: false,
+    attributeOldValue: false,
+    characterDataOldValue: false,
+});
 
 /**
  * Testing locally
  */
 
-setTimeout(function() {
-    const headerElement = document.createElement('div');
-    const contentElement = document.createElement('div');
-    const footerElement = document.createElement('div');
-    headerElement.className = 'mxHeader';
-    contentElement.setAttribute('style', 'height: 800px; width: 100%');
-    footerElement.className = 'mxFooter';
-    document.body.appendChild(headerElement);
-    document.body.appendChild(contentElement);
-    document.body.appendChild(footerElement);
-}, 100);
+if (process.env.NODE_ENV === 'development') {
+    setTimeout(function() {
+        const headerElement = document.createElement('div');
+        const contentElement = document.createElement('div');
+        const footerElement = document.createElement('div');
+        headerElement.className = 'mxHeader';
+        contentElement.setAttribute('style', 'height: 800px; width: 100%');
+        footerElement.className = 'mxFooter';
+        document.body.appendChild(headerElement);
+        document.body.appendChild(contentElement);
+        document.body.appendChild(footerElement);
+    }, 100);
+}
