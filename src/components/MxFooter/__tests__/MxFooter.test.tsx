@@ -9,3 +9,4 @@ describe('MxFooter', () => {
         expect(container.firstChild).toMatchSnapshot();
     });
 });
+    
