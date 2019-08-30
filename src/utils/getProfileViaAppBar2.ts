@@ -2,6 +2,12 @@
 // Once Identity Service include user profile info into JWT token
 // This can be removed
 
+declare global {
+    interface Window {
+        __MXOpenID: string;
+    }
+}
+
 import fetchJsonp from 'fetch-jsonp';
 
 import { AppBar2Response } from '../typings/Authenticate';
@@ -14,7 +20,15 @@ const getProfileViaAppBar2 = (): Promise<AppBar2Response> =>
         jsonpCallbackFunction: 'getProfileFeedback',
     })
         .then(response => response.json())
-        .then(json => json && !!json.length && json[0])
+        .then(json => {
+            const profile = json && !!json.length && json[0];
+            if (profile)
+                window.__MXOpenID =
+                    typeof profile.openId === 'undefined'
+                        ? null
+                        : profile.openId;
+            return profile;
+        })
         .catch(e => {
             console.warn('Error loading profile for feedback widget: ', e);
         });
