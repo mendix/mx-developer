@@ -54,7 +54,8 @@
     }
 }
 
-.MxFooter__link--highlighted {
+.MxFooter__link--highlighted,
+%MxFooter__link--highlighted {
     @extend %MxFooter__link;
     color: $color-bottom-light-blue-second !important;
     font-weight: 600;
@@ -89,7 +90,7 @@
 }
 
 .MxFooter__copyright-link {
-    @extend %MxFooter__link;
+    @extend %MxFooter__link--highlighted;
     color: $color-bottom-light-blue-second;
 }
 
