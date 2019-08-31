@@ -41,15 +41,16 @@ $header-height: 84px;
     @include mq(sm, min) {
         display: flex;
     }
-    &--open-mobile {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: $header-height;
-        left: 0;
-        width: 100%;
-        box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.15);
-    }
+}
+
+.MxHeader__nav-bar--mobile-menu-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
 $nav-bar-menu-item-padding: 17px;
@@ -66,20 +67,22 @@ $nav-bar-menu-item-padding: 17px;
     line-height: 56px;
     justify-content: space-between;
     cursor: pointer;
-    &--menu-open {
-        @extend %MxHeader__nav-bar-item-link;
-    }
-    &--desktop {
-        @extend %MxHeader__nav-bar-item-link;
-        line-height: $header-height;
-        border-top: none;
+}
 
-        @include mq(sm, min) {
-            padding: 0 13px;
-        }
-        @include mq(md, min) {
-            padding: 0 $nav-bar-menu-item-padding;
-        }
+.MxHeader__nav-bar-item-link--menu-open {
+    @extend %MxHeader__nav-bar-item-link;
+}
+
+.MxHeader__nav-bar-item-link--desktop {
+    @extend %MxHeader__nav-bar-item-link;
+    line-height: $header-height;
+    border-top: none;
+
+    @include mq(sm, min) {
+        padding: 0 13px;
+    }
+    @include mq(md, min) {
+        padding: 0 $nav-bar-menu-item-padding;
     }
 }
 
@@ -209,7 +212,8 @@ $hamburger-layer-border-radius: 4px !default;
 $menu-width: 200px;
 $menu-top: 68px;
 
-.MxHeader__nav-bar-menu {
+.MxHeader__nav-bar-menu,
+%MxHeader__nav-bar-menu {
     border: none;
     opacity: 1;
     visibility: visible;
@@ -220,13 +224,15 @@ $menu-top: 68px;
     margin: 0;
     top: 0;
     padding: 0 0 10px 40px;
-    &--desktop {
-        list-style-type: none;
-        line-height: $font-size;
-        @include speech-bubble(top, left);
-        top: $menu-top;
-        left: 14px;
-    }
+    list-style-type: none;
+}
+
+.MxHeader__nav-bar-menu--desktop {
+    @extend %MxHeader__nav-bar-menu;
+    line-height: $font-size;
+    @include speech-bubble(top, left);
+    top: $menu-top;
+    left: 14px;
 }
 
 .MxHeader__nav-bar-item,
@@ -234,12 +240,13 @@ $menu-top: 68px;
     position: relative;
     height: 100%;
     background: white;
-    &--desktop {
-        @extend %MxHeader__nav-bar-item;
-        &:hover .MxHeader__nav-bar-menu--desktop {
-            opacity: 1;
-            visibility: visible;
-        }
+}
+
+.MxHeader__nav-bar-item--desktop {
+    @extend %MxHeader__nav-bar-item;
+    &:hover .MxHeader__nav-bar-menu--desktop {
+        opacity: 1;
+        visibility: visible;
     }
 }
 

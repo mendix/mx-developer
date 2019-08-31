@@ -10,11 +10,11 @@ const NavBar = ({ isOpenOnMobile = false }: { isOpenOnMobile: boolean }) => {
     /**
      * Since we're using BEM, every css class is unique.
      * So, we should also make its implementation independent.
-     * instead of requiring multiple classes `MxHeader__nav-bar MxHeader__nav-bar--open-mobile`,
-     * one class should be a self-contained state of the UI component, i.e. `MxHeader__nav-bar--open-mobile`
+     * instead of requiring multiple classes `MxHeader__nav-bar MxHeader__nav-bar--mobile-menu-open`,
+     * one class should be a self-contained state of the UI component, i.e. `MxHeader__nav-bar--mobile-menu-open`
      */
     const className = isOpenOnMobile
-        ? 'MxHeader__nav-bar--open-mobile'
+        ? 'MxHeader__nav-bar--mobile-menu-open'
         : 'MxHeader__nav-bar'; // use media-query to hide it on mobile when closed
 
     /**
