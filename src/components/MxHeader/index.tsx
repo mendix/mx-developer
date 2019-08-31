@@ -1,6 +1,7 @@
 import React from 'react';
 import debounce from 'tiny-debounce';
 
+import observe from '../../utils/observe';
 import Authenticate from './Authenticate';
 import MobileMenuToggle from './MobileMenuToggle';
 import Logo from './Logo';
@@ -22,17 +23,28 @@ interface MxHeaderProps {
 
 interface MxHeaderState {
     isMobileNavBarOpen: boolean;
+    setAsBackground: boolean;
 }
 
+let modalObserver: MutationObserver;
+
 class MxHeader extends React.Component<MxHeaderProps, MxHeaderState> {
-    state = { isMobileNavBarOpen: false };
+    state = { isMobileNavBarOpen: false, setAsBackground: false };
 
     componentDidMount() {
         window.addEventListener('resize', this.closeMobileMenuOnBigScreen);
+        observe(observer => {
+            if (!modalObserver) modalObserver = observer;
+            const elements = document.getElementsByClassName('mx-underlay');
+            elements.length > 0
+                ? this.setState({ setAsBackground: true })
+                : this.setState({ setAsBackground: false });
+        });
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.closeMobileMenuOnBigScreen);
+        modalObserver && modalObserver.disconnect();
     }
 
     closeMobileMenuOnBigScreen = debounce(() => {
@@ -50,7 +62,7 @@ class MxHeader extends React.Component<MxHeaderProps, MxHeaderState> {
 
     render() {
         const { idTokenProviderMF } = this.props;
-        const { isMobileNavBarOpen } = this.state;
+        const { isMobileNavBarOpen, setAsBackground } = this.state;
 
         const currentApp = getCurrentApp();
         const showSettings = ![BEAVER, SUPPORT].includes(currentApp);
@@ -58,7 +70,13 @@ class MxHeader extends React.Component<MxHeaderProps, MxHeaderState> {
         const initialState = { idTokenProviderMF };
         return (
             <Provider initialState={initialState}>
-                <div className="MxHeader__container">
+                <div
+                    className={
+                        !setAsBackground
+                            ? 'MxHeader__container'
+                            : 'MxHeader__container--background'
+                    }
+                >
                     <div className="MxHeader">
                         <Authenticate />
                         <MobileMenuToggle

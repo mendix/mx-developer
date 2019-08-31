@@ -9,10 +9,18 @@ interface Mutation {
     target: HTMLElement;
 }
 
-const observe = (
-    callback: (mutationList: Mutation[], observer: MutationObserver) => void
-) => {
-    const observer = new MutationObserver(debounce(callback, 100));
+const observe = (callback: (observer: MutationObserver) => void) => {
+    const observer = new MutationObserver(
+        debounce((mutationList: Mutation[], observer: MutationObserver) => {
+            const domChanges = mutationList.filter(
+                ({ type }) => type === 'childList'
+            );
+            const isDomChanged = domChanges.length > 0;
+            if (isDomChanged) {
+                callback(observer);
+            }
+        }, 100)
+    );
     const observerConfig = {
         subtree: true,
         childList: true,

@@ -17,15 +17,9 @@ const mount = (className: string, Component: React.ComponentType<any>) => {
     if (element) ReactDOM.render(<Component />, element);
     return element;
 };
-// @ts-ignore: mutationList is not used
-observe((mutationList, observer) => {
-    const domChanges = mutationList.filter(({ type }) => type === 'childList');
-    const isDomChanged = domChanges.length > 0;
-    if (isDomChanged) {
-        header = mount('mxHeader', MxHeader);
-        footer = mount('mxFooter', MxFooter);
-    }
-
+observe(observer => {
+    header = mount('mxHeader', MxHeader);
+    footer = mount('mxFooter', MxFooter);
     if (header && footer) {
         observer.disconnect();
     }
@@ -45,10 +39,28 @@ if (process.env.NODE_ENV === 'development') {
         const contentElement = document.createElement('div');
         contentElement.setAttribute('style', 'height: 800px; width: 100%');
         document.body.appendChild(contentElement);
-    }, 100);
+    }, 200);
     setTimeout(function() {
         const footerElement = document.createElement('div');
         footerElement.className = 'mxFooter';
         document.body.appendChild(footerElement);
-    }, 100);
+    }, 300);
+    // when a modal is open
+    setTimeout(function() {
+        const modalElement = document.createElement('div');
+        modalElement.setAttribute(
+            'style',
+            `
+            height: 1200px; 
+            width: 100%; 
+            position: absolute;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.3);
+        `
+        );
+
+        modalElement.className = 'mx-underlay';
+        document.body.appendChild(modalElement);
+    }, 1000);
 }

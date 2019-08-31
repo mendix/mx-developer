@@ -24,13 +24,19 @@ $header-height: 84px;
     }
 }
 
-.MxHeader__container {
+.MxHeader__container,
+%MxHeader__container {
     width: 100%;
     background: white;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     border-top: 5px solid #0595db;
     position: relative; // is needed for z-index
-    z-index: 1000; // TODO: check if it works everywhere
+    z-index: 1000;
+}
+
+.MxHeader__container--background {
+    @extend %MxHeader__container;
+    z-index: 99; // in order to show modal
 }
 
 .MxHeader__nav-bar {
