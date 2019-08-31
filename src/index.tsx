@@ -1,37 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Observer from 'mutation-observer';
-import debounce from 'tiny-debounce';
 
 import MxHeader from './components/MxHeader';
 import MxFooter from './components/MxFooter';
 
+import observe from './utils/observe';
+
 import './style/MxHeader.scss';
 import './style/MxFooter.scss';
 
-const mount = (id: string, Component: React.ComponentType<any>) => {
-    const elements = document.getElementsByClassName(id);
-    const element =
-        document.getElementById(id) || (elements.length > 0 && elements[0]);
-    if (element) {
-        ReactDOM.render(<Component />, element);
-    }
+let header: Element;
+let footer: Element;
+
+const mount = (className: string, Component: React.ComponentType<any>) => {
+    const element = document.getElementsByClassName(className)[0];
+    if (element) ReactDOM.render(<Component />, element);
+    return element;
 };
+// @ts-ignore: mutationList is not used
+observe((mutationList, observer) => {
+    const domChanges = mutationList.filter(({ type }) => type === 'childList');
+    const isDomChanged = domChanges.length > 0;
+    if (isDomChanged) {
+        header = mount('mxHeader', MxHeader);
+        footer = mount('mxFooter', MxFooter);
+    }
 
-const observer = new Observer(
-    debounce(() => {
-        mount('mxHeader', MxHeader);
-        mount('mxFooter', MxFooter);
-    }, 100)
-);
-
-observer.observe(document, {
-    subtree: true,
-    childList: true,
-    attributes: false,
-    characterData: false,
-    attributeOldValue: false,
-    characterDataOldValue: false,
+    if (header && footer) {
+        observer.disconnect();
+    }
 });
 
 /**
@@ -41,13 +38,17 @@ observer.observe(document, {
 if (process.env.NODE_ENV === 'development') {
     setTimeout(function() {
         const headerElement = document.createElement('div');
-        const contentElement = document.createElement('div');
-        const footerElement = document.createElement('div');
         headerElement.className = 'mxHeader';
-        contentElement.setAttribute('style', 'height: 800px; width: 100%');
-        footerElement.className = 'mxFooter';
         document.body.appendChild(headerElement);
+    }, 100);
+    setTimeout(function() {
+        const contentElement = document.createElement('div');
+        contentElement.setAttribute('style', 'height: 800px; width: 100%');
         document.body.appendChild(contentElement);
+    }, 100);
+    setTimeout(function() {
+        const footerElement = document.createElement('div');
+        footerElement.className = 'mxFooter';
         document.body.appendChild(footerElement);
     }, 100);
 }
