@@ -3,7 +3,7 @@ dist: trusty
 language: node_js
 env:
   global:
-    - GET_ENV_VAR=./_scripts/get_env.sh
+    - GET_ENV_VAR=./.travis/get_env.sh
     - GOPATH="${HOME}/.go_workspace"
     - TRAVIS_NODE_VERSION="8.16.0"
     - CF_APP=mx-developer
@@ -22,11 +22,11 @@ before_deploy:
   - tar xzvf $HOME/cf.tgz -C $HOME
   - chmod +x $HOME/cf
   - mv $HOME/cf $HOME/bin/cf
-  - cp ./_scripts/autopilot-linux $HOME/
+  - cp ./.travis/autopilot-linux $HOME/
   - chmod a+x $HOME/autopilot-linux
-  - ./_scripts/before_deploy.sh
+  - ./.travis/before_deploy.sh
 script:
-  - ./_scripts/build.sh
+  - ./.travis/build.sh
 cache:
   yarn: true
   directories:
@@ -37,7 +37,7 @@ branches:
     - development
 deploy:
   - provider: script
-    script: ./_scripts/deploy.sh
+    script: ./.travis/deploy.sh
     skip_cleanup: true
     on:
       branch:
