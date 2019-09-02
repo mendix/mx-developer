@@ -91,21 +91,18 @@ export const navigateByCallingMicroflow = async (
 
 const getEnvironment = () => {
     const domain = window.location.origin;
+    const isUrlWithEnvironment = (environment: string) =>
+        [
+            '-[env].mendixcloud.com',
+            'home-[env].mendix.com',
+            'home-[env].mendix.dev',
+        ]
+            .map(url => url.replace('[env]', environment))
+            .map(url => domain.includes(url))
+            .filter(Boolean).length > 0;
 
-    if (
-        domain.indexOf('-test.mendixcloud.com') !== -1 ||
-        domain.indexOf('home-test.mendix.com') !== -1 ||
-        domain.indexOf('home-test.mendix.dev') !== -1
-    )
-        return '-test';
-
-    if (
-        domain.indexOf('-accp.mendixcloud.com') !== -1 ||
-        domain.indexOf('home-accp.mendix.com') !== -1 ||
-        domain.indexOf('home-accp.mendix.dev') !== -1
-    )
-        return '-accp';
-
+    if (isUrlWithEnvironment('test')) return '-test';
+    if (isUrlWithEnvironment('accp')) return '-accp';
     return '';
 };
 
@@ -162,39 +159,38 @@ export const getCurrentApp = () => {
 };
 
 export const getEnvironmentLink = (link: string) => {
-    if (link && link.indexOf('developer.mendixcloud.com') !== -1) {
+    if (!link || !link.includes('home.mendix.com')) {
+        return link;
+    }
+
+    if (link && link.includes('developer.mendixcloud.com')) {
         return link.replace(
             'developer.mendixcloud.com',
             `developer${getEnvironment()}.mendixcloud.com`
         );
     }
-    if (!link || link.indexOf('home.mendix.com') === -1) {
-        return link;
-    }
-    if (window.location.origin.indexOf('home.mendix.dev') !== -1) {
+    if (window.location.origin.includes('home.mendix.dev')) {
         return link.replace('home.mendix.com', `home.mendix.dev`);
     }
-    if (window.location.origin.indexOf('dev.mendix.com') !== -1) {
+    if (window.location.origin.includes('dev.mendix.com')) {
         // MXLAB integration (https://prefix.app.home.dev.mendix.com)
         const urlParts = window.location.origin
             .split('.')
             .map(part => part.replace(/http(s)?:\/\//, ''));
         const firstPart = urlParts[0];
-        const nonIndex =
-            [
-                'sprintr',
-                'sprintr',
-                'home',
-                'cloud',
-                'cdp',
-                'cdp-test',
-                'cdp-accp',
-                'clp',
-                'clp-test',
-                'clp-accp',
-                'appstore',
-            ].indexOf(firstPart) === -1;
-        if (nonIndex) {
+        const includesFirstPart = [
+            'sprintr',
+            'home',
+            'cloud',
+            'cdp',
+            'cdp-test',
+            'cdp-accp',
+            'clp',
+            'clp-test',
+            'clp-accp',
+            'appstore',
+        ].includes(firstPart);
+        if (!includesFirstPart) {
             return link
                 .replace(/(http(s)?:\/\/)/, `$1${firstPart}.`)
                 .replace('home.mendix.com', `home.dev.mendix.com`);
