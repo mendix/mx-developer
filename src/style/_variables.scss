@@ -44,6 +44,6 @@ $logo-text-correction: 6px;
 // Font
 $font-size: 14px;
 $font-size-smaller: 12px;
-$font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;
+$font-family: 'Open Sans', sans-serif; // via web font, no need to bundle it
 
 $opacity-footer-icon: 0.506;
