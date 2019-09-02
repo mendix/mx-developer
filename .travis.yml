@@ -26,8 +26,7 @@ before_deploy:
   - chmod a+x $HOME/autopilot-linux
   - ./_scripts/before_deploy.sh
 script:
-  - if [ "$TRAVIS_BRANCH" = "develop" ]; then yarn build:test; fi
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then yarn build:prod; fi
+  - yarn build:prod
 cache:
   yarn: true
   directories:
