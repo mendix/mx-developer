@@ -26,7 +26,7 @@ before_deploy:
   - chmod a+x $HOME/autopilot-linux
   - ./.travis/before_deploy.sh
 script:
-  - .travis/build.sh
+  - ./.travis/build.sh
 cache:
   yarn: true
   directories:
@@ -37,8 +37,7 @@ branches:
     - development
 deploy:
   - provider: script
-    script:
-      - ./.travis/deploy.sh
+    script: ./.travis/deploy.sh
     skip_cleanup: true
     on:
       branch:
