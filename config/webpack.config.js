@@ -50,6 +50,13 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
+/**
+ * - Test: <https://mx-developer-test.cfapps.io/>
+ * - Production: <https://developer-static.mendix.com/>
+ */
+
+const isOnMendixProd = process.env.REACT_APP_MX_ENV === 'prod';
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -169,7 +176,7 @@ module.exports = function(webpackEnv) {
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: 'mx-header-[hash:8].js',
+      filename: isOnMendixProd ? 'mx-header-[hash:8].js' : 'mx-header.js',
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // We inferred the "public path" (such as / or /my-project) from homepage.
@@ -333,7 +340,7 @@ module.exports = function(webpackEnv) {
               loader: require.resolve('url-loader'),
               options: {
                 limit: imageInlineSizeLimit,
-                name: 'static/media/[name]-[hash:8].[ext]',
+                name: isOnMendixProd ? 'static/media/[name]-[hash:8].[ext]' : 'static/media/[name].[ext]',
               },
             },
             // Process application JS with Babel.
@@ -471,7 +478,7 @@ module.exports = function(webpackEnv) {
               // by webpacks internal loaders.
               exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
               options: {
-                name: 'media/[name]-[hash:8].[ext]',
+                name: isOnMendixProd ? 'media/[name]-[hash:8].[ext]' : 'media/[name].[ext]',
               },
             },
             // ** STOP ** Are you adding a new loader?
@@ -544,7 +551,7 @@ module.exports = function(webpackEnv) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: 'mx-header-[hash:8].css',
+          filename: isOnMendixProd ? 'mx-header-[hash:8].css' : 'mx-header.css',
         }),
       // Generate a manifest file which contains a mapping of all asset filenames
       // to their corresponding output file so that tools can pick it up without
