@@ -2,7 +2,10 @@ import React from 'react';
 
 import { connect } from '../../../context/store';
 import avatarImage from '../../../resources/img/header/avatar.svg';
-import { getEnvironmentLink, onSprintr } from '../../../utils/mxHelpers';
+import {
+    getEnvironmentLink,
+    onSprintr,
+} from '../../../utils/environmentHelpers';
 import { links, microflows } from '../../../resources/mendix.json';
 
 import AdminLinks from './AdminLinks';

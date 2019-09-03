@@ -1,7 +1,8 @@
 import React from 'react';
 
 import NavBarMenu, { Node } from './NavBarMenu';
-import { navigateByCallingMicroflow, onSprintr } from '../../utils/mxHelpers';
+import { navigateByCallingMicroflow } from '../../utils/mxHelpers';
+import { onSprintr } from '../../utils/environmentHelpers';
 
 interface NavBarItemProps extends Node {
     isOnMobile: boolean;
@@ -60,14 +61,6 @@ class NavBarItem extends React.Component<NavBarItemProps, NavBarItemState> {
             </button>
         );
 
-        const getItemLinkClass = () => {
-            if (!isOnMobile) return 'MxHeader__nav-bar-item-link';
-
-            return isMenuOpen
-                ? 'MxHeader__nav-bar-item-link--menu-open'
-                : 'MxHeader__nav-bar-item-link';
-        };
-
         return (
             <div
                 className={
@@ -78,7 +71,7 @@ class NavBarItem extends React.Component<NavBarItemProps, NavBarItemState> {
             >
                 {onSprintr() || (isOnMobile && nodes && nodes.length > 0) ? (
                     <span
-                        className={getItemLinkClass()}
+                        className="MxHeader__nav-bar-item-link"
                         onClick={navigate}
                         role="button"
                         onKeyPress={navigate}

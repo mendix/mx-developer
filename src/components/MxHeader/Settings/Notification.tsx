@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { navigateByCallingMicroflow } from '../../../utils/mxHelpers';
 import {
-    navigateByCallingMicroflow,
     onSprintr,
     getEnvironmentLink,
-} from '../../../utils/mxHelpers';
+} from '../../../utils/environmentHelpers';
 import { links, microflows } from '../../../resources/mendix.json';
 
 const Notification = () => {

@@ -10,12 +10,15 @@ jest.mock('../../../utils/getProfileViaAppBar2', () =>
     }))
 );
 
-jest.mock('../../../utils/mxHelpers', () => ({
+jest.mock('../../../utils/environmentHelpers', () => ({
     getEnvironmentLink: jest.fn(link => link),
     getCurrentApp: jest.fn(() => 'forum'),
-    callMicroflow: jest.fn(() => Promise.resolve('response-of-microflow')),
     onSprintr: jest.fn(() => true),
     onCloud: jest.fn(() => true),
+}));
+
+jest.mock('../../../utils/mxHelpers', () => ({
+    callMicroflow: jest.fn(() => Promise.resolve('response-of-microflow')),
     getAdminInfo: jest.fn(() =>
         Promise.resolve({
             hasCompanyAdmin: true,

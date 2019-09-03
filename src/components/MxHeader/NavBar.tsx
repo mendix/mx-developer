@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getCurrentApp, BEAVER } from '../../utils/mxHelpers';
+import { getCurrentApp, BEAVER } from '../../utils/environmentHelpers';
 
 import navbarItemData from '../../resources/menu/navbar.json';
 import NavBarItem from './NavBarItem';
