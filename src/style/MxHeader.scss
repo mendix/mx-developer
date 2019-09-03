@@ -3,6 +3,19 @@
 @import 'helpers';
 
 $header-height: 84px;
+$nav-bar-height: 56px;
+
+$hamburger-layer-color: $color-font-darker-grey !default;
+$hamburger-layer-border-radius: 4px !default;
+$hamburger-bar-width: 2px;
+
+$hamburger-width: 20px;
+$hamburger-diagnal-length: 28px; // Math.sqrt(20*20 * 2);
+
+$menu-width: 200px;
+$menu-top: 68px;
+
+$submenu-item-height: 32px;
 
 .MxHeader {
     display: flex;
@@ -59,8 +72,6 @@ $header-height: 84px;
     box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
-$nav-bar-menu-item-padding: 17px;
-
 .MxHeader__nav-bar-item-link,
 %MxHeader__nav-bar-item-link {
     @extend %MxHeader__link;
@@ -69,8 +80,8 @@ $nav-bar-menu-item-padding: 17px;
     width: 100%;
     border-top: 1px solid $color-divider;
     background: white;
-    height: 56px;
-    line-height: 56px;
+    height: $nav-bar-height;
+    line-height: $nav-bar-height;
     justify-content: space-between;
     cursor: pointer;
 }
@@ -84,7 +95,7 @@ $nav-bar-menu-item-padding: 17px;
         padding: 0 13px;
     }
     @include mq(md, min) {
-        padding: 0 $nav-bar-menu-item-padding;
+        padding: 0 17px;
     }
 }
 
@@ -101,9 +112,6 @@ $nav-bar-menu-item-padding: 17px;
     }
 }
 
-$hamburger-layer-color: $color-font-darker-grey !default;
-$hamburger-layer-border-radius: 4px !default;
-
 %MxHeader__mobile-menu-toggle-box {
     position: relative;
     @include transition(background-color 0s 0.13s linear);
@@ -116,8 +124,8 @@ $hamburger-layer-border-radius: 4px !default;
     &::after {
         content: '';
         display: block;
-        width: 20px;
-        height: 2px;
+        width: $hamburger-width;
+        height: $hamburger-bar-width;
         background-color: $hamburger-layer-color;
         position: absolute;
 
@@ -150,38 +158,37 @@ $hamburger-layer-border-radius: 4px !default;
     /* -------------------------------- END: drawing the upper bar and the lower bar  -------------------------------- */
 }
 
-span.MxHeader__mobile-menu-toggle-box {
+.MxHeader__mobile-menu-toggle-box {
     @extend %MxHeader__mobile-menu-toggle-box;
 }
 
-span.MxHeader__mobile-menu-toggle-box--on {
+%MxHeader__mobile-menu-toggle-box__bar-transition {
+    @include transition(
+        top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+        transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1)
+    );
+}
+
+.MxHeader__mobile-menu-toggle-box--on {
     @extend %MxHeader__mobile-menu-toggle-box;
     // rotate the upper bar when open
     &::before {
         @extend %MxHeader__mobile-menu-toggle-box::before;
-        width: 28px;
-
-        @include transition(
-            top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
-            transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1)
-        );
+        @extend %MxHeader__mobile-menu-toggle-box__bar-transition;
         transform: translate3d(-3px, 9px, 0) rotate(45deg);
+        width: $hamburger-diagnal-length;
     }
 
     // rotate the lower bar when open
     &::after {
         @extend %MxHeader__mobile-menu-toggle-box::after;
-        width: 28px;
-
-        @include transition(
-            top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
-            transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1)
-        );
+        @extend %MxHeader__mobile-menu-toggle-box__bar-transition;
         transform: translate3d(-3px, -9px, 0) rotate(-45deg);
+        width: $hamburger-diagnal-length;
     }
 }
 
-button.MxHeader__mobile-menu-toggle {
+.MxHeader__mobile-menu-toggle {
     display: block;
     position: relative;
     width: 50px;
@@ -199,8 +206,8 @@ button.MxHeader__mobile-menu-toggle {
 }
 
 %MxHeader__mobile-menu-toggle-middle-bar {
-    height: 2px;
-    width: 20px;
+    height: $hamburger-bar-width;
+    width: $hamburger-width;
     background: $hamburger-layer-color;
     position: absolute;
     top: 9px;
@@ -208,20 +215,17 @@ button.MxHeader__mobile-menu-toggle {
     transition: background 0.2s ease;
 }
 
-span.MxHeader__mobile-menu-toggle-middle-bar {
+.MxHeader__mobile-menu-toggle-middle-bar {
     @extend %MxHeader__mobile-menu-toggle-middle-bar;
 }
 
-span.MxHeader__mobile-menu-toggle-middle-bar--on {
+.MxHeader__mobile-menu-toggle-middle-bar--on {
     @extend %MxHeader__mobile-menu-toggle-middle-bar;
     transition: background 0.2s ease;
     background: rgba(0, 0, 0, 0);
 }
 
-$menu-width: 200px;
-$menu-top: 68px;
-
-ul.MxHeader__nav-bar-menu,
+.MxHeader__nav-bar-menu,
 %MxHeader__nav-bar-menu {
     border: none;
     opacity: 1;
@@ -236,7 +240,7 @@ ul.MxHeader__nav-bar-menu,
     list-style-type: none;
 }
 
-ul.MxHeader__nav-bar-menu--desktop {
+.MxHeader__nav-bar-menu--desktop {
     @extend %MxHeader__nav-bar-menu;
     line-height: $font-size;
     @include speech-bubble(top, left);
@@ -272,8 +276,8 @@ ul.MxHeader__nav-bar-menu--desktop {
 
 .MxHeader__nav-bar-menu-toggle,
 %MxHeader__nav-bar-menu-toggle {
-    width: 56px;
-    height: 56px;
+    width: $nav-bar-height;
+    height: $nav-bar-height;
     text-align: center;
     background: url('../resources/img/header/gray-down.svg') 23px 28px no-repeat;
     border: none;
@@ -344,8 +348,8 @@ ul.MxHeader__nav-bar-menu--desktop {
     display: block;
     text-align: left;
     padding: 0 17px;
-    height: 32px;
-    line-height: 32px;
+    height: $submenu-item-height;
+    line-height: $submenu-item-height;
 }
 
 %MxHeader__link {
@@ -386,7 +390,7 @@ ul.MxHeader__nav-bar-menu--desktop {
     outline: 0;
 }
 
-button.MxHeader__avatar {
+.MxHeader__avatar {
     @extend %MxHeader__avatar;
     img {
         @extend %MxHeader__avatar;
@@ -452,8 +456,8 @@ button.MxHeader__avatar {
 %MxHeader__profile-menu-lower-part-item {
     display: block;
     padding: 0 18px 0 48px;
-    height: 32px;
-    line-height: 32px;
+    height: $submenu-item-height;
+    line-height: $submenu-item-height;
     font-size: 12px;
     background-position: 8px;
     background-repeat: no-repeat;
