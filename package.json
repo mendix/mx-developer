@@ -71,8 +71,8 @@
         "webpack-dev-server": "3.2.1"
     },
     "scripts": {
-        "start": "cross-env REACT_APP_MX_ENV=prod node scripts/start.js",
-        "start:test": "cross-env REACT_APP_MX_ENV=test node scripts/start.js",
+        "start": "cross-env REACT_APP_MX_ENV=test node scripts/start.js",
+        "start:prod": "cross-env REACT_APP_MX_ENV=prod node scripts/start.js",
         "build:test": "cross-env REACT_APP_MX_ENV=test node scripts/build.js",
         "build:prod": "cross-env REACT_APP_MX_ENV=prod node scripts/build.js",
         "test": "node scripts/test.js"
