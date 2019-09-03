@@ -28,8 +28,7 @@ const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 
-// Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+
 
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000'
@@ -50,6 +49,8 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
  */
 
 const isOnMendixProd = process.env.REACT_APP_MX_ENV === 'prod';
+// Source maps are resource heavy and can cause out of memory issue for large source files.
+const shouldUseSourceMap = !isOnMendixProd;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -577,8 +578,8 @@ module.exports = function(webpackEnv) {
     # Mendix assets redirect mapping
     ############################################################################################
             
-    ~*\\/mx-header.js /${assets.main.js};
-    ~*\\/mx-header.css /${assets.main.css};
+    ~*\\/mx-header.js ${assets.main.js};
+    ~*\\/mx-header.css ${assets.main.css};
     `
         })
     ].filter(Boolean),
