@@ -32,6 +32,7 @@ const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
 
 const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
 const supportRegEx = /https:\/\/support\.mendix\.com/;
+const datahubRegEx = /https:\/\/hub(-test|-ofdata)?\.mendixcloud\.com/;
 
 export const onSprintr = () => sprintrRegEx.test(window.location.origin);
 export const onCloud = () => cloudRegEx.test(window.location.origin);
@@ -45,6 +46,7 @@ export const onBeaver = () => beaverRegEx.test(window.location.origin);
 export const onModelShare = () => modelShareRegEx.test(window.location.origin);
 export const onForum = () => forumRegEx.test(window.location.origin);
 export const onSupport = () => supportRegEx.test(window.location.origin);
+export const onDatahub = () => datahubRegEx.test(window.location.origin);
 
 export const SPRINTR = 'sprintr';
 export const CLOUD = 'cloud';
@@ -56,6 +58,7 @@ export const MODELSHARE = 'modelshare';
 export const FORUM = 'forum';
 export const COMMUNITY = 'community';
 export const SUPPORT = 'support';
+export const DATAHUB = 'datahub';
 
 export const getCurrentApp = () => {
     if (onSprintr()) return SPRINTR;
@@ -67,6 +70,7 @@ export const getCurrentApp = () => {
     if (onModelShare()) return MODELSHARE;
     if (onForum()) return FORUM;
     if (onSupport()) return SUPPORT;
+    if (onDatahub()) return DATAHUB;
 
     return COMMUNITY;
 };
