@@ -3,6 +3,7 @@
  */
 
 const getEnvironment = () => {
+    const environments = ['test', 'accp', 'ofdata'];
     const domain = window.location.origin;
     const isUrlWithEnvironment = (environment: string) =>
         [
@@ -11,12 +12,11 @@ const getEnvironment = () => {
             'home-[env].mendix.dev',
         ]
             .map(url => url.replace('[env]', environment))
-            .map(url => domain.includes(url))
-            .filter(Boolean).length > 0;
+            .filter(url => domain.includes(url));
 
-    if (isUrlWithEnvironment('test')) return '-test';
-    if (isUrlWithEnvironment('accp')) return '-accp';
-    return '';
+    const found = environments.filter(isUrlWithEnvironment)[0];
+
+    return found ? `-${found}` : '';
 };
 
 const sprintrRegEx = /https:\/\/(.+?\.|)sprintr\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
@@ -75,47 +75,57 @@ export const getCurrentApp = () => {
     return COMMUNITY;
 };
 
-export const getEnvironmentLink = (link: string) => {
-    if (!link || !link.includes('home.mendix.com')) {
-        return link;
-    }
+const getMendixCloudUrl = (link: string) => {
+    const mendixcloudUrlCollection = [
+        'developer.mendixcloud.com',
+        'hub.mendixcloud.com',
+    ];
 
-    if (link && link.includes('developer.mendixcloud.com')) {
+    return mendixcloudUrlCollection.filter(url => link.includes(url))[0];
+};
+
+const getMxLabUrl = (link: string) => {
+    // MXLAB integration (https://prefix.app.home.dev.mendix.com)
+    const urlParts = window.location.origin
+        .split('.')
+        .map(part => part.replace(/http(s)?:\/\//, ''));
+    const firstPart = urlParts[0];
+    const includesFirstPart = [
+        'sprintr',
+        'home',
+        'cloud',
+        'cdp',
+        'cdp-test',
+        'cdp-accp',
+        'clp',
+        'clp-test',
+        'clp-accp',
+        'appstore',
+    ].includes(firstPart);
+    if (!includesFirstPart) {
+        return link
+            .replace(/(http(s)?:\/\/)/, `$1${firstPart}.`)
+            .replace('home.mendix.com', `home.dev.mendix.com`);
+    }
+    return link.replace('home.mendix.com', `home.dev.mendix.com`);
+};
+
+export const getEnvironmentLink = (link: string) => {
+    if (!link) return link;
+
+    if (getMendixCloudUrl(link))
         return link.replace(
-            'developer.mendixcloud.com',
-            `developer${getEnvironment()}.mendixcloud.com`
+            '.mendixcloud.com',
+            `${getEnvironment()}.mendixcloud.com`
         );
-    }
-    if (window.location.origin.includes('home.mendix.dev')) {
+
+    if (window.location.origin.includes('home.mendix.dev'))
         return link.replace('home.mendix.com', `home.mendix.dev`);
-    }
-    if (window.location.origin.includes('dev.mendix.com')) {
-        // MXLAB integration (https://prefix.app.home.dev.mendix.com)
-        const urlParts = window.location.origin
-            .split('.')
-            .map(part => part.replace(/http(s)?:\/\//, ''));
-        const firstPart = urlParts[0];
-        const includesFirstPart = [
-            'sprintr',
-            'home',
-            'cloud',
-            'cdp',
-            'cdp-test',
-            'cdp-accp',
-            'clp',
-            'clp-test',
-            'clp-accp',
-            'appstore',
-        ].includes(firstPart);
-        if (!includesFirstPart) {
-            return link
-                .replace(/(http(s)?:\/\/)/, `$1${firstPart}.`)
-                .replace('home.mendix.com', `home.dev.mendix.com`);
-        }
-        return link.replace('home.mendix.com', `home.dev.mendix.com`);
-    }
-    return link.replace(
-        'home.mendix.com',
-        `home${getEnvironment()}.mendix.com`
-    );
+
+    if (window.location.origin.includes('dev.mendix.com'))
+        return getMxLabUrl(link);
+
+    return link.includes('home.mendix.com')
+        ? link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`)
+        : link;
 };
