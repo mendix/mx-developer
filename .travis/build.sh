@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yarn test;
+
 if [[ $TRAVIS_BRANCH == 'development' ]]; then
   yarn build:test;
 fi
