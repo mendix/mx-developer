@@ -2,9 +2,8 @@
  * The Header can only determine the environment via URL
  */
 
-const getEnvironment = () => {
+export const getEnvironment = (domain: string = window.location.origin) => {
     const environments = ['test', 'accp', 'ofdata'];
-    const domain = window.location.origin;
     const isUrlWithEnvironment = (environment: string) =>
         [
             '-[env].mendixcloud.com',
@@ -12,7 +11,7 @@ const getEnvironment = () => {
             'home-[env].mendix.dev',
         ]
             .map(url => url.replace('[env]', environment))
-            .filter(url => domain.includes(url));
+            .filter(url => domain.includes(url))[0];
 
     const found = environments.filter(isUrlWithEnvironment)[0];
 
@@ -75,13 +74,12 @@ export const getCurrentApp = () => {
     return COMMUNITY;
 };
 
-const getMendixCloudUrl = (link: string) => {
-    const mendixcloudUrlCollection = [
-        'developer.mendixcloud.com',
-        'hub.mendixcloud.com',
-    ];
+export const getMendixCloudUrl = (link: string) => {
+    const mendixcloudUrlPrefixes = ['developer', 'hub'];
 
-    return mendixcloudUrlCollection.filter(url => link.includes(url))[0];
+    return mendixcloudUrlPrefixes
+        .map(prefix => `${prefix}.mendixcloud.com`)
+        .filter(url => link.includes(url))[0];
 };
 
 const getMxLabUrl = (link: string) => {
@@ -110,22 +108,27 @@ const getMxLabUrl = (link: string) => {
     return link.replace('home.mendix.com', `home.dev.mendix.com`);
 };
 
-export const getEnvironmentLink = (link: string) => {
+export const getEnvironmentLink = (
+    link: string,
+    domain: string = window.location.origin
+) => {
     if (!link) return link;
 
     if (getMendixCloudUrl(link))
         return link.replace(
             '.mendixcloud.com',
-            `${getEnvironment()}.mendixcloud.com`
+            `${getEnvironment(domain)}.mendixcloud.com`
         );
 
-    if (window.location.origin.includes('home.mendix.dev'))
+    if (domain.includes('home.mendix.dev'))
         return link.replace('home.mendix.com', `home.mendix.dev`);
 
-    if (window.location.origin.includes('dev.mendix.com'))
-        return getMxLabUrl(link);
+    if (domain.includes('dev.mendix.com')) return getMxLabUrl(link);
 
     return link.includes('home.mendix.com')
-        ? link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`)
+        ? link.replace(
+              'home.mendix.com',
+              `home${getEnvironment(domain)}.mendix.com`
+          )
         : link;
 };
