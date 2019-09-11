@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 
+import { getEnvironmentLink } from '../../utils/environmentHelpers';
 import { links } from '../../resources/menu/footer.json';
 
 interface TreeNode {
@@ -12,7 +13,7 @@ interface TreeNode {
 
 const generateLink = ({
     highlighted = false,
-    url,
+    url: rawLink,
     label,
     external = false,
 }: TreeNode): ReactNode | null => {
@@ -21,6 +22,8 @@ const generateLink = ({
         : 'MxFooter__link';
 
     if (!label) return null;
+
+    const url = rawLink && getEnvironmentLink(rawLink);
 
     return url ? (
         <a
