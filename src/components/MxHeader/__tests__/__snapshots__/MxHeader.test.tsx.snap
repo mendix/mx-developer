@@ -58,6 +58,16 @@ exports[`MxHeader should render correctly 1`] = `
           class="MxHeader__nav-bar-item-link"
           role="button"
         >
+          Data Hub
+        </span>
+      </div>
+      <div
+        class="MxHeader__nav-bar-item--desktop"
+      >
+        <span
+          class="MxHeader__nav-bar-item-link"
+          role="button"
+        >
           People
         </span>
       </div>
