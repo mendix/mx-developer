@@ -12,6 +12,11 @@
         "microflow": "CommunityHeader.OpenApps"
     },
     {
+        "key": "datahub",
+        "label": "Data Hub",
+        "link": "https://hub.mendixcloud.com"
+    },
+    {
         "key": "people",
         "label": "People",
         "link": "https://developer.mendixcloud.com/link/people",
