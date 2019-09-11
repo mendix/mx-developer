@@ -2,7 +2,7 @@ import React from 'react';
 
 import NavBarMenu, { Node } from './NavBarMenu';
 import { navigateByCallingMicroflow } from '../../utils/mxHelpers';
-import { onSprintr } from '../../utils/environmentHelpers';
+import { onSprintr, getEnvironmentLink } from '../../utils/environmentHelpers';
 
 interface NavBarItemProps extends Node {
     isOnMobile: boolean;
@@ -33,13 +33,14 @@ class NavBarItem extends React.Component<NavBarItemProps, NavBarItemState> {
     render() {
         const {
             label,
-            link,
+            link: rawLink,
             microflow,
             nodes,
             external,
             isOnMobile,
         } = this.props;
         const { isMenuOpen } = this.state;
+        const link = getEnvironmentLink(rawLink);
         const navigate = () => navigateByCallingMicroflow(microflow, link);
 
         const MenuToggle = ({
