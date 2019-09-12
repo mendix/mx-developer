@@ -9,7 +9,7 @@ interface Action {
 }
 
 interface State {
-    loaded?: boolean;
+    loading?: boolean;
     loginUrl?: string;
     loggedIn?: boolean;
     username?: string;
@@ -18,12 +18,12 @@ interface State {
 }
 
 export default function reducer(
-    state: State = { loaded: false },
+    state: State = { loading: true },
     { type, payload }: Action
 ) {
     switch (type) {
         case SET_IDENTITY_DATA: {
-            return { ...state, ...payload, loaded: true };
+            return { ...state, ...payload, loading: false };
         }
 
         case SET_ADMIN_INFO: {
