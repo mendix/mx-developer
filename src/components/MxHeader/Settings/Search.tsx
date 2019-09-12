@@ -9,6 +9,7 @@ const Search = () => (
     <button
         className="MxHeader__search hidden"
         id="mendix-header-search-button"
+        type="button"
     >
         Search
     </button>

@@ -24,6 +24,7 @@ const Notification = () => {
             className="MxHeader__notification"
             onClick={onClick}
             onKeyDown={onClick}
+            type="button"
         >
             Notification
         </button>

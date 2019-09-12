@@ -57,6 +57,7 @@ class NavBarItem extends React.Component<NavBarItemProps, NavBarItemState> {
                         : 'MxHeader__nav-bar-menu-toggle'
                 }
                 onClick={onClick}
+                type="button"
             >
                 {isOpen ? 'Close' : 'Expand'}
             </button>
