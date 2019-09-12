@@ -10,10 +10,10 @@ import LoginButton from './LoginButton';
 
 const Settings = ({
     loggedIn,
-    loaded,
+    loading,
 }: {
     loggedIn: boolean;
-    loaded: boolean;
+    loading: boolean;
 }) => {
     const ProfileComponents = () => (
         <>
@@ -27,7 +27,7 @@ const Settings = ({
         <div className="MxHeader__Setting">
             <Search />
             <Support />
-            {loaded && <ProfileComponents />}
+            {!loading && <ProfileComponents />}
         </div>
     );
 };
