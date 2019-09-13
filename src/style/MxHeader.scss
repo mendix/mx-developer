@@ -47,11 +47,6 @@ $submenu-item-height: 32px;
     z-index: 1000;
 }
 
-.MxHeader__container--background {
-    @extend %MxHeader__container;
-    z-index: 99; // in order to show modal
-}
-
 .MxHeader__nav-bar {
     display: none;
     align-items: center;
@@ -508,4 +503,18 @@ $submenu-item-height: 32px;
         background: $color-button-green-hover;
         color: white;
     }
+}
+
+/* --------------- Modal hacking --------------- */
+
+/**
+ * `These are the modal classes. we overwrite it to make it higher than the header
+ */
+
+.mx-dialog {
+    z-index: 1002 !important;
+}
+
+.mx-underlay {
+    z-index: 1001 !important;
 }
