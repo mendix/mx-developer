@@ -10,7 +10,7 @@ import LoginButton from './LoginButton';
 
 const Settings = ({
     loggedIn,
-    loading,
+    loading = true,
 }: {
     loggedIn: boolean;
     loading: boolean;
