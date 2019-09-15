@@ -1,12 +1,6 @@
 import React from 'react';
 
-export interface Node {
-    key: string;
-    label: string;
-    link: string;
-    microflow?: string;
-    external?: boolean;
-}
+import { NodeInJsonFile } from '../../typings';
 
 /**
  * handle errors when `nodes` is invalid here,
@@ -18,7 +12,7 @@ const NavBarMenu = ({
     nodes,
     isOnMobile,
 }: {
-    nodes: Node[] | null | undefined;
+    nodes: NodeInJsonFile[] | null | undefined;
     isOnMobile: boolean;
 }) =>
     nodes && nodes.length > 0 ? (

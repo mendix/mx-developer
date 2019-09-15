@@ -1,12 +1,14 @@
 import React from 'react';
 
-import NavBarMenu, { Node } from './NavBarMenu';
+import { NodeInJsonFile } from '../../typings';
+
+import NavBarMenu from './NavBarMenu';
 import { navigateByCallingMicroflow } from '../../utils/mxHelpers';
 import { onSprintr, getEnvironmentLink } from '../../utils/environmentHelpers';
 
-interface NavBarItemProps extends Node {
+interface NavBarItemProps extends NodeInJsonFile {
     isOnMobile: boolean;
-    nodes?: Node[];
+    nodes?: NodeInJsonFile[];
 }
 
 interface NavBarItemState {
