@@ -171,7 +171,7 @@ module.exports = function(webpackEnv) {
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: isOnMendixProd ? 'mx-header.[hash:8].js' : 'mx-header.js',
+      filename: isOnMendixProd ? 'mx-header.js' : 'mx-header.js',
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // We inferred the "public path" (such as / or /my-project) from homepage.
@@ -534,7 +534,7 @@ module.exports = function(webpackEnv) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: isOnMendixProd ? 'mx-header.[hash:8].css' : 'mx-header.css',
+          filename: isOnMendixProd ? 'mx-header.css' : 'mx-header.css',
         }),
       // Moment.js is an extremely popular library that bundles large locale files
       // by default due to how Webpack interprets its code. This is a practical
