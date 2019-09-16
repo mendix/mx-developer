@@ -18,6 +18,9 @@
       <div :class="itemClass" >
         <header-link :link="deepLinkApps" :mob="mob" :linkID="linkIDs.apps" />
       </div>
+      <div v-if="isOnDataHub" :class="itemClass" >
+        <header-link :link="deepLinkDataHub" :mob="mob" :linkID="linkIDs.datahub" />
+      </div>
       <div :class="itemClass" >
         <header-link :link="deepLinkPeople" :mob="mob" :linkID="linkIDs.people" />
       </div>
@@ -28,7 +31,7 @@
 import Vue from 'vue';
 import {mapGetters} from 'vuex';
 
-import { onSprintr, replaceEnvLink } from 'Resources/helpers';
+import { onSprintr, onDataHub, replaceEnvLink } from 'Resources/helpers';
 
 import { links, microflows } from 'Resources/mendix.json';
 
@@ -44,10 +47,12 @@ export default {
   data () {
     return {
       isOnSprintr: onSprintr(),
+      isOnDataHub: onDataHub(),
       linkIDs: {
         buzz: 'mx-header-link-buzz',
         apps: 'mx-header-link-apps',
-        people: 'mx-header-link-people'
+        people: 'mx-header-link-people',
+        datahub: 'mx-header-link-datahub'
       },
       deepLinkBuzz: {
         title: 'Buzz',
@@ -56,6 +61,10 @@ export default {
       deepLinkApps: {
         title: 'Apps',
         url: replaceEnvLink(links.sprintr.apps),
+      },
+      deepLinkDataHub: {
+        title: 'Data Hub',
+        url: replaceEnvLink(links.sprintr.datahub),
       },
       deepLinkPeople: {
         title: 'People',

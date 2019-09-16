@@ -37,6 +37,7 @@
     "sprintr": {
       "buzz": "https://sprintr.home.mendix.com/link/home",
       "apps": "https://sprintr.home.mendix.com/link/myprojects",
+      "datahub": "https://hub.mendixcloud.com",
       "people": "https://developer.mendixcloud.com/link/people",
       "companyAdmin": "https://sprintr.home.mendix.com/link/adminpanel/",
       "platformAdmin": "https://sprintr.home.mendix.com/link/supportdeskcompanies/",

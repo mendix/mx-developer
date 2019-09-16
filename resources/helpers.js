@@ -16,6 +16,12 @@ const getEnvironment = () => {
     domain.indexOf('home-accp.mendix.dev') !== -1
   ) {
     return '-accp';
+  } else if (
+    domain.indexOf('-ofdata.mendixcloud.com') !== -1 ||
+    domain.indexOf('home-ofdata.mendix.com') !== -1 ||
+    domain.indexOf('home-ofdata.mendix.dev') !== -1
+  ) {
+    return '-ofdata';
   }
 
   return '';
@@ -33,6 +39,7 @@ const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mend
 const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
 
 const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
+const dataHubRegEx = /https:\/\/hub(-test|-ofdata)?\.mendixcloud\.com/;
 
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
@@ -45,6 +52,8 @@ const onBeaver = () => beaverRegEx.test(location.origin);
 
 const onModelShare = () => modelShareRegEx.test(location.origin);
 const onForum = () => forumRegEx.test(location.origin);
+
+const onDataHub = () => dataHubRegEx.test(location.origin);
 
 const mxEnv = () => {
   if (onSprintr()) {
@@ -76,7 +85,10 @@ const mxEnv = () => {
 
 const replaceEnvLink = link => {
   if (link && link.indexOf('developer.mendixcloud.com') !== -1) {
-    return link.replace('developer.mendixcloud.com', `developer${getEnvironment()}.mendixcloud.com`);
+    return link.replace(
+      'developer.mendixcloud.com',
+      `developer${getEnvironment()}.mendixcloud.com`
+    );
   }
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
@@ -86,11 +98,28 @@ const replaceEnvLink = link => {
   }
   if (location.origin.indexOf('dev.mendix.com') !== -1) {
     // MXLAB integration (https://prefix.app.home.dev.mendix.com)
-    const urlParts = location.origin.split('.').map(part => part.replace(/http(s)?:\/\//, ''));
+    const urlParts = location.origin
+      .split('.')
+      .map(part => part.replace(/http(s)?:\/\//, ''));
     const firstPart = urlParts[0];
-    const nonIndex = ['sprintr', 'sprintr', 'home', 'cloud', 'cdp', 'cdp-test', 'cdp-accp', 'clp', 'clp-test', 'clp-accp', 'appstore'].indexOf(firstPart) === -1;
+    const nonIndex =
+      [
+        'sprintr',
+        'sprintr',
+        'home',
+        'cloud',
+        'cdp',
+        'cdp-test',
+        'cdp-accp',
+        'clp',
+        'clp-test',
+        'clp-accp',
+        'appstore'
+      ].indexOf(firstPart) === -1;
     if (nonIndex) {
-      return link.replace(/(http(s)?:\/\/)/, `$1${firstPart}.`).replace('home.mendix.com', `home.dev.mendix.com`);
+      return link
+        .replace(/(http(s)?:\/\/)/, `$1${firstPart}.`)
+        .replace('home.mendix.com', `home.dev.mendix.com`);
     }
     return link.replace('home.mendix.com', `home.dev.mendix.com`);
   }
@@ -98,13 +127,15 @@ const replaceEnvLink = link => {
 };
 
 const constants = {
-  copyRight: `Copyright &copy; ${(new Date()).getFullYear()} Mendix Technology B.V.`
+  copyRight: `Copyright &copy; ${new Date().getFullYear()} Mendix Technology B.V.`
 };
 
 const urls = {
   platform: replaceEnvLink('https://home.mendix.com/'),
   developer: replaceEnvLink('https://sprintr.home.mendix.com/link/myprofile'),
-  community: replaceEnvLink('https://developer.mendixcloud.com/link/dashboard/'),
+  community: replaceEnvLink(
+    'https://developer.mendixcloud.com/link/dashboard/'
+  ),
   github: 'https://github.com/mendix',
   twitter: 'https://twitter.com/MendixDeveloper',
   linkedin: 'https://www.linkedin.com/company/mendix',
@@ -177,7 +208,12 @@ const waitForElementId = (id, vueComponent, store, num = 200) => {
   }, 10);
 };
 
-const waitFor = (predicate, callback, timeoutCallback = () => {}, num = 200) => {
+const waitFor = (
+  predicate,
+  callback,
+  timeoutCallback = () => {},
+  num = 200
+) => {
   if (predicate()) {
     callback();
     return;
@@ -192,9 +228,14 @@ const waitFor = (predicate, callback, timeoutCallback = () => {}, num = 200) => 
 };
 
 const waitForMX = (callback, timeoutCallback = () => {}) =>
-  waitFor(() => typeof window.mx !== 'undefined' && window.mx.session, callback, timeoutCallback);
+  waitFor(
+    () => typeof window.mx !== 'undefined' && window.mx.session,
+    callback,
+    timeoutCallback
+  );
 
-const hasElement = className => document.getElementsByClassName(className).length > 0;
+const hasElement = className =>
+  document.getElementsByClassName(className).length > 0;
 
 const waitForElementClass = (className, vueComponent, store, num = 200) => {
   const el = document.getElementsByClassName(className);
@@ -218,7 +259,11 @@ const getSideBarToggle = () => {
   if (!window.mx || !window.dijit || !window.dijit.registry) {
     return null;
   }
-  const sidebarToggles = window.dijit.registry.toArray().filter(w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1);
+  const sidebarToggles = window.dijit.registry
+    .toArray()
+    .filter(
+      w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1
+    );
   if (sidebarToggles.length) {
     return sidebarToggles[0];
   }
@@ -232,6 +277,7 @@ export {
   constants,
   hasElement,
   onSprintr,
+  onDataHub,
   onCloud,
   onAppStore,
   onHeimdal,
