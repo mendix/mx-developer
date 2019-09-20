@@ -39,6 +39,7 @@ const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mend
 const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
 
 const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
+const supportRegEx = /https:\/\/support\.mendix\.com/;
 const dataHubRegEx = /https:\/\/hub(-test|-ofdata)?\.mendixcloud\.com/;
 
 const onSprintr = () => sprintrRegEx.test(location.origin);
@@ -52,7 +53,7 @@ const onBeaver = () => beaverRegEx.test(location.origin);
 
 const onModelShare = () => modelShareRegEx.test(location.origin);
 const onForum = () => forumRegEx.test(location.origin);
-
+const onSupport = () => supportRegEx.test(location.origin);
 const onDataHub = () => dataHubRegEx.test(location.origin);
 
 const mxEnv = () => {
@@ -80,25 +81,42 @@ const mxEnv = () => {
   if (onForum()) {
     return 'forum';
   }
+  if (onSupport()) {
+    return 'support';
+  }
+  if (onDataHub()) {
+    return 'datahub';
+  }
   return 'community';
 };
 
+const getMendixCloudUrl = link => {
+  const mendixcloudUrlPrefixes = ['developer', 'hub'];
+
+  return mendixcloudUrlPrefixes
+    .map(prefix => `${prefix}.mendixcloud.com`)
+    .filter(url => link.includes(url))[0];
+};
+
 const replaceEnvLink = link => {
-  if (link && link.indexOf('developer.mendixcloud.com') !== -1) {
+  const domain = window.location.origin;
+
+  if (link && getMendixCloudUrl(link)) {
     return link.replace(
-      'developer.mendixcloud.com',
-      `developer${getEnvironment()}.mendixcloud.com`
+      '.mendixcloud.com',
+      `${getEnvironment(domain)}.mendixcloud.com`
     );
   }
+
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
   }
-  if (location.origin.indexOf('home.mendix.dev') !== -1) {
+  if (domain.indexOf('home.mendix.dev') !== -1) {
     return link.replace('home.mendix.com', `home.mendix.dev`);
   }
-  if (location.origin.indexOf('dev.mendix.com') !== -1) {
+  if (domain.indexOf('dev.mendix.com') !== -1) {
     // MXLAB integration (https://prefix.app.home.dev.mendix.com)
-    const urlParts = location.origin
+    const urlParts = domain
       .split('.')
       .map(part => part.replace(/http(s)?:\/\//, ''));
     const firstPart = urlParts[0];
