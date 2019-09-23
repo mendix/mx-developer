@@ -1,30 +1,16 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
 import Vue from 'vue';
 
-const getEnvironment = () => {
-  const domain = location.origin;
+const getEnvironment = (domain: string = window.location.origin) => {
+  const environments = ['test', 'accp', 'ofdata'];
+  const isUrlWithEnvironment = (environment: string) =>
+    ['-[env].mendixcloud.com', 'home-[env].mendix.com', 'home-[env].mendix.dev']
+      .map(url => url.replace('[env]', environment))
+      .filter(url => domain.includes(url))[0];
 
-  if (
-    domain.indexOf('-test.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-test.mendix.com') !== -1 ||
-    domain.indexOf('home-test.mendix.dev') !== -1
-  ) {
-    return '-test';
-  } else if (
-    domain.indexOf('-accp.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-accp.mendix.com') !== -1 ||
-    domain.indexOf('home-accp.mendix.dev') !== -1
-  ) {
-    return '-accp';
-  } else if (
-    domain.indexOf('-ofdata.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-ofdata.mendix.com') !== -1 ||
-    domain.indexOf('home-ofdata.mendix.dev') !== -1
-  ) {
-    return '-ofdata';
-  }
+  const found = environments.filter(isUrlWithEnvironment)[0];
 
-  return '';
+  return found ? `-${found}` : '';
 };
 
 const sprintrRegEx = /https:\/\/(.+?\.|)sprintr\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
@@ -90,21 +76,36 @@ const mxEnv = () => {
   return 'community';
 };
 
-const getMendixCloudUrl = link => {
-  const mendixcloudUrlPrefixes = ['developer', 'hub'];
+// const getMendixCloudUrl = (subdomain, link) => {
+//   const cloudSubdomains = ['developer', 'hub'];
 
-  return mendixcloudUrlPrefixes
-    .map(prefix => `${prefix}.mendixcloud.com`)
-    .filter(url => link.includes(url))[0];
-};
+//   return cloudSubdomains
+//     .map(prefix => `${prefix}.mendixcloud.com`)
+//     .filter(url => link.includes(url))[0];
+// };
+
+const isCouldUrl = (subdomain, link) =>
+  link.includes(`${subdomain}.mendixcloud.com`);
 
 const replaceEnvLink = link => {
   const domain = window.location.origin;
 
-  if (link && getMendixCloudUrl(link)) {
+  // ofdata is a special testing environment for DataHub
+  // if user is on hub-ofdata.mendixcloud.com, for all the other links, we still return -test
+  // only change the link hub.mendixcloud.com to hub-ofdata.mendixcloud.com
+  const environmentFromUrl = getEnvironment(domain);
+  const environment =
+    environmentFromUrl === '-ofdata' ? '-test' : environmentFromUrl;
+
+  if (link && isCouldUrl('developer', link)) {
+    return link.replace('.mendixcloud.com', `${environment}.mendixcloud.com`);
+  }
+
+  // this is the only place that applies '-ofdata'
+  if (link && isCouldUrl('hub', link)) {
     return link.replace(
       '.mendixcloud.com',
-      `${getEnvironment(domain)}.mendixcloud.com`
+      `${environmentFromUrl}.mendixcloud.com`
     );
   }
 
@@ -123,7 +124,6 @@ const replaceEnvLink = link => {
     const nonIndex =
       [
         'sprintr',
-        'sprintr',
         'home',
         'cloud',
         'cdp',
@@ -141,7 +141,7 @@ const replaceEnvLink = link => {
     }
     return link.replace('home.mendix.com', `home.dev.mendix.com`);
   }
-  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
+  return link.replace('home.mendix.com', `home${environment}.mendix.com`);
 };
 
 const constants = {
