@@ -36,9 +36,9 @@ export default {
   ],
   data () {
     return {
+      img: require('Resources/img/mx_logo.png'),
       imgLink: constants.headerImgUrl,
       links: require('Resources/menu/header.json'),
-      img: require('Resources/img/mx_logo.png'),
       useProfile: true
     }
   },

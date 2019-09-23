@@ -1,24 +1,16 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
 import Vue from 'vue';
 
-const getEnvironment = () => {
-  const domain = location.origin;
+const getEnvironment = (domain = window.location.origin) => {
+  const environments = ['test', 'accp', 'ofdata'];
+  const isUrlWithEnvironment = environment =>
+    ['-[env].mendixcloud.com', 'home-[env].mendix.com', 'home-[env].mendix.dev']
+      .map(url => url.replace('[env]', environment))
+      .filter(url => domain.includes(url))[0];
 
-  if (
-    domain.indexOf('-test.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-test.mendix.com') !== -1 ||
-    domain.indexOf('home-test.mendix.dev') !== -1
-  ) {
-    return '-test';
-  } else if (
-    domain.indexOf('-accp.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-accp.mendix.com') !== -1 ||
-    domain.indexOf('home-accp.mendix.dev') !== -1
-  ) {
-    return '-accp';
-  }
+  const found = environments.filter(isUrlWithEnvironment)[0];
 
-  return '';
+  return found ? `-${found}` : '';
 };
 
 const sprintrRegEx = /https:\/\/(.+?\.|)sprintr\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
@@ -33,6 +25,8 @@ const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mend
 const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
 
 const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
+const supportRegEx = /https:\/\/support\.mendix\.com/;
+const dataHubRegEx = /https:\/\/hub(-test|-ofdata)?\.mendixcloud\.com/;
 
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
@@ -45,6 +39,8 @@ const onBeaver = () => beaverRegEx.test(location.origin);
 
 const onModelShare = () => modelShareRegEx.test(location.origin);
 const onForum = () => forumRegEx.test(location.origin);
+const onSupport = () => supportRegEx.test(location.origin);
+const onDataHub = () => dataHubRegEx.test(location.origin);
 
 const mxEnv = () => {
   if (onSprintr()) {
@@ -71,40 +67,93 @@ const mxEnv = () => {
   if (onForum()) {
     return 'forum';
   }
+  if (onSupport()) {
+    return 'support';
+  }
+  if (onDataHub()) {
+    return 'datahub';
+  }
   return 'community';
 };
 
+// const getMendixCloudUrl = (subdomain, link) => {
+//   const cloudSubdomains = ['developer', 'hub'];
+
+//   return cloudSubdomains
+//     .map(prefix => `${prefix}.mendixcloud.com`)
+//     .filter(url => link.includes(url))[0];
+// };
+
+const isCouldUrl = (subdomain, link) =>
+  link.includes(`${subdomain}.mendixcloud.com`);
+
 const replaceEnvLink = link => {
-  if (link && link.indexOf('developer.mendixcloud.com') !== -1) {
-    return link.replace('developer.mendixcloud.com', `developer${getEnvironment()}.mendixcloud.com`);
+  const domain = window.location.origin;
+
+  // ofdata is a special testing environment for DataHub
+  // if user is on hub-ofdata.mendixcloud.com, for all the other links, we still return -test
+  // only change the link hub.mendixcloud.com to hub-ofdata.mendixcloud.com
+  const environmentFromUrl = getEnvironment(domain);
+  const environment =
+    environmentFromUrl === '-ofdata' ? '-test' : environmentFromUrl;
+
+  if (link && isCouldUrl('developer', link)) {
+    return link.replace('.mendixcloud.com', `${environment}.mendixcloud.com`);
   }
+
+  // this is the only place that applies '-ofdata'
+  if (link && isCouldUrl('hub', link)) {
+    return link.replace(
+      '.mendixcloud.com',
+      `${environmentFromUrl}.mendixcloud.com`
+    );
+  }
+
   if (!link || link.indexOf('home.mendix.com') === -1) {
     return link;
   }
-  if (location.origin.indexOf('home.mendix.dev') !== -1) {
+  if (domain.indexOf('home.mendix.dev') !== -1) {
     return link.replace('home.mendix.com', `home.mendix.dev`);
   }
-  if (location.origin.indexOf('dev.mendix.com') !== -1) {
+  if (domain.indexOf('dev.mendix.com') !== -1) {
     // MXLAB integration (https://prefix.app.home.dev.mendix.com)
-    const urlParts = location.origin.split('.').map(part => part.replace(/http(s)?:\/\//, ''));
+    const urlParts = domain
+      .split('.')
+      .map(part => part.replace(/http(s)?:\/\//, ''));
     const firstPart = urlParts[0];
-    const nonIndex = ['sprintr', 'sprintr', 'home', 'cloud', 'cdp', 'cdp-test', 'cdp-accp', 'clp', 'clp-test', 'clp-accp', 'appstore'].indexOf(firstPart) === -1;
+    const nonIndex =
+      [
+        'sprintr',
+        'home',
+        'cloud',
+        'cdp',
+        'cdp-test',
+        'cdp-accp',
+        'clp',
+        'clp-test',
+        'clp-accp',
+        'appstore'
+      ].indexOf(firstPart) === -1;
     if (nonIndex) {
-      return link.replace(/(http(s)?:\/\/)/, `$1${firstPart}.`).replace('home.mendix.com', `home.dev.mendix.com`);
+      return link
+        .replace(/(http(s)?:\/\/)/, `$1${firstPart}.`)
+        .replace('home.mendix.com', `home.dev.mendix.com`);
     }
     return link.replace('home.mendix.com', `home.dev.mendix.com`);
   }
-  return link.replace('home.mendix.com', `home${getEnvironment()}.mendix.com`);
+  return link.replace('home.mendix.com', `home${environment}.mendix.com`);
 };
 
 const constants = {
-  copyRight: `Copyright &copy; ${(new Date()).getFullYear()} Mendix Technology B.V.`
+  copyRight: `Copyright &copy; ${new Date().getFullYear()} Mendix Technology B.V.`
 };
 
 const urls = {
   platform: replaceEnvLink('https://home.mendix.com/'),
   developer: replaceEnvLink('https://sprintr.home.mendix.com/link/myprofile'),
-  community: replaceEnvLink('https://developer.mendixcloud.com/link/dashboard/'),
+  community: replaceEnvLink(
+    'https://developer.mendixcloud.com/link/dashboard/'
+  ),
   github: 'https://github.com/mendix',
   twitter: 'https://twitter.com/MendixDeveloper',
   linkedin: 'https://www.linkedin.com/company/mendix',
@@ -177,7 +226,12 @@ const waitForElementId = (id, vueComponent, store, num = 200) => {
   }, 10);
 };
 
-const waitFor = (predicate, callback, timeoutCallback = () => {}, num = 200) => {
+const waitFor = (
+  predicate,
+  callback,
+  timeoutCallback = () => {},
+  num = 200
+) => {
   if (predicate()) {
     callback();
     return;
@@ -192,9 +246,14 @@ const waitFor = (predicate, callback, timeoutCallback = () => {}, num = 200) => 
 };
 
 const waitForMX = (callback, timeoutCallback = () => {}) =>
-  waitFor(() => typeof window.mx !== 'undefined' && window.mx.session, callback, timeoutCallback);
+  waitFor(
+    () => typeof window.mx !== 'undefined' && window.mx.session,
+    callback,
+    timeoutCallback
+  );
 
-const hasElement = className => document.getElementsByClassName(className).length > 0;
+const hasElement = className =>
+  document.getElementsByClassName(className).length > 0;
 
 const waitForElementClass = (className, vueComponent, store, num = 200) => {
   const el = document.getElementsByClassName(className);
@@ -218,7 +277,11 @@ const getSideBarToggle = () => {
   if (!window.mx || !window.dijit || !window.dijit.registry) {
     return null;
   }
-  const sidebarToggles = window.dijit.registry.toArray().filter(w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1);
+  const sidebarToggles = window.dijit.registry
+    .toArray()
+    .filter(
+      w => w.id && w.id.indexOf('mxui_widget_SidebarToggleButton') !== -1
+    );
   if (sidebarToggles.length) {
     return sidebarToggles[0];
   }
@@ -232,6 +295,7 @@ export {
   constants,
   hasElement,
   onSprintr,
+  onDataHub,
   onCloud,
   onAppStore,
   onHeimdal,
