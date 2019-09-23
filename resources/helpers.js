@@ -1,30 +1,20 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
 import Vue from 'vue';
 
-const getEnvironment = () => {
-  const domain = location.origin;
+const getEnvironment = (domain: string = window.location.origin) => {
+  const environments = ['test', 'accp', 'ofdata'];
+  const isUrlWithEnvironment = (environment: string) =>
+    [
+      '-[env].mendixcloud.com',
+      'home-[env].mendix.com',
+      'home-[env].mendix.dev'
+    ]
+      .map(url => url.replace('[env]', environment))
+      .filter(url => domain.includes(url))[0];
 
-  if (
-    domain.indexOf('-test.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-test.mendix.com') !== -1 ||
-    domain.indexOf('home-test.mendix.dev') !== -1
-  ) {
-    return '-test';
-  } else if (
-    domain.indexOf('-accp.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-accp.mendix.com') !== -1 ||
-    domain.indexOf('home-accp.mendix.dev') !== -1
-  ) {
-    return '-accp';
-  } else if (
-    domain.indexOf('-ofdata.mendixcloud.com') !== -1 ||
-    domain.indexOf('home-ofdata.mendix.com') !== -1 ||
-    domain.indexOf('home-ofdata.mendix.dev') !== -1
-  ) {
-    return '-ofdata';
-  }
+  const found = environments.filter(isUrlWithEnvironment)[0];
 
-  return '';
+  return found ? `-${found}` : '';
 };
 
 const sprintrRegEx = /https:\/\/(.+?\.|)sprintr\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
