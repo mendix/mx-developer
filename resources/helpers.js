@@ -1,9 +1,9 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }] */
 import Vue from 'vue';
 
-const getEnvironment = (domain: string = window.location.origin) => {
+const getEnvironment = (domain = window.location.origin) => {
   const environments = ['test', 'accp', 'ofdata'];
-  const isUrlWithEnvironment = (environment: string) =>
+  const isUrlWithEnvironment = environment =>
     ['-[env].mendixcloud.com', 'home-[env].mendix.com', 'home-[env].mendix.dev']
       .map(url => url.replace('[env]', environment))
       .filter(url => domain.includes(url))[0];
