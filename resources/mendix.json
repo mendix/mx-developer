@@ -23,6 +23,9 @@
     },
     "brokkr": {
       "profileMenu": "CommunityAlignment.DS_GetProfileMenuView"
+    },
+    "privatecloud": {
+      "profileMenu": "CommunityAlignment.DS_GetProfileMenuView"
     }
   },
   "links": {

@@ -7,13 +7,31 @@ import {microflows, links} from 'Resources/mendix.json';
 
 const profileUrl = replaceEnvLink(links.profile) + `?q=${Number(new Date())}`;
 
+const getFallbackMicroflow = env => {
+  if (env === 'heimdal') {
+    return microflows.heimdal.profileMenu;
+  }
+
+  if (env === 'brokkr') {
+    return microflows.brokkr.profileMenu;
+  }
+
+  if (env === 'privatecloud') {
+    return microflows.privatecloud.profileMenu;
+  }
+};
+
 const fallbackProfileCall = (commit, profile) => {
   const env = mxEnv();
-  if ((env === 'heimdal' || env === 'brokkr') && window.mx && window.mx.data && window.mx.data.action) {
-    const MF = env === 'heimdal' ? microflows.heimdal.profileMenu : microflows.brokkr.profileMenu;
+  const appsWithoutAppbar2 = ['heimdal', 'brokkr', 'privatecloud'];
+  const requiresFallback = appsWithoutAppbar2.includes(env);
+  const isClientApiLoaded = window.mx && window.mx.data && window.mx.data.action;
+
+  if (requiresFallback && isClientApiLoaded) {
+    const microflow = getFallbackMicroflow(env);
     window.mx.data.action({
       params: {
-        actionname: MF
+        actionname: microflow
       },
       callback: obj => {
         if (obj.length) {
