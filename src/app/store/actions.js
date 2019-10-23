@@ -19,6 +19,8 @@ const getFallbackMicroflow = env => {
   if (env === 'privatecloud') {
     return microflows.privatecloud.profileMenu;
   }
+
+  return null;
 };
 
 const fallbackProfileCall = (commit, profile) => {
