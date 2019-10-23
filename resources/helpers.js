@@ -27,6 +27,8 @@ const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
 const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
 const supportRegEx = /https:\/\/support\.mendix\.com/;
 const dataHubRegEx = /https:\/\/hub(-test|-ofdata)?\.mendixcloud\.com/;
+// We respect the URL given by the team, so we use all-lower-case here.
+const privatecloudRegEx = /https:\/\/privatecloud(-test|-accp)?\.mendixcloud\.com/;
 
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
@@ -41,6 +43,12 @@ const onModelShare = () => modelShareRegEx.test(location.origin);
 const onForum = () => forumRegEx.test(location.origin);
 const onSupport = () => supportRegEx.test(location.origin);
 const onDataHub = () => dataHubRegEx.test(location.origin);
+
+/**
+ * Added per request from Digital Ecosystem team
+ */
+
+const onPrivatecloud = () => privatecloudRegEx.test(location.origin);
 
 const mxEnv = () => {
   if (onSprintr()) {
@@ -72,6 +80,9 @@ const mxEnv = () => {
   }
   if (onDataHub()) {
     return 'datahub';
+  }
+  if (onPrivatecloud()) {
+    return 'privatecloud';
   }
   return 'community';
 };
