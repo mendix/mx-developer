@@ -28,7 +28,7 @@ const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
 const supportRegEx = /https:\/\/support\.mendix\.com/;
 const dataHubRegEx = /https:\/\/hub(-test|-ofdata)?\.mendixcloud\.com/;
 // We respect the URL given by the team, so we use all-lower-case here.
-const privatecloudRegEx = /https:\/\/privatecloud(-test|-accp)\.mendixcloud\.com/;
+const privatecloudRegEx = /https:\/\/privatecloud(-test|-accp)?\.mendixcloud\.com/;
 
 const onSprintr = () => sprintrRegEx.test(location.origin);
 const onCloud = () => cloudRegEx.test(location.origin);
