@@ -26,7 +26,7 @@ const getFallbackMicroflow = env => {
 const fallbackProfileCall = (commit, profile) => {
   const env = mxEnv();
   const appsWithoutAppbar2 = ['heimdal', 'brokkr', 'privatecloud'];
-  const requiresFallback = appsWithoutAppbar2.includes(env);
+  const requiresFallback = env && appsWithoutAppbar2.indexOf(env) !== -1;
   const isClientApiLoaded = window.mx && window.mx.data && window.mx.data.action;
 
   if (requiresFallback && isClientApiLoaded) {
