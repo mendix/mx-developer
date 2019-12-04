@@ -17,6 +17,7 @@
     "local-storage-fallback": "^4.0.2",
     "location-origin": "^1.1.4",
     "mutation-observer": "^1.0.3",
+    "polyfill-array-includes": "^2.0.0",
     "tiny-debounce": "^0.1.1",
     "vue": "^2.5.2",
     "vuex": "^3.0.0"

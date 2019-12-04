@@ -4,6 +4,7 @@
 import 'es6-promise';
 require('es6-object-assign').polyfill();
 import 'js-polyfills/dom'; // IE element.append polyfills (fix =< IE11)
+import 'polyfill-array-includes'; // IE11 Array.includes
 import 'location-origin';
 
 import Vue from 'vue';
