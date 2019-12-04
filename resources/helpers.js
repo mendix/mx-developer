@@ -6,7 +6,7 @@ const getEnvironment = (domain = window.location.origin) => {
   const isUrlWithEnvironment = environment =>
     ['-[env].mendixcloud.com', 'home-[env].mendix.com', 'home-[env].mendix.dev']
       .map(url => url.replace('[env]', environment))
-      .filter(url => domain.includes(url))[0];
+      .filter(url => url && domain.indexOf(url) !== -1)[0];
 
   const found = environments.filter(isUrlWithEnvironment)[0];
 
@@ -96,7 +96,7 @@ const mxEnv = () => {
 // };
 
 const isCouldUrl = (subdomain, link) =>
-  link.includes(`${subdomain}.mendixcloud.com`);
+  link.indexOf(`${subdomain}.mendixcloud.com`) !== -1;
 
 const replaceEnvLink = link => {
   const domain = window.location.origin;
