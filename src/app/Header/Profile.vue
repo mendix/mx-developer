@@ -20,7 +20,7 @@
         <a :class="b('submenu__link', { 'type': 'platform' })" :href="homeURL" @click.stop="home($event)" id="mx-header-link-devportal" v-track-link>Developer Portal</a>
         <a :class="b('submenu__link', { 'type': 'community' })" :href="urls.community" v-if="profile" id="mx-header-link-dashboard" v-track-link>My Profile</a>
         <admin-links v-if="profile" :item-class="b('submenu__link', { 'type': 'admin' })" :closeFunc="closeMenu" />
-        <a :class="b('submenu__link', { 'type': 'logout' })" :href="logoutLink" v-if="profile && profile.logoutUrl" v-track-link id="mx-header-link-logout">Log out</a>
+        <a :class="b('submenu__link', { 'type': 'logout' })" :href="profile.logoutUrl" v-if="profile && profile.logoutUrl" v-track-link id="mx-header-link-logout">Log out</a>
       </div>
     </div>
   </div>
