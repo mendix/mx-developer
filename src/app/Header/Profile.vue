@@ -44,7 +44,6 @@ export default {
       urls: urls,
       profilePic: require('Resources/img/header/avatar.svg'),
       signupLink: links.signup,
-      logoutLink: replaceEnvLink(links.logout),
       homeURL: replaceEnvLink(links.home),
       open: false,
       imgError: false,
