@@ -18,6 +18,7 @@ $menu-width: 200px;
   $profile-root: &;
   line-height: $height-top-bar-inside;
   float: right;
+  padding-right: 8px;
   @include modifier('loading') {
     visibility: none;
   }
