@@ -7,7 +7,6 @@
 
     <span id="mendix-header-search-button" class="mx-developer__profile__search-button hidden" @click="openSearch"></span>
     <support-menu />
-    <notifications v-if="profile && profile.loggedIn" />
 
     <div :class="b('avatar', { 'empty': !profile || !profile.avatarUrl, event })" v-if="profile && profile.loggedIn" v-on:click="menu">
       <profile-picture :profile="profile" />
@@ -98,7 +97,6 @@ export default {
     'support-menu': SupportMenu,
     'profile-picture': ProfilePic,
     'admin-links': AdminLinks,
-    'notifications': Notifications
   }
 };
 </script>
