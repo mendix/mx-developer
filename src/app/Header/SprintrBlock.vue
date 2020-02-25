@@ -179,4 +179,10 @@ export default {
   opacity: 1;
   visibility: visible;
 }
+
+@media only screen and (max-width: 991px) {
+  .has-apps-submenu .mx-developer__headerlink__submenu {
+    display: none;
+  }
+}
 </style>
