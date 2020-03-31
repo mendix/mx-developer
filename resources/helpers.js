@@ -22,8 +22,6 @@ const brokkrRegEx = /https:\/\/(.+?\.|)clp(-test|-accp)?\.(mendixcloud\.com|mend
 const appstoreRegEx = /https:\/\/(.+?\.|)appstore\.home(-test|-accp)?\.(mendix\.(com|dev)|dev\.mendix\.com)/;
 const beaverRegEx = /https:\/\/(.+?\.|)sapodatamodelcreator(-test|-accp)?\.(mendixcloud\.com|mendix\.dev|dev\.mendix\.com)/;
 
-const modelShareRegEx = /https:\/\/modelshare\.mendixcloud\.com/;
-
 const forumRegEx = /https:\/\/forum\.mendixcloud\.com/;
 const supportRegEx = /https:\/\/support\.mendix\.com/;
 const dataHubRegEx = /https:\/\/hub(-test|-ofdata)?\.mendixcloud\.com/;
@@ -39,7 +37,6 @@ const onBrokkr = () => brokkrRegEx.test(location.origin);
 const onAppStore = () => appstoreRegEx.test(location.origin);
 const onBeaver = () => beaverRegEx.test(location.origin);
 
-const onModelShare = () => modelShareRegEx.test(location.origin);
 const onForum = () => forumRegEx.test(location.origin);
 const onSupport = () => supportRegEx.test(location.origin);
 const onDataHub = () => dataHubRegEx.test(location.origin);
@@ -68,9 +65,6 @@ const mxEnv = () => {
   }
   if (onBeaver()) {
     return 'beaver';
-  }
-  if (onModelShare()) {
-    return 'modelshare';
   }
   if (onForum()) {
     return 'forum';
@@ -312,7 +306,6 @@ export {
   onHeimdal,
   onBrokkr,
   onBeaver,
-  onModelShare,
   waitForElementId,
   waitForElementIdCb,
   waitForElementClass,
